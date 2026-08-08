@@ -1,6 +1,6 @@
-# QStart — Ôn thi Khởi sự doanh nghiệp
+# EnQuiz — Ôn thi Khởi sự doanh nghiệp
 
-**QStart** là ứng dụng web ôn tập trắc nghiệm môn **Khởi sự doanh nghiệp**.
+**EnQuiz** (Entrepreneurship + Quiz) là ứng dụng web ôn tập trắc nghiệm môn **Khởi sự doanh nghiệp**.
 Tác giả: **NCS. Đỗ Thùy Hương** — [trang cá nhân](https://thuyhuongctu.github.io/M-AIDA/huong.html).
 
 Giao diện **song ngữ Việt – English**, có chế độ **sáng/tối**, và cài được lên
@@ -141,7 +141,7 @@ index.html              giao diện và toàn bộ màn hình
 manifest.webmanifest    khai báo ứng dụng cài đặt được (PWA)
 sw.js                   service worker cho chế độ offline
 assets/css/style.css    giao diện sáng/tối, bố cục responsive
-assets/icons/           bộ biểu tượng ứng dụng (monogram QStart)
+assets/icons/           bộ biểu tượng ứng dụng (monogram EnQuiz)
 assets/img/             ảnh giảng viên dùng ở trang chủ và ảnh xem trước khi chia sẻ
 assets/js/i18n.js       từ điển song ngữ và cơ chế dịch giao diện
 assets/js/storage.js    lưu tiến độ, lịch sử, bộ đề tự nhập (localStorage)
@@ -176,6 +176,6 @@ và `assets/img/teacher-wide.jpg` (ảnh ngang, dùng làm ảnh xem trước kh
 
 ## Bản quyền
 
-© 2026 Đỗ Thùy Hương. Tên gọi **QStart**, mã nguồn, giao diện và nội dung
+© 2026 Đỗ Thùy Hương. Tên gọi **EnQuiz**, mã nguồn, giao diện và nội dung
 ngân hàng câu hỏi thuộc quyền tác giả. Vui lòng liên hệ tác giả trước khi sao chép
 hoặc phân phối lại.

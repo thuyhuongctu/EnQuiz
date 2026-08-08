@@ -12,10 +12,10 @@
 
   var DICT = {
     vi: {
-      'app.name': 'QStart',
+      'app.name': 'EnQuiz',
       'app.tagline': 'Ôn thi Khởi sự doanh nghiệp',
-      'app.title': 'QStart — Ôn thi Khởi sự doanh nghiệp',
-      'app.desc': 'QStart — ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp: 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.',
+      'app.title': 'EnQuiz — Ôn thi Khởi sự doanh nghiệp',
+      'app.desc': 'EnQuiz — ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp: 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.',
       'app.author': 'Đỗ Thùy Hương',
 
       'teacher.greeting': 'Chào bạn, cùng ôn bài nhé!',
@@ -180,7 +180,7 @@
       'settings.jsonLog': 'Đã thêm {added} câu · trùng {dup} · lỗi {bad}.',
       'settings.language': 'Ngôn ngữ',
 
-      'footer.line1': '<b>QStart</b> — ôn tập môn Khởi sự doanh nghiệp · Tác giả: NCS. Đỗ Thùy Hương',
+      'footer.line1': '<b>EnQuiz</b> — ôn tập môn Khởi sự doanh nghiệp · Tác giả: NCS. Đỗ Thùy Hương',
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
       'footer.link': 'Trang cá nhân của tác giả',
 
@@ -195,10 +195,10 @@
     },
 
     en: {
-      'app.name': 'QStart',
+      'app.name': 'EnQuiz',
       'app.tagline': 'Entrepreneurship practice',
-      'app.title': 'QStart — Entrepreneurship Quiz',
-      'app.desc': 'QStart — a multiple-choice practice app for an Entrepreneurship course: 300 questions, timed mock exams, and review of missed questions.',
+      'app.title': 'EnQuiz — Entrepreneurship Quiz',
+      'app.desc': 'EnQuiz — a multiple-choice practice app for an Entrepreneurship course: 300 questions, timed mock exams, and review of missed questions.',
       'app.author': 'Do Thuy Huong',
 
       'teacher.greeting': 'Hello — let us revise together!',
@@ -363,7 +363,7 @@
       'settings.jsonLog': 'Added {added} · duplicates {dup} · errors {bad}.',
       'settings.language': 'Language',
 
-      'footer.line1': '<b>QStart</b> — Entrepreneurship practice · by Do Thuy Huong, PhD Candidate',
+      'footer.line1': '<b>EnQuiz</b> — Entrepreneurship practice · by Do Thuy Huong, PhD Candidate',
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',
       'footer.link': "Author's homepage",
 
