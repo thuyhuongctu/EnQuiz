@@ -715,17 +715,25 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   color: var(--text);
   text-align: center;
 }
-/* Khoá chiều cao chứ không khoá bề ngang: mỗi tư thế một tỷ lệ khác nhau,
-   khoá bề ngang thì nhân vật cao thấp nhấp nhô khi đổi ảnh. */
+/* Ảnh chụp trong giảng đường, còn nguyên nền. Nền còn nguyên thì không có
+   răng cưa quanh tóc, nhưng phải đóng khung cho ra tấm ảnh — thả một hình chữ
+   nhật giữa trang thì trông như lỗi hiển thị. */
+.hero__huong, .quiz-huong, .result-hero__huong {
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: var(--shadow-sm), 0 16px 38px var(--glow);
+  object-fit: cover;
+  background: var(--surface-2);
+}
+/* Khoá chiều cao chứ không khoá bề ngang: mỗi tấm một tỷ lệ khác nhau, khoá bề
+   ngang thì ảnh cao thấp nhấp nhô mỗi lần đổi. */
 .hero__huong {
   position: relative;
   z-index: 1;
   flex: 0 0 auto;
-  height: 300px;
+  height: 290px;
   width: auto;
-  filter: drop-shadow(0 12px 30px var(--glow));
-  /* Khối đầu trang cắt phần tràn, nên nhân vật phải dừng đúng mép trong,
-     không thò xuống dưới — trước đây bị cụt mất bàn chân. */
+  /* Khối đầu trang cắt phần tràn, nên ảnh phải dừng đúng mép trong. */
   margin-bottom: 0;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -1243,10 +1251,9 @@ input[type="number"]:focus, input[type="file"]:focus {
 .quiz-stage__main { flex: 1 1 auto; min-width: 0; }
 .quiz-huong {
   flex: 0 0 auto;
-  height: 330px;
+  height: 300px;
   width: auto;
   margin-bottom: .5rem;
-  filter: drop-shadow(0 10px 26px var(--glow));
   pointer-events: none;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -1376,10 +1383,9 @@ input[type="number"]:focus, input[type="file"]:focus {
   position: absolute;
   right: 1.2rem;
   bottom: 0;
-  /* khoá theo chiều cao để mọi tư thế đều vừa khung, kể cả lúc giơ tay reo mừng */
-  height: 252px;
+  /* khoá theo chiều cao để tấm nào cũng vừa khung */
+  height: 240px;
   width: auto;
-  filter: drop-shadow(0 10px 24px var(--glow));
   pointer-events: none;
 }
 @media (prefers-reduced-motion: no-preference) {
