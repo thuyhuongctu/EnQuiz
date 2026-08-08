@@ -130,7 +130,7 @@
       'result.noWrong': 'Bạn không sai câu nào!',
       'result.retryLabel': 'Luyện lại câu sai',
 
-      'import.heading': '✨ Công cụ ghép đề & đáp án',
+      'import.heading': 'Công cụ ghép đề & đáp án',
       'import.intro': 'Dán nội dung câu hỏi vào ô 1 và danh sách đáp án vào ô 2. Hệ thống đối chiếu theo <b>số thứ tự câu</b> ghi trong đề (không phải theo vị trí dán), nên bạn có thể dán một phần đề bất kỳ.',
       'import.box1': '1. Nội dung câu hỏi',
       'import.box2': '2. Danh sách đáp án',
@@ -371,7 +371,7 @@
       'result.noWrong': 'You did not miss any question!',
       'result.retryLabel': 'Missed questions',
 
-      'import.heading': '✨ Merge questions & answer key',
+      'import.heading': 'Merge questions & answer key',
       'import.intro': 'Paste the questions into box 1 and the answer key into box 2. They are matched by the <b>question number printed in the paper</b>, not by paste order, so you can paste any subset.',
       'import.box1': '1. Questions',
       'import.box2': '2. Answer key',

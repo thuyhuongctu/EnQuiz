@@ -92,7 +92,8 @@
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    $('#btnTheme').textContent = theme === 'dark' ? '☀️' : '🌙';
+    var ti = $('#btnTheme').querySelector('use');
+    if (ti) ti.setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
     Store.set('theme', theme);
   }
 
@@ -141,7 +142,7 @@
             esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
           '</span>' +
         '</span>' +
-        '<span class="chapter-item__go">›</span>' +
+        '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
       '</button>';
     }).join('');
   }
