@@ -1,210 +1,213 @@
-# EnQuiz — Ôn thi Khởi sự doanh nghiệp
+# EnQuiz — Entrepreneurship Quiz
 
-**EnQuiz** (Entrepreneurship + Quiz) là ứng dụng web ôn tập trắc nghiệm môn **Khởi sự doanh nghiệp**.
-Tác giả: **NCS. Đỗ Thùy Hương** — [trang cá nhân](https://thuyhuongctu.github.io/M-AIDA/huong.html).
+**EnQuiz** (Entrepreneurship + Quiz) is a web app for revising an
+**Entrepreneurship** course through multiple-choice practice.
+Author: **Do Thuy Huong, PhD Candidate** — [homepage](https://thuyhuongctu.github.io/M-AIDA/huong.html).
 
-▶️ **Dùng ngay: https://thuyhuongctu.github.io/EC1606_KSDN-2026/**
+▶️ **Live app: https://thuyhuongctu.github.io/EC1606_KSDN-2026/**
 
-Giao diện **song ngữ Việt – English** (mặc định mở bằng tiếng Anh), có chế độ
-**sáng/tối**, **tour hướng dẫn bằng giọng nói của Hương AI**, và cài được lên
-màn hình chính như một ứng dụng (**PWA**), dùng được cả khi không có mạng.
-Nhận diện thị giác dùng chung bảng màu, kiểu chữ và nền bản đồ Việt Nam với
-trang [M-AIDA](https://thuyhuongctu.github.io/M-AIDA/).
+Bilingual **English – Vietnamese** interface (opens in English by default),
+**light/dark** themes, a **voice-guided tour narrated by Huong AI**, and it installs
+to the home screen as an app (**PWA**) that works offline. The visual identity —
+palette, typography and the faded Vietnam map background — is shared with the
+[M-AIDA](https://thuyhuongctu.github.io/M-AIDA/) site.
 
-Toàn bộ là HTML/CSS/JavaScript thuần — **không cần cài đặt, không cần build**.
-
-*A bilingual (Vietnamese/English) multiple-choice practice app for an
-Entrepreneurship course. Installable as a PWA, works offline, no build step.*
+Everything is plain HTML/CSS/JavaScript — **no install, no build step**.
 
 ---
 
-## Nội dung ngân hàng câu hỏi
+## Question bank
 
-| Chương | Chủ đề | Số câu |
-|-------:|--------|-------:|
-| 1 | Tổng quan về khởi sự doanh nghiệp | 60 |
-| 2 | Đánh giá cơ hội, ý tưởng phát triển kế hoạch kinh doanh | 60 |
-| 3 | Huy động vốn và các chỉ số tài chính cốt yếu | 60 |
-| 4 | Lựa chọn mô hình kinh doanh | 60 |
-| 5 | Marketing cho doanh nghiệp mới | 60 |
-| | **Tổng cộng** | **300** |
+| Chapter | Topic | Questions |
+|--------:|-------|----------:|
+| 1 | Overview of starting a business | 60 |
+| 2 | Assessing opportunities and developing a business plan | 60 |
+| 3 | Raising capital and key financial indicators | 60 |
+| 4 | Choosing a business model | 60 |
+| 5 | Marketing for a new business | 60 |
+| | **Total** | **300** |
 
-Giao diện có bản tiếng Anh; nội dung câu hỏi giữ nguyên tiếng Việt.
-
----
-
-## Tính năng
-
-- **Thi thử** — rút đề ngẫu nhiên, đặt số câu và thời gian, có đồng hồ đếm ngược,
-  tự động nộp bài khi hết giờ, chấm điểm theo thang 10.
-- **Ôn tập theo chương** — chọn phạm vi, hiện đáp án đúng ngay sau mỗi lựa chọn.
-- **Luyện câu sai** — tự ghi nhớ các câu từng trả lời sai; trả lời đúng thì câu đó
-  được gỡ khỏi danh sách.
-- **Đánh dấu câu hỏi** để xem lại sau.
-- **Ghép đề & đáp án** — dán câu hỏi vào một ô, dán danh sách đáp án vào ô kia,
-  ứng dụng tự khớp và nhập vào ngân hàng (xem bên dưới).
-- **Xem lại bài làm** chi tiết từng câu, kèm thống kê theo chương.
-- Lưu tiến độ, lịch sử làm bài và bộ đề tự nhập bằng `localStorage`.
-- Song ngữ Việt/English, giao diện sáng/tối, dùng tốt trên điện thoại;
-  hỗ trợ phím tắt `A/B/C/D` và `←/→`.
-- Cài được như ứng dụng trên điện thoại và máy tính, chạy offline.
-- Khối giới thiệu giảng viên ngay trang chủ, kèm liên kết tới trang cá nhân.
-- **Hương AI hướng dẫn** — tour 8 bước có giọng đọc tiếng Việt và tiếng Anh, mở
-  đầu bằng lời chào tiếng Pháp “Bonjour ! Je m'appelle Hương.” đọc bằng giọng Pháp; làm
-  nổi từng khu vực đang được giới thiệu. Dùng Web Speech API sẵn có của trình
-  duyệt nên không cần tệp âm thanh; máy không có giọng đọc thì phần lời vẫn hiện
-  thành chữ nên tour luôn dùng được.
-- **Nhắc nhở bản quyền** — khoá bôi đen, sao chép và menu chuột phải trên phần nội
-  dung (ô nhập liệu vẫn dùng bình thường), kèm trang điều kiện sử dụng song ngữ.
+The interface is available in English; the question content itself stays in
+Vietnamese, as taught in the course.
 
 ---
 
-## Chạy ứng dụng
+## Features
 
-**Cách nhanh nhất:** tải mã nguồn về rồi mở tệp `index.html` bằng trình duyệt.
+- **Mock exam** — draws a random paper, lets you set the question count and time
+  limit, counts down, submits automatically when time runs out, and scores out of 10.
+- **Practice by chapter** — pick a scope and see the correct answer immediately
+  after each choice.
+- **Missed questions** — the app remembers everything you got wrong; answering one
+  correctly removes it from the list.
+- **Flag questions** to revisit later.
+- **Merge questions & answer key** — paste questions into one box and an answer key
+  into the other, and the app matches them automatically (see below).
+- **Answer review** question by question, with a per-chapter breakdown.
+- Progress, attempt history and imported sets are stored in `localStorage`.
+- English/Vietnamese, light/dark, works well on phones; keyboard shortcuts
+  `A/B/C/D` and `←/→`.
+- Installable as an app on phones and desktops, and runs offline.
+- An author card on the home screen linking to the author's homepage.
+- **Huong AI guided tour** — an 8-step tour with spoken narration in Vietnamese and
+  English, opening with a French greeting (“Bonjour ! Je m'appelle Hương.”) read in
+  a French voice, highlighting each area as it is introduced. It uses the browser's
+  built-in Web Speech API, so no audio files are needed; when a device has no voice
+  installed the narration still appears as text, so the tour always works.
+- **Copyright protection** — text selection, copying and the right-click menu are
+  disabled over the content (input fields still work normally), together with a
+  bilingual terms-of-use page.
 
-**Chạy qua máy chủ cục bộ** (khuyến nghị khi phát triển — cần thiết để bật chế độ
-ứng dụng offline):
+---
+
+## Running the app
+
+**Quickest:** download the source and open `index.html` in a browser.
+
+**Via a local server** (recommended for development — required for offline mode to
+activate):
 
 ```bash
 python3 -m http.server 8000
-# rồi mở http://localhost:8000
+# then open http://localhost:8000
 ```
 
-**GitHub Pages:** đã bật sẵn. Mỗi lần đẩy mã lên nhánh chính, workflow
-`.github/workflows/pages.yml` tự dựng lại và xuất bản trang tại
-<https://thuyhuongctu.github.io/EC1606_KSDN-2026/> — không cần thao tác thủ công.
+**GitHub Pages:** already enabled. Every push to the main branch triggers the
+`.github/workflows/pages.yml` workflow, which rebuilds and publishes the site at
+<https://thuyhuongctu.github.io/EC1606_KSDN-2026/> — no manual steps needed.
 
-**Cài như ứng dụng:** mở trang bằng Chrome/Edge/Safari rồi chọn *Cài đặt ứng dụng*
-(hoặc *Thêm vào màn hình chính*). Nút ⬇️ trên thanh trên cùng cũng hiện ra khi
-trình duyệt cho phép cài.
+**Install as an app:** open the page in Chrome/Edge/Safari and choose *Install app*
+(or *Add to Home Screen*). The ⬇️ button in the top bar also appears when the
+browser allows installation.
 
 ---
 
-## Công cụ ghép đề & đáp án
+## Merge questions & answer key
 
-Dành cho trường hợp muốn bổ sung hoặc thay thế đề bằng nội dung mới.
-Vào **Ghép đề & đáp án** ở trang chủ, dán nội dung vào hai ô rồi bấm *Phân tích thử*
-để xem trước trước khi lưu.
+Use this to add or replace question sets. Open **Merge questions & answer key** from
+the home screen, paste content into the two boxes, then press *Analyse* to preview
+before saving.
 
-Hệ thống khớp câu hỏi với đáp án theo **số thứ tự ghi trong đề**, không theo vị trí dán,
-nên có thể dán một phần đề bất kỳ (ví dụ chỉ câu 31–60).
+Questions are matched to answers by the **question number printed in the paper**,
+not by paste order, so you can paste any subset (for example only questions 31–60).
 
-Các định dạng được nhận diện:
+Recognised formats:
 
-| Thành phần | Ví dụ được chấp nhận |
+| Element | Accepted examples |
 |---|---|
-| Đánh số câu | `Câu 1:` · `Câu 1.` · `1.` · `1)` · `Question 1:` |
-| Phương án | `A.` · `A)` · `(A)` · `a.` — cùng dòng hoặc tách dòng, từ 2 đến 6 phương án |
-| Đáp án trong đề | `*` trước phương án đúng, hoặc `Đáp án: B` / `ĐA: B` ở cuối câu |
-| Danh sách đáp án | `1. B` · `Câu 1: B` · `1 - B` · `1B` · `1. B. kèm nội dung đáp án` |
-| Giải thích (tuỳ chọn) | `Giải thích: ...` ở cuối câu |
+| Question numbering | `Question 1:` · `Câu 1.` · `1.` · `1)` |
+| Options | `A.` · `A)` · `(A)` · `a.` — on the same line or separate lines, 2 to 6 options |
+| Answer inside the paper | `*` before the correct option, or `Answer: B` / `Đáp án: B` at the end |
+| Answer key | `1. B` · `Question 1: B` · `1 - B` · `1B` · `1. B. followed by the answer text` |
+| Explanation (optional) | `Explanation: ...` at the end of a question |
 
-Bộ đề nhập thêm được lưu trong `localStorage` và tự nạp lại ở những lần mở sau.
-Có thể xoá lại từng bộ trong cùng màn hình.
+Imported sets are saved to `localStorage` and reloaded automatically next time. Each
+set can be deleted individually from the same screen.
 
 ---
 
-## Thêm bộ đề cố định vào mã nguồn
+## Adding a permanent question set to the source
 
-1. Tạo tệp mới trong thư mục `data/`, ví dụ `ch06.js`:
+1. Create a new file in `data/`, for example `ch06.js`:
 
    ```js
    registerBank({
      id: 'ch06',
      title: 'Chương 6 – Tên chương',
-     titleEn: 'Chapter 6 – Chapter name',   // tuỳ chọn, dùng cho giao diện tiếng Anh
+     titleEn: 'Chapter 6 – Chapter name',   // optional, used by the English interface
      order: 6,
      questions: [
        {
-         q: 'Nội dung câu hỏi?',
-         a: ['Phương án A', 'Phương án B', 'Phương án C', 'Phương án D'],
-         c: 1,                       // chỉ số đáp án đúng, tính từ 0
-         e: 'Giải thích (tuỳ chọn)'
+         q: 'Question text?',
+         a: ['Option A', 'Option B', 'Option C', 'Option D'],
+         c: 1,                       // zero-based index of the correct option
+         e: 'Explanation (optional)'
        }
      ]
    });
    ```
 
-2. Khai báo tên tệp vào mảng trong `data/manifest.js`.
-3. Thêm đường dẫn tệp vào danh sách `SHELL` trong `sw.js` và tăng `CACHE_VERSION`
-   để bản offline được cập nhật.
+2. Add the file name to the array in `data/manifest.js`.
+3. Add its path to the `SHELL` list in `sw.js` and bump `CACHE_VERSION` so the
+   offline copy refreshes.
 
-Ứng dụng sẽ tự nạp và gộp, đồng thời loại bỏ các câu trùng nội dung — không phải sửa
-thêm dòng mã nào khác. Trường `c` cũng chấp nhận `"B"`, `"2"` hoặc chính nguyên văn
-phương án đúng.
-
----
-
-## Thêm hoặc sửa ngôn ngữ giao diện
-
-Mọi chuỗi hiển thị nằm trong `assets/js/i18n.js`, gom theo khoá. Thêm một ngôn ngữ
-mới bằng cách bổ sung một khối vào `DICT` với đầy đủ khoá như bản `vi`.
-
-Trong HTML, phần tử tĩnh được dịch qua thuộc tính `data-i18n="khoá"`
-(hoặc `data-i18n-html` khi chuỗi có thẻ HTML, `data-i18n-attr="title:khoá"` cho
-thuộc tính). Trong JavaScript dùng `t('khoá', { biến: giá_trị })`.
+The app loads and merges it automatically, dropping questions whose text duplicates
+an existing one — no other code changes are required. The `c` field also accepts
+`"B"`, `"2"`, or the exact text of the correct option.
 
 ---
 
-## Cấu trúc thư mục
+## Adding or editing an interface language
+
+All display strings live in `assets/js/i18n.js`, grouped by key. Add a language by
+appending a block to `DICT` with the same keys as the `vi` block.
+
+In HTML, static elements are translated through the `data-i18n="key"` attribute
+(or `data-i18n-html` when the string contains markup, and
+`data-i18n-attr="title:key"` for attributes). In JavaScript, use
+`t('key', { name: value })`.
+
+---
+
+## Project structure
 
 ```
-index.html              giao diện và toàn bộ màn hình
-manifest.webmanifest    khai báo ứng dụng cài đặt được (PWA)
-sw.js                   service worker cho chế độ offline
-assets/css/style.css    giao diện sáng/tối, bố cục responsive
-assets/icons/           bộ biểu tượng ứng dụng (monogram EnQuiz)
-assets/img/             ảnh giảng viên dùng ở trang chủ và ảnh xem trước khi chia sẻ
-assets/js/i18n.js       từ điển song ngữ và cơ chế dịch giao diện
-assets/js/storage.js    lưu tiến độ, lịch sử, bộ đề tự nhập (localStorage)
-assets/js/bank.js       nạp, chuẩn hoá và gộp tự động ngân hàng câu hỏi
-assets/js/parser.js     bóc tách câu hỏi/đáp án từ văn bản dán vào
-assets/js/app.js        điều khiển các chế độ làm bài, chấm điểm, thống kê
-assets/js/tour.js       tour hướng dẫn có giọng đọc của Hương AI
-data/manifest.js        danh mục các tệp dữ liệu được nạp
-data/ch01.js … ch05.js  ngân hàng câu hỏi theo chương
+index.html              markup for every screen
+manifest.webmanifest    installable-app (PWA) declaration
+sw.js                   service worker for offline mode
+assets/css/style.css    light/dark themes, responsive layout
+assets/icons/           app icon set (EnQuiz monogram)
+assets/img/             author photos for the home screen and link previews
+assets/js/i18n.js       bilingual dictionary and translation engine
+assets/js/storage.js    progress, history and imported sets (localStorage)
+assets/js/bank.js       loads, normalises and auto-merges the question bank
+assets/js/parser.js     extracts questions and answers from pasted text
+assets/js/app.js        practice modes, scoring and statistics
+assets/js/tour.js       Huong AI voice-guided tour
+data/manifest.js        list of data files to load
+data/ch01.js … ch05.js  question bank, one file per chapter
 ```
 
 ---
 
-## Quyền riêng tư
+## Privacy
 
-Ứng dụng không có máy chủ và không gửi dữ liệu đi bất kỳ đâu. Kết quả làm bài, câu sai,
-câu đã đánh dấu và bộ đề tự nhập chỉ nằm trong trình duyệt trên máy người dùng. Nút
-*Xoá toàn bộ dữ liệu* trong phần Cài đặt sẽ xoá sạch những dữ liệu này.
-
----
-
-## Đổi tên sản phẩm hoặc thông tin tác giả
-
-Tên sản phẩm, khẩu hiệu và toàn bộ phần giới thiệu giảng viên nằm trong
-`assets/js/i18n.js` ở các khoá `app.*` và `teacher.*` — sửa một chỗ là đổi khắp
-ứng dụng. Ngoài ra cần sửa thêm `manifest.webmanifest` (tên hiển thị khi cài app)
-và thẻ `<title>`, `og:*` trong `index.html`.
-
-Ảnh giảng viên: thay `assets/img/teacher.jpg` (ảnh vuông, dùng cho khối giới thiệu)
-và `assets/img/teacher-wide.jpg` (ảnh ngang, dùng làm ảnh xem trước khi chia sẻ link).
+The app has no server and sends no data anywhere. Your results, missed questions,
+flagged questions and imported sets stay in your own browser. The *Erase all data*
+button in Settings clears all of it.
 
 ---
 
-## Bản quyền
+## Renaming the product or changing author details
 
-© 2026 Đỗ Thùy Hương. Tên gọi **EnQuiz**, mã nguồn, giao diện, hình ảnh và toàn bộ
-nội dung ngân hàng câu hỏi là tài sản trí tuệ của tác giả, được bảo hộ theo Luật
-Sở hữu trí tuệ Việt Nam và các điều ước quốc tế mà Việt Nam là thành viên.
+The product name, tagline and the whole author card live in `assets/js/i18n.js`
+under the `app.*` and `teacher.*` keys — change them in one place and they update
+everywhere. You also need to edit `manifest.webmanifest` (the name shown when the
+app is installed) and the `<title>` and `og:*` tags in `index.html`.
 
-**Được phép:** dùng miễn phí để tự học và ôn thi cá nhân; chia sẻ đường dẫn tới
-ứng dụng; nhập bộ đề riêng để dùng trên máy của mình.
+Author photos: replace `assets/img/teacher.jpg` (square, used in the author card)
+and `assets/img/teacher-wide.jpg` (landscape, used as the link preview image).
 
-**Không được phép:** sao chép, trích xuất hoặc phát tán lại nội dung câu hỏi;
-đăng tải lại ứng dụng lên nền tảng khác kể cả khi ghi nguồn; dùng cho mục đích
-thương mại hoặc đào tạo thu phí; chỉnh sửa, dịch, tạo tác phẩm phái sinh hoặc gỡ
-bỏ thông tin bản quyền.
+---
 
-Mọi nhu cầu sử dụng ngoài phạm vi trên xin liên hệ thuyhuongctu@gmail.com để được
-cấp phép bằng văn bản.
+## Copyright
 
-Ứng dụng có khoá thao tác sao chép và menu chuột phải nhằm nhắc nhở về bản quyền.
-Đây là biện pháp nhắc nhở, không phải rào chắn kỹ thuật tuyệt đối — việc sao chép
-trái phép vẫn là hành vi vi phạm dù thực hiện bằng cách nào.
+© 2026 Do Thuy Huong. The name **EnQuiz**, the source code, the interface, the
+imagery and the entire question bank are the intellectual property of the author,
+protected under the Intellectual Property Law of Vietnam and the international
+treaties to which Vietnam is a party.
+
+**You may:** use the app free of charge for your own study and exam revision; share
+the link to the app; import your own question sets for use on your own device.
+
+**You may not:** copy, extract or redistribute the question content in any form;
+re-publish the app on another platform, even with attribution; use it commercially
+or in paid training; modify, translate, create derivative works, or remove
+copyright notices.
+
+For any use beyond the above, please contact thuyhuongctu@gmail.com for written
+permission.
+
+Copying and the right-click menu are disabled in the app as a copyright reminder.
+This is a reminder, not an absolute technical barrier — unauthorised copying remains
+an infringement however it is carried out.
