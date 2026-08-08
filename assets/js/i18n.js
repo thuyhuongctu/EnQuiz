@@ -144,9 +144,9 @@
       'music.happy': 'Đang vui',
       'music.none': 'Không gì cả',
       'music.toggle': 'Tạm dừng hoặc nghe tiếp',
-      'music.t.soft': "L'humain — nhẹ nhàng",
+      'music.t.soft': 'Bản hoà tấu — không lời',
       'music.t.bright': 'Mon histoire — tươi tắn',
-      'music.t.calm': 'Bản hoà tấu — cô chọn',
+      'music.t.calm': 'Golden Silt Route — cô chọn',
 
       'badge.eyebrow': 'Chặng đường',
       'badge.heading': 'Thành tựu học tập',
@@ -430,9 +430,9 @@
       'music.happy': 'Feeling good',
       'music.none': 'Nothing much',
       'music.toggle': 'Pause or resume',
-      'music.t.soft': "L'humain — gentle",
+      'music.t.soft': 'Instrumental — no lyrics',
       'music.t.bright': 'Mon histoire — bright',
-      'music.t.calm': "Instrumental — the author's pick",
+      'music.t.calm': "Golden Silt Route — the author's pick",
 
       'badge.eyebrow': 'Your journey',
       'badge.heading': 'Milestones',
