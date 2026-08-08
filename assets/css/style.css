@@ -477,7 +477,31 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   grid-template-columns: repeat(4, 1fr);
   gap: .55rem;
 }
-/* Hương AI đứng bên phải khối hero */
+/* Hương AI đứng bên phải khối hero, kèm bong bóng thoại phía trên đầu */
+.hero__mascot {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero__bubble {
+  position: relative;
+  margin: 0 0 .3rem;
+  padding: .42rem 1rem;
+  max-width: 15rem;
+  border-radius: 16px 16px 16px 4px;
+  background: var(--surface-2);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: var(--shadow-sm);
+  font-size: .86rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text);
+  text-align: center;
+}
 .hero__huong {
   position: relative;
   z-index: 1;
@@ -485,7 +509,6 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   width: 150px;
   height: auto;
   filter: drop-shadow(0 12px 30px var(--glow));
-  align-self: flex-end;
   margin-bottom: -1.7rem;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -1581,7 +1604,9 @@ input[type="number"]:focus, input[type="file"]:focus {
 @media (max-width: 620px) {
   .hero { flex-direction: column; text-align: center; padding: 1.3rem 1rem; gap: .6rem; }
   .hero__title { font-size: 1.5rem; }
-  .hero__huong { height: 168px; width: auto; margin-bottom: -1.3rem; align-self: center; }
+  .hero__mascot { align-self: center; }
+  .hero__bubble { font-size: .8rem; max-width: 13rem; }
+  .hero__huong { height: 168px; width: auto; margin-bottom: -1.3rem; }
   .hero__stats { grid-template-columns: repeat(2, 1fr); }
   .hero__veil { background: linear-gradient(180deg,
                 color-mix(in srgb, var(--bg) 70%, transparent) 0%,

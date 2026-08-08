@@ -19,7 +19,7 @@
     { key: 'tour.s1', target: '.hero', pose: 'welcome' },
     { key: 'tour.s2', target: '.teacher', pose: 'stand' },
     { key: 'tour.s3', target: '.modes', pose: 'point' },
-    { key: 'tour.s4', target: '[data-mode="import"]', pose: 'tablet' },
+    { key: 'tour.s4', target: '.modes [data-mode="import"]', pose: 'tablet' },
     { key: 'tour.s5', target: '#chapterList', pose: 'point' },
     // Chỉ một trong hai bước dưới đây hiện ra: thanh dọc có ở màn rộng,
     // thanh dưới có ở màn hẹp; bước nào không nhìn thấy thì bị lọc bỏ.
@@ -47,6 +47,48 @@
       img.setAttribute('src', src);
       img.style.opacity = '';
     }, 180);
+  }
+
+  /* Giọng đọc thật do tác giả thu, chỉ có bản tiếng Việt. Bước nào chưa có
+     tệp — hiện là bước thanh điều hướng trên điện thoại — sẽ tự rơi về
+     giọng máy, nên tour không bao giờ đứt. */
+  var AUDIO_DIR = 'assets/audio/vi/';
+  var TRACKS = {
+    'tour.s0': 's0.mp3', 'tour.s1': 's1.mp3', 'tour.s2': 's2.mp3',
+    'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
+    'tour.nav': 'nav.mp3', 'tour.s6': 's6.mp3', 'tour.s7': 's7.mp3',
+    'tour.done': 'done.mp3'
+  };
+  var audio = null;
+
+  function audioFor(key) {
+    if (global.I18n.lang !== 'vi') return null;
+    return TRACKS[key] ? AUDIO_DIR + TRACKS[key] : null;
+  }
+
+  function stopAudio(rewind) {
+    if (!audio) return;
+    audio.pause();
+    if (rewind) { try { audio.currentTime = 0; } catch (e) { /* bỏ qua */ } }
+  }
+
+  /* Phát lời cho một bước: ưu tiên giọng thu sẵn, không có thì đọc máy. */
+  function playStep(key, text, langOverride, onEnd) {
+    var src = audioFor(key);
+    if (!src) { speak(text, langOverride, onEnd); return; }
+
+    stopSpeaking();
+    showVoiceNote(false);
+
+    if (!audio) audio = new Audio();
+    audio.onended = null;
+    audio.onerror = null;
+    audio.src = src;
+    audio.onended = function () { if (onEnd) onEnd(); };
+    // Tệp hỏng hoặc chưa tải được thì quay về giọng máy chứ không im lặng
+    audio.onerror = function () { speak(text, langOverride, onEnd); };
+    var p = audio.play();
+    if (p && p.catch) p.catch(function () { speak(text, langOverride, onEnd); });
   }
 
   var index = 0;
@@ -98,6 +140,11 @@
     if (synth) synth.cancel();
   }
 
+  function stopAll(rewind) {
+    stopSpeaking();
+    stopAudio(rewind);
+  }
+
   function showVoiceNote(on) {
     var el = $('#tourNote');
     if (!el) return;
@@ -111,11 +158,18 @@
     if (spot) { spot.classList.remove('tour-spot'); spot = null; }
   }
 
+  /* Kiểm tra phần tử có thực sự hiển thị hay không.
+     Không dùng offsetParent: phần tử position:fixed luôn trả về null dù đang
+     hiện rõ, khiến hai thanh điều hướng bị loại oan khỏi tour. */
+  function isVisible(el) {
+    return !!(el && el.getClientRects().length);
+  }
+
   function highlight(sel) {
     clearSpot();
     if (!sel) return;
     var el = document.querySelector(sel);
-    if (!el || el.offsetParent === null) return;
+    if (!isVisible(el)) return;
     spot = el;
     el.classList.add('tour-spot');
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -139,13 +193,15 @@
 
   /* Thẻ chốt: đi hết tour thì mời vào làm bài thay vì đóng cái rụp. */
   function showDone() {
-    stopSpeaking();
+    stopAll(true);
     clearSpot();
     done = true;
     $('#tourSteps').classList.add('hidden');
     $('#tourDone').classList.remove('hidden');
     $('#tourStep').textContent = '';
     setPose('cheer');
+    // phần kết cũng có bản thu riêng
+    playStep('tour.done', t('tour.done.lead'), null, null);
   }
 
   function hideDone() {
@@ -162,7 +218,7 @@
     render();
     setPose(steps[index].pose);
     highlight(steps[index].target);
-    speak(t(steps[index].key), steps[index].lang, function () {
+    playStep(steps[index].key, t(steps[index].key), steps[index].lang, function () {
       // tự chuyển bước khi đọc xong, trừ bước cuối
       if (running && !paused) {
         setTimeout(function () { if (running && !paused && !done) go(index + 1); }, 700);
@@ -172,8 +228,7 @@
 
   function start() {
     steps = STEPS.filter(function (s) {
-      var el = document.querySelector(s.target);
-      return el && el.offsetParent !== null;
+      return isVisible(document.querySelector(s.target));
     });
     if (!steps.length) return;
 
@@ -190,7 +245,7 @@
     running = false;
     paused = false;
     hideDone();
-    stopSpeaking();
+    stopAll(true);
     clearSpot();
     var p = panel();
     if (p) p.classList.add('hidden');
@@ -201,10 +256,15 @@
     if (!running) return;
     if (paused) {
       paused = false;
-      go(index);
+      if (audio && audio.src && !audio.ended && audio.currentTime > 0) {
+        audio.play();
+        render();
+      } else {
+        go(index);
+      }
     } else {
       paused = true;
-      stopSpeaking();
+      stopAll(false);
       render();
     }
   }
@@ -222,7 +282,7 @@
       if (running && !done) {
         render();
         // đọc lại bước hiện tại bằng ngôn ngữ mới
-        if (!paused) speak(t(steps[index].key), steps[index].lang);
+        if (!paused) playStep(steps[index].key, t(steps[index].key), steps[index].lang);
       }
     },
 
@@ -255,8 +315,8 @@
       });
 
       // dừng đọc khi rời trang để giọng không còn vang sau khi đóng tab
-      global.addEventListener('pagehide', stopSpeaking);
-      global.addEventListener('beforeunload', stopSpeaking);
+      global.addEventListener('pagehide', function () { stopAll(true); });
+      global.addEventListener('beforeunload', function () { stopAll(true); });
     }
   };
 
