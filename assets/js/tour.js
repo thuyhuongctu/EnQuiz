@@ -28,7 +28,11 @@
     { key: 'tour.nav', target: '.sidenav', pose: 'point' },
     { key: 'tour.navm', target: '.botnav', pose: 'point' },
     { key: 'tour.s6', target: '.topbar__actions', pose: 'tablet' },
-    { key: 'tour.s7', target: '.footer', pose: 'welcome' }
+    { key: 'tour.s7', target: '.footer', pose: 'welcome' },
+    // Bước khép lại: Hương AI tự giới thiệu và chỉ cách gọi mình quay lại.
+    // Trỏ vào bong bóng thoại đầu trang chứ không vào nút gọi tour, vì nút ấy
+    // bị ẩn suốt lúc tour chạy nên sẽ bị lọc mất.
+    { key: 'tour.s8', target: '.hero__bubble', pose: 'cheer' }
   ];
 
   /* Người dẫn tour mặc áo len, khác với ảnh áo dài dùng ở thẻ giảng viên và
@@ -62,7 +66,7 @@
     'tour.s0': 's0.mp3', 'tour.s1': 's1.mp3', 'tour.s2': 's2.mp3',
     'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
     'tour.nav': 'nav.mp3', 'tour.navm': 'navm.mp3', 'tour.s6': 's6.mp3',
-    'tour.s7': 's7.mp3', 'tour.done': 'done.mp3'
+    'tour.s7': 's7.mp3', 'tour.s8': 's8.mp3', 'tour.done': 'done.mp3'
   };
   var audio = null;
 
