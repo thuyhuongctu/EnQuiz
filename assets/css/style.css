@@ -491,37 +491,38 @@ code {
 
 /* ---------------- Thẻ âm nhạc ---------------- */
 .music__intro { margin: 0 0 .8rem; font-size: .82rem; color: var(--muted); }
-.moods { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
-.mood {
+.player {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: .3rem;
-  padding: .8rem .4rem;
+  gap: .75rem;
+  padding: .7rem .85rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background: color-mix(in srgb, var(--surface) 60%, transparent);
-  color: var(--text);
-  font-family: inherit;
+}
+.player__btn {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+  font-size: .9rem;
+  line-height: 1;
   cursor: pointer;
-  transition: transform .2s, border-color .2s, box-shadow .2s;
+  transition: transform .2s, box-shadow .2s;
 }
-.mood:hover { transform: translateY(-2px); border-color: var(--primary); }
-.mood.is-on {
-  border-color: var(--primary);
-  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
-  box-shadow: 0 0 18px var(--glow);
-}
-.mood__ico { font-size: 1.15rem; color: var(--primary); line-height: 1; }
-.mood b { font-size: .78rem; font-weight: 600; }
-.nowplaying {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  margin-top: .8rem;
-  padding-top: .8rem;
-  border-top: 1px solid var(--border);
-  font-size: .82rem;
+.player__btn:hover { transform: scale(1.06); }
+.player__btn.is-on { box-shadow: 0 0 20px var(--glow); }
+.player__meta { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
+.player__title { font-size: .88rem; font-weight: 700; }
+.player__by { font-size: .74rem; color: var(--muted); }
+.player__time {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
   color: var(--text-soft);
 }
 
