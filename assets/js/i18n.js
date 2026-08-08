@@ -267,6 +267,7 @@
       'tour.navm': 'Thanh dưới màn hình là đường đi tắt: trang chủ, thi thử, danh sách chương và cài đặt. Mục đang mở luôn được tô sáng để bạn biết mình đang ở đâu.',
       'tour.s6': 'Ba nút ở góc trên bên phải: chuyển giữa tiếng Việt và tiếng Anh, đổi giao diện sáng tối, và mở phần cài đặt. Trong cài đặt bạn có thể xuất tiến độ hoặc xoá toàn bộ dữ liệu.',
       'tour.s7': 'Cuối cùng, một lưu ý quan trọng: toàn bộ câu hỏi và phần mềm thuộc bản quyền của cô Đỗ Thùy Hương. Bạn được dùng miễn phí để tự học, nhưng xin đừng sao chép hay phát tán lại. Chúc bạn ôn tập thật tốt và thi đạt điểm cao nhé!',
+      'tour.s8': 'Mình là Hương AI, người bạn đồng hành của bạn trong suốt học phần này. Cô Đỗ Thùy Hương tạo ra mình để dẫn bạn đi qua ứng dụng và nhắc bạn ôn đúng chỗ còn yếu. Bất cứ lúc nào muốn nghe lại, bạn bấm nút Hương AI hướng dẫn ở góc dưới bên phải nhé.',
 
       'toast.noWrong': 'Chưa có câu sai nào được ghi nhận.',
       'toast.noMarked': 'Bạn chưa đánh dấu câu hỏi nào.',
@@ -534,6 +535,7 @@
       'tour.navm': 'The bar along the bottom is your shortcut: home, mock exam, the chapter list and settings. Whichever one you are in stays highlighted, so you always know where you are.',
       'tour.s6': 'Three controls in the top right corner: switch between Vietnamese and English, toggle light or dark mode, and open settings. In settings you can export your progress or erase all data.',
       'tour.s7': 'Finally, one important note: all questions and the software are copyright of Ms. Do Thuy Huong. You are welcome to use them free of charge for your own study, but please do not copy or redistribute them. Good luck with your revision!',
+      'tour.s8': 'I am Huong AI, your companion through this course. Ms. Do Thuy Huong made me to walk you through the app and point you to whatever still needs revising. Whenever you want to hear this again, tap the Huong AI guided tour button in the bottom-right corner.',
 
       'toast.noWrong': 'No missed question has been recorded yet.',
       'toast.noMarked': 'You have not flagged any question yet.',
