@@ -110,6 +110,36 @@
     $('#hudWrong').textContent = QuestionBank.byUids(Store.get('wrong')).length;
   }
 
+  /* Huy hiệu: bốn mốc rút từ dữ liệu đã lưu, không có mốc nào không thể đạt.
+     Mốc "chuyên gia" đếm theo bộ đếm riêng chứ không theo lịch sử, vì lịch sử
+     chỉ giữ 30 bản ghi gần nhất. */
+  function badgeList() {
+    var attempts = Store.attemptCount();
+    var streak = Store.streak();
+    var best = Store.bestScore();
+    return [
+      { key: 'first',  icon: 'i-star',  got: attempts >= 1,   now: attempts, need: 1 },
+      { key: 'streak', icon: 'i-retry', got: streak >= 7,     now: streak,   need: 7 },
+      { key: 'perfect', icon: 'i-exam', got: best !== null && best >= 10, now: best === null ? 0 : best, need: 10 },
+      { key: 'expert', icon: 'i-layers', got: attempts >= 50, now: attempts, need: 50 }
+    ];
+  }
+
+  function renderBadges() {
+    var wrap = $('#badgeList');
+    if (!wrap) return;
+    wrap.innerHTML = badgeList().map(function (b) {
+      var sub = b.got ? t('badge.' + b.key + '.done')
+                      : t('badge.locked').replace('{now}', b.key === 'perfect' ? b.now.toFixed(1) : b.now)
+                                         .replace('{need}', b.need);
+      return '<div class="badge' + (b.got ? ' is-got' : '') + '">' +
+        '<span class="badge__ico"><svg class="ico" aria-hidden="true"><use href="#' + b.icon + '"/></svg></span>' +
+        '<b>' + esc(t('badge.' + b.key)) + '</b>' +
+        '<small>' + esc(sub) + '</small>' +
+      '</div>';
+    }).join('');
+  }
+
   function renderHome() {
     var total = QuestionBank.total();
     $('#statTotal').textContent = total;
@@ -126,6 +156,7 @@
 
     renderChapterList();
     renderHistory();
+    renderBadges();
     renderHint();
   }
 
@@ -539,10 +570,51 @@
       '</div>';
     }).join('');
 
+    renderInsight(r);
+
     var reviewOpen = !$('#panelReview').classList.contains('hidden');
     $('#btnReview').textContent = reviewOpen ? t('result.hideReview') : t('result.review');
     if (reviewOpen) renderReview();
     $('#btnRetryWrong').disabled = r.wrong + r.skip === 0;
+  }
+
+  /* Bảng số liệu theo chương đã có sẵn, nhưng người học phải tự dò xem chương
+     nào yếu. Ở đây chỉ ra thẳng chương yếu nhất và mở luôn lối luyện chương đó.
+     Toàn bộ tính từ bài vừa làm, không gọi ra ngoài. */
+  function renderInsight(r) {
+    var box = $('#resInsight');
+    var cta = $('#insightCta');
+    if (!box) return;
+
+    var rows = Object.keys(r.byChapter).map(function (k) {
+      var c = r.byChapter[k];
+      return { id: k, name: questionChapter(c.q), correct: c.correct, total: c.total,
+               ratio: c.correct / c.total };
+    });
+    // Chương chỉ có một hai câu thì tỷ lệ không nói lên điều gì; ưu tiên chương
+    // đủ câu, chỉ khi không có chương nào đủ mới xét toàn bộ.
+    var pool = rows.filter(function (x) { return x.total >= 3; });
+    if (!pool.length) pool = rows;
+    if (!pool.length) { box.classList.add('hidden'); return; }
+
+    pool.sort(function (a, b) { return a.ratio - b.ratio; });
+    var weak = pool[0];
+    box.classList.remove('hidden');
+
+    if (weak.ratio >= 0.9) {
+      $('#insightText').textContent = t('insight.allGood');
+      cta.classList.add('hidden');
+      return;
+    }
+
+    $('#insightText').textContent = t('insight.weak')
+      .replace('{chapter}', weak.name)
+      .replace('{correct}', weak.correct)
+      .replace('{total}', weak.total)
+      .replace('{pct}', Math.round(weak.ratio * 100));
+    cta.textContent = t('insight.cta');
+    cta.classList.remove('hidden');
+    cta.onclick = function () { openSetup('practice', weak.id); };
   }
 
   function renderReview() {
