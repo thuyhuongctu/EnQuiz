@@ -6,11 +6,7 @@ name: Xuất bản lên GitHub Pages
 
 on:
   push:
-    # GitHub Pages vẫn ghim quyền triển khai vào nhánh dưới đây, kể cả sau khi
-    # nhánh mặc định của kho đã đổi sang main. Muốn bỏ nhánh cũ thì vào
-    # Settings > Environments > github-pages > Deployment branches and tags,
-    # chọn "Selected branches and tags" rồi thêm luật cho main.
-    branches: ["main", "claude/quiz-auto-merge-questions-f61pcd"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
