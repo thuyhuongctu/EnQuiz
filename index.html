@@ -27,6 +27,23 @@
 </head>
 <body>
 
+<!-- Bộ biểu tượng nét vẽ, nhúng thẳng vào trang nên không cần phông ngoài
+     và vẫn hiển thị được khi mất mạng. Mọi nét ăn theo màu chữ hiện hành. -->
+<svg class="sprite" aria-hidden="true" focusable="false"><defs>
+  <g id="i-home"><path d="M3.5 11 12 3.8 20.5 11"/><path d="M5.8 9.6V20h12.4V9.6"/><path d="M9.8 20v-5.6h4.4V20"/></g>
+  <g id="i-exam"><rect x="5.2" y="4.6" width="13.6" height="15.8" rx="2.4"/><path d="M9.2 4.6V3.7a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1v.9"/><path d="m8.7 12.6 2.3 2.3 4.3-4.3"/></g>
+  <g id="i-book"><path d="M4 5.6A1.6 1.6 0 0 1 5.6 4H10a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H5.6A1.6 1.6 0 0 1 4 15.4z"/><path d="M20 5.6A1.6 1.6 0 0 0 18.4 4H14a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h4.4a1.6 1.6 0 0 0 1.6-1.6z"/></g>
+  <g id="i-retry"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4.2V9.4h-5.2"/></g>
+  <g id="i-star"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.9z"/></g>
+  <g id="i-merge"><path d="M12 3.4 13.6 8 18.2 9.6 13.6 11.2 12 15.8 10.4 11.2 5.8 9.6 10.4 8z"/><path d="m18.3 15.3.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7z"/></g>
+  <g id="i-layers"><path d="m12 3.2 8.4 4.4L12 12 3.6 7.6z"/><path d="m3.6 12 8.4 4.4L20.4 12"/><path d="m3.6 16.4 8.4 4.4 8.4-4.4"/></g>
+  <g id="i-gear"><path d="M4 7.2h8.4M17.2 7.2h2.8M4 12h3.2M12 12h8M4 16.8h7.4M16.2 16.8h3.8"/><circle cx="14.8" cy="7.2" r="2.1"/><circle cx="9.6" cy="12" r="2.1"/><circle cx="13.8" cy="16.8" r="2.1"/></g>
+  <g id="i-moon"><path d="M20.2 14.4A8.4 8.4 0 1 1 9.6 3.8a6.6 6.6 0 0 0 10.6 10.6z"/></g>
+  <g id="i-sun"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.4v2.3M12 19.3v2.3M2.4 12h2.3M19.3 12h2.3M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></g>
+  <g id="i-down"><path d="M12 3.8v11.6"/><path d="m7.4 11 4.6 4.6 4.6-4.6"/><path d="M4.6 19.6h14.8"/></g>
+  <g id="i-chevron"><path d="m9.6 6 6 6-6 6"/></g>
+</defs></svg>
+
 <!-- Nền chìm: bản đồ Việt Nam (gồm Hoàng Sa, Trường Sa) -->
 <div id="vnmark" aria-hidden="true"><svg viewBox="-12 -46 604 650" xmlns="http://www.w3.org/2000/svg" overflow="visible">
   <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
@@ -68,14 +85,14 @@
     </button>
     <div class="topbar__actions">
       <button class="icon-btn hidden" id="btnInstall" type="button"
-              data-i18n-attr="title:btn.install;aria-label:btn.install">⬇️</button>
+              data-i18n-attr="title:btn.install;aria-label:btn.install"><svg class="ico" aria-hidden="true"><use href="#i-down"/></svg></button>
       <span class="langtog" role="group" data-i18n-attr="aria-label:settings.language">
         <button type="button" data-lang="vi">VI</button><button type="button" data-lang="en">EN</button>
       </span>
       <button class="icon-btn" id="btnTheme" type="button"
-              data-i18n-attr="title:btn.theme;aria-label:btn.theme">🌙</button>
+              data-i18n-attr="title:btn.theme;aria-label:btn.theme"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></button>
       <button class="icon-btn" id="btnSettings" type="button"
-              data-i18n-attr="title:btn.settings;aria-label:btn.settings">⚙️</button>
+              data-i18n-attr="title:btn.settings;aria-label:btn.settings"><svg class="ico" aria-hidden="true"><use href="#i-gear"/></svg></button>
     </div>
   </div>
 </header>
@@ -84,27 +101,27 @@
 <aside class="sidenav" id="sidenav">
   <nav class="sidenav__list">
     <button class="sidenav__item is-active" type="button" data-nav="home">
-      <span class="sidenav__ico" aria-hidden="true">🏠</span><span data-i18n="nav.home">Trang chủ</span>
+      <svg class="ico sidenav__ico" aria-hidden="true"><use href="#i-home"/></svg><span data-i18n="nav.home">Trang chủ</span>
     </button>
     <button class="sidenav__item" type="button" data-mode="exam">
-      <span class="sidenav__ico" aria-hidden="true">📝</span><span data-i18n="nav.exam">Thi thử</span>
+      <svg class="ico sidenav__ico" aria-hidden="true"><use href="#i-exam"/></svg><span data-i18n="nav.exam">Thi thử</span>
     </button>
     <button class="sidenav__item" type="button" data-mode="practice">
-      <span class="sidenav__ico" aria-hidden="true">📚</span><span data-i18n="nav.practice">Ôn theo chương</span>
+      <svg class="ico sidenav__ico" aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="nav.practice">Ôn theo chương</span>
     </button>
     <button class="sidenav__item" type="button" data-mode="wrong">
-      <span class="sidenav__ico" aria-hidden="true">🔁</span><span data-i18n="nav.wrong">Câu sai</span>
+      <svg class="ico sidenav__ico" aria-hidden="true"><use href="#i-retry"/></svg><span data-i18n="nav.wrong">Câu sai</span>
     </button>
     <button class="sidenav__item" type="button" data-mode="marked">
-      <span class="sidenav__ico" aria-hidden="true">⭐</span><span data-i18n="nav.marked">Đã đánh dấu</span>
+      <svg class="ico sidenav__ico" aria-hidden="true"><use href="#i-star"/></svg><span data-i18n="nav.marked">Đã đánh dấu</span>
     </button>
     <button class="sidenav__item" type="button" data-mode="import">
-      <span class="sidenav__ico" aria-hidden="true">✨</span><span data-i18n="nav.import">Ghép đề</span>
+      <svg class="ico sidenav__ico" aria-hidden="true"><use href="#i-merge"/></svg><span data-i18n="nav.import">Ghép đề</span>
     </button>
   </nav>
   <div class="sidenav__foot">
     <button class="sidenav__item" type="button" data-nav="settings">
-      <span class="sidenav__ico" aria-hidden="true">⚙️</span><span data-i18n="nav.settings">Cài đặt</span>
+      <svg class="ico sidenav__ico" aria-hidden="true"><use href="#i-gear"/></svg><span data-i18n="nav.settings">Cài đặt</span>
     </button>
   </div>
 </aside>
@@ -158,39 +175,44 @@
 
     <div class="modes">
       <button class="mode-card mode-card--primary" data-mode="exam" type="button">
-        <span class="mode-card__icon">📝</span>
+        <span class="mode-card__icon"><svg class="ico" aria-hidden="true"><use href="#i-exam"/></svg></span>
         <span class="mode-card__body">
           <strong data-i18n="mode.exam">Thi thử</strong>
           <small data-i18n="mode.exam.desc">Đề ngẫu nhiên, bấm giờ, chấm điểm cuối bài</small>
         </span>
+        <svg class="ico mode-card__go" aria-hidden="true"><use href="#i-chevron"/></svg>
       </button>
       <button class="mode-card" data-mode="practice" type="button">
-        <span class="mode-card__icon">📚</span>
+        <span class="mode-card__icon"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></span>
         <span class="mode-card__body">
           <strong data-i18n="mode.practice">Ôn tập theo chương</strong>
           <small data-i18n="mode.practice.desc">Hiện đáp án và giải thích ngay sau mỗi câu</small>
         </span>
+        <svg class="ico mode-card__go" aria-hidden="true"><use href="#i-chevron"/></svg>
       </button>
       <button class="mode-card" data-mode="wrong" type="button">
-        <span class="mode-card__icon">🔁</span>
+        <span class="mode-card__icon"><svg class="ico" aria-hidden="true"><use href="#i-retry"/></svg></span>
         <span class="mode-card__body">
           <strong data-i18n="mode.wrong">Luyện câu sai</strong>
           <small><span data-i18n="mode.wrong.desc">Làm lại những câu từng trả lời sai</span> (<b id="cntWrong">0</b>)</small>
         </span>
+        <svg class="ico mode-card__go" aria-hidden="true"><use href="#i-chevron"/></svg>
       </button>
       <button class="mode-card" data-mode="marked" type="button">
-        <span class="mode-card__icon">⭐</span>
+        <span class="mode-card__icon"><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg></span>
         <span class="mode-card__body">
           <strong data-i18n="mode.marked">Câu đã đánh dấu</strong>
           <small><span data-i18n="mode.marked.desc">Xem lại các câu bạn gắn cờ</span> (<b id="cntMarked">0</b>)</small>
         </span>
+        <svg class="ico mode-card__go" aria-hidden="true"><use href="#i-chevron"/></svg>
       </button>
       <button class="mode-card mode-card--wide" data-mode="import" type="button">
-        <span class="mode-card__icon">✨</span>
+        <span class="mode-card__icon"><svg class="ico" aria-hidden="true"><use href="#i-merge"/></svg></span>
         <span class="mode-card__body">
           <strong data-i18n="mode.import">Ghép đề &amp; đáp án</strong>
           <small data-i18n="mode.import.desc">Dán câu hỏi và danh sách đáp án — hệ thống tự khớp theo số câu</small>
         </span>
+        <svg class="ico mode-card__go" aria-hidden="true"><use href="#i-chevron"/></svg>
       </button>
     </div>
 
@@ -263,7 +285,7 @@
     <button class="btn btn--ghost btn--sm back-link" data-nav="home" type="button">←&nbsp;<span data-i18n="result.home">Về trang chủ</span></button>
 
     <div class="panel">
-      <h2 data-i18n="import.heading">✨ Công cụ ghép đề &amp; đáp án</h2>
+      <h2 data-i18n="import.heading">Công cụ ghép đề &amp; đáp án</h2>
       <p class="muted" data-i18n-html="import.intro"></p>
 
       <div class="import-grid">
@@ -403,16 +425,16 @@
 <!-- ============ THANH ĐIỀU HƯỚNG DƯỚI (điện thoại) ============ -->
 <nav class="botnav" id="botnav">
   <button class="botnav__item is-active" type="button" data-nav="home">
-    <span aria-hidden="true">🏠</span><span data-i18n="nav.home">Trang chủ</span>
+    <svg class="ico botnav__ico" aria-hidden="true"><use href="#i-home"/></svg><span data-i18n="nav.home">Trang chủ</span>
   </button>
   <button class="botnav__item" type="button" data-mode="exam">
-    <span aria-hidden="true">📝</span><span data-i18n="nav.exam">Thi thử</span>
+    <svg class="ico botnav__ico" aria-hidden="true"><use href="#i-exam"/></svg><span data-i18n="nav.exam">Thi thử</span>
   </button>
   <button class="botnav__item" type="button" data-nav="chapters">
-    <span aria-hidden="true">📚</span><span data-i18n="nav.chapters">Chương</span>
+    <svg class="ico botnav__ico" aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="nav.chapters">Chương</span>
   </button>
   <button class="botnav__item" type="button" data-nav="settings">
-    <span aria-hidden="true">⚙️</span><span data-i18n="nav.settings">Cài đặt</span>
+    <svg class="ico botnav__ico" aria-hidden="true"><use href="#i-gear"/></svg><span data-i18n="nav.settings">Cài đặt</span>
   </button>
 </nav>
 
@@ -506,7 +528,7 @@
     <p class="tour-done__lead" data-i18n="tour.done.lead"></p>
     <p class="tour-done__title" data-i18n="tour.done.title"></p>
     <ul class="tour-done__list">
-      <li><span aria-hidden="true">📝</span><span data-i18n="tour.done.b1"></span></li>
+      <li><svg class="ico botnav__ico" aria-hidden="true"><use href="#i-exam"/></svg><span data-i18n="tour.done.b1"></span></li>
       <li><span aria-hidden="true">📊</span><span data-i18n="tour.done.b2"></span></li>
       <li><span aria-hidden="true">🤖</span><span data-i18n="tour.done.b3"></span></li>
     </ul>
