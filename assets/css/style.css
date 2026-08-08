@@ -7,121 +7,129 @@
    ========================================================= */
 
 :root {
-  /* ---- Nền sáng (biến thể ban ngày của bộ Cosmic) ---- */
-  --void: #eef0fa;
-  --bg: #eef0fa;
-  --bg-soft: #e2e5f5;
-  --paper: #eef0fa;
+  /* ---- Biến thể ban ngày, suy ra từ cùng bảng màu Design Guide ---- */
+  --void: #F2F5FC;
+  --bg: #F2F5FC;
+  --bg-soft: #E4E9F6;
+  --paper: #F2F5FC;
 
   --surface: #ffffff;
-  --surface-2: #f5f6fd;
-  --glass: rgba(255, 255, 255, .72);
-  --glass-2: rgba(255, 255, 255, .55);
-  --glass-stroke: rgba(58, 62, 120, .16);
-  --border: #d8dbef;
+  --surface-2: #F7F9FE;
+  --glass: rgba(255, 255, 255, .78);
+  --glass-2: rgba(255, 255, 255, .6);
+  --glass-stroke: #D2DAEC;
+  --border: #D2DAEC;
 
-  --text: #171b31;
-  --text-soft: #414868;
-  --muted: #5f6689;
+  --text: #0F1733;
+  --text-soft: #3A4568;
+  --muted: #5C6889;
 
-  --primary: #4b4ddb;          /* tím chàm */
-  --primary-dark: #383ac0;
-  --primary-soft: #e6e6fb;
+  --primary: #0E7FA4;       /* lam hologram, hạ độ sáng cho đọc được trên nền trắng */
+  --primary-dark: #0A6483;
+  --primary-soft: #E1F3F9;
   --on-primary: #ffffff;
 
-  --secondary: #7a3fb8;        /* tím lan */
-  --secondary-soft: #f0e6fa;
+  --secondary: #B85585;     /* hồng áo dài, hạ độ sáng tương tự */
+  --secondary-soft: #FBEAF2;
   --on-secondary: #ffffff;
 
-  --tertiary: #0d8f80;         /* ngọc lam */
-  --tertiary-soft: #dcf5f1;
+  --tertiary: #0E8F63;
+  --tertiary-soft: #DFF5EC;
   --on-tertiary: #ffffff;
 
-  --berry: #9e3b4e;            /* giữ lại tông rượu vang của M-AIDA */
-  --gold: #a9781f;
+  --berry: #B85585;
+  --gold: #A87B10;
 
-  --success: #10806a;
-  --success-soft: #dcf2ec;
+  --success: #0E8F63;
+  --success-soft: #DFF5EC;
   --on-success: #ffffff;
-  --danger: #c1372f;
-  --danger-soft: #fbe4e2;
+  --danger: #C43A52;
+  --danger-soft: #FCE7EB;
   --on-danger: #ffffff;
-  --warn: #9a6b12;
-  --warn-soft: #f8eed6;
+  --warn: #A87B10;
+  --warn-soft: #FBF1D9;
   --on-warn: #ffffff;
 
-  --glow: rgba(75, 77, 219, .30);
-  --glow-2: rgba(122, 63, 184, .22);
+  --glow: rgba(14, 127, 164, .22);
+  --glow-2: rgba(184, 85, 133, .18);
 
-  --nebula-1: rgba(122, 63, 184, .14);
-  --nebula-2: rgba(13, 143, 128, .12);
-  --star: rgba(40, 44, 100, .30);
+  --nebula-1: rgba(98, 214, 245, .16);
+  --nebula-2: rgba(240, 157, 198, .14);
+  --star: rgba(40, 60, 110, .26);
 
-  --radius: 16px;
-  --radius-sm: 11px;
-  --radius-lg: 22px;
-  --shadow: 0 1px 2px rgba(24, 26, 60, .05), 0 14px 40px rgba(24, 26, 60, .10);
-  --shadow-sm: 0 1px 2px rgba(24, 26, 60, .07), 0 4px 14px rgba(24, 26, 60, .06);
+  --radius: 20px;
+  --radius-sm: 14px;
+  --radius-lg: 24px;
+  --shadow: 0 12px 40px rgba(20, 30, 70, .12);
+  --shadow-sm: 0 1px 2px rgba(20, 30, 70, .06), 0 4px 14px rgba(20, 30, 70, .07);
   --blur: 16px;
 
+  /* Chuyển sắc "hologram" của áo dài — dùng cho nút chính và tiêu đề lớn */
+  --holo: linear-gradient(120deg, #EDF2FA 0%, #C9D4E8 38%, #F09DC6 68%, #62D6F5 100%);
+  /* Bản dùng cho chữ: nền sáng cần tông đậm, chuyển sắc hologram gốc quá nhạt */
+  --holo-text: linear-gradient(120deg, #0E7FA4 0%, #7A4E9E 45%, #B85585 100%);
+
   --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif;
-  --display: "Montserrat", var(--font);
+  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+  --display: "Bricolage Grotesque", "Be Vietnam Pro", system-ui, sans-serif;
 }
 
 html[data-theme="dark"] {
-  /* ---- Nền tối: đúng bảng màu của bản thiết kế ---- */
-  --void: #020617;
-  --bg: #0b1326;
-  --bg-soft: #171f33;
-  --paper: #0b1326;
+  /* ---- Bảng màu Design Guide: nền vũ trụ, áo dài bạc/hồng, hologram lam ---- */
+  --void: #060A1C;
+  --bg: #060A1C;
+  --bg-soft: #0D1430;
+  --paper: #060A1C;
 
-  --surface: #131b2e;
-  --surface-2: #1a2338;
-  --glass: rgba(23, 31, 51, .60);
-  --glass-2: rgba(19, 27, 46, .45);
-  --glass-stroke: rgba(255, 255, 255, .15);
-  --border: #2d3449;
+  --surface: #0D1430;
+  --surface-2: #131C40;
+  --glass: rgba(13, 20, 48, .72);
+  --glass-2: rgba(19, 28, 64, .55);
+  --glass-stroke: #243059;
+  --border: #243059;
 
-  --text: #dae2fd;
-  --text-soft: #b9c0dc;
-  --muted: #949cbe;
+  --text: #E9EEF7;          /* bạc */
+  --text-soft: #C3CDE2;
+  --muted: #9BA8C4;
 
-  --primary: #c0c1ff;
-  --primary-dark: #a7a8f5;
-  --primary-soft: #232a52;
-  --on-primary: #10007a;
+  --primary: #62D6F5;       /* hologram lam: liên kết, tiêu điểm, tiến độ */
+  --primary-dark: #3FB6D6;
+  --primary-soft: #102540;
+  --on-primary: #0A1130;
 
-  --secondary: #ddb7ff;
-  --secondary-soft: #2b1c46;
-  --on-secondary: #3a0068;
+  --secondary: #F09DC6;     /* hồng áo dài: nhấn ấm */
+  --secondary-soft: #2A1526;
+  --on-secondary: #2A0C1B;
 
-  --tertiary: #3cddc7;
-  --tertiary-soft: #10352f;
-  --on-tertiary: #003731;
+  --tertiary: #5EE0A0;
+  --tertiary-soft: #0C2B22;
+  --on-tertiary: #06251A;
 
-  --berry: #d98a99;
-  --gold: #d8ab55;
+  --berry: #F09DC6;
+  --gold: #FFD25A;
 
-  --success: #3cddc7;
-  --success-soft: #10352f;
-  --on-success: #003731;
-  --danger: #ffb4ab;
-  --danger-soft: #3d1a17;
-  --on-danger: #690005;
-  --warn: #d8ab55;
-  --warn-soft: #33280f;
-  --on-warn: #2a1e00;
+  --success: #5EE0A0;
+  --success-soft: #0C2B22;
+  --on-success: #06251A;
+  --danger: #F4788C;
+  --danger-soft: #2E121A;
+  --on-danger: #2B0710;
+  --warn: #FFD25A;
+  --warn-soft: #2E2409;
+  --on-warn: #241A00;
 
-  --glow: rgba(192, 193, 255, .35);
-  --glow-2: rgba(60, 221, 199, .28);
+  --glow: rgba(98, 214, 245, .28);
+  --glow-2: rgba(240, 157, 198, .24);
 
-  --nebula-1: rgba(111, 0, 190, .22);
-  --nebula-2: rgba(60, 221, 199, .12);
-  --star: rgba(214, 224, 255, .55);
+  --nebula-1: rgba(98, 214, 245, .10);
+  --nebula-2: rgba(240, 157, 198, .08);
+  --star: rgba(233, 238, 247, .55);
 
-  --shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 18px 46px rgba(0, 0, 0, .55);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .45), 0 6px 18px rgba(0, 0, 0, .35);
+  --shadow: 0 12px 40px rgba(3, 6, 20, .55);
+  --shadow-sm: 0 1px 2px rgba(3, 6, 20, .5), 0 6px 18px rgba(3, 6, 20, .38);
+
+  /* Nền tối dùng thẳng chuyển sắc gốc cho chữ */
+  --holo-text: var(--holo);
 }
 
 * { box-sizing: border-box; }
@@ -243,7 +251,7 @@ code {
   font-family: var(--display);
   font-weight: 800;
   letter-spacing: -.02em;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: var(--holo-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -446,7 +454,7 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   color: var(--tertiary);
 }
 .hero__title span:not(.hero__title-sm) {
-  background: linear-gradient(92deg, var(--primary), var(--secondary) 55%, var(--tertiary));
+  background: var(--holo-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -729,8 +737,8 @@ select,
   flex: 0 0 34px;
   height: 34px;
   border-radius: 11px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: var(--on-primary);
+  background: var(--holo);
+  color: #0A1130;
   display: grid;
   place-items: center;
   font-weight: 800;
@@ -849,14 +857,15 @@ input[type="number"]:focus, input[type="file"]:focus {
 .btn--primary {
   border-color: transparent;
   color: var(--on-primary);
-  background-image: linear-gradient(100deg, var(--primary), var(--secondary), var(--primary));
+  background-image: var(--holo);
   background-size: 200% auto;
-  box-shadow: 0 5px 0 0 var(--primary-dark), 0 8px 20px var(--glow);
+  color: #0A1130;
+  box-shadow: 0 5px 0 0 rgba(10, 17, 48, .35), 0 8px 22px var(--glow);
 }
 .btn--primary:hover {
-  box-shadow: 0 7px 0 0 var(--primary-dark), 0 12px 26px var(--glow);
+  box-shadow: 0 7px 0 0 rgba(10, 17, 48, .35), 0 12px 28px var(--glow);
 }
-.btn--primary:active { box-shadow: 0 1px 0 0 var(--primary-dark); }
+.btn--primary:active { box-shadow: 0 1px 0 0 rgba(10, 17, 48, .35); }
 @media (prefers-reduced-motion: no-preference) {
   .btn--primary { animation: shimmer 4s linear infinite; }
 }
@@ -930,7 +939,7 @@ input[type="number"]:focus, input[type="file"]:focus {
 .progress {
   height: 7px;
   border-radius: 999px;
-  background: var(--bg-soft);
+  background: var(--border);
   overflow: hidden;
   margin-bottom: 1rem;
   border: 1px solid var(--glass-stroke);
@@ -938,7 +947,7 @@ input[type="number"]:focus, input[type="file"]:focus {
 .progress__bar {
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, var(--tertiary), var(--primary));
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
   box-shadow: 0 0 12px var(--glow-2);
   transition: width .3s ease;
 }
@@ -1099,7 +1108,7 @@ input[type="number"]:focus, input[type="file"]:focus {
   margin: 0 auto 1rem;
   display: grid;
   place-content: center;
-  background: conic-gradient(var(--primary) var(--pct, 0%), var(--bg-soft) 0);
+  background: conic-gradient(from 180deg, var(--secondary) 0%, var(--primary) var(--pct, 0%), var(--border) 0);
   position: relative;
   box-shadow: 0 0 28px var(--glow);
 }
@@ -1119,7 +1128,7 @@ input[type="number"]:focus, input[type="file"]:focus {
   text-shadow: 0 0 18px var(--glow);
 }
 .score-ring__label { font-size: .85rem; color: var(--muted); }
-.score-ring.pass { background: conic-gradient(var(--tertiary) var(--pct, 0%), var(--bg-soft) 0); box-shadow: 0 0 28px var(--glow-2); }
+.score-ring.pass { background: conic-gradient(from 180deg, var(--secondary) 0%, var(--tertiary) var(--pct, 0%), var(--border) 0); box-shadow: 0 0 28px var(--glow-2); }
 
 .result-grid {
   display: grid;
@@ -1140,10 +1149,10 @@ input[type="number"]:focus, input[type="file"]:focus {
 .bychapter { display: flex; flex-direction: column; gap: .6rem; }
 .bych-row { font-size: .87rem; }
 .bych-row__head { display: flex; justify-content: space-between; gap: .5rem; margin-bottom: .2rem; }
-.bych-row__bar { height: 8px; background: var(--bg-soft); border-radius: 999px; overflow: hidden; }
+.bych-row__bar { height: 8px; background: var(--border); border-radius: 999px; overflow: hidden; }
 .bych-row__fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--tertiary), var(--primary));
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
   border-radius: 999px;
   box-shadow: 0 0 10px var(--glow-2);
 }
@@ -1412,9 +1421,9 @@ input[type="number"]:focus, input[type="file"]:focus {
   padding: .55rem 1.05rem .55rem .55rem;
   border-radius: 999px;
   border: 1px solid transparent;
-  background-image: linear-gradient(100deg, var(--primary), var(--secondary), var(--primary));
+  background-image: var(--holo);
   background-size: 200% auto;
-  color: var(--on-primary);
+  color: #0A1130;
   font: 700 .85rem var(--font);
   cursor: pointer;
   box-shadow: 0 5px 0 0 var(--primary-dark), 0 10px 26px var(--glow);
