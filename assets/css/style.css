@@ -1583,6 +1583,23 @@ html[data-theme="dark"] .footer__lockup { filter: brightness(1.18) saturate(1.05
   z-index: -2;
 }
 #vnmark svg { width: 100%; height: auto; display: block; }
+
+/* Quả địa cầu chìm bên trái, làm cặp với hình Việt Nam bên phải. Nhạt hơn
+   hẳn và nhỏ hơn để không tranh chỗ với nội dung; màn hẹp thì bỏ đi vì hai
+   hình nền cùng lúc trên màn nhỏ chỉ làm rối. */
+#globemark {
+  position: fixed;
+  /* Thanh dọc rộng 232px và đục hẳn, đặt quả cầu trong khoảng ấy thì bị che
+     mất, nên phải bắt đầu từ sau mép thanh. */
+  left: calc(232px + 2%);
+  bottom: 4%;
+  width: min(20vw, 300px);
+  opacity: .16;
+  pointer-events: none;
+  z-index: -2;
+}
+#globemark img { width: 100%; height: auto; display: block; }
+@media (max-width: 1099px) { #globemark { display: none; } }
 #vnmark .lh-halo { opacity: 0; }
 @media (prefers-reduced-motion: no-preference) {
   #vnmark .lh-light { animation: lhblink 1.8s ease-in-out infinite; }
@@ -1888,7 +1905,7 @@ html[data-theme="dark"] .footer__lockup { filter: brightness(1.18) saturate(1.05
 
 @media print {
   html { background: #fff; }
-  body::before, #vnmark, .hero__map, .hero__huong,
+  body::before, #vnmark, #globemark, .hero__map, .hero__huong,
   .quiz-huong, .result-hero__huong, .tour-panel__huong { display: none !important; }
   .topbar, .quiz-nav, .actions, .modal, .footer, .toast-wrap, .tour-fab,
   .sidenav, .botnav { display: none !important; }
