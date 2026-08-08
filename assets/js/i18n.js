@@ -184,6 +184,49 @@
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
       'footer.link': 'Trang cá nhân của tác giả',
 
+      'footer.author': 'Trang cá nhân',
+      'footer.policy': 'Bản quyền',
+      'footer.privacy': 'Quyền riêng tư',
+      'footer.place': 'Cần Thơ, Việt Nam',
+
+      'policy.title': 'Bản quyền & điều kiện sử dụng',
+      'policy.intro': 'Toàn bộ ngân hàng câu hỏi, phần mềm, giao diện, hình ảnh và tên gọi <b>EnQuiz</b> là tài sản trí tuệ của <b>NCS. Đỗ Thùy Hương</b>, được bảo hộ theo Luật Sở hữu trí tuệ Việt Nam và các điều ước quốc tế mà Việt Nam là thành viên.',
+      'policy.allowed': 'Bạn được phép',
+      'policy.allowed1': 'Sử dụng miễn phí để tự học và ôn thi cá nhân.',
+      'policy.allowed2': 'Chia sẻ đường dẫn tới ứng dụng cho bạn học và đồng nghiệp.',
+      'policy.allowed3': 'Nhập bộ đề riêng của bạn để dùng trên máy của mình.',
+      'policy.forbidden': 'Bạn không được phép',
+      'policy.forbidden1': 'Sao chép, trích xuất hoặc phát tán lại nội dung câu hỏi dưới bất kỳ hình thức nào.',
+      'policy.forbidden2': 'Đăng tải lại ứng dụng lên nền tảng khác, kể cả khi ghi nguồn.',
+      'policy.forbidden3': 'Sử dụng cho mục đích thương mại, đào tạo thu phí hoặc bán lại.',
+      'policy.forbidden4': 'Chỉnh sửa, dịch, tạo tác phẩm phái sinh hoặc gỡ bỏ thông tin bản quyền.',
+      'policy.contact': 'Mọi nhu cầu sử dụng ngoài phạm vi trên xin liên hệ tác giả qua thuyhuongctu@gmail.com để được cấp phép bằng văn bản.',
+      'policy.mark': 'Ứng dụng đã khoá thao tác sao chép và menu chuột phải nhằm nhắc nhở về bản quyền. Đây là biện pháp nhắc nhở, không phải rào chắn kỹ thuật tuyệt đối; việc sao chép trái phép vẫn là hành vi vi phạm dù thực hiện bằng cách nào.',
+      'policy.copyBlocked': '⛔ Nội dung có bản quyền — không sao chép.',
+
+      'privacy.title': 'Quyền riêng tư',
+      'privacy.body': 'Ứng dụng không có máy chủ và không thu thập bất kỳ thông tin cá nhân nào. Kết quả làm bài, câu sai, câu đã đánh dấu và bộ đề bạn tự nhập chỉ được lưu trong trình duyệt trên máy bạn (localStorage) và không được gửi đi đâu. Bạn có thể xoá sạch bằng nút “Xoá toàn bộ dữ liệu” trong phần Cài đặt.',
+
+      'tour.name': 'Hương AI',
+      'tour.role': 'Hướng dẫn viên',
+      'tour.start': 'Hương AI hướng dẫn',
+      'tour.step': 'Bước {i}/{n}',
+      'tour.play': '▶ Đọc lại',
+      'tour.pause': '⏸ Tạm dừng',
+      'tour.resume': '▶ Tiếp tục',
+      'tour.next': 'Tiếp →',
+      'tour.prev': '← Trước',
+      'tour.finish': 'Kết thúc',
+      'tour.close': 'Đóng',
+      'tour.noVoice': 'Thiết bị chưa có giọng đọc tiếng Việt — bạn có thể đọc phần chữ bên trên.',
+      'tour.s1': 'Xin chào, mình là Hương AI, trợ lý của cô Đỗ Thùy Hương. Mình sẽ dẫn bạn đi một vòng ứng dụng EnQuiz trong khoảng một phút. Đây là bảng tổng quan: ba trăm câu hỏi, chia thành năm chương, kèm số lượt bạn đã luyện và điểm cao nhất.',
+      'tour.s2': 'Đây là lời nhắn của cô Đỗ Thùy Hương, tác giả ngân hàng câu hỏi. Bấm vào nút bên dưới nếu bạn muốn ghé thăm trang cá nhân của cô.',
+      'tour.s3': 'Bốn chế độ luyện tập. Thi thử rút đề ngẫu nhiên và bấm giờ giống thi thật. Ôn tập theo chương thì hiện đáp án ngay sau mỗi câu để bạn hiểu bài. Luyện câu sai gom lại những câu bạn từng trả lời sai. Câu đã đánh dấu giữ những câu bạn muốn xem lại.',
+      'tour.s4': 'Đây là công cụ ghép đề. Bạn dán câu hỏi vào một ô và dán danh sách đáp án vào ô còn lại, hệ thống sẽ tự khớp theo số thứ tự câu ghi trong đề.',
+      'tour.s5': 'Năm chương của học phần, mỗi chương sáu mươi câu. Dòng chữ nhỏ cho biết bạn đã làm bao nhiêu câu và thuộc bao nhiêu phần trăm.',
+      'tour.s6': 'Ba nút ở góc trên bên phải: chuyển giữa tiếng Việt và tiếng Anh, đổi giao diện sáng tối, và mở phần cài đặt. Trong cài đặt bạn có thể xuất tiến độ hoặc xoá toàn bộ dữ liệu.',
+      'tour.s7': 'Cuối cùng, một lưu ý quan trọng: toàn bộ câu hỏi và phần mềm thuộc bản quyền của cô Đỗ Thùy Hương. Bạn được dùng miễn phí để tự học, nhưng xin đừng sao chép hay phát tán lại. Chúc bạn ôn tập thật tốt và thi đạt điểm cao nhé!',
+
       'toast.noWrong': 'Chưa có câu sai nào được ghi nhận.',
       'toast.noMarked': 'Bạn chưa đánh dấu câu hỏi nào.',
       'toast.emptyBank': 'Ngân hàng câu hỏi đang trống.',
@@ -367,6 +410,49 @@
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',
       'footer.link': "Author's homepage",
 
+      'footer.author': 'Homepage',
+      'footer.policy': 'Copyright',
+      'footer.privacy': 'Privacy',
+      'footer.place': 'Can Tho, Vietnam',
+
+      'policy.title': 'Copyright & terms of use',
+      'policy.intro': 'The entire question bank, software, interface, imagery and the name <b>EnQuiz</b> are the intellectual property of <b>Do Thuy Huong, PhD Candidate</b>, protected under the Intellectual Property Law of Vietnam and the international treaties to which Vietnam is a party.',
+      'policy.allowed': 'You may',
+      'policy.allowed1': 'Use the app free of charge for your own study and exam revision.',
+      'policy.allowed2': 'Share the link to the app with classmates and colleagues.',
+      'policy.allowed3': 'Import your own question sets for use on your own device.',
+      'policy.forbidden': 'You may not',
+      'policy.forbidden1': 'Copy, extract or redistribute the question content in any form.',
+      'policy.forbidden2': 'Re-publish the app on another platform, even with attribution.',
+      'policy.forbidden3': 'Use it commercially, in paid training, or resell it.',
+      'policy.forbidden4': 'Modify, translate, create derivative works, or remove copyright notices.',
+      'policy.contact': 'For any use beyond the above, please contact the author at thuyhuongctu@gmail.com for written permission.',
+      'policy.mark': 'Copying and the right-click menu are disabled as a copyright reminder. This is a reminder, not an absolute technical barrier — unauthorised copying remains an infringement however it is carried out.',
+      'policy.copyBlocked': '⛔ Copyrighted content — copying is not permitted.',
+
+      'privacy.title': 'Privacy',
+      'privacy.body': 'The app has no server and collects no personal data. Your results, missed questions, flagged questions and imported sets are stored only in your own browser (localStorage) and are never sent anywhere. You can erase everything with the “Erase all data” button in Settings.',
+
+      'tour.name': 'Huong AI',
+      'tour.role': 'Guide',
+      'tour.start': 'Huong AI guided tour',
+      'tour.step': 'Step {i}/{n}',
+      'tour.play': '▶ Replay',
+      'tour.pause': '⏸ Pause',
+      'tour.resume': '▶ Resume',
+      'tour.next': 'Next →',
+      'tour.prev': '← Back',
+      'tour.finish': 'Finish',
+      'tour.close': 'Close',
+      'tour.noVoice': 'No English voice is installed on this device — you can read the text above instead.',
+      'tour.s1': 'Hello, I am Huong AI, assistant to Ms. Do Thuy Huong. Let me walk you through EnQuiz in about a minute. This is the overview: three hundred questions across five chapters, along with how many sessions you have practised and your best score.',
+      'tour.s2': 'This is a message from Ms. Do Thuy Huong, the author of the question bank. Tap the button below if you would like to visit her homepage.',
+      'tour.s3': 'There are four practice modes. Mock exam draws a random paper with a countdown, just like the real thing. Practice by chapter reveals the answer after every question so you learn as you go. Missed questions gathers everything you previously got wrong. Flagged questions keeps the ones you want to revisit.',
+      'tour.s4': 'This is the merge tool. Paste your questions into one box and the answer key into the other, and the app matches them by the question number printed in the paper.',
+      'tour.s5': 'The five chapters of the course, sixty questions each. The small line tells you how many you have attempted and how much you have mastered.',
+      'tour.s6': 'Three controls in the top right corner: switch between Vietnamese and English, toggle light or dark mode, and open settings. In settings you can export your progress or erase all data.',
+      'tour.s7': 'Finally, one important note: all questions and the software are copyright of Ms. Do Thuy Huong. You are welcome to use them free of charge for your own study, but please do not copy or redistribute them. Good luck with your revision!',
+
       'toast.noWrong': 'No missed question has been recorded yet.',
       'toast.noMarked': 'You have not flagged any question yet.',
       'toast.emptyBank': 'The question bank is empty.',
@@ -428,9 +514,9 @@
     init: function () {
       var saved = null;
       try { saved = localStorage.getItem(KEY); } catch (e) { /* bỏ qua */ }
-      // Nội dung câu hỏi là tiếng Việt nên mặc định mở bằng tiếng Việt;
-      // người dùng đổi sang English thì lựa chọn đó được ghi nhớ.
-      if (!saved) saved = 'vi';
+      // Mặc định mở bằng tiếng Anh theo yêu cầu của tác giả; người dùng
+      // đổi sang tiếng Việt thì lựa chọn đó được ghi nhớ cho lần sau.
+      if (!saved) saved = 'en';
       lang = DICT[saved] ? saved : 'vi';
       document.documentElement.setAttribute('lang', lang);
       this.apply();

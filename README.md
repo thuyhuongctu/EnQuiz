@@ -5,8 +5,11 @@ Tác giả: **NCS. Đỗ Thùy Hương** — [trang cá nhân](https://thuyhuong
 
 ▶️ **Dùng ngay: https://thuyhuongctu.github.io/EC1606_KSDN-2026/**
 
-Giao diện **song ngữ Việt – English**, có chế độ **sáng/tối**, và cài được lên
+Giao diện **song ngữ Việt – English** (mặc định mở bằng tiếng Anh), có chế độ
+**sáng/tối**, **tour hướng dẫn bằng giọng nói của Hương AI**, và cài được lên
 màn hình chính như một ứng dụng (**PWA**), dùng được cả khi không có mạng.
+Nhận diện thị giác dùng chung bảng màu, kiểu chữ và nền bản đồ Việt Nam với
+trang [M-AIDA](https://thuyhuongctu.github.io/M-AIDA/).
 
 Toàn bộ là HTML/CSS/JavaScript thuần — **không cần cài đặt, không cần build**.
 
@@ -46,6 +49,12 @@ Giao diện có bản tiếng Anh; nội dung câu hỏi giữ nguyên tiếng V
   hỗ trợ phím tắt `A/B/C/D` và `←/→`.
 - Cài được như ứng dụng trên điện thoại và máy tính, chạy offline.
 - Khối giới thiệu giảng viên ngay trang chủ, kèm liên kết tới trang cá nhân.
+- **Hương AI hướng dẫn** — tour 7 bước có giọng đọc tiếng Việt và tiếng Anh, làm
+  nổi từng khu vực đang được giới thiệu. Dùng Web Speech API sẵn có của trình
+  duyệt nên không cần tệp âm thanh; máy không có giọng đọc thì phần lời vẫn hiện
+  thành chữ nên tour luôn dùng được.
+- **Nhắc nhở bản quyền** — khoá bôi đen, sao chép và menu chuột phải trên phần nội
+  dung (ô nhập liệu vẫn dùng bình thường), kèm trang điều kiện sử dụng song ngữ.
 
 ---
 
@@ -151,6 +160,7 @@ assets/js/storage.js    lưu tiến độ, lịch sử, bộ đề tự nhập (
 assets/js/bank.js       nạp, chuẩn hoá và gộp tự động ngân hàng câu hỏi
 assets/js/parser.js     bóc tách câu hỏi/đáp án từ văn bản dán vào
 assets/js/app.js        điều khiển các chế độ làm bài, chấm điểm, thống kê
+assets/js/tour.js       tour hướng dẫn có giọng đọc của Hương AI
 data/manifest.js        danh mục các tệp dữ liệu được nạp
 data/ch01.js … ch05.js  ngân hàng câu hỏi theo chương
 ```
@@ -179,6 +189,21 @@ và `assets/img/teacher-wide.jpg` (ảnh ngang, dùng làm ảnh xem trước kh
 
 ## Bản quyền
 
-© 2026 Đỗ Thùy Hương. Tên gọi **EnQuiz**, mã nguồn, giao diện và nội dung
-ngân hàng câu hỏi thuộc quyền tác giả. Vui lòng liên hệ tác giả trước khi sao chép
-hoặc phân phối lại.
+© 2026 Đỗ Thùy Hương. Tên gọi **EnQuiz**, mã nguồn, giao diện, hình ảnh và toàn bộ
+nội dung ngân hàng câu hỏi là tài sản trí tuệ của tác giả, được bảo hộ theo Luật
+Sở hữu trí tuệ Việt Nam và các điều ước quốc tế mà Việt Nam là thành viên.
+
+**Được phép:** dùng miễn phí để tự học và ôn thi cá nhân; chia sẻ đường dẫn tới
+ứng dụng; nhập bộ đề riêng để dùng trên máy của mình.
+
+**Không được phép:** sao chép, trích xuất hoặc phát tán lại nội dung câu hỏi;
+đăng tải lại ứng dụng lên nền tảng khác kể cả khi ghi nguồn; dùng cho mục đích
+thương mại hoặc đào tạo thu phí; chỉnh sửa, dịch, tạo tác phẩm phái sinh hoặc gỡ
+bỏ thông tin bản quyền.
+
+Mọi nhu cầu sử dụng ngoài phạm vi trên xin liên hệ thuyhuongctu@gmail.com để được
+cấp phép bằng văn bản.
+
+Ứng dụng có khoá thao tác sao chép và menu chuột phải nhằm nhắc nhở về bản quyền.
+Đây là biện pháp nhắc nhở, không phải rào chắn kỹ thuật tuyệt đối — việc sao chép
+trái phép vẫn là hành vi vi phạm dù thực hiện bằng cách nào.
