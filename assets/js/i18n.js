@@ -139,13 +139,12 @@
 
       'music.eyebrow': 'Nghe một chút',
       'music.heading': 'Hôm nay bạn thế nào?',
-      'music.intro': 'Nhạc do cô Đỗ Thùy Hương sáng tác.',
+      'music.intro': 'Nhạc do cô Đỗ Thùy Hương sáng tác. Buồn hay vui đều là bản không lời cho dễ tập trung.',
       'music.sad': 'Đang buồn',
       'music.happy': 'Đang vui',
       'music.none': 'Không gì cả',
       'music.toggle': 'Tạm dừng hoặc nghe tiếp',
-      'music.t.soft': 'Bản hoà tấu — không lời',
-      'music.t.bright': 'Mon histoire — tươi tắn',
+      'music.t.instr': 'Bản hoà tấu — không lời',
       'music.t.calm': 'Golden Silt Route — cô chọn',
 
       'badge.eyebrow': 'Chặng đường',
@@ -425,13 +424,12 @@
 
       'music.eyebrow': 'Take a listen',
       'music.heading': 'How are you today?',
-      'music.intro': 'Music written by Ms. Do Thuy Huong.',
+      'music.intro': 'Music written by Ms. Do Thuy Huong. Low or good, both play the wordless track so you can focus.',
       'music.sad': 'Feeling low',
       'music.happy': 'Feeling good',
       'music.none': 'Nothing much',
       'music.toggle': 'Pause or resume',
-      'music.t.soft': 'Instrumental — no lyrics',
-      'music.t.bright': 'Mon histoire — bright',
+      'music.t.instr': 'Instrumental — no lyrics',
       'music.t.calm': "Golden Silt Route — the author's pick",
 
       'badge.eyebrow': 'Your journey',
