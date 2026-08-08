@@ -4,7 +4,7 @@
    Đổi CACHE_VERSION mỗi lần phát hành bản mới để trình duyệt
    tải lại toàn bộ tài nguyên thay vì dùng bản đã lưu.
    ========================================================= */
-const CACHE_VERSION = 'ksdn-v1';
+const CACHE_VERSION = 'maida-quiz-v2';
 
 const SHELL = [
   './',
@@ -26,7 +26,9 @@ const SHELL = [
   './assets/icons/icon-512.png',
   './assets/icons/icon-maskable-512.png',
   './assets/icons/apple-touch-icon.png',
-  './assets/icons/favicon-32.png'
+  './assets/icons/favicon-32.png',
+  './assets/img/teacher.jpg',
+  './assets/img/teacher-wide.jpg'
 ];
 
 self.addEventListener('install', (event) => {

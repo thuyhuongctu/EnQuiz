@@ -6,15 +6,21 @@
 <meta name="description" content="Ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp — 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.">
 <meta name="author" content="Đỗ Thùy Hương">
 <meta name="theme-color" content="#2f5fe0">
-<title>Ôn thi Khởi sự doanh nghiệp</title>
+<title>M-AIDA Quiz — Ôn thi Khởi sự doanh nghiệp</title>
 
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Khởi sự DN">
+<meta name="apple-mobile-web-app-title" content="M-AIDA Quiz">
 <meta name="mobile-web-app-capable" content="yes">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="M-AIDA Quiz — Ôn thi Khởi sự doanh nghiệp">
+<meta property="og:description" content="300 câu trắc nghiệm, thi thử có bấm giờ, luyện lại câu sai. Tác giả: NCS. Đỗ Thùy Hương.">
+<meta property="og:image" content="assets/img/teacher-wide.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -25,8 +31,8 @@
     <button class="brand" id="btnHome" type="button" data-i18n-attr="title:btn.home">
       <img class="brand__logo" src="assets/icons/icon-192.png" alt="" width="34" height="34">
       <span class="brand__text">
-        <strong data-i18n="app.name">Khởi sự doanh nghiệp</strong>
-        <small data-i18n="app.tagline">Ôn thi trắc nghiệm</small>
+        <strong data-i18n="app.name">M-AIDA Quiz</strong>
+        <small data-i18n="app.tagline">Ôn thi Khởi sự doanh nghiệp</small>
       </span>
     </button>
     <div class="topbar__actions">
@@ -66,6 +72,21 @@
         <div class="stat"><b id="statChapters">0</b><span data-i18n="home.stat.chapters">chương</span></div>
         <div class="stat"><b id="statDone">0</b><span data-i18n="home.stat.done">lượt luyện</span></div>
         <div class="stat"><b id="statBest">–</b><span data-i18n="home.stat.best">điểm cao nhất</span></div>
+      </div>
+    </div>
+
+    <div class="teacher">
+      <div class="teacher__photo">
+        <img src="assets/img/teacher.jpg" width="640" height="640" loading="lazy" decoding="async"
+             data-i18n-attr="alt:teacher.alt" alt="">
+      </div>
+      <div class="teacher__body">
+        <p class="teacher__greeting" data-i18n="teacher.greeting">Chào bạn, cùng ôn bài nhé!</p>
+        <p class="teacher__name" data-i18n="teacher.name">NCS. Đỗ Thùy Hương</p>
+        <p class="teacher__role" data-i18n="teacher.role">Giảng viên · Tác giả ngân hàng câu hỏi</p>
+        <p class="teacher__note" data-i18n="teacher.note"></p>
+        <a class="author-link" href="https://thuyhuongctu.github.io/M-AIDA/huong.html"
+           target="_blank" rel="noopener">🔗 <span data-i18n="teacher.cta">Xem trang cá nhân</span></a>
       </div>
     </div>
 
