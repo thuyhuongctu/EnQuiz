@@ -4,7 +4,7 @@
 **Entrepreneurship** course through multiple-choice practice.
 Author: **Do Thuy Huong, PhD Candidate** — [homepage](https://thuyhuongctu.github.io/M-AIDA/huong.html).
 
-▶️ **Live app: https://thuyhuongctu.github.io/EC1606_KSDN-2026/**
+▶️ **Live app: https://thuyhuongctu.github.io/EnQuiz/**
 
 Bilingual **English – Vietnamese** interface (opens in English by default),
 **light/dark** themes, a **voice-guided tour narrated by Huong AI**, and it installs
@@ -74,7 +74,7 @@ python3 -m http.server 8000
 
 **GitHub Pages:** already enabled. Every push to the main branch triggers the
 `.github/workflows/pages.yml` workflow, which rebuilds and publishes the site at
-<https://thuyhuongctu.github.io/EC1606_KSDN-2026/> — no manual steps needed.
+<https://thuyhuongctu.github.io/EnQuiz/> — no manual steps needed.
 
 **Install as an app:** open the page in Chrome/Edge/Safari and choose *Install app*
 (or *Add to Home Screen*). The ⬇️ button in the top bar also appears when the
