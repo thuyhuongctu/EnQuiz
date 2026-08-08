@@ -11,9 +11,22 @@
     marked: [],      // danh sách uid câu hỏi được đánh dấu
     wrong: [],       // danh sách uid câu hỏi từng trả lời sai
     history: [],     // lịch sử các lần làm bài (tối đa 30 bản ghi)
+    // Lịch sử bị cắt còn 30 bản ghi nên không đếm được tổng số lần làm bài
+    // hay chuỗi ngày học. Hai mục dưới đây giữ riêng cho phần huy hiệu.
+    days: [],        // các ngày từng làm bài, dạng 'YYYY-MM-DD', không trùng
+    attempts: 0,     // tổng số lần làm bài, không bị cắt bớt
     stats: {},       // uid -> { seen, correct }
     custom: []       // các bộ đề do người dùng nhập, dạng gói của QuestionBank
   };
+
+  /* Ngày theo giờ địa phương; không dùng toISOString vì nó quy về giờ UTC,
+     làm các buổi học đêm bị tính sang ngày hôm sau. */
+  function dayKey(ts) {
+    var d = new Date(ts);
+    return d.getFullYear() + '-' +
+           String(d.getMonth() + 1).padStart(2, '0') + '-' +
+           String(d.getDate()).padStart(2, '0');
+  }
 
   function clone(o) { return JSON.parse(JSON.stringify(o)); }
 
@@ -105,12 +118,50 @@
     addHistory: function (entry) {
       mem.history.unshift(entry);
       if (mem.history.length > 30) mem.history.length = 30;
+
+      mem.attempts = (mem.attempts || 0) + 1;
+      var key = dayKey(entry.at || Date.now());
+      if (!mem.days) mem.days = [];
+      if (mem.days.indexOf(key) === -1) {
+        mem.days.push(key);
+        if (mem.days.length > 400) mem.days.shift();
+      }
       this.save();
     },
 
     clearHistory: function () {
+      // Xoá luôn dữ liệu huy hiệu: để lại huy hiệu "50 đề" trong khi lịch sử
+      // trống rỗng thì người học không hiểu con số ở đâu ra.
       mem.history = [];
+      mem.days = [];
+      mem.attempts = 0;
       this.save();
+    },
+
+    /** Số ngày học liên tiếp tính đến hôm nay (hôm qua vẫn được tính tiếp). */
+    streak: function () {
+      var days = mem.days || [];
+      if (!days.length) return 0;
+      var set = {};
+      days.forEach(function (d) { set[d] = true; });
+
+      var probe = new Date();
+      if (!set[dayKey(probe)]) {
+        // chưa học hôm nay thì chuỗi vẫn còn hiệu lực nếu hôm qua có học
+        probe.setDate(probe.getDate() - 1);
+        if (!set[dayKey(probe)]) return 0;
+      }
+      var n = 0;
+      while (set[dayKey(probe)]) {
+        n++;
+        probe.setDate(probe.getDate() - 1);
+      }
+      return n;
+    },
+
+    /** Tổng số lần làm bài, kể cả những lần đã rơi khỏi lịch sử 30 bản ghi. */
+    attemptCount: function () {
+      return mem.attempts || mem.history.length;
     },
 
     bestScore: function () {
