@@ -15,9 +15,11 @@
   /* Mỗi bước gắn với một vùng trên trang; thiếu vùng thì bước đó được bỏ qua.
      `pose` chọn tư thế nhân vật đứng cạnh bảng thoại. */
   var STEPS = [
-    { key: 'tour.s0', target: '.teacher', lang: 'fr', pose: 'welcome' },   // lời chào tiếng Pháp
+    // Thẻ giảng viên đã gộp vào khối đầu trang, nên ba bước mở đầu trỏ vào
+    // ba phần khác nhau của khối ấy thay vì trỏ chung một thẻ.
+    { key: 'tour.s0', target: '.hero__mascot', lang: 'fr', pose: 'welcome' },  // lời chào tiếng Pháp
     { key: 'tour.s1', target: '.hero', pose: 'welcome' },
-    { key: 'tour.s2', target: '.teacher', pose: 'stand' },
+    { key: 'tour.s2', target: '.hero__note', pose: 'stand' },
     { key: 'tour.s3', target: '.modes', pose: 'point' },
     { key: 'tour.s4', target: '.modes [data-mode="import"]', pose: 'tablet' },
     { key: 'tour.s5', target: '#chapterList', pose: 'point' },

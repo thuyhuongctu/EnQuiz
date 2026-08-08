@@ -199,7 +199,7 @@ code {
 .hidden { display: none !important; }
 
 /* Thẻ kính mờ — nền của hầu hết khối nội dung */
-.glass, .panel, .teacher, .mode-card, .question-card, .result-hero,
+.glass, .panel, .mode-card, .question-card, .result-hero,
 .kpi, .chapter-item, .history-item, .review-item, .preview-item {
   background: var(--glass);
   -webkit-backdrop-filter: blur(var(--blur));
@@ -464,12 +464,15 @@ code {
   pointer-events: none;
 }
 html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
+/* Bản đồ phải chìm hẳn ở nửa trái, nếu không các đường sáng của nó chạy
+   xuyên qua tiêu đề làm chữ khó đọc. Nửa phải để lộ dần cho thấy hình. */
 .hero__veil {
   position: absolute;
   inset: 0;
   background: linear-gradient(100deg,
-              color-mix(in srgb, var(--bg) 72%, transparent) 0%,
-              color-mix(in srgb, var(--bg) 30%, transparent) 62%,
+              color-mix(in srgb, var(--bg) 88%, transparent) 0%,
+              color-mix(in srgb, var(--bg) 78%, transparent) 42%,
+              color-mix(in srgb, var(--bg) 34%, transparent) 74%,
               transparent 100%);
   pointer-events: none;
 }
@@ -532,14 +535,18 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   color: var(--text);
   text-align: center;
 }
+/* Khoá chiều cao chứ không khoá bề ngang: mỗi tư thế một tỷ lệ khác nhau,
+   khoá bề ngang thì nhân vật cao thấp nhấp nhô khi đổi ảnh. */
 .hero__huong {
   position: relative;
   z-index: 1;
   flex: 0 0 auto;
-  width: 150px;
-  height: auto;
+  height: 300px;
+  width: auto;
   filter: drop-shadow(0 12px 30px var(--glow));
-  margin-bottom: -1.7rem;
+  /* Khối đầu trang cắt phần tràn, nên nhân vật phải dừng đúng mép trong,
+     không thò xuống dưới — trước đây bị cụt mất bàn chân. */
+  margin-bottom: 0;
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero__huong { animation: floaty 6s ease-in-out infinite; }
@@ -574,66 +581,30 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
 .stat b { display: block; font-size: 1.35rem; font-family: var(--display); font-weight: 800; }
 .stat span { font-size: .7rem; color: var(--muted); }
 
-/* ---------------- Giới thiệu giảng viên ---------------- */
-/* Nhân vật đứng nép góc phải để phần chữ trải hết bề ngang.
-   Thẻ đủ cao để nhìn thấy trọn người từ đầu tới chân, không cắt cụt. */
-.teacher {
-  position: relative;
-  display: flex;
-  align-items: center;           /* chữ căn giữa theo chiều cao cho cân với người */
-  border-radius: var(--radius);
-  padding: 1.1rem 1.2rem;
-  margin-bottom: 1.2rem;
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-  min-height: 288px;
+/* ---------------- Lời giới thiệu trong khối đầu trang ----------------
+   Trước đây có thêm một thẻ giảng viên riêng ngay bên dưới, nhưng nó lặp
+   lại đúng câu chào, đúng tên tác giả và thêm một hình Hương thứ hai trên
+   cùng một màn hình. Gộp cả vào đây: một khối, một nhân vật, không lặp. */
+.hero__role {
+  margin: .45rem 0 0;
+  color: var(--muted);
+  font-size: .84rem;
 }
-.teacher__photo {
-  position: absolute;
-  right: 1.1rem;
-  bottom: 10px;                  /* chạm đất trong thẻ, không tràn ra ngoài mép */
-  width: auto;
-  pointer-events: none;
-}
-.teacher__photo::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -4px;
-  transform: translateX(-50%);
-  width: 88%;
-  height: 15px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, var(--glow) 0%, transparent 70%);
-}
-.teacher__photo img {
-  height: 268px;
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 10px 22px var(--glow));
-}
-/* Chừa chỗ cho người đứng bên phải: ảnh cao 268px, tỉ lệ 549/1142 nên
-   rộng khoảng 129px, cộng lề phải 1.1rem và một khoảng thở. */
-.teacher__body { min-width: 0; flex: 1 1 auto; padding-right: 162px; }
-.teacher__greeting {
-  margin: 0 0 .15rem;
-  font-size: 1.06rem;
-  font-weight: 700;
-  font-family: var(--display);
-  color: var(--primary);
-}
-.teacher__name { margin: 0; font-weight: 700; font-size: .95rem; }
-.teacher__role { margin: 0 0 .4rem; color: var(--muted); font-size: .82rem; }
-.teacher__note { margin: 0 0 .5rem; font-size: .88rem; color: var(--text-soft); }
-.teacher .author-link { margin-top: 0; font-size: .84rem; padding: .32rem .8rem; }
-.teacher__fr {
-  margin: .5rem 0;
+.hero__fr {
+  margin: .55rem 0;
   padding: .12rem 0 .12rem .7rem;
   border-left: 2px solid color-mix(in srgb, var(--secondary) 60%, transparent);
   font-family: var(--serif);
   font-style: italic;
   font-size: .95rem;
   color: var(--secondary);
+}
+.hero__note {
+  margin: 0 0 1rem;
+  max-width: 44ch;
+  font-size: .89rem;
+  line-height: 1.55;
+  color: var(--text-soft);
 }
 
 /* ---------------- Mode cards ---------------- */
@@ -1620,14 +1591,23 @@ input[type="number"]:focus, input[type="file"]:focus {
 @media (min-width: 1100px) {
   .sidenav { display: flex; }
   .botnav { display: none; }
-  .container, .footer { margin-left: 232px; }
+  /* Thanh dọc chiếm 232px bên trái. Nếu chỉ đẩy lề trái đúng 232px thì cột
+     nội dung dính sát thanh và dồn hết khoảng trống sang phải. Chia đôi phần
+     dư của khoảng còn lại để cột đứng giữa vùng đọc thật sự. */
+  .container, .footer {
+    margin-left: calc(232px + max(0px, (100vw - 232px - 980px) / 2));
+    margin-right: auto;
+  }
+  .container { padding-bottom: 5rem; }   /* chừa chỗ cho nút tour nổi ở góc */
   .topbar__inner { max-width: none; padding-left: 1.2rem; padding-right: 1.2rem; }
 }
 
 /* Màn hẹp: thanh dưới chiếm chỗ, chừa đệm để không che nội dung */
 @media (max-width: 1099px) {
   .container { padding-bottom: 5.5rem; }
-  .footer { padding-bottom: 6rem; }
+  /* Nút tour nổi ở 4.6rem và cao chừng 2.4rem, nên chân trang phải lùi quá
+     mốc đó — trước đây nút che mất dòng địa chỉ thư. */
+  .footer { padding-bottom: 8rem; }
   .tour-fab { bottom: 4.6rem; }
   .toast-wrap { bottom: 4.8rem; }
   .tour-panel { bottom: 4.6rem; }
@@ -1650,10 +1630,8 @@ input[type="number"]:focus, input[type="file"]:focus {
   .brand__text small { display: none; }
   .import-grid { grid-template-columns: 1fr; }
   textarea { min-height: 190px; }
-  .teacher { display: flex; flex-direction: column-reverse; align-items: center; text-align: center; gap: .6rem; min-height: 0; }
-  .teacher__photo { position: static; bottom: auto; }
-  .teacher__photo img { height: 250px; }
-  .teacher__body { padding-right: 0; }
+  .hero__note { max-width: none; margin-bottom: .7rem; }
+  .hero__fr { border-left: 0; padding-left: 0; }
   .tour-fab { padding: .5rem .85rem .5rem .5rem; font-size: .8rem; }
   .tour-panel { bottom: 4.4rem; padding: .8rem .85rem; padding-right: .85rem; }
   .tour-panel__huong { display: none; }
@@ -1663,7 +1641,7 @@ input[type="number"]:focus, input[type="file"]:focus {
 
 /* Máy yếu / người dùng tắt hiệu ứng: bỏ kính mờ cho đỡ giật */
 @media (prefers-reduced-transparency: reduce) {
-  .glass, .panel, .teacher, .mode-card, .question-card, .result-hero,
+  .glass, .panel, .mode-card, .question-card, .result-hero,
   .kpi, .chapter-item, .history-item, .review-item, .preview-item,
   .topbar, .tour-panel {
     background: var(--surface);
