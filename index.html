@@ -271,6 +271,53 @@
       <div class="badges" id="badgeList"></div>
     </div>
 
+    <div class="duo">
+      <!-- Giờ hai nơi. Lấy theo múi giờ có tên chứ không cộng trừ một số cố
+           định, để mùa hè bên Pháp lùi giờ thì đồng hồ tự đúng. -->
+      <div class="panel">
+        <p class="eyebrow" data-i18n="clock.eyebrow">Hai múi giờ</p>
+        <h2 data-i18n="clock.heading">Bây giờ là</h2>
+        <div class="clock">
+          <span class="clock__place" data-i18n="clock.vn">Việt Nam</span>
+          <b class="clock__time" id="clockVN">--:--:--</b>
+          <small class="clock__date" id="dateVN"></small>
+        </div>
+        <div class="clock">
+          <span class="clock__place" data-i18n="clock.fr">Pháp</span>
+          <b class="clock__time" id="clockFR">--:--:--</b>
+          <small class="clock__date" id="dateFR"></small>
+        </div>
+        <p class="clock__gap" id="clockGap"></p>
+      </div>
+
+      <!-- Thẻ âm nhạc: chọn theo tâm trạng, nghe nhạc do chính tác giả sáng tác -->
+      <div class="panel">
+        <p class="eyebrow" data-i18n="music.eyebrow">Nghe một chút</p>
+        <h2 data-i18n="music.heading">Hôm nay bạn thế nào?</h2>
+        <p class="music__intro" data-i18n="music.intro">Nhạc do cô Đỗ Thùy Hương sáng tác.</p>
+        <div class="moods">
+          <button class="mood" type="button" data-song="soft">
+            <span class="mood__ico" aria-hidden="true">☾</span>
+            <b data-i18n="music.sad">Đang buồn</b>
+          </button>
+          <button class="mood" type="button" data-song="bright">
+            <span class="mood__ico" aria-hidden="true">☀</span>
+            <b data-i18n="music.happy">Đang vui</b>
+          </button>
+          <button class="mood" type="button" data-song="calm">
+            <span class="mood__ico" aria-hidden="true">✦</span>
+            <b data-i18n="music.none">Không gì cả</b>
+          </button>
+        </div>
+        <div class="nowplaying hidden" id="musicNow">
+          <button class="icon-btn" id="musicToggle" type="button"
+                  data-i18n-attr="aria-label:music.toggle">❚❚</button>
+          <span id="musicTitle"></span>
+        </div>
+        <audio id="musicPlayer" preload="none"></audio>
+      </div>
+    </div>
+
   </section>
 
   <!-- ============ THIẾT LẬP ĐỀ ============ -->
