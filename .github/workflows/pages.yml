@@ -6,10 +6,7 @@ name: Xuất bản lên GitHub Pages
 
 on:
   push:
-    # Nhận cả nhánh mặc định cũ: quy tắc bảo vệ của môi trường github-pages
-    # chỉ cho nhánh mặc định triển khai. Sau khi đổi mặc định sang main thì
-    # có thể bỏ nhánh còn lại đi.
-    branches: ["main", "claude/quiz-auto-merge-questions-f61pcd"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
