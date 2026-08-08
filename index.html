@@ -88,7 +88,7 @@
       <button class="icon-btn hidden" id="btnInstall" type="button"
               data-i18n-attr="title:btn.install;aria-label:btn.install"><svg class="ico" aria-hidden="true"><use href="#i-down"/></svg></button>
       <span class="langtog" role="group" data-i18n-attr="aria-label:settings.language">
-        <button type="button" data-lang="vi">VI</button><button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="en">EN</button><button type="button" data-lang="vi">VI</button>
       </span>
       <button class="icon-btn" id="btnTheme" type="button"
               data-i18n-attr="title:btn.theme;aria-label:btn.theme"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></button>
@@ -139,6 +139,15 @@
 
   <!-- ============ TRANG CHỦ ============ -->
   <section class="screen hidden" id="screenHome">
+
+
+    <!-- Mách nước hiện một lần, tắt rồi thì không hiện lại -->
+    <div class="hint hidden" id="homeHint">
+      <svg class="ico hint__ico" aria-hidden="true"><use href="#i-sun"/></svg>
+      <p class="hint__text" data-i18n-html="hint.text"></p>
+      <button class="hint__close" id="hintClose" type="button"
+              data-i18n-attr="aria-label:hint.close;title:hint.close">✕</button>
+    </div>
 
     <div class="hero">
       <div class="hero__map" aria-hidden="true"></div>

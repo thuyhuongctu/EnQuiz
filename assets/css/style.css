@@ -410,6 +410,36 @@ code {
 .panel__head h2 { margin: 0; }
 .back-link { margin-bottom: .8rem; }
 
+/* ---------------- Mách nước cho sinh viên ---------------- */
+.hint {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  margin-bottom: 1rem;
+  padding: .7rem .9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--text-soft);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+.hint__ico { width: 20px; height: 20px; color: var(--primary); flex: 0 0 auto; margin-top: .1rem; }
+.hint__text { margin: 0; flex: 1 1 auto; }
+.hint__text b { color: var(--primary); }
+.hint__close {
+  flex: 0 0 auto;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1;
+  padding: .2rem .3rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.hint__close:hover { color: var(--text); background: var(--glass-2); }
+
 /* ---------------- Hero ---------------- */
 .hero {
   position: relative;
