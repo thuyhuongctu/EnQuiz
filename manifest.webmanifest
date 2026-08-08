@@ -1,7 +1,7 @@
 {
-  "name": "M-AIDA Quiz — Ôn thi Khởi sự doanh nghiệp",
-  "short_name": "M-AIDA Quiz",
-  "description": "M-AIDA Quiz — ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp — 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.",
+  "name": "QStart — Ôn thi Khởi sự doanh nghiệp",
+  "short_name": "QStart",
+  "description": "QStart — ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp — 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.",
   "lang": "vi",
   "dir": "ltr",
   "start_url": "./index.html",

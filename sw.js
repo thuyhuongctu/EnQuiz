@@ -4,7 +4,7 @@
    Đổi CACHE_VERSION mỗi lần phát hành bản mới để trình duyệt
    tải lại toàn bộ tài nguyên thay vì dùng bản đã lưu.
    ========================================================= */
-const CACHE_VERSION = 'maida-quiz-v2';
+const CACHE_VERSION = 'qstart-v3';
 
 const SHELL = [
   './',
