@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="EnQuiz">
+  <!-- Logo EnQuiz dựng lại theo bản vẽ của tác giả: chữ Q có đuôi là dấu tích,
+       đặt trên nền vũ trụ, kèm ngôi sao vàng và một vòng quỹ đạo mờ.
+       Dùng ảnh vector chứ không dùng ảnh bệt: thanh trên cùng chỉ hiện ở 34px
+       còn biểu tượng cài đặt tới 512px, một tệp vector sắc nét ở cả hai đầu
+       mà vẫn nhẹ hơn mọi bản ảnh bệt. -->
+  <defs>
+    <linearGradient id="lgSky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101A3E"/>
+      <stop offset=".55" stop-color="#0B1030"/>
+      <stop offset="1" stop-color="#2A1B45"/>
+    </linearGradient>
+    <!-- Chuyển sắc hologram của áo dài: bạc sang hồng sang lam -->
+    <linearGradient id="lgHolo" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#EDF2FA"/>
+      <stop offset=".45" stop-color="#F09DC6"/>
+      <stop offset="1" stop-color="#62D6F5"/>
+    </linearGradient>
+    <linearGradient id="lgTick" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#F09DC6"/>
+      <stop offset="1" stop-color="#62D6F5"/>
+    </linearGradient>
+    <radialGradient id="lgGlow" cx=".28" cy=".78" r=".7">
+      <stop offset="0" stop-color="#B85585" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#B85585" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="15" fill="url(#lgSky)"/>
+  <rect width="64" height="64" rx="15" fill="url(#lgGlow)"/>
+
+  <!-- vòng quỹ đạo mờ; ở cỡ nhỏ nó chìm đi, không gây rối -->
+  <circle cx="31" cy="31" r="21.5" fill="none" stroke="#8FB6D9" stroke-opacity=".28" stroke-width="1"/>
+
+  <!-- vài chấm sao -->
+  <circle cx="13" cy="14" r="1" fill="#E9EEF7" fill-opacity=".55"/>
+  <circle cx="52" cy="46" r="1" fill="#E9EEF7" fill-opacity=".4"/>
+  <circle cx="17" cy="49" r="1.2" fill="#E9EEF7" fill-opacity=".3"/>
+
+  <!-- Chữ Q: nét mảnh hơn một chút để lòng chữ rộng ra, nếu không thì ở cỡ
+       24px cả chữ bết lại thành một cục tròn. -->
+  <circle cx="28.5" cy="29" r="13.4" fill="none" stroke="url(#lgHolo)" stroke-width="5.6"/>
+
+  <!-- Đuôi chữ Q vẽ thành dấu tích: bắt đầu trong lòng chữ, kết thúc hẳn ra
+       ngoài vòng tròn thì mới đọc ra là dấu tích chứ không phải cái móc. -->
+  <path d="M26 33 L33.5 42.5 L51.5 22.5" fill="none" stroke="url(#lgTick)"
+        stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ngôi sao vàng, đặt lệch để không chạm đuôi dấu tích -->
+  <path d="M50 7.6l1.75 3.66 4.02.56-2.93 2.81.72 3.98-3.56-1.9-3.56 1.9.72-3.98-2.93-2.81 4.02-.56z"
+        fill="#FFD25A"/>
+</svg>
