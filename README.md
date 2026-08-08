@@ -8,9 +8,15 @@ Author: **Do Thuy Huong, PhD Candidate** — [homepage](https://thuyhuongctu.git
 
 Bilingual **English – Vietnamese** interface (opens in English by default),
 **light/dark** themes, a **voice-guided tour narrated by Huong AI**, and it installs
-to the home screen as an app (**PWA**) that works offline. The visual identity —
-palette, typography and the faded Vietnam map background — is shared with the
-[M-AIDA](https://thuyhuongctu.github.io/M-AIDA/) site.
+to the home screen as an app (**PWA**) that works offline.
+
+The look is the **Cosmic** identity: a deep-space background, frosted-glass panels,
+3D raised buttons, and an illustrated guide in *áo dài* — **Huong AI** — who greets
+you on the home screen, stands beside you while you answer, and changes pose with
+your score. A high-tech map of the **Mekong Delta** sits behind the header, and a
+faded map of **Vietnam** watermarks the page, tying the app back to the
+[M-AIDA](https://thuyhuongctu.github.io/M-AIDA/) site. It opens in dark mode by
+default; the light variant keeps the same layout for reading in daylight or on paper.
 
 Everything is plain HTML/CSS/JavaScript — **no install, no build step**.
 
@@ -51,7 +57,8 @@ Vietnamese, as taught in the course.
 - An author card on the home screen linking to the author's homepage.
 - **Huong AI guided tour** — an 8-step tour with spoken narration in Vietnamese and
   English, opening with a French greeting (“Bonjour ! Je m'appelle Hương.”) read in
-  a French voice, highlighting each area as it is introduced. It uses the browser's
+  a French voice, highlighting each area as it is introduced. The illustrated guide
+  stands beside the speech panel and changes pose at each step. It uses the browser's
   built-in Web Speech API, so no audio files are needed; when a device has no voice
   installed the narration still appears as text, so the tour always works.
 - **Copyright protection** — text selection, copying and the right-click menu are
@@ -157,7 +164,7 @@ manifest.webmanifest    installable-app (PWA) declaration
 sw.js                   service worker for offline mode
 assets/css/style.css    light/dark themes, responsive layout
 assets/icons/           app icon set (EnQuiz monogram)
-assets/img/             author photos for the home screen and link previews
+assets/img/             Huong AI poses, the Mekong Delta map, link-preview image
 assets/js/i18n.js       bilingual dictionary and translation engine
 assets/js/storage.js    progress, history and imported sets (localStorage)
 assets/js/bank.js       loads, normalises and auto-merges the question bank
@@ -185,8 +192,21 @@ under the `app.*` and `teacher.*` keys — change them in one place and they upd
 everywhere. You also need to edit `manifest.webmanifest` (the name shown when the
 app is installed) and the `<title>` and `og:*` tags in `index.html`.
 
-Author photos: replace `assets/img/teacher.jpg` (square, used in the author card)
-and `assets/img/teacher-wide.jpg` (landscape, used as the link preview image).
+Artwork lives in `assets/img/`:
+
+| File | Where it appears |
+|---|---|
+| `huong-welcome.webp` | home header, tour greeting |
+| `huong-stand.webp` | author card |
+| `huong-point.webp` | beside the question card while answering |
+| `huong-cheer.webp` | results, score 8 and above |
+| `huong-tablet.webp` | results below the pass mark, and the import step of the tour |
+| `mekong-map.webp` | faded behind the home header |
+| `teacher.jpg` · `teacher-wide.jpg` | tour avatar and the link-preview image |
+
+The character images are transparent WebP. To swap a pose, replace the file and keep
+the name; nothing else needs editing. Pose-to-screen mapping is set in
+`assets/js/tour.js` (`STEPS`, `POSE_SRC`) and in `renderResult()` in `assets/js/app.js`.
 
 ---
 

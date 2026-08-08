@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp — 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.">
 <meta name="author" content="Đỗ Thùy Hương">
-<meta name="theme-color" content="#9e3b4e">
+<meta name="theme-color" content="#eef0fa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
 <title>EnQuiz — Ôn thi Khởi sự doanh nghiệp</title>
 
 <link rel="manifest" href="manifest.webmanifest">
@@ -93,22 +94,28 @@
   <section class="screen hidden" id="screenHome">
 
     <div class="hero">
-      <h1 class="hero__title">
-        <span class="hero__title-sm" data-i18n="home.title">Ôn thi môn</span>
-        <span data-i18n="home.subject">Khởi sự doanh nghiệp</span>
-      </h1>
-      <p class="hero__sub" data-i18n="home.author">Biên soạn: NCS. Đỗ Thùy Hương</p>
-      <div class="hero__stats">
-        <div class="stat"><b id="statTotal">0</b><span data-i18n="home.stat.total">câu hỏi</span></div>
-        <div class="stat"><b id="statChapters">0</b><span data-i18n="home.stat.chapters">chương</span></div>
-        <div class="stat"><b id="statDone">0</b><span data-i18n="home.stat.done">lượt luyện</span></div>
-        <div class="stat"><b id="statBest">–</b><span data-i18n="home.stat.best">điểm cao nhất</span></div>
+      <div class="hero__map" aria-hidden="true"></div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__body">
+        <h1 class="hero__title">
+          <span class="hero__title-sm" data-i18n="home.title">Ôn thi môn</span>
+          <span data-i18n="home.subject">Khởi sự doanh nghiệp</span>
+        </h1>
+        <p class="hero__sub" data-i18n="home.author">Biên soạn: NCS. Đỗ Thùy Hương</p>
+        <div class="hero__stats">
+          <div class="stat"><b id="statTotal">0</b><span data-i18n="home.stat.total">câu hỏi</span></div>
+          <div class="stat"><b id="statChapters">0</b><span data-i18n="home.stat.chapters">chương</span></div>
+          <div class="stat"><b id="statDone">0</b><span data-i18n="home.stat.done">lượt luyện</span></div>
+          <div class="stat"><b id="statBest">–</b><span data-i18n="home.stat.best">điểm cao nhất</span></div>
+        </div>
       </div>
+      <img class="hero__huong" src="assets/img/huong-welcome.webp" width="612" height="1000"
+           loading="lazy" decoding="async" alt="" aria-hidden="true">
     </div>
 
     <div class="teacher">
       <div class="teacher__photo">
-        <img src="assets/img/teacher.jpg" width="640" height="640" loading="lazy" decoding="async"
+        <img src="assets/img/huong-stand.webp" width="320" height="1000" loading="lazy" decoding="async"
              data-i18n-attr="alt:teacher.alt" alt="">
       </div>
       <div class="teacher__body">
@@ -303,20 +310,26 @@
     </div>
     <div class="progress"><div class="progress__bar" id="quizProgress"></div></div>
 
-    <article class="question-card">
-      <div class="question-card__meta">
-        <span class="tag" id="qChapter"></span>
-        <button class="mark-btn" id="btnMark" type="button" data-i18n-attr="title:quiz.markTitle"></button>
-      </div>
-      <h2 class="question-card__text" id="qText"></h2>
-      <div class="options" id="qOptions"></div>
-      <div class="explain hidden" id="qExplain"></div>
-    </article>
+    <div class="quiz-stage">
+      <img class="quiz-huong" src="assets/img/huong-point.webp" width="402" height="1000"
+           loading="lazy" decoding="async" alt="" aria-hidden="true">
+      <div class="quiz-stage__main">
+        <article class="question-card">
+          <div class="question-card__meta">
+            <span class="tag" id="qChapter"></span>
+            <button class="mark-btn" id="btnMark" type="button" data-i18n-attr="title:quiz.markTitle"></button>
+          </div>
+          <h2 class="question-card__text" id="qText"></h2>
+          <div class="options" id="qOptions"></div>
+          <div class="explain hidden" id="qExplain"></div>
+        </article>
 
-    <div class="quiz-nav">
-      <button class="btn btn--ghost" id="btnPrev" type="button">←&nbsp;<span data-i18n="quiz.prev">Câu trước</span></button>
-      <button class="btn btn--primary" id="btnNext" type="button"><span data-i18n="quiz.next">Câu sau</span>&nbsp;→</button>
-      <button class="btn btn--success" id="btnSubmit" type="button" data-i18n="quiz.submit">Nộp bài</button>
+        <div class="quiz-nav">
+          <button class="btn btn--ghost" id="btnPrev" type="button">←&nbsp;<span data-i18n="quiz.prev">Câu trước</span></button>
+          <button class="btn btn--primary" id="btnNext" type="button"><span data-i18n="quiz.next">Câu sau</span>&nbsp;→</button>
+          <button class="btn btn--success" id="btnSubmit" type="button" data-i18n="quiz.submit">Nộp bài</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -329,6 +342,8 @@
       </div>
       <h2 id="resultTitle" data-i18n="result.heading">Kết quả</h2>
       <p class="muted" id="resultSummary"></p>
+      <img class="result-hero__huong" id="resultHuong" src="assets/img/huong-cheer.webp"
+           width="432" height="1000" loading="lazy" decoding="async" alt="" aria-hidden="true">
     </div>
 
     <div class="result-grid">
@@ -429,7 +444,7 @@
 
 <!-- ============ HƯƠNG AI — TOUR CÓ GIỌNG ĐỌC ============ -->
 <button class="tour-fab" id="tourFab" type="button">
-  <img class="tour-fab__avatar" src="assets/img/teacher.jpg" alt="" width="26" height="26">
+  <img class="tour-fab__avatar" src="assets/img/teacher.jpg" alt="" width="30" height="30">
   <span id="tourFabLabel">Hương AI hướng dẫn</span>
 </button>
 
@@ -442,6 +457,8 @@
     </span>
     <button class="icon-btn tour-panel__close" id="tourClose" type="button" aria-label="✕">✕</button>
   </div>
+  <img class="tour-panel__huong" id="tourHuong" src="assets/img/huong-welcome.webp"
+       width="612" height="1000" loading="lazy" decoding="async" alt="" aria-hidden="true">
   <p class="tour-panel__text" id="tourText"></p>
   <div class="tour-panel__nav">
     <button class="btn" id="tourPrev" type="button">← Trước</button>
