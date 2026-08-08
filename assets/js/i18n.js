@@ -25,6 +25,9 @@
       'teacher.fr': "Bonjour ! Je m'appelle Hương.",
       'teacher.alt': 'Ảnh minh hoạ giảng viên Đỗ Thùy Hương đang giảng bài',
 
+      'hint.text': 'Bấm <b>VI</b> ở góc trên để đọc bằng tiếng Việt, và nút <b>trăng/mặt trời</b> để đổi nền sáng — tối.',
+      'hint.close': 'Ẩn gợi ý',
+
       'nav.home': 'Trang chủ',
       'nav.exam': 'Thi thử',
       'nav.practice': 'Ôn theo chương',
@@ -267,6 +270,9 @@
       'teacher.note': 'A short paper every day and the material sticks. Whatever you miss, the app remembers so you can revise exactly that.',
       'teacher.fr': "Bonjour ! Je m'appelle Hương.",
       'teacher.alt': 'Illustration of lecturer Do Thuy Huong teaching a class',
+
+      'hint.text': 'Tap <b>VI</b> in the top corner to read in Vietnamese, and the <b>moon / sun</b> button to switch between light and dark.',
+      'hint.close': 'Hide this tip',
 
       'nav.home': 'Home',
       'nav.exam': 'Mock exam',

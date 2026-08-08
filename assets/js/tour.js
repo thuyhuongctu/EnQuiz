@@ -49,21 +49,30 @@
     }, 180);
   }
 
-  /* Giọng đọc thật do tác giả thu, chỉ có bản tiếng Việt. Bước nào chưa có
-     tệp — hiện là bước thanh điều hướng trên điện thoại — sẽ tự rơi về
-     giọng máy, nên tour không bao giờ đứt. */
-  var AUDIO_DIR = 'assets/audio/vi/';
+  /* Giọng đọc thật do tác giả thu. Hai bộ chưa đủ như nhau: bản tiếng Việt
+     chưa có bước thanh điều hướng trên điện thoại, bản tiếng Anh chưa có
+     bước bản quyền. Chỗ nào thiếu thì tự rơi về giọng máy nên tour không
+     bao giờ đứt quãng. */
   var TRACKS = {
-    'tour.s0': 's0.mp3', 'tour.s1': 's1.mp3', 'tour.s2': 's2.mp3',
-    'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
-    'tour.nav': 'nav.mp3', 'tour.s6': 's6.mp3', 'tour.s7': 's7.mp3',
-    'tour.done': 'done.mp3'
+    vi: {
+      'tour.s0': 's0.mp3', 'tour.s1': 's1.mp3', 'tour.s2': 's2.mp3',
+      'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
+      'tour.nav': 'nav.mp3', 'tour.s6': 's6.mp3', 'tour.s7': 's7.mp3',
+      'tour.done': 'done.mp3'
+    },
+    en: {
+      'tour.s0': 's0.mp3', 'tour.s1': 's1.mp3', 'tour.s2': 's2.mp3',
+      'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
+      'tour.nav': 'nav.mp3', 'tour.navm': 'navm.mp3', 'tour.s6': 's6.mp3',
+      'tour.done': 'done.mp3'
+    }
   };
   var audio = null;
 
   function audioFor(key) {
-    if (global.I18n.lang !== 'vi') return null;
-    return TRACKS[key] ? AUDIO_DIR + TRACKS[key] : null;
+    var lang = global.I18n.lang;
+    var set = TRACKS[lang];
+    return (set && set[key]) ? 'assets/audio/' + lang + '/' + set[key] : null;
   }
 
   function stopAudio(rewind) {
