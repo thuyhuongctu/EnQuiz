@@ -267,6 +267,94 @@ code {
 .icon-btn:active { transform: scale(.94); }
 .lang-btn { font-size: .74rem; font-weight: 800; letter-spacing: .03em; }
 
+/* ---------------- Thanh điều hướng dọc (màn rộng) ---------------- */
+.sidenav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 232px;
+  z-index: 35;
+  display: none;                 /* chỉ bật ở màn đủ rộng, xem media query */
+  flex-direction: column;
+  padding: 5.2rem .7rem 1.2rem;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--glass-stroke);
+  box-shadow: 4px 0 30px rgba(0, 0, 0, .12);
+}
+.sidenav__list { display: flex; flex-direction: column; gap: .25rem; }
+.sidenav__foot { margin-top: auto; }
+.sidenav__item {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  width: 100%;
+  padding: .62rem .8rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-soft);
+  font: 600 .9rem var(--font);
+  text-align: left;
+  cursor: pointer;
+  transition: transform .18s, background .15s, color .15s, box-shadow .18s;
+}
+.sidenav__item:hover {
+  background: var(--glass-2);
+  color: var(--text);
+  transform: translateX(4px);
+  box-shadow: 0 0 16px var(--glow);
+}
+.sidenav__item.is-active {
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 14%, transparent);
+  border-color: color-mix(in srgb, var(--secondary) 45%, transparent);
+  box-shadow: 0 0 18px var(--glow);
+}
+.sidenav__ico { font-size: 1.05rem; line-height: 1; }
+
+/* ---------------- Thanh điều hướng dưới (điện thoại) ---------------- */
+.botnav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  display: flex;
+  justify-content: space-around;
+  gap: .2rem;
+  padding: .35rem .3rem calc(.35rem + env(safe-area-inset-bottom, 0px));
+  /* đặc hơn thẻ kính thường: nội dung cuộn phía sau không lộ lên gây rối chữ */
+  background: color-mix(in srgb, var(--surface) 93%, transparent);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-stroke);
+  border-radius: var(--radius) var(--radius) 0 0;
+  box-shadow: 0 -6px 26px rgba(0, 0, 0, .28);
+}
+.botnav__item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .15rem;
+  padding: .35rem .2rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted);
+  font: 600 .68rem var(--font);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.botnav__item > span:first-child { font-size: 1.15rem; line-height: 1; }
+.botnav__item.is-active {
+  color: var(--tertiary);
+  background: color-mix(in srgb, var(--tertiary) 16%, transparent);
+}
+
 /* ---------------- Layout ---------------- */
 .container {
   max-width: 980px;
@@ -1397,6 +1485,24 @@ input[type="number"]:focus, input[type="file"]:focus {
 }
 
 /* ---------------- Responsive ---------------- */
+
+/* Màn đủ rộng: bật thanh dọc, tắt thanh dưới, đẩy nội dung sang phải */
+@media (min-width: 1100px) {
+  .sidenav { display: flex; }
+  .botnav { display: none; }
+  .container, .footer { margin-left: 232px; }
+  .topbar__inner { max-width: none; padding-left: 1.2rem; padding-right: 1.2rem; }
+}
+
+/* Màn hẹp: thanh dưới chiếm chỗ, chừa đệm để không che nội dung */
+@media (max-width: 1099px) {
+  .container { padding-bottom: 5.5rem; }
+  .footer { padding-bottom: 6rem; }
+  .tour-fab { bottom: 4.6rem; }
+  .toast-wrap { bottom: 4.8rem; }
+  .tour-panel { bottom: 4.6rem; }
+}
+
 @media (max-width: 620px) {
   .hero { flex-direction: column; text-align: center; padding: 1.3rem 1rem; gap: .6rem; }
   .hero__title { font-size: 1.5rem; }
@@ -1417,7 +1523,7 @@ input[type="number"]:focus, input[type="file"]:focus {
   .teacher__photo img { height: 250px; }
   .teacher__body { padding-right: 0; }
   .tour-fab { padding: .5rem .85rem .5rem .5rem; font-size: .8rem; }
-  .tour-panel { bottom: .6rem; padding: .8rem .85rem; padding-right: .85rem; }
+  .tour-panel { bottom: 4.4rem; padding: .8rem .85rem; padding-right: .85rem; }
   .tour-panel__huong { display: none; }
   .footer { text-align: center; justify-content: center; }
   .footer__links { text-align: center; }
@@ -1438,5 +1544,7 @@ input[type="number"]:focus, input[type="file"]:focus {
   html { background: #fff; }
   body::before, #vnmark, .hero__map, .hero__huong,
   .quiz-huong, .result-hero__huong, .tour-panel__huong { display: none !important; }
-  .topbar, .quiz-nav, .actions, .modal, .footer, .toast-wrap, .tour-fab { display: none !important; }
+  .topbar, .quiz-nav, .actions, .modal, .footer, .toast-wrap, .tour-fab,
+  .sidenav, .botnav { display: none !important; }
+  .container { margin-left: 0; padding-bottom: 0; }
 }
