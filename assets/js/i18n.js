@@ -12,11 +12,18 @@
 
   var DICT = {
     vi: {
-      'app.name': 'Khởi sự doanh nghiệp',
-      'app.tagline': 'Ôn thi trắc nghiệm',
-      'app.title': 'Ôn thi Khởi sự doanh nghiệp',
-      'app.desc': 'Ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp — 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.',
+      'app.name': 'M-AIDA Quiz',
+      'app.tagline': 'Ôn thi Khởi sự doanh nghiệp',
+      'app.title': 'M-AIDA Quiz — Ôn thi Khởi sự doanh nghiệp',
+      'app.desc': 'M-AIDA Quiz — ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp: 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.',
       'app.author': 'Đỗ Thùy Hương',
+
+      'teacher.greeting': 'Chào bạn, cùng ôn bài nhé!',
+      'teacher.name': 'NCS. Đỗ Thùy Hương',
+      'teacher.role': 'Giảng viên · Tác giả ngân hàng câu hỏi',
+      'teacher.note': 'Mỗi ngày một đề nhỏ, kiến thức sẽ chắc dần. Sai ở đâu, ứng dụng ghi lại giúp bạn ôn lại đúng chỗ đó.',
+      'teacher.cta': 'Xem trang cá nhân',
+      'teacher.alt': 'Ảnh minh hoạ giảng viên Đỗ Thùy Hương đang giảng bài',
 
       'btn.theme': 'Đổi giao diện sáng/tối',
       'btn.lang': 'Chuyển sang English',
@@ -173,7 +180,7 @@
       'settings.jsonLog': 'Đã thêm {added} câu · trùng {dup} · lỗi {bad}.',
       'settings.language': 'Ngôn ngữ',
 
-      'footer.line1': 'Ứng dụng ôn tập môn <b>Khởi sự doanh nghiệp</b> · Tác giả: NCS. Đỗ Thùy Hương',
+      'footer.line1': '<b>M-AIDA Quiz</b> — ôn tập môn Khởi sự doanh nghiệp · Tác giả: NCS. Đỗ Thùy Hương',
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
       'footer.link': 'Trang cá nhân của tác giả',
 
@@ -188,11 +195,18 @@
     },
 
     en: {
-      'app.name': 'Entrepreneurship',
-      'app.tagline': 'Quiz practice',
-      'app.title': 'Entrepreneurship Quiz Practice',
-      'app.desc': 'Multiple-choice practice app for an Entrepreneurship course — 300 questions, timed mock exams, and review of missed questions.',
+      'app.name': 'M-AIDA Quiz',
+      'app.tagline': 'Entrepreneurship practice',
+      'app.title': 'M-AIDA Quiz — Entrepreneurship Practice',
+      'app.desc': 'M-AIDA Quiz — a multiple-choice practice app for an Entrepreneurship course: 300 questions, timed mock exams, and review of missed questions.',
       'app.author': 'Do Thuy Huong',
+
+      'teacher.greeting': 'Hello — let us revise together!',
+      'teacher.name': 'Do Thuy Huong, PhD Candidate',
+      'teacher.role': 'Lecturer · Author of the question bank',
+      'teacher.note': 'A short paper every day and the material sticks. Whatever you miss, the app remembers so you can revise exactly that.',
+      'teacher.cta': 'Visit homepage',
+      'teacher.alt': 'Illustration of lecturer Do Thuy Huong teaching a class',
 
       'btn.theme': 'Toggle light/dark theme',
       'btn.lang': 'Chuyển sang Tiếng Việt',
@@ -349,7 +363,7 @@
       'settings.jsonLog': 'Added {added} · duplicates {dup} · errors {bad}.',
       'settings.language': 'Language',
 
-      'footer.line1': '<b>Entrepreneurship</b> quiz practice · by Do Thuy Huong, PhD Candidate',
+      'footer.line1': '<b>M-AIDA Quiz</b> — Entrepreneurship practice · by Do Thuy Huong, PhD Candidate',
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',
       'footer.link': "Author's homepage",
 

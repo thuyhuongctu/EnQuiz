@@ -1,6 +1,6 @@
-# Ôn thi trắc nghiệm — Khởi sự doanh nghiệp
+# M-AIDA Quiz — Ôn thi Khởi sự doanh nghiệp
 
-Ứng dụng web ôn tập trắc nghiệm môn **Khởi sự doanh nghiệp**.
+Ứng dụng web ôn tập trắc nghiệm môn **Khởi sự doanh nghiệp**, thuộc bộ sản phẩm **M-AIDA**.
 Tác giả: **NCS. Đỗ Thùy Hương** — [trang cá nhân](https://thuyhuongctu.github.io/M-AIDA/huong.html).
 
 Giao diện **song ngữ Việt – English**, có chế độ **sáng/tối**, và cài được lên
@@ -43,6 +43,7 @@ Giao diện có bản tiếng Anh; nội dung câu hỏi giữ nguyên tiếng V
 - Song ngữ Việt/English, giao diện sáng/tối, dùng tốt trên điện thoại;
   hỗ trợ phím tắt `A/B/C/D` và `←/→`.
 - Cài được như ứng dụng trên điện thoại và máy tính, chạy offline.
+- Khối giới thiệu giảng viên ngay trang chủ, kèm liên kết tới trang cá nhân.
 
 ---
 
@@ -140,7 +141,8 @@ index.html              giao diện và toàn bộ màn hình
 manifest.webmanifest    khai báo ứng dụng cài đặt được (PWA)
 sw.js                   service worker cho chế độ offline
 assets/css/style.css    giao diện sáng/tối, bố cục responsive
-assets/icons/           bộ biểu tượng ứng dụng
+assets/icons/           bộ biểu tượng ứng dụng (monogram M-AIDA)
+assets/img/             ảnh giảng viên dùng ở trang chủ và ảnh xem trước khi chia sẻ
 assets/js/i18n.js       từ điển song ngữ và cơ chế dịch giao diện
 assets/js/storage.js    lưu tiến độ, lịch sử, bộ đề tự nhập (localStorage)
 assets/js/bank.js       nạp, chuẩn hoá và gộp tự động ngân hàng câu hỏi
@@ -160,7 +162,20 @@ câu đã đánh dấu và bộ đề tự nhập chỉ nằm trong trình duy�
 
 ---
 
+## Đổi tên sản phẩm hoặc thông tin tác giả
+
+Tên sản phẩm, khẩu hiệu và toàn bộ phần giới thiệu giảng viên nằm trong
+`assets/js/i18n.js` ở các khoá `app.*` và `teacher.*` — sửa một chỗ là đổi khắp
+ứng dụng. Ngoài ra cần sửa thêm `manifest.webmanifest` (tên hiển thị khi cài app)
+và thẻ `<title>`, `og:*` trong `index.html`.
+
+Ảnh giảng viên: thay `assets/img/teacher.jpg` (ảnh vuông, dùng cho khối giới thiệu)
+và `assets/img/teacher-wide.jpg` (ảnh ngang, dùng làm ảnh xem trước khi chia sẻ link).
+
+---
+
 ## Bản quyền
 
-© 2026 Đỗ Thùy Hương. Mã nguồn và nội dung câu hỏi thuộc quyền tác giả.
-Vui lòng liên hệ tác giả trước khi sao chép hoặc phân phối lại.
+© 2026 Đỗ Thùy Hương. Tên gọi **M-AIDA Quiz**, mã nguồn, giao diện và nội dung
+ngân hàng câu hỏi thuộc quyền tác giả. Vui lòng liên hệ tác giả trước khi sao chép
+hoặc phân phối lại.
