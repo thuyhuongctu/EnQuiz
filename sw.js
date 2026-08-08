@@ -4,7 +4,7 @@
    Đổi CACHE_VERSION mỗi lần phát hành bản mới để trình duyệt
    tải lại toàn bộ tài nguyên thay vì dùng bản đã lưu.
    ========================================================= */
-const CACHE_VERSION = 'enquiz-v23';
+const CACHE_VERSION = 'enquiz-v24';
 
 const SHELL = [
   './',
@@ -44,6 +44,7 @@ const SHELL = [
   './assets/img/teacher.jpg',
   './assets/img/teacher-wide.jpg',
   './assets/img/mekong-map.webp',
+  './assets/img/brand-lockup.webp',
   './assets/img/huong-stand.webp',
   './assets/img/huong-welcome.webp',
   './assets/img/huong-point.webp',
