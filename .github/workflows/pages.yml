@@ -6,9 +6,7 @@ name: Xuất bản lên GitHub Pages
 
 on:
   push:
-    # Môi trường github-pages vẫn chỉ cho nhánh dưới đây triển khai.
-    # Sau khi mở quyền cho main trong Settings > Environments thì bỏ nhánh cũ.
-    branches: ["main", "claude/quiz-auto-merge-questions-f61pcd"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
