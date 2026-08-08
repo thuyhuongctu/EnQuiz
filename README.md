@@ -1,10 +1,15 @@
-# Ôn thi trắc nghiệm — EC1606 Khởi sự doanh nghiệp
+# Ôn thi trắc nghiệm — Khởi sự doanh nghiệp
 
-Ứng dụng web ôn tập trắc nghiệm cho học phần **EC1606 – Khởi sự doanh nghiệp**,
-Trường Đại học Sư phạm Kỹ thuật Vĩnh Long. Giảng viên: **NCS. Đỗ Thuý Hương**.
+Ứng dụng web ôn tập trắc nghiệm môn **Khởi sự doanh nghiệp**.
+Tác giả: **NCS. Đỗ Thùy Hương** — [trang cá nhân](https://thuyhuongctu.github.io/M-AIDA/huong.html).
 
-Toàn bộ ứng dụng là HTML/CSS/JavaScript thuần — **không cần cài đặt, không cần build**.
-Mở tệp `index.html` là chạy được, kể cả khi không có mạng.
+Giao diện **song ngữ Việt – English**, có chế độ **sáng/tối**, và cài được lên
+màn hình chính như một ứng dụng (**PWA**), dùng được cả khi không có mạng.
+
+Toàn bộ là HTML/CSS/JavaScript thuần — **không cần cài đặt, không cần build**.
+
+*A bilingual (Vietnamese/English) multiple-choice practice app for an
+Entrepreneurship course. Installable as a PWA, works offline, no build step.*
 
 ---
 
@@ -19,7 +24,7 @@ Mở tệp `index.html` là chạy được, kể cả khi không có mạng.
 | 5 | Marketing cho doanh nghiệp mới | 60 |
 | | **Tổng cộng** | **300** |
 
-Nội dung câu hỏi và đáp án lấy từ bộ đề trắc nghiệm của học phần.
+Giao diện có bản tiếng Anh; nội dung câu hỏi giữ nguyên tiếng Việt.
 
 ---
 
@@ -28,14 +33,16 @@ Nội dung câu hỏi và đáp án lấy từ bộ đề trắc nghiệm của 
 - **Thi thử** — rút đề ngẫu nhiên, đặt số câu và thời gian, có đồng hồ đếm ngược,
   tự động nộp bài khi hết giờ, chấm điểm theo thang 10.
 - **Ôn tập theo chương** — chọn phạm vi, hiện đáp án đúng ngay sau mỗi lựa chọn.
-- **Luyện câu sai** — hệ thống tự ghi nhớ các câu từng trả lời sai; trả lời đúng thì
-  câu đó được gỡ khỏi danh sách.
+- **Luyện câu sai** — tự ghi nhớ các câu từng trả lời sai; trả lời đúng thì câu đó
+  được gỡ khỏi danh sách.
 - **Đánh dấu câu hỏi** để xem lại sau.
-- **Ghép đề & đáp án** — dán câu hỏi từ PDF vào một ô, dán danh sách đáp án vào ô kia,
+- **Ghép đề & đáp án** — dán câu hỏi vào một ô, dán danh sách đáp án vào ô kia,
   ứng dụng tự khớp và nhập vào ngân hàng (xem bên dưới).
 - **Xem lại bài làm** chi tiết từng câu, kèm thống kê theo chương.
 - Lưu tiến độ, lịch sử làm bài và bộ đề tự nhập bằng `localStorage`.
-- Giao diện sáng/tối, dùng tốt trên điện thoại; hỗ trợ phím tắt `A/B/C/D` và `←/→`.
+- Song ngữ Việt/English, giao diện sáng/tối, dùng tốt trên điện thoại;
+  hỗ trợ phím tắt `A/B/C/D` và `←/→`.
+- Cài được như ứng dụng trên điện thoại và máy tính, chạy offline.
 
 ---
 
@@ -43,7 +50,8 @@ Nội dung câu hỏi và đáp án lấy từ bộ đề trắc nghiệm của 
 
 **Cách nhanh nhất:** tải mã nguồn về rồi mở tệp `index.html` bằng trình duyệt.
 
-**Chạy qua máy chủ cục bộ** (khuyến nghị khi phát triển):
+**Chạy qua máy chủ cục bộ** (khuyến nghị khi phát triển — cần thiết để bật chế độ
+ứng dụng offline):
 
 ```bash
 python3 -m http.server 8000
@@ -52,6 +60,10 @@ python3 -m http.server 8000
 
 **Đưa lên GitHub Pages:** vào `Settings → Pages`, chọn nhánh cần xuất bản và thư mục
 gốc (`/root`). Không cần bước build nào khác.
+
+**Cài như ứng dụng:** mở trang bằng Chrome/Edge/Safari rồi chọn *Cài đặt ứng dụng*
+(hoặc *Thêm vào màn hình chính*). Nút ⬇️ trên thanh trên cùng cũng hiện ra khi
+trình duyệt cho phép cài.
 
 ---
 
@@ -87,6 +99,7 @@ Có thể xoá lại từng bộ trong cùng màn hình.
    registerBank({
      id: 'ch06',
      title: 'Chương 6 – Tên chương',
+     titleEn: 'Chapter 6 – Chapter name',   // tuỳ chọn, dùng cho giao diện tiếng Anh
      order: 6,
      questions: [
        {
@@ -100,6 +113,8 @@ Có thể xoá lại từng bộ trong cùng màn hình.
    ```
 
 2. Khai báo tên tệp vào mảng trong `data/manifest.js`.
+3. Thêm đường dẫn tệp vào danh sách `SHELL` trong `sw.js` và tăng `CACHE_VERSION`
+   để bản offline được cập nhật.
 
 Ứng dụng sẽ tự nạp và gộp, đồng thời loại bỏ các câu trùng nội dung — không phải sửa
 thêm dòng mã nào khác. Trường `c` cũng chấp nhận `"B"`, `"2"` hoặc chính nguyên văn
@@ -107,11 +122,26 @@ phương án đúng.
 
 ---
 
+## Thêm hoặc sửa ngôn ngữ giao diện
+
+Mọi chuỗi hiển thị nằm trong `assets/js/i18n.js`, gom theo khoá. Thêm một ngôn ngữ
+mới bằng cách bổ sung một khối vào `DICT` với đầy đủ khoá như bản `vi`.
+
+Trong HTML, phần tử tĩnh được dịch qua thuộc tính `data-i18n="khoá"`
+(hoặc `data-i18n-html` khi chuỗi có thẻ HTML, `data-i18n-attr="title:khoá"` cho
+thuộc tính). Trong JavaScript dùng `t('khoá', { biến: giá_trị })`.
+
+---
+
 ## Cấu trúc thư mục
 
 ```
 index.html              giao diện và toàn bộ màn hình
+manifest.webmanifest    khai báo ứng dụng cài đặt được (PWA)
+sw.js                   service worker cho chế độ offline
 assets/css/style.css    giao diện sáng/tối, bố cục responsive
+assets/icons/           bộ biểu tượng ứng dụng
+assets/js/i18n.js       từ điển song ngữ và cơ chế dịch giao diện
 assets/js/storage.js    lưu tiến độ, lịch sử, bộ đề tự nhập (localStorage)
 assets/js/bank.js       nạp, chuẩn hoá và gộp tự động ngân hàng câu hỏi
 assets/js/parser.js     bóc tách câu hỏi/đáp án từ văn bản dán vào
@@ -127,3 +157,10 @@ data/ch01.js … ch05.js  ngân hàng câu hỏi theo chương
 Ứng dụng không có máy chủ và không gửi dữ liệu đi bất kỳ đâu. Kết quả làm bài, câu sai,
 câu đã đánh dấu và bộ đề tự nhập chỉ nằm trong trình duyệt trên máy người dùng. Nút
 *Xoá toàn bộ dữ liệu* trong phần Cài đặt sẽ xoá sạch những dữ liệu này.
+
+---
+
+## Bản quyền
+
+© 2026 Đỗ Thùy Hương. Mã nguồn và nội dung câu hỏi thuộc quyền tác giả.
+Vui lòng liên hệ tác giả trước khi sao chép hoặc phân phối lại.

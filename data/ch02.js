@@ -1,9 +1,10 @@
 /* Chương 2 – Đánh giá cơ hội, ý tưởng phát triển kế hoạch kinh doanh
-   Nguồn: ngân hàng câu hỏi học phần EC1606 (60 câu/chương).
+   Nguồn: ngân hàng câu hỏi học phần (60 câu/chương).
    Tệp này được sinh tự động — sửa nội dung tại nguồn rồi tạo lại. */
 registerBank({
   "id": "ch02",
   "title": "Chương 2 – Đánh giá cơ hội, ý tưởng phát triển kế hoạch kinh doanh",
+  "titleEn": "Chapter 2 – Assessing opportunities and developing a business plan",
   "order": 2,
   "questions": [
     {

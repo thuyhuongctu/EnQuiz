@@ -1,9 +1,10 @@
 /* Chương 1 – Tổng quan về khởi sự doanh nghiệp
-   Nguồn: ngân hàng câu hỏi học phần EC1606 (60 câu/chương).
+   Nguồn: ngân hàng câu hỏi học phần (60 câu/chương).
    Tệp này được sinh tự động — sửa nội dung tại nguồn rồi tạo lại. */
 registerBank({
   "id": "ch01",
   "title": "Chương 1 – Tổng quan về khởi sự doanh nghiệp",
+  "titleEn": "Chapter 1 – Overview of starting a business",
   "order": 1,
   "questions": [
     {

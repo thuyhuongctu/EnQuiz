@@ -1,9 +1,10 @@
 /* Chương 4 – Lựa chọn mô hình kinh doanh
-   Nguồn: ngân hàng câu hỏi học phần EC1606 (60 câu/chương).
+   Nguồn: ngân hàng câu hỏi học phần (60 câu/chương).
    Tệp này được sinh tự động — sửa nội dung tại nguồn rồi tạo lại. */
 registerBank({
   "id": "ch04",
   "title": "Chương 4 – Lựa chọn mô hình kinh doanh",
+  "titleEn": "Chapter 4 – Choosing a business model",
   "order": 4,
   "questions": [
     {
@@ -427,7 +428,7 @@ registerBank({
       "c": 0
     },
     {
-      "q": "Một Startup công nghệ tại VLUTE muốn huy động vốn từ nhiều nhà đầu tư nhỏ nên chọn:",
+      "q": "Một startup công nghệ muốn huy động vốn từ nhiều nhà đầu tư nhỏ nên chọn:",
       "a": [
         "Hộ kinh doanh cá thể.",
         "Công ty Cổ phần.",
