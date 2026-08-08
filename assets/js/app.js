@@ -115,6 +115,15 @@
 
     renderChapterList();
     renderHistory();
+    renderHint();
+  }
+
+  /* Mách nước đổi ngôn ngữ và nền sáng/tối. Hiện cho tới khi người dùng tự
+     tắt, vì phần lớn sinh viên chỉ mở ứng dụng vài lần trước kỳ thi. */
+  function renderHint() {
+    var el = $('#homeHint');
+    if (!el) return;
+    el.classList.toggle('hidden', Store.get('hintSeen') === true);
   }
 
   function renderChapterList() {
@@ -887,6 +896,11 @@
     $('#btnTheme').addEventListener('click', function () {
       applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
+    $('#hintClose').addEventListener('click', function () {
+      Store.set('hintSeen', true);
+      $('#homeHint').classList.add('hidden');
+    });
+
     $('#btnSettings').addEventListener('click', function () {
       renderBankInfo();
       $('#modalSettings').classList.remove('hidden');
