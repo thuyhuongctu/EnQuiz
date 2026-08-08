@@ -3,6 +3,8 @@
 **EnQuiz** (Entrepreneurship + Quiz) là ứng dụng web ôn tập trắc nghiệm môn **Khởi sự doanh nghiệp**.
 Tác giả: **NCS. Đỗ Thùy Hương** — [trang cá nhân](https://thuyhuongctu.github.io/M-AIDA/huong.html).
 
+▶️ **Dùng ngay: https://thuyhuongctu.github.io/EC1606_KSDN-2026/**
+
 Giao diện **song ngữ Việt – English**, có chế độ **sáng/tối**, và cài được lên
 màn hình chính như một ứng dụng (**PWA**), dùng được cả khi không có mạng.
 
@@ -59,8 +61,9 @@ python3 -m http.server 8000
 # rồi mở http://localhost:8000
 ```
 
-**Đưa lên GitHub Pages:** vào `Settings → Pages`, chọn nhánh cần xuất bản và thư mục
-gốc (`/root`). Không cần bước build nào khác.
+**GitHub Pages:** đã bật sẵn. Mỗi lần đẩy mã lên nhánh chính, workflow
+`.github/workflows/pages.yml` tự dựng lại và xuất bản trang tại
+<https://thuyhuongctu.github.io/EC1606_KSDN-2026/> — không cần thao tác thủ công.
 
 **Cài như ứng dụng:** mở trang bằng Chrome/Edge/Safari rồi chọn *Cài đặt ứng dụng*
 (hoặc *Thêm vào màn hình chính*). Nút ⬇️ trên thanh trên cùng cũng hiện ra khi
