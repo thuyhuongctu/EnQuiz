@@ -199,10 +199,13 @@
      Thẻ âm nhạc
      ======================================================= */
 
+  /* Buồn và vui dùng chung một bản không lời: trong kho nhạc của cô chỉ có
+     đúng một bản hoà tấu, mà nghe nhạc có lời lúc ôn bài thì phân tâm. */
+  var WORDLESS = 'assets/audio/song/instrumental.mp3';
   var SONGS = {
-    soft:   { file: 'assets/audio/song/soft.mp3',   key: 'music.t.soft' },
-    bright: { file: 'assets/audio/song/bright.mp3', key: 'music.t.bright' },
-    calm:   { file: 'assets/audio/song/calm.mp3',   key: 'music.t.calm' }
+    soft:   { file: WORDLESS, key: 'music.t.instr' },
+    bright: { file: WORDLESS, key: 'music.t.instr' },
+    calm:   { file: 'assets/audio/song/calm.mp3', key: 'music.t.calm' }
   };
 
   function playMood(mood) {
@@ -211,9 +214,12 @@
     if (!s || !au) return;
 
     if (au.dataset.mood === mood && !au.paused) { au.pause(); syncMusic(); return; }
-    if (au.dataset.mood !== mood) {
+    au.dataset.mood = mood;
+    // So theo tên tệp chứ không theo tâm trạng: đổi giữa hai nút cùng một bài
+    // thì nhạc chạy tiếp, không giật về đầu.
+    if (au.dataset.file !== s.file) {
       au.src = s.file;
-      au.dataset.mood = mood;
+      au.dataset.file = s.file;
     }
     au.play().catch(function () { /* trình duyệt chặn thì thôi, không báo lỗi */ });
     syncMusic();
