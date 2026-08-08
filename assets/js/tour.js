@@ -21,6 +21,10 @@
     { key: 'tour.s3', target: '.modes', pose: 'point' },
     { key: 'tour.s4', target: '[data-mode="import"]', pose: 'tablet' },
     { key: 'tour.s5', target: '#chapterList', pose: 'point' },
+    // Chỉ một trong hai bước dưới đây hiện ra: thanh dọc có ở màn rộng,
+    // thanh dưới có ở màn hẹp; bước nào không nhìn thấy thì bị lọc bỏ.
+    { key: 'tour.nav', target: '.sidenav', pose: 'point' },
+    { key: 'tour.navm', target: '.botnav', pose: 'point' },
     { key: 'tour.s6', target: '.topbar__actions', pose: 'tablet' },
     { key: 'tour.s7', target: '.footer', pose: 'welcome' }
   ];
