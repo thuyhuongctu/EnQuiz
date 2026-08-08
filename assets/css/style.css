@@ -404,6 +404,112 @@ code {
   margin-bottom: 1.1rem;
 }
 .panel h2 { font-size: 1.05rem; }
+
+/* Nhãn nhỏ in hoa đặt trên tiêu đề mục, kèm một vạch ngắn cùng màu —
+   cho mỗi khối một điểm neo thị giác thay vì chỉ có chữ đậm. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 .3rem;
+  font-family: var(--mono);
+  font-size: .64rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--tertiary);
+}
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+/* ---------------- Lời gợi ý sau bài làm ---------------- */
+.insight {
+  display: flex;
+  gap: .9rem;
+  align-items: flex-start;
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 1.1rem;
+  background: color-mix(in srgb, var(--primary) 9%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--primary) 38%, transparent);
+  box-shadow: var(--shadow-sm), 0 0 26px var(--glow);
+}
+.insight__avatar {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid color-mix(in srgb, var(--primary) 55%, transparent);
+}
+.insight__body { min-width: 0; }
+.insight__eyebrow {
+  margin: 0 0 .25rem;
+  font-family: var(--mono);
+  font-size: .66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--primary);
+}
+.insight__text { margin: 0; font-size: .93rem; line-height: 1.6; }
+.insight__cta { margin-top: .7rem; }
+
+/* ---------------- Huy hiệu ---------------- */
+.badges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .7rem;
+}
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .35rem;
+  padding: .9rem .5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  /* Chưa mở thì mờ và xám, nhưng vẫn đọc được tên để biết đích cần tới */
+  opacity: .55;
+  filter: grayscale(1);
+  transition: opacity .25s, filter .25s, transform .25s, box-shadow .25s;
+}
+.badge.is-got {
+  opacity: 1;
+  filter: none;
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  background: color-mix(in srgb, var(--gold) 10%, var(--surface));
+  box-shadow: 0 0 20px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+.badge:hover { opacity: 1; filter: none; transform: translateY(-2px); }
+.badge__ico {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.badge.is-got .badge__ico {
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+.badge__ico .ico { width: 19px; height: 19px; }
+.badge b { font-size: .84rem; }
+.badge small {
+  font-size: .68rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
 .panel__head {
   display: flex;
   align-items: center;
@@ -1734,6 +1840,8 @@ input[type="number"]:focus, input[type="file"]:focus {
   .brand__text small { display: none; }
   .import-grid { grid-template-columns: 1fr; }
   textarea { min-height: 190px; }
+  .badges { grid-template-columns: repeat(2, 1fr); }
+  .insight { flex-direction: column; }
   .hero__note { max-width: none; margin-bottom: .7rem; }
   .hero__fr { border-left: 0; padding-left: 0; }
   .tour-fab { padding: .5rem .85rem .5rem .5rem; font-size: .8rem; }

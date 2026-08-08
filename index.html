@@ -236,7 +236,10 @@
 
     <div class="panel">
       <div class="panel__head">
-        <h2 data-i18n="chapters.heading">Danh sách chương</h2>
+        <div>
+          <p class="eyebrow" data-i18n="chapters.eyebrow">Nội dung học phần</p>
+          <h2 data-i18n="chapters.heading">Danh sách chương</h2>
+        </div>
         <button class="btn btn--ghost btn--sm" id="btnAllChapters" type="button" data-i18n="chapters.all">Ôn tất cả</button>
       </div>
       <div class="chapter-list" id="chapterList"></div>
@@ -244,10 +247,19 @@
 
     <div class="panel" id="panelHistory">
       <div class="panel__head">
-        <h2 data-i18n="history.heading">Lịch sử làm bài</h2>
+        <div>
+          <p class="eyebrow" data-i18n="history.eyebrow">Nhật ký luyện tập</p>
+          <h2 data-i18n="history.heading">Lịch sử làm bài</h2>
+        </div>
         <button class="btn btn--ghost btn--sm" id="btnClearHistory" type="button" data-i18n="history.clear">Xoá lịch sử</button>
       </div>
       <div class="history" id="historyList"></div>
+    </div>
+
+    <div class="panel">
+      <p class="eyebrow" data-i18n="badge.eyebrow">Chặng đường</p>
+      <h2 data-i18n="badge.heading">Thành tựu học tập</h2>
+      <div class="badges" id="badgeList"></div>
     </div>
 
   </section>
@@ -331,8 +343,8 @@
       </div>
 
       <div class="actions actions--wrap">
-        <button class="btn btn--primary" id="btnImpAnalyze" type="button" data-i18n="import.analyze">🔍 Phân tích thử</button>
-        <button class="btn btn--success" id="btnImpSave" type="button" disabled data-i18n="import.save">💾 Ghép &amp; lưu</button>
+        <button class="btn btn--primary" id="btnImpAnalyze" type="button" data-i18n="import.analyze">Phân tích thử</button>
+        <button class="btn btn--success" id="btnImpSave" type="button" disabled data-i18n="import.save">Ghép &amp; lưu</button>
         <button class="btn btn--ghost" id="btnImpClear" type="button" data-i18n="import.clear">Xoá ô nhập</button>
       </div>
 
@@ -421,8 +433,19 @@
     </div>
 
     <div class="panel">
+      <p class="eyebrow" data-i18n="result.eyebrow">Phân tích bài làm</p>
       <h2 data-i18n="result.byChapter">Thống kê theo chương</h2>
       <div class="bychapter" id="resByChapter"></div>
+    </div>
+
+    <!-- Lời khuyên rút từ chính bài vừa làm: chương yếu nhất và lối đi tiếp -->
+    <div class="insight hidden" id="resInsight">
+      <img class="insight__avatar" src="assets/img/vest-avatar.webp" alt="" width="44" height="44">
+      <div class="insight__body">
+        <p class="insight__eyebrow" data-i18n="insight.title">Hương AI gợi ý</p>
+        <p class="insight__text" id="insightText"></p>
+        <button class="btn btn--sm insight__cta hidden" id="insightCta" type="button"></button>
+      </div>
     </div>
 
     <div class="actions actions--wrap">
