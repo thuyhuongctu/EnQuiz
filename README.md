@@ -2,7 +2,7 @@
 
 **EnQuiz** (Entrepreneurship + Quiz) is a web app for revising an
 **Entrepreneurship** course through multiple-choice practice.
-Author: **Do Thuy Huong, PhD Candidate** — [homepage](https://thuyhuongctu.github.io/M-AIDA/huong.html).
+Author: **Do Thuy Huong, PhD Candidate**.
 
 ▶️ **Live app: https://thuyhuongctu.github.io/EnQuiz/**
 
@@ -54,7 +54,7 @@ Vietnamese, as taught in the course.
 - English/Vietnamese, light/dark, works well on phones; keyboard shortcuts
   `A/B/C/D` and `←/→`.
 - Installable as an app on phones and desktops, and runs offline.
-- An author card on the home screen linking to the author's homepage.
+- An author card on the home screen.
 - **Huong AI guided tour** — an 8-step tour with spoken narration in Vietnamese and
   English, opening with a French greeting (“Bonjour ! Je m'appelle Hương.”) read in
   a French voice, highlighting each area as it is introduced. The illustrated guide
