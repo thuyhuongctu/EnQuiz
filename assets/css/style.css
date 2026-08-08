@@ -482,22 +482,23 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
 .stat span { font-size: .7rem; color: var(--muted); }
 
 /* ---------------- Giới thiệu giảng viên ---------------- */
-/* Nhân vật đứng nép góc phải để phần chữ trải hết bề ngang,
-   nhờ vậy thẻ không bị kéo cao và không thừa khoảng trống. */
+/* Nhân vật đứng nép góc phải để phần chữ trải hết bề ngang.
+   Thẻ đủ cao để nhìn thấy trọn người từ đầu tới chân, không cắt cụt. */
 .teacher {
   position: relative;
+  display: flex;
+  align-items: center;           /* chữ căn giữa theo chiều cao cho cân với người */
   border-radius: var(--radius);
   padding: 1.1rem 1.2rem;
   margin-bottom: 1.2rem;
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  /* đủ cao để nhân vật đứng lọt cả người, không bị cụt đầu */
-  min-height: 240px;
+  min-height: 320px;
 }
 .teacher__photo {
   position: absolute;
-  right: 1rem;
-  bottom: -22px;
+  right: 1.1rem;
+  bottom: 10px;                  /* chạm đất trong thẻ, không tràn ra ngoài mép */
   width: auto;
   pointer-events: none;
 }
@@ -505,20 +506,20 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 4px;
+  bottom: -4px;
   transform: translateX(-50%);
-  width: 82%;
-  height: 14px;
+  width: 88%;
+  height: 15px;
   border-radius: 50%;
   background: radial-gradient(ellipse, var(--glow) 0%, transparent 70%);
 }
 .teacher__photo img {
-  height: 258px;
+  height: 300px;
   width: auto;
   display: block;
   filter: drop-shadow(0 10px 22px var(--glow));
 }
-.teacher__body { min-width: 0; padding-right: 112px; }
+.teacher__body { min-width: 0; flex: 1 1 auto; padding-right: 124px; }
 .teacher__greeting {
   margin: 0 0 .15rem;
   font-size: 1.06rem;
