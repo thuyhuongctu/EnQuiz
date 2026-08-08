@@ -199,43 +199,29 @@
      Thẻ âm nhạc
      ======================================================= */
 
-  /* Buồn và vui dùng chung một bản không lời: trong kho nhạc của cô chỉ có
-     đúng một bản hoà tấu, mà nghe nhạc có lời lúc ôn bài thì phân tâm. */
-  var WORDLESS = 'assets/audio/song/instrumental.mp3';
-  var SONGS = {
-    soft:   { file: WORDLESS, key: 'music.t.instr' },
-    bright: { file: WORDLESS, key: 'music.t.instr' },
-    calm:   { file: 'assets/audio/song/calm.mp3', key: 'music.t.calm' }
-  };
+  /* Cả app chỉ có đúng một bài: Golden Silt Route, nhạc và lời của cô. Tệp nhạc
+     nằm ngoài danh sách nạp sẵn, chỉ tải khi sinh viên bấm nghe. */
 
-  function playMood(mood) {
-    var s = SONGS[mood];
+  function clock(sec) {
+    sec = Math.max(0, Math.floor(sec || 0));
+    return Math.floor(sec / 60) + ':' + ('0' + (sec % 60)).slice(-2);
+  }
+
+  function toggleMusic() {
     var au = $('#musicPlayer');
-    if (!s || !au) return;
-
-    if (au.dataset.mood === mood && !au.paused) { au.pause(); syncMusic(); return; }
-    au.dataset.mood = mood;
-    // So theo tên tệp chứ không theo tâm trạng: đổi giữa hai nút cùng một bài
-    // thì nhạc chạy tiếp, không giật về đầu.
-    if (au.dataset.file !== s.file) {
-      au.src = s.file;
-      au.dataset.file = s.file;
-    }
-    au.play().catch(function () { /* trình duyệt chặn thì thôi, không báo lỗi */ });
+    if (!au) return;
+    if (au.paused) au.play().catch(function () { /* trình duyệt chặn thì thôi */ });
+    else au.pause();
     syncMusic();
   }
 
   function syncMusic() {
     var au = $('#musicPlayer');
     if (!au) return;
-    var mood = au.dataset.mood;
-    var on = !!mood && !au.paused;
-    $('#musicNow').classList.toggle('hidden', !mood);
-    $('#musicTitle').textContent = mood ? t(SONGS[mood].key) : '';
+    var on = !au.paused;
     $('#musicToggle').textContent = on ? '❚❚' : '▶';
-    $$('.mood').forEach(function (b) {
-      b.classList.toggle('is-on', b.dataset.song === mood && on);
-    });
+    $('#musicToggle').classList.toggle('is-on', on);
+    $('#musicTime').textContent = clock(au.currentTime);
   }
 
   function renderHome() {
@@ -1085,15 +1071,8 @@
       $('#homeHint').classList.add('hidden');
     });
 
-    $$('.mood').forEach(function (b) {
-      b.addEventListener('click', function () { playMood(b.dataset.song); });
-    });
-    $('#musicToggle').addEventListener('click', function () {
-      var au = $('#musicPlayer');
-      if (au.paused) au.play().catch(function () {}); else au.pause();
-      syncMusic();
-    });
-    ['play', 'pause', 'ended'].forEach(function (ev) {
+    $('#musicToggle').addEventListener('click', toggleMusic);
+    ['play', 'pause', 'ended', 'timeupdate'].forEach(function (ev) {
       $('#musicPlayer').addEventListener(ev, syncMusic);
     });
 
