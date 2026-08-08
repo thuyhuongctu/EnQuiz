@@ -80,6 +80,35 @@
   </div>
 </header>
 
+<!-- ============ THANH ĐIỀU HƯỚNG DỌC (màn rộng) ============ -->
+<aside class="sidenav" id="sidenav">
+  <nav class="sidenav__list">
+    <button class="sidenav__item is-active" type="button" data-nav="home">
+      <span class="sidenav__ico" aria-hidden="true">🏠</span><span data-i18n="nav.home">Trang chủ</span>
+    </button>
+    <button class="sidenav__item" type="button" data-mode="exam">
+      <span class="sidenav__ico" aria-hidden="true">📝</span><span data-i18n="nav.exam">Thi thử</span>
+    </button>
+    <button class="sidenav__item" type="button" data-mode="practice">
+      <span class="sidenav__ico" aria-hidden="true">📚</span><span data-i18n="nav.practice">Ôn theo chương</span>
+    </button>
+    <button class="sidenav__item" type="button" data-mode="wrong">
+      <span class="sidenav__ico" aria-hidden="true">🔁</span><span data-i18n="nav.wrong">Câu sai</span>
+    </button>
+    <button class="sidenav__item" type="button" data-mode="marked">
+      <span class="sidenav__ico" aria-hidden="true">⭐</span><span data-i18n="nav.marked">Đã đánh dấu</span>
+    </button>
+    <button class="sidenav__item" type="button" data-mode="import">
+      <span class="sidenav__ico" aria-hidden="true">✨</span><span data-i18n="nav.import">Ghép đề</span>
+    </button>
+  </nav>
+  <div class="sidenav__foot">
+    <button class="sidenav__item" type="button" data-nav="settings">
+      <span class="sidenav__ico" aria-hidden="true">⚙️</span><span data-i18n="nav.settings">Cài đặt</span>
+    </button>
+  </div>
+</aside>
+
 <main id="main" class="container">
 
   <!-- ============ MÀN HÌNH CHỜ ============ -->
@@ -370,6 +399,22 @@
   </section>
 
 </main>
+
+<!-- ============ THANH ĐIỀU HƯỚNG DƯỚI (điện thoại) ============ -->
+<nav class="botnav" id="botnav">
+  <button class="botnav__item is-active" type="button" data-nav="home">
+    <span aria-hidden="true">🏠</span><span data-i18n="nav.home">Trang chủ</span>
+  </button>
+  <button class="botnav__item" type="button" data-mode="exam">
+    <span aria-hidden="true">📝</span><span data-i18n="nav.exam">Thi thử</span>
+  </button>
+  <button class="botnav__item" type="button" data-nav="chapters">
+    <span aria-hidden="true">📚</span><span data-i18n="nav.chapters">Chương</span>
+  </button>
+  <button class="botnav__item" type="button" data-nav="settings">
+    <span aria-hidden="true">⚙️</span><span data-i18n="nav.settings">Cài đặt</span>
+  </button>
+</nav>
 
 <footer class="footer">
   <span class="footer__links">
