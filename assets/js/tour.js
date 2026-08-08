@@ -12,17 +12,38 @@
   var $ = function (sel) { return document.querySelector(sel); };
   var t = function (key, vars) { return global.I18n.t(key, vars); };
 
-  /* Mỗi bước gắn với một vùng trên trang; thiếu vùng thì bước đó được bỏ qua. */
+  /* Mỗi bước gắn với một vùng trên trang; thiếu vùng thì bước đó được bỏ qua.
+     `pose` chọn tư thế nhân vật đứng cạnh bảng thoại. */
   var STEPS = [
-    { key: 'tour.s0', target: '.teacher', lang: 'fr' },   // lời chào tiếng Pháp
-    { key: 'tour.s1', target: '.hero' },
-    { key: 'tour.s2', target: '.teacher' },
-    { key: 'tour.s3', target: '.modes' },
-    { key: 'tour.s4', target: '[data-mode="import"]' },
-    { key: 'tour.s5', target: '#chapterList' },
-    { key: 'tour.s6', target: '.topbar__actions' },
-    { key: 'tour.s7', target: '.footer' }
+    { key: 'tour.s0', target: '.teacher', lang: 'fr', pose: 'welcome' },   // lời chào tiếng Pháp
+    { key: 'tour.s1', target: '.hero', pose: 'welcome' },
+    { key: 'tour.s2', target: '.teacher', pose: 'stand' },
+    { key: 'tour.s3', target: '.modes', pose: 'point' },
+    { key: 'tour.s4', target: '[data-mode="import"]', pose: 'tablet' },
+    { key: 'tour.s5', target: '#chapterList', pose: 'point' },
+    { key: 'tour.s6', target: '.topbar__actions', pose: 'tablet' },
+    { key: 'tour.s7', target: '.footer', pose: 'welcome' }
   ];
+
+  var POSE_SRC = {
+    welcome: 'assets/img/huong-welcome.webp',
+    stand: 'assets/img/huong-stand.webp',
+    point: 'assets/img/huong-point.webp',
+    tablet: 'assets/img/huong-tablet.webp',
+    cheer: 'assets/img/huong-cheer.webp'
+  };
+
+  /* Đổi tư thế nhân vật, có nhoè nhẹ để không giật hình. */
+  function setPose(pose) {
+    var img = $('#tourHuong');
+    var src = POSE_SRC[pose || 'welcome'];
+    if (!img || !src || img.getAttribute('src') === src) return;
+    img.style.opacity = '0';
+    setTimeout(function () {
+      img.setAttribute('src', src);
+      img.style.opacity = '';
+    }, 180);
+  }
 
   var index = 0;
   var running = false;
@@ -116,6 +137,7 @@
     index = i;
     paused = false;
     render();
+    setPose(steps[index].pose);
     highlight(steps[index].target);
     speak(t(steps[index].key), steps[index].lang, function () {
       // tự chuyển bước khi đọc xong, trừ bước cuối

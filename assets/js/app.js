@@ -489,7 +489,15 @@
 
     $('#resultScore').textContent = r.score.toFixed(1);
     $('#scoreRing').style.setProperty('--pct', pct + '%');
+    $('#scoreRing').classList.toggle('pass', pass);
     $('#resultTitle').textContent = pass ? t('result.pass') : t('result.fail');
+
+    // Hương AI đổi tư thế theo điểm: reo mừng khi giỏi, mời xem lại khi chưa đạt
+    var huong = $('#resultHuong');
+    if (huong) {
+      var pose = r.score >= 8 ? 'cheer' : (pass ? 'welcome' : 'tablet');
+      huong.setAttribute('src', 'assets/img/huong-' + pose + '.webp');
+    }
     $('#resultSummary').textContent = t('result.summary', {
       label: t(session.labelKey), correct: r.correct, total: r.total, pct: pct
     });
@@ -1098,7 +1106,9 @@
     Store.init();
     I18n.init();
     I18n.onChange(onLanguageChanged);
-    applyTheme(Store.get('theme') || 'light');
+    // Bộ nhận diện Cosmic vốn dựng trên nền tối nên mở mặc định bằng nền tối;
+    // ai đổi sang nền sáng thì lựa chọn đó được nhớ cho lần sau.
+    applyTheme(Store.get('theme') || 'dark');
     syncLangUI();
     var yr = String(new Date().getFullYear());
     $$('#year, .yr').forEach(function (el) { el.textContent = yr; });
