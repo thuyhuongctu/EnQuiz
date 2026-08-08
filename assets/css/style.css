@@ -612,7 +612,9 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   display: block;
   filter: drop-shadow(0 10px 22px var(--glow));
 }
-.teacher__body { min-width: 0; flex: 1 1 auto; padding-right: 118px; }
+/* Chừa chỗ cho người đứng bên phải: ảnh cao 268px, tỉ lệ 549/1142 nên
+   rộng khoảng 129px, cộng lề phải 1.1rem và một khoảng thở. */
+.teacher__body { min-width: 0; flex: 1 1 auto; padding-right: 162px; }
 .teacher__greeting {
   margin: 0 0 .15rem;
   font-size: 1.06rem;
