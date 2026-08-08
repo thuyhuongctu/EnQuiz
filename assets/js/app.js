@@ -140,6 +140,98 @@
     }).join('');
   }
 
+  /* =======================================================
+     Đồng hồ hai múi giờ
+     ======================================================= */
+
+  /* Dùng tên múi giờ chứ không cộng trừ số giờ cố định: Pháp đổi giờ mùa hè
+     nên chênh lệch với Việt Nam khi thì 5 tiếng, khi thì 6. Trình duyệt tự
+     biết điều đó, mình không nên chép cứng. */
+  var ZONES = { VN: 'Asia/Ho_Chi_Minh', FR: 'Europe/Paris' };
+  var clockTimer = null;
+
+  function zoneParts(zone, when) {
+    var f = new Intl.DateTimeFormat('en-GB', {
+      timeZone: zone, hour12: false,
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+    var o = {};
+    f.formatToParts(when).forEach(function (p) { o[p.type] = p.value; });
+    return o;
+  }
+
+  /* Chênh lệch giờ giữa hai nơi, tính bằng chính hai mốc thời gian đọc được
+     nên không phải nhớ luật đổi giờ của nước nào. */
+  function zoneGapHours(a, b, when) {
+    function asUTC(z) {
+      var p = zoneParts(z, when);
+      return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
+    }
+    return Math.round((asUTC(a) - asUTC(b)) / 3600000);
+  }
+
+  function renderClocks() {
+    var vn = $('#clockVN');
+    if (!vn) return;
+    var now = new Date();
+    var locale = I18n.lang === 'en' ? 'en-GB' : 'vi-VN';
+
+    ['VN', 'FR'].forEach(function (k) {
+      var p = zoneParts(ZONES[k], now);
+      $('#clock' + k).textContent = p.hour + ':' + p.minute + ':' + p.second;
+      $('#date' + k).textContent = new Intl.DateTimeFormat(locale, {
+        timeZone: ZONES[k], weekday: 'long', day: 'numeric', month: 'long'
+      }).format(now);
+    });
+
+    var gap = zoneGapHours(ZONES.VN, ZONES.FR, now);
+    $('#clockGap').textContent = t('clock.gap').replace('{n}', gap);
+  }
+
+  function startClocks() {
+    renderClocks();
+    if (clockTimer) clearInterval(clockTimer);
+    clockTimer = setInterval(renderClocks, 1000);
+  }
+
+  /* =======================================================
+     Thẻ âm nhạc
+     ======================================================= */
+
+  var SONGS = {
+    soft:   { file: 'assets/audio/song/soft.mp3',   key: 'music.t.soft' },
+    bright: { file: 'assets/audio/song/bright.mp3', key: 'music.t.bright' },
+    calm:   { file: 'assets/audio/song/calm.mp3',   key: 'music.t.calm' }
+  };
+
+  function playMood(mood) {
+    var s = SONGS[mood];
+    var au = $('#musicPlayer');
+    if (!s || !au) return;
+
+    if (au.dataset.mood === mood && !au.paused) { au.pause(); syncMusic(); return; }
+    if (au.dataset.mood !== mood) {
+      au.src = s.file;
+      au.dataset.mood = mood;
+    }
+    au.play().catch(function () { /* trình duyệt chặn thì thôi, không báo lỗi */ });
+    syncMusic();
+  }
+
+  function syncMusic() {
+    var au = $('#musicPlayer');
+    if (!au) return;
+    var mood = au.dataset.mood;
+    var on = !!mood && !au.paused;
+    $('#musicNow').classList.toggle('hidden', !mood);
+    $('#musicTitle').textContent = mood ? t(SONGS[mood].key) : '';
+    $('#musicToggle').textContent = on ? '❚❚' : '▶';
+    $$('.mood').forEach(function (b) {
+      b.classList.toggle('is-on', b.dataset.song === mood && on);
+    });
+  }
+
   function renderHome() {
     var total = QuestionBank.total();
     $('#statTotal').textContent = total;
@@ -158,6 +250,8 @@
     renderHistory();
     renderBadges();
     renderHint();
+    startClocks();
+    syncMusic();
   }
 
   /* Mách nước đổi ngôn ngữ và nền sáng/tối. Hiện cho tới khi người dùng tự
@@ -983,6 +1077,18 @@
     $('#hintClose').addEventListener('click', function () {
       Store.set('hintSeen', true);
       $('#homeHint').classList.add('hidden');
+    });
+
+    $$('.mood').forEach(function (b) {
+      b.addEventListener('click', function () { playMood(b.dataset.song); });
+    });
+    $('#musicToggle').addEventListener('click', function () {
+      var au = $('#musicPlayer');
+      if (au.paused) au.play().catch(function () {}); else au.pause();
+      syncMusic();
+    });
+    ['play', 'pause', 'ended'].forEach(function (ev) {
+      $('#musicPlayer').addEventListener(ev, syncMusic);
     });
 
     $('#btnSettings').addEventListener('click', function () {
