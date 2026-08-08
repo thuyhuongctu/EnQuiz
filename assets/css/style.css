@@ -3,62 +3,72 @@
    ========================================================= */
 
 :root {
-  --bg: #f4f6fb;
-  --bg-soft: #eaeef7;
+  /* Bảng màu kế thừa từ trang M-AIDA để hai sản phẩm cùng một nhận diện */
+  --paper: #f4efe9;
+  --bg: #f4efe9;
+  --bg-soft: #ece4dc;
   --surface: #ffffff;
-  --surface-2: #f8fafc;
-  --border: #dbe2ef;
-  --text: #16223a;
-  --text-soft: #5b6880;
-  --muted: #7c889e;
+  --surface-2: #faf7f4;
+  --border: #e2d9d0;
+  --text: #20191b;
+  --text-soft: #574d4a;
+  --muted: #6d635f;
 
-  --primary: #2f5fe0;
-  --primary-dark: #2449b5;
-  --primary-soft: #e6edff;
-  --success: #16a34a;
-  --success-soft: #dcfce7;
-  --danger: #dc2626;
-  --danger-soft: #fee2e2;
-  --warn: #d97706;
-  --warn-soft: #fef3c7;
+  --primary: #9e3b4e;
+  --primary-dark: #83303f;
+  --primary-soft: #f3e2e5;
+  --gold: #a9781f;
+  --success: #2f8f5b;
+  --success-soft: #e2f0e8;
+  --danger: #c1372f;
+  --danger-soft: #f8e3e1;
+  --warn: #a9781f;
+  --warn-soft: #f6ecd8;
 
   --radius: 14px;
   --radius-sm: 9px;
-  --shadow: 0 1px 2px rgba(16, 30, 60, .06), 0 8px 24px rgba(16, 30, 60, .06);
-  --shadow-sm: 0 1px 2px rgba(16, 30, 60, .08);
-  --font: "Segoe UI", Roboto, "Helvetica Neue", system-ui, -apple-system, "Noto Sans", Arial, sans-serif;
+  --shadow: 0 1px 2px rgba(30, 20, 20, .05), 0 10px 30px rgba(30, 20, 20, .07);
+  --shadow-sm: 0 1px 2px rgba(30, 20, 20, .08);
+  --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif;
 }
 
 html[data-theme="dark"] {
-  --bg: #0d1425;
-  --bg-soft: #131c31;
-  --surface: #161f36;
-  --surface-2: #1c273f;
-  --border: #2a3752;
-  --text: #e8edf8;
-  --text-soft: #a9b6cf;
-  --muted: #8494b1;
+  --paper: #171315;
+  --bg: #171315;
+  --bg-soft: #1e181a;
+  --surface: #201a1c;
+  --surface-2: #261f21;
+  --border: #332a2c;
+  --text: #ece5e2;
+  --text-soft: #c4b9b5;
+  --muted: #a99e99;
 
-  --primary: #5c8bff;
-  --primary-dark: #4874e6;
-  --primary-soft: #1e2b4d;
-  --success: #34d399;
-  --success-soft: #10321f;
-  --danger: #f87171;
-  --danger-soft: #3a1a1a;
-  --warn: #fbbf24;
-  --warn-soft: #37280c;
+  --primary: #d98a99;
+  --primary-dark: #c2717f;
+  --primary-soft: #2a1a1e;
+  --gold: #d8ab55;
+  --success: #6ec495;
+  --success-soft: #17301f;
+  --danger: #ef8a80;
+  --danger-soft: #341c1a;
+  --warn: #d8ab55;
+  --warn-soft: #33280f;
 
-  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .4);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
 }
 
 * { box-sizing: border-box; }
 
+html {
+  /* nền đặt ở <html> để bản đồ chìm phía sau vẫn nhìn thấy được */
+  background: var(--bg);
+}
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
   font-family: var(--font);
   font-size: 16px;
@@ -66,7 +76,7 @@ html, body {
   -webkit-text-size-adjust: 100%;
 }
 
-h1, h2, h3 { line-height: 1.3; margin: 0 0 .5rem; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.3; margin: 0 0 .5rem; text-wrap: balance; }
 p { margin: 0 0 .6rem; }
 b, strong { font-weight: 700; }
 code {
@@ -177,6 +187,12 @@ code {
   grid-template-columns: repeat(4, 1fr);
   gap: .5rem;
 }
+
+/* nền tối: hero dùng tông rượu vang đậm để chữ trắng vẫn rõ */
+html[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #6d2938 0%, #45191f 100%);
+}
+html[data-theme="dark"] .hero__sub { color: rgba(255, 255, 255, .8); }
 
 /* ---------------- Giới thiệu giảng viên ---------------- */
 .teacher {
@@ -833,4 +849,199 @@ input[type="number"]:focus, input[type="file"]:focus {
 
 @media print {
   .topbar, .quiz-nav, .actions, .modal, .footer, .toast-wrap { display: none !important; }
+}
+
+/* =========================================================
+   Nhận diện chung với M-AIDA: nền bản đồ, công tắc ngôn ngữ,
+   chân trang; kèm lớp chống sao chép và giao diện tour.
+   ========================================================= */
+
+/* ---------------- Nền chìm: bản đồ Việt Nam ---------------- */
+#vnmark {
+  position: fixed;
+  top: 52%;
+  right: 1.2%;
+  transform: translateY(-50%);
+  width: min(34vw, 460px);
+  color: var(--muted);
+  opacity: .30;
+  pointer-events: none;
+  z-index: -1;
+}
+#vnmark svg { width: 100%; height: auto; display: block; }
+#vnmark .lh-halo { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  #vnmark .lh-light { animation: lhblink 1.8s ease-in-out infinite; }
+  #vnmark .lh-halo { animation: lhhalo 1.8s ease-in-out infinite; }
+  #vnmark .lh:nth-of-type(2) .lh-light, #vnmark .lh:nth-of-type(2) .lh-halo { animation-delay: .45s; }
+  #vnmark .lh:nth-of-type(3) .lh-light, #vnmark .lh:nth-of-type(3) .lh-halo { animation-delay: .9s; }
+  #vnmark .lh:nth-of-type(4) .lh-light, #vnmark .lh:nth-of-type(4) .lh-halo { animation-delay: 1.35s; }
+}
+@keyframes lhblink { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+@keyframes lhhalo { 0%, 100% { opacity: 0; } 50% { opacity: .7; } }
+@media (max-width: 1150px) {
+  #vnmark { right: 50%; top: 58%; transform: translate(50%, -50%); width: min(92vw, 420px); opacity: .16; }
+}
+
+/* ---------------- Công tắc ngôn ngữ VI | EN ---------------- */
+.langtog {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.langtog button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: 700 .72rem var(--font);
+  padding: 0 .7rem;
+  cursor: pointer;
+  letter-spacing: .03em;
+}
+.langtog button.is-active { background: var(--primary); color: #fff; }
+
+/* thương hiệu dùng chữ serif cho hợp tông M-AIDA */
+.brand__text strong { font-family: var(--serif); letter-spacing: .01em; }
+
+/* ---------------- Chân trang kiểu M-AIDA ---------------- */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: space-between;
+  text-align: left;
+  font-size: .8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+  padding: 1.25rem 1rem 2.5rem;
+}
+.footer__links { flex-basis: 100%; }
+.footer a { color: var(--primary); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* ---------------- Chính sách bản quyền ---------------- */
+.policy { font-size: .9rem; color: var(--text-soft); }
+.policy h4 { font-family: var(--serif); font-size: .98rem; margin: 1rem 0 .3rem; color: var(--text); }
+.policy ul { margin: .3rem 0 .6rem; padding-left: 1.1rem; }
+.policy li { margin: .2rem 0; }
+.policy__mark {
+  border-left: 3px solid var(--primary);
+  background: var(--primary-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: .6rem .8rem;
+  margin-top: .8rem;
+  color: var(--text);
+}
+
+/* Chặn bôi đen và sao chép nội dung câu hỏi; ô nhập liệu vẫn dùng bình thường */
+.no-copy, .no-copy * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+.no-copy input, .no-copy textarea, .no-copy select,
+.no-copy input *, .no-copy textarea * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+.no-copy img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+
+/* ---------------- Hương AI — tour có giọng nói ---------------- */
+.tour-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: #fff;
+  font: 600 .85rem var(--font);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .15s, filter .15s;
+}
+.tour-fab:hover { filter: brightness(1.08); transform: translateY(-2px); }
+.tour-fab__avatar {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border: 2px solid rgba(255, 255, 255, .8);
+}
+
+.tour-panel {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  width: min(620px, calc(100vw - 2rem));
+  z-index: 90;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: .85rem 1rem;
+  animation: fade .25s ease;
+}
+.tour-panel__head {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: .4rem;
+}
+.tour-panel__avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border: 2px solid var(--primary-soft);
+}
+.tour-panel__who { font-weight: 700; font-size: .88rem; }
+.tour-panel__step { color: var(--muted); font-size: .76rem; }
+.tour-panel__close { margin-left: auto; }
+.tour-panel__text {
+  font-size: .92rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0 0 .6rem;
+  min-height: 3.1em;
+}
+.tour-panel__nav { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; }
+.tour-panel__nav .btn { padding: .35rem .8rem; font-size: .82rem; }
+.tour-note { font-size: .74rem; color: var(--muted); margin: .45rem 0 0; }
+
+/* vùng đang được thuyết minh */
+.tour-spot {
+  position: relative;
+  z-index: 60;
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: var(--radius);
+  animation: tourPulse 1.6s ease-in-out infinite;
+}
+@keyframes tourPulse {
+  0%, 100% { outline-color: var(--primary); }
+  50% { outline-color: color-mix(in srgb, var(--primary) 35%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-spot { animation: none; }
+}
+
+@media (max-width: 620px) {
+  .tour-fab { padding: .55rem .8rem; font-size: .8rem; }
+  .tour-panel { bottom: .6rem; padding: .75rem .85rem; }
+  .footer { text-align: center; justify-content: center; }
+  .footer__links { text-align: center; }
 }

@@ -730,9 +730,7 @@
       '<div>' + esc(t('settings.bankLine2', { sources: srcs.length, custom: custom })) + '</div>' +
       (Store.available ? '' : '<div style="color:var(--warn)">' + esc(t('settings.noStorage')) + '</div>');
 
-    $$('#langChips .chip').forEach(function (c) {
-      c.classList.toggle('is-active', c.getAttribute('data-lang') === I18n.lang);
-    });
+    syncLangUI();
   }
 
   function importJSONFiles(files) {
@@ -805,11 +803,61 @@
   }
 
   /* =======================================================
+     Nhắc nhở bản quyền
+     -------------------------------------------------------
+     Khoá bôi đen, sao chép, kéo ảnh và menu chuột phải trên
+     phần nội dung. Đây là biện pháp nhắc nhở người dùng chứ
+     không phải rào chắn kỹ thuật tuyệt đối.
+     ======================================================= */
+
+  function protectContent() {
+    document.body.classList.add('no-copy');
+
+    var warnAt = 0;
+    function warn() {
+      var now = Date.now();
+      if (now - warnAt < 2000) return;   // tránh hiện dồn dập
+      warnAt = now;
+      toast(t('policy.copyBlocked'));
+    }
+
+    function inField(el) {
+      return !!(el && el.closest && el.closest('input, textarea, select'));
+    }
+
+    ['copy', 'cut'].forEach(function (evt) {
+      document.addEventListener(evt, function (e) {
+        if (inField(e.target)) return;   // ô nhập liệu vẫn sao chép được
+        e.preventDefault();
+        warn();
+      });
+    });
+
+    document.addEventListener('contextmenu', function (e) {
+      if (inField(e.target)) return;
+      e.preventDefault();
+      warn();
+    });
+
+    document.addEventListener('dragstart', function (e) {
+      if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+    });
+  }
+
+  /* =======================================================
      Đổi ngôn ngữ
      ======================================================= */
 
+  /** Bật trạng thái cho mọi nút chọn ngôn ngữ (thanh trên + phần cài đặt). */
+  function syncLangUI() {
+    $$('[data-lang]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-lang') === I18n.lang);
+    });
+  }
+
   function onLanguageChanged() {
-    $('#btnLang').textContent = I18n.lang === 'vi' ? 'EN' : 'VI';
+    syncLangUI();
+    if (window.Tour) Tour.refresh();
 
     renderHome();
     var screen = currentScreen();
@@ -826,7 +874,7 @@
 
   function bindEvents() {
     $('#btnHome').addEventListener('click', function () { leaveQuiz(); show('screenHome'); renderHome(); });
-    $('#btnLang').addEventListener('click', function () { I18n.toggle(); });
+
     $('#btnTheme').addEventListener('click', function () {
       applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
@@ -845,6 +893,15 @@
       if (mode) {
         var m = mode.getAttribute('data-mode');
         if (m === 'import') openImport(); else openSetup(m);
+        return;
+      }
+
+      var opener = target.closest('[data-open]');
+      if (opener) {
+        e.preventDefault();
+        var which = opener.getAttribute('data-open');
+        var box = which === 'policy' ? $('#modalPolicy') : $('#modalPrivacy');
+        if (box) box.classList.remove('hidden');
         return;
       }
 
@@ -1042,10 +1099,13 @@
     I18n.init();
     I18n.onChange(onLanguageChanged);
     applyTheme(Store.get('theme') || 'light');
-    $('#btnLang').textContent = I18n.lang === 'vi' ? 'EN' : 'VI';
-    $('#year').textContent = new Date().getFullYear();
+    syncLangUI();
+    var yr = String(new Date().getFullYear());
+    $$('#year, .yr').forEach(function (el) { el.textContent = yr; });
     bindEvents();
     setupPWA();
+    protectContent();
+    if (window.Tour) Tour.init();
 
     var files = (window.DATA_FILES || []).map(function (f) { return 'data/' + f; });
 
