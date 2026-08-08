@@ -1,0 +1,43 @@
+name: Xuất bản lên GitHub Pages
+
+# Mỗi lần đẩy mã lên nhánh chính, trang được dựng lại và xuất bản.
+# Bước configure-pages với enablement: true sẽ tự bật GitHub Pages cho
+# kho mã nếu chưa bật, nên không cần thao tác thủ công trong Settings.
+
+on:
+  push:
+    branches: ["claude/quiz-auto-merge-questions-f61pcd"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Bật và cấu hình GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Đóng gói toàn bộ trang tĩnh
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Xuất bản
+        id: deployment
+        uses: actions/deploy-pages@v4
