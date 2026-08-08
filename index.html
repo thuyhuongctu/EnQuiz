@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp - Trường Đại học Sư phạm Kỹ thuật Vĩnh Long">
+<meta name="theme-color" content="#0f172a">
+<title>Ôn thi Khởi sự doanh nghiệp</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <button class="brand" id="btnHome" type="button">
+      <span class="brand__logo">🚀</span>
+      <span class="brand__text">
+        <strong>Khởi sự doanh nghiệp</strong>
+        <small>Ôn thi trắc nghiệm</small>
+      </span>
+    </button>
+    <div class="topbar__actions">
+      <button class="icon-btn" id="btnTheme" type="button" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện">🌙</button>
+      <button class="icon-btn" id="btnSettings" type="button" title="Cài đặt" aria-label="Cài đặt">⚙️</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="container">
+
+  <!-- ============ MÀN HÌNH CHỜ ============ -->
+  <section class="screen" id="screenLoading">
+    <div class="loader">
+      <div class="loader__spin"></div>
+      <p>Đang nạp ngân hàng câu hỏi…</p>
+    </div>
+  </section>
+
+  <!-- ============ TRANG CHỦ ============ -->
+  <section class="screen hidden" id="screenHome">
+
+    <div class="hero">
+      <h1 class="hero__title">Ôn thi môn <span>Khởi sự doanh nghiệp</span></h1>
+      <p class="hero__sub">Giảng viên: NCS. Đỗ Thuý Hương</p>
+      <div class="hero__stats">
+        <div class="stat"><b id="statTotal">0</b><span>câu hỏi</span></div>
+        <div class="stat"><b id="statChapters">0</b><span>chương</span></div>
+        <div class="stat"><b id="statDone">0</b><span>lượt luyện</span></div>
+        <div class="stat"><b id="statBest">–</b><span>điểm cao nhất</span></div>
+      </div>
+    </div>
+
+    <div class="modes">
+      <button class="mode-card mode-card--primary" data-mode="exam" type="button">
+        <span class="mode-card__icon">📝</span>
+        <span class="mode-card__body">
+          <strong>Thi thử</strong>
+          <small>Đề ngẫu nhiên, bấm giờ, chấm điểm cuối bài</small>
+        </span>
+      </button>
+      <button class="mode-card" data-mode="practice" type="button">
+        <span class="mode-card__icon">📚</span>
+        <span class="mode-card__body">
+          <strong>Ôn tập theo chương</strong>
+          <small>Hiện đáp án và giải thích ngay sau mỗi câu</small>
+        </span>
+      </button>
+      <button class="mode-card" data-mode="wrong" type="button">
+        <span class="mode-card__icon">🔁</span>
+        <span class="mode-card__body">
+          <strong>Luyện câu sai</strong>
+          <small>Làm lại những câu từng trả lời sai (<b id="cntWrong">0</b>)</small>
+        </span>
+      </button>
+      <button class="mode-card" data-mode="marked" type="button">
+        <span class="mode-card__icon">⭐</span>
+        <span class="mode-card__body">
+          <strong>Câu đã đánh dấu</strong>
+          <small>Xem lại các câu bạn gắn cờ (<b id="cntMarked">0</b>)</small>
+        </span>
+      </button>
+      <button class="mode-card mode-card--wide" data-mode="import" type="button">
+        <span class="mode-card__icon">✨</span>
+        <span class="mode-card__body">
+          <strong>Ghép đề &amp; đáp án</strong>
+          <small>Dán câu hỏi từ PDF và danh sách đáp án — hệ thống tự khớp theo số câu</small>
+        </span>
+      </button>
+    </div>
+
+    <div class="panel">
+      <div class="panel__head">
+        <h2>Danh sách chương</h2>
+        <button class="btn btn--ghost btn--sm" id="btnAllChapters" type="button">Ôn tất cả</button>
+      </div>
+      <div class="chapter-list" id="chapterList"></div>
+    </div>
+
+    <div class="panel" id="panelHistory">
+      <div class="panel__head">
+        <h2>Lịch sử làm bài</h2>
+        <button class="btn btn--ghost btn--sm" id="btnClearHistory" type="button">Xoá lịch sử</button>
+      </div>
+      <div class="history" id="historyList"></div>
+    </div>
+
+  </section>
+
+  <!-- ============ THIẾT LẬP ĐỀ ============ -->
+  <section class="screen hidden" id="screenSetup">
+    <button class="btn btn--ghost btn--sm back-link" data-nav="home" type="button">← Về trang chủ</button>
+    <div class="panel">
+      <h2 id="setupTitle">Thiết lập đề thi</h2>
+      <p class="muted" id="setupDesc"></p>
+
+      <div class="field">
+        <label for="setupCount">Số câu hỏi</label>
+        <div class="chips" id="setupCountChips"></div>
+        <input type="number" id="setupCount" min="1" step="1" value="40">
+        <small class="muted">Tối đa <b id="setupMax">0</b> câu khả dụng.</small>
+      </div>
+
+      <div class="field" id="fieldTime">
+        <label for="setupTime">Thời gian làm bài (phút) — nhập 0 để không giới hạn</label>
+        <div class="chips" id="setupTimeChips"></div>
+        <input type="number" id="setupTime" min="0" step="1" value="45">
+      </div>
+
+      <div class="field">
+        <label class="switch">
+          <input type="checkbox" id="setupShuffleQ" checked>
+          <span>Xáo trộn thứ tự câu hỏi</span>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="setupShuffleA" checked>
+          <span>Xáo trộn thứ tự đáp án</span>
+        </label>
+        <label class="switch" id="fieldInstant">
+          <input type="checkbox" id="setupInstant">
+          <span>Hiện đáp án ngay sau khi chọn</span>
+        </label>
+      </div>
+
+      <div class="field" id="fieldChapterPick">
+        <label>Phạm vi kiến thức</label>
+        <div class="checklist" id="setupChapters"></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn--primary btn--lg" id="btnStart" type="button">Bắt đầu làm bài</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GHÉP ĐỀ & ĐÁP ÁN ============ -->
+  <section class="screen hidden" id="screenImport">
+    <button class="btn btn--ghost btn--sm back-link" data-nav="home" type="button">← Về trang chủ</button>
+
+    <div class="panel">
+      <h2>✨ Công cụ ghép đề &amp; đáp án</h2>
+      <p class="muted">
+        Dán nội dung câu hỏi vào ô 1 và danh sách đáp án vào ô 2. Hệ thống đối chiếu theo
+        <b>số thứ tự câu</b> ghi trong đề (không phải theo vị trí dán), nên bạn có thể dán một phần đề bất kỳ.
+      </p>
+
+      <div class="import-grid">
+        <div class="field">
+          <label for="impQ">1. Nội dung câu hỏi</label>
+          <textarea id="impQ" spellcheck="false" placeholder="Câu 1: Khởi sự doanh nghiệp là gì?&#10;A. Phương án thứ nhất&#10;B. Phương án thứ hai&#10;C. Phương án thứ ba&#10;D. Phương án thứ tư&#10;&#10;Câu 2: ..."></textarea>
+        </div>
+        <div class="field">
+          <label for="impA">2. Danh sách đáp án <small class="muted">(có thể bỏ trống nếu đề đã đánh dấu đáp án)</small></label>
+          <textarea id="impA" spellcheck="false" placeholder="1. B. Kiến thức cơ bản...&#10;2. C&#10;3. A&#10;4B 5C 6D"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Lưu vào</label>
+        <div class="import-target">
+          <select id="impChapter"></select>
+          <input type="text" id="impNewName" class="hidden" placeholder="Tên chương mới, ví dụ: Chương 6 – Ôn tập">
+        </div>
+        <div class="chips" style="margin-top:.5rem">
+          <button class="chip is-active" data-impmode="append" type="button">Thêm vào chương</button>
+          <button class="chip" data-impmode="replace" type="button">Thay thế toàn bộ chương</button>
+        </div>
+      </div>
+
+      <div class="actions actions--wrap">
+        <button class="btn btn--primary" id="btnImpAnalyze" type="button">🔍 Phân tích thử</button>
+        <button class="btn btn--success" id="btnImpSave" type="button" disabled>💾 Ghép &amp; lưu</button>
+        <button class="btn btn--ghost" id="btnImpClear" type="button">Xoá ô nhập</button>
+      </div>
+
+      <div id="impStatus" class="import-status hidden"></div>
+      <div id="impPreview" class="import-preview hidden"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Định dạng được hỗ trợ</h2>
+      <div class="format-help">
+        <p><b>Đánh số câu:</b> <code>Câu 1:</code>, <code>Câu 1.</code>, <code>1.</code>, <code>1)</code>, <code>Question 1:</code></p>
+        <p><b>Phương án:</b> <code>A.</code>, <code>A)</code>, <code>a.</code>, <code>(A)</code> — nằm cùng dòng hoặc tách dòng đều được. Hỗ trợ 2–6 phương án.</p>
+        <p><b>Đáp án trong đề:</b> đánh dấu <code>*</code> trước phương án đúng, hoặc ghi <code>Đáp án: B</code> / <code>ĐA: B</code> ở cuối câu.</p>
+        <p><b>Danh sách đáp án:</b> <code>1. B</code>, <code>Câu 1: B</code>, <code>1 - B</code>, <code>1B</code>, hoặc <code>1. B. kèm nội dung đáp án</code>.</p>
+        <p><b>Giải thích (tuỳ chọn):</b> ghi <code>Giải thích: ...</code> ở cuối mỗi câu.</p>
+      </div>
+      <div class="actions actions--wrap">
+        <button class="btn btn--sm" id="btnImpDemo" type="button">Dán dữ liệu mẫu để thử</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel__head">
+        <h2>Bộ đề bạn đã nhập</h2>
+        <button class="btn btn--ghost btn--sm" id="btnClearCustom" type="button">Xoá tất cả</button>
+      </div>
+      <div id="customList" class="chapter-list"></div>
+    </div>
+  </section>
+
+  <!-- ============ LÀM BÀI ============ -->
+  <section class="screen hidden" id="screenQuiz">
+    <div class="quiz-bar">
+      <div class="quiz-bar__left">
+        <button class="btn btn--ghost btn--sm" id="btnQuit" type="button">← Thoát</button>
+        <span class="pill" id="quizCounter">1/40</span>
+      </div>
+      <div class="quiz-bar__right">
+        <span class="pill pill--time" id="quizTimer">--:--</span>
+        <button class="btn btn--ghost btn--sm" id="btnGrid" type="button">☰ Danh sách</button>
+      </div>
+    </div>
+    <div class="progress"><div class="progress__bar" id="quizProgress"></div></div>
+
+    <article class="question-card">
+      <div class="question-card__meta">
+        <span class="tag" id="qChapter"></span>
+        <button class="mark-btn" id="btnMark" type="button" title="Đánh dấu câu hỏi">☆ Đánh dấu</button>
+      </div>
+      <h2 class="question-card__text" id="qText"></h2>
+      <div class="options" id="qOptions"></div>
+      <div class="explain hidden" id="qExplain"></div>
+    </article>
+
+    <div class="quiz-nav">
+      <button class="btn btn--ghost" id="btnPrev" type="button">← Câu trước</button>
+      <button class="btn btn--primary" id="btnNext" type="button">Câu sau →</button>
+      <button class="btn btn--success" id="btnSubmit" type="button">Nộp bài</button>
+    </div>
+  </section>
+
+  <!-- ============ KẾT QUẢ ============ -->
+  <section class="screen hidden" id="screenResult">
+    <div class="result-hero" id="resultHero">
+      <div class="score-ring" id="scoreRing">
+        <span class="score-ring__num" id="resultScore">0</span>
+        <span class="score-ring__label">/10</span>
+      </div>
+      <h2 id="resultTitle">Kết quả</h2>
+      <p class="muted" id="resultSummary"></p>
+    </div>
+
+    <div class="result-grid">
+      <div class="kpi"><b id="resCorrect">0</b><span>Câu đúng</span></div>
+      <div class="kpi"><b id="resWrong">0</b><span>Câu sai</span></div>
+      <div class="kpi"><b id="resSkip">0</b><span>Bỏ trống</span></div>
+      <div class="kpi"><b id="resTime">0:00</b><span>Thời gian</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Thống kê theo chương</h2>
+      <div class="bychapter" id="resByChapter"></div>
+    </div>
+
+    <div class="actions actions--wrap">
+      <button class="btn btn--primary" id="btnReview" type="button">Xem lại bài làm</button>
+      <button class="btn" id="btnRetryWrong" type="button">Luyện lại câu sai</button>
+      <button class="btn" id="btnRedo" type="button">Làm đề mới</button>
+      <button class="btn btn--ghost" data-nav="home" type="button">Về trang chủ</button>
+    </div>
+
+    <div class="panel hidden" id="panelReview">
+      <h2>Chi tiết bài làm</h2>
+      <div class="review" id="reviewList"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Ứng dụng ôn tập học phần <b>EC1606 – Khởi sự doanh nghiệp</b> · GV: NCS. Đỗ Thuý Hương</p>
+  <p class="muted">Ngân hàng 300 câu (5 chương × 60 câu) theo tài liệu học phần. Tiến độ làm bài được lưu ngay trên máy bạn (localStorage), không gửi đi đâu cả.</p>
+</footer>
+
+<!-- ============ MODAL: LƯỚI CÂU HỎI ============ -->
+<div class="modal hidden" id="modalGrid">
+  <div class="modal__box">
+    <div class="modal__head">
+      <h3>Danh sách câu hỏi</h3>
+      <button class="icon-btn" data-close type="button" aria-label="Đóng">✕</button>
+    </div>
+    <div class="legend">
+      <span><i class="dot dot--answered"></i> Đã làm</span>
+      <span><i class="dot dot--marked"></i> Đánh dấu</span>
+      <span><i class="dot dot--empty"></i> Chưa làm</span>
+    </div>
+    <div class="qgrid" id="qGrid"></div>
+    <div class="modal__foot">
+      <button class="btn btn--success" id="btnSubmitFromGrid" type="button">Nộp bài</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: CÀI ĐẶT ============ -->
+<div class="modal hidden" id="modalSettings">
+  <div class="modal__box">
+    <div class="modal__head">
+      <h3>Cài đặt &amp; dữ liệu</h3>
+      <button class="icon-btn" data-close type="button" aria-label="Đóng">✕</button>
+    </div>
+    <div class="modal__body">
+      <div class="field">
+        <label>Ngân hàng câu hỏi đang dùng</label>
+        <div class="bank-info" id="bankInfo"></div>
+      </div>
+      <div class="field">
+        <label for="importFile">Nhập thêm câu hỏi (tệp <code>.json</code>)</label>
+        <input type="file" id="importFile" accept=".json,application/json" multiple>
+        <small class="muted">Câu hỏi mới được gộp tự động vào ngân hàng và loại bỏ trùng lặp. Xem cấu trúc tệp mẫu trong <code>data/</code>.</small>
+        <div id="importLog" class="import-log"></div>
+      </div>
+      <div class="field">
+        <label>Dữ liệu cá nhân</label>
+        <div class="actions actions--wrap">
+          <button class="btn btn--sm" id="btnExportProgress" type="button">Xuất tiến độ</button>
+          <button class="btn btn--sm btn--danger" id="btnResetAll" type="button">Xoá toàn bộ dữ liệu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/bank.js"></script>
+<script src="assets/js/parser.js"></script>
+<script src="data/manifest.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
