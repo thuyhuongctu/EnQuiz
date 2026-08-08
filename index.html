@@ -3,26 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp - Trường Đại học Sư phạm Kỹ thuật Vĩnh Long">
-<meta name="theme-color" content="#0f172a">
+<meta name="description" content="Ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp — 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.">
+<meta name="author" content="Đỗ Thùy Hương">
+<meta name="theme-color" content="#2f5fe0">
 <title>Ôn thi Khởi sự doanh nghiệp</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Khởi sự DN">
+<meta name="mobile-web-app-capable" content="yes">
+
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <header class="topbar">
   <div class="topbar__inner">
-    <button class="brand" id="btnHome" type="button">
-      <span class="brand__logo">🚀</span>
+    <button class="brand" id="btnHome" type="button" data-i18n-attr="title:btn.home">
+      <img class="brand__logo" src="assets/icons/icon-192.png" alt="" width="34" height="34">
       <span class="brand__text">
-        <strong>Khởi sự doanh nghiệp</strong>
-        <small>Ôn thi trắc nghiệm</small>
+        <strong data-i18n="app.name">Khởi sự doanh nghiệp</strong>
+        <small data-i18n="app.tagline">Ôn thi trắc nghiệm</small>
       </span>
     </button>
     <div class="topbar__actions">
-      <button class="icon-btn" id="btnTheme" type="button" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện">🌙</button>
-      <button class="icon-btn" id="btnSettings" type="button" title="Cài đặt" aria-label="Cài đặt">⚙️</button>
+      <button class="icon-btn hidden" id="btnInstall" type="button"
+              data-i18n-attr="title:btn.install;aria-label:btn.install">⬇️</button>
+      <button class="icon-btn lang-btn" id="btnLang" type="button"
+              data-i18n-attr="title:btn.lang;aria-label:btn.lang">EN</button>
+      <button class="icon-btn" id="btnTheme" type="button"
+              data-i18n-attr="title:btn.theme;aria-label:btn.theme">🌙</button>
+      <button class="icon-btn" id="btnSettings" type="button"
+              data-i18n-attr="title:btn.settings;aria-label:btn.settings">⚙️</button>
     </div>
   </div>
 </header>
@@ -33,7 +48,7 @@
   <section class="screen" id="screenLoading">
     <div class="loader">
       <div class="loader__spin"></div>
-      <p>Đang nạp ngân hàng câu hỏi…</p>
+      <p data-i18n="loading">Đang nạp ngân hàng câu hỏi…</p>
     </div>
   </section>
 
@@ -41,13 +56,16 @@
   <section class="screen hidden" id="screenHome">
 
     <div class="hero">
-      <h1 class="hero__title">Ôn thi môn <span>Khởi sự doanh nghiệp</span></h1>
-      <p class="hero__sub">Giảng viên: NCS. Đỗ Thuý Hương</p>
+      <h1 class="hero__title">
+        <span class="hero__title-sm" data-i18n="home.title">Ôn thi môn</span>
+        <span data-i18n="home.subject">Khởi sự doanh nghiệp</span>
+      </h1>
+      <p class="hero__sub" data-i18n="home.author">Biên soạn: NCS. Đỗ Thùy Hương</p>
       <div class="hero__stats">
-        <div class="stat"><b id="statTotal">0</b><span>câu hỏi</span></div>
-        <div class="stat"><b id="statChapters">0</b><span>chương</span></div>
-        <div class="stat"><b id="statDone">0</b><span>lượt luyện</span></div>
-        <div class="stat"><b id="statBest">–</b><span>điểm cao nhất</span></div>
+        <div class="stat"><b id="statTotal">0</b><span data-i18n="home.stat.total">câu hỏi</span></div>
+        <div class="stat"><b id="statChapters">0</b><span data-i18n="home.stat.chapters">chương</span></div>
+        <div class="stat"><b id="statDone">0</b><span data-i18n="home.stat.done">lượt luyện</span></div>
+        <div class="stat"><b id="statBest">–</b><span data-i18n="home.stat.best">điểm cao nhất</span></div>
       </div>
     </div>
 
@@ -55,52 +73,52 @@
       <button class="mode-card mode-card--primary" data-mode="exam" type="button">
         <span class="mode-card__icon">📝</span>
         <span class="mode-card__body">
-          <strong>Thi thử</strong>
-          <small>Đề ngẫu nhiên, bấm giờ, chấm điểm cuối bài</small>
+          <strong data-i18n="mode.exam">Thi thử</strong>
+          <small data-i18n="mode.exam.desc">Đề ngẫu nhiên, bấm giờ, chấm điểm cuối bài</small>
         </span>
       </button>
       <button class="mode-card" data-mode="practice" type="button">
         <span class="mode-card__icon">📚</span>
         <span class="mode-card__body">
-          <strong>Ôn tập theo chương</strong>
-          <small>Hiện đáp án và giải thích ngay sau mỗi câu</small>
+          <strong data-i18n="mode.practice">Ôn tập theo chương</strong>
+          <small data-i18n="mode.practice.desc">Hiện đáp án và giải thích ngay sau mỗi câu</small>
         </span>
       </button>
       <button class="mode-card" data-mode="wrong" type="button">
         <span class="mode-card__icon">🔁</span>
         <span class="mode-card__body">
-          <strong>Luyện câu sai</strong>
-          <small>Làm lại những câu từng trả lời sai (<b id="cntWrong">0</b>)</small>
+          <strong data-i18n="mode.wrong">Luyện câu sai</strong>
+          <small><span data-i18n="mode.wrong.desc">Làm lại những câu từng trả lời sai</span> (<b id="cntWrong">0</b>)</small>
         </span>
       </button>
       <button class="mode-card" data-mode="marked" type="button">
         <span class="mode-card__icon">⭐</span>
         <span class="mode-card__body">
-          <strong>Câu đã đánh dấu</strong>
-          <small>Xem lại các câu bạn gắn cờ (<b id="cntMarked">0</b>)</small>
+          <strong data-i18n="mode.marked">Câu đã đánh dấu</strong>
+          <small><span data-i18n="mode.marked.desc">Xem lại các câu bạn gắn cờ</span> (<b id="cntMarked">0</b>)</small>
         </span>
       </button>
       <button class="mode-card mode-card--wide" data-mode="import" type="button">
         <span class="mode-card__icon">✨</span>
         <span class="mode-card__body">
-          <strong>Ghép đề &amp; đáp án</strong>
-          <small>Dán câu hỏi từ PDF và danh sách đáp án — hệ thống tự khớp theo số câu</small>
+          <strong data-i18n="mode.import">Ghép đề &amp; đáp án</strong>
+          <small data-i18n="mode.import.desc">Dán câu hỏi và danh sách đáp án — hệ thống tự khớp theo số câu</small>
         </span>
       </button>
     </div>
 
     <div class="panel">
       <div class="panel__head">
-        <h2>Danh sách chương</h2>
-        <button class="btn btn--ghost btn--sm" id="btnAllChapters" type="button">Ôn tất cả</button>
+        <h2 data-i18n="chapters.heading">Danh sách chương</h2>
+        <button class="btn btn--ghost btn--sm" id="btnAllChapters" type="button" data-i18n="chapters.all">Ôn tất cả</button>
       </div>
       <div class="chapter-list" id="chapterList"></div>
     </div>
 
     <div class="panel" id="panelHistory">
       <div class="panel__head">
-        <h2>Lịch sử làm bài</h2>
-        <button class="btn btn--ghost btn--sm" id="btnClearHistory" type="button">Xoá lịch sử</button>
+        <h2 data-i18n="history.heading">Lịch sử làm bài</h2>
+        <button class="btn btn--ghost btn--sm" id="btnClearHistory" type="button" data-i18n="history.clear">Xoá lịch sử</button>
       </div>
       <div class="history" id="historyList"></div>
     </div>
@@ -109,20 +127,20 @@
 
   <!-- ============ THIẾT LẬP ĐỀ ============ -->
   <section class="screen hidden" id="screenSetup">
-    <button class="btn btn--ghost btn--sm back-link" data-nav="home" type="button">← Về trang chủ</button>
+    <button class="btn btn--ghost btn--sm back-link" data-nav="home" type="button">←&nbsp;<span data-i18n="result.home">Về trang chủ</span></button>
     <div class="panel">
-      <h2 id="setupTitle">Thiết lập đề thi</h2>
+      <h2 id="setupTitle" data-i18n="setup.title">Thiết lập đề thi</h2>
       <p class="muted" id="setupDesc"></p>
 
       <div class="field">
-        <label for="setupCount">Số câu hỏi</label>
+        <label for="setupCount" data-i18n="setup.count">Số câu hỏi</label>
         <div class="chips" id="setupCountChips"></div>
         <input type="number" id="setupCount" min="1" step="1" value="40">
-        <small class="muted">Tối đa <b id="setupMax">0</b> câu khả dụng.</small>
+        <small class="muted" id="setupMaxNote"></small>
       </div>
 
       <div class="field" id="fieldTime">
-        <label for="setupTime">Thời gian làm bài (phút) — nhập 0 để không giới hạn</label>
+        <label for="setupTime" data-i18n="setup.time">Thời gian làm bài (phút) — nhập 0 để không giới hạn</label>
         <div class="chips" id="setupTimeChips"></div>
         <input type="number" id="setupTime" min="0" step="1" value="45">
       </div>
@@ -130,67 +148,65 @@
       <div class="field">
         <label class="switch">
           <input type="checkbox" id="setupShuffleQ" checked>
-          <span>Xáo trộn thứ tự câu hỏi</span>
+          <span data-i18n="setup.shuffleQ">Xáo trộn thứ tự câu hỏi</span>
         </label>
         <label class="switch">
           <input type="checkbox" id="setupShuffleA" checked>
-          <span>Xáo trộn thứ tự đáp án</span>
+          <span data-i18n="setup.shuffleA">Xáo trộn thứ tự đáp án</span>
         </label>
         <label class="switch" id="fieldInstant">
           <input type="checkbox" id="setupInstant">
-          <span>Hiện đáp án ngay sau khi chọn</span>
+          <span data-i18n="setup.instant">Hiện đáp án ngay sau khi chọn</span>
         </label>
       </div>
 
       <div class="field" id="fieldChapterPick">
-        <label>Phạm vi kiến thức</label>
+        <label data-i18n="setup.scope">Phạm vi kiến thức</label>
         <div class="checklist" id="setupChapters"></div>
       </div>
 
       <div class="actions">
-        <button class="btn btn--primary btn--lg" id="btnStart" type="button">Bắt đầu làm bài</button>
+        <button class="btn btn--primary btn--lg" id="btnStart" type="button" data-i18n="setup.start">Bắt đầu làm bài</button>
       </div>
     </div>
   </section>
 
   <!-- ============ GHÉP ĐỀ & ĐÁP ÁN ============ -->
   <section class="screen hidden" id="screenImport">
-    <button class="btn btn--ghost btn--sm back-link" data-nav="home" type="button">← Về trang chủ</button>
+    <button class="btn btn--ghost btn--sm back-link" data-nav="home" type="button">←&nbsp;<span data-i18n="result.home">Về trang chủ</span></button>
 
     <div class="panel">
-      <h2>✨ Công cụ ghép đề &amp; đáp án</h2>
-      <p class="muted">
-        Dán nội dung câu hỏi vào ô 1 và danh sách đáp án vào ô 2. Hệ thống đối chiếu theo
-        <b>số thứ tự câu</b> ghi trong đề (không phải theo vị trí dán), nên bạn có thể dán một phần đề bất kỳ.
-      </p>
+      <h2 data-i18n="import.heading">✨ Công cụ ghép đề &amp; đáp án</h2>
+      <p class="muted" data-i18n-html="import.intro"></p>
 
       <div class="import-grid">
         <div class="field">
-          <label for="impQ">1. Nội dung câu hỏi</label>
+          <label for="impQ" data-i18n="import.box1">1. Nội dung câu hỏi</label>
           <textarea id="impQ" spellcheck="false" placeholder="Câu 1: Khởi sự doanh nghiệp là gì?&#10;A. Phương án thứ nhất&#10;B. Phương án thứ hai&#10;C. Phương án thứ ba&#10;D. Phương án thứ tư&#10;&#10;Câu 2: ..."></textarea>
         </div>
         <div class="field">
-          <label for="impA">2. Danh sách đáp án <small class="muted">(có thể bỏ trống nếu đề đã đánh dấu đáp án)</small></label>
+          <label for="impA"><span data-i18n="import.box2">2. Danh sách đáp án</span>
+            <small class="muted" data-i18n="import.box2note">(có thể bỏ trống nếu đề đã đánh dấu đáp án)</small></label>
           <textarea id="impA" spellcheck="false" placeholder="1. B. Kiến thức cơ bản...&#10;2. C&#10;3. A&#10;4B 5C 6D"></textarea>
         </div>
       </div>
 
       <div class="field">
-        <label>Lưu vào</label>
+        <label data-i18n="import.target">Lưu vào</label>
         <div class="import-target">
           <select id="impChapter"></select>
-          <input type="text" id="impNewName" class="hidden" placeholder="Tên chương mới, ví dụ: Chương 6 – Ôn tập">
+          <input type="text" id="impNewName" class="hidden" data-i18n-attr="placeholder:import.newName">
         </div>
         <div class="chips" style="margin-top:.5rem">
-          <button class="chip is-active" data-impmode="append" type="button">Thêm vào chương</button>
-          <button class="chip" data-impmode="replace" type="button">Thay thế toàn bộ chương</button>
+          <button class="chip is-active" data-impmode="append" type="button" data-i18n="import.append">Thêm vào chương</button>
+          <button class="chip" data-impmode="replace" type="button" data-i18n="import.replace">Thay thế toàn bộ chương</button>
         </div>
       </div>
 
       <div class="actions actions--wrap">
-        <button class="btn btn--primary" id="btnImpAnalyze" type="button">🔍 Phân tích thử</button>
-        <button class="btn btn--success" id="btnImpSave" type="button" disabled>💾 Ghép &amp; lưu</button>
-        <button class="btn btn--ghost" id="btnImpClear" type="button">Xoá ô nhập</button>
+        <button class="btn btn--primary" id="btnImpAnalyze" type="button" data-i18n="import.analyze">🔍 Phân tích thử</button>
+        <button class="btn btn--success" id="btnImpSave" type="button" disabled data-i18n="import.save">💾 Ghép &amp; lưu</button>
+        <button class="btn btn--ghost" id="btnImpClear" type="button" data-i18n="import.clear">Xoá ô nhập</button>
       </div>
 
       <div id="impStatus" class="import-status hidden"></div>
@@ -198,23 +214,23 @@
     </div>
 
     <div class="panel">
-      <h2>Định dạng được hỗ trợ</h2>
+      <h2 data-i18n="import.formats">Định dạng được hỗ trợ</h2>
       <div class="format-help">
-        <p><b>Đánh số câu:</b> <code>Câu 1:</code>, <code>Câu 1.</code>, <code>1.</code>, <code>1)</code>, <code>Question 1:</code></p>
-        <p><b>Phương án:</b> <code>A.</code>, <code>A)</code>, <code>a.</code>, <code>(A)</code> — nằm cùng dòng hoặc tách dòng đều được. Hỗ trợ 2–6 phương án.</p>
-        <p><b>Đáp án trong đề:</b> đánh dấu <code>*</code> trước phương án đúng, hoặc ghi <code>Đáp án: B</code> / <code>ĐA: B</code> ở cuối câu.</p>
-        <p><b>Danh sách đáp án:</b> <code>1. B</code>, <code>Câu 1: B</code>, <code>1 - B</code>, <code>1B</code>, hoặc <code>1. B. kèm nội dung đáp án</code>.</p>
-        <p><b>Giải thích (tuỳ chọn):</b> ghi <code>Giải thích: ...</code> ở cuối mỗi câu.</p>
+        <p data-i18n-html="fmt.number"></p>
+        <p data-i18n-html="fmt.options"></p>
+        <p data-i18n-html="fmt.inline"></p>
+        <p data-i18n-html="fmt.key"></p>
+        <p data-i18n-html="fmt.explain"></p>
       </div>
       <div class="actions actions--wrap">
-        <button class="btn btn--sm" id="btnImpDemo" type="button">Dán dữ liệu mẫu để thử</button>
+        <button class="btn btn--sm" id="btnImpDemo" type="button" data-i18n="import.demo">Dán dữ liệu mẫu để thử</button>
       </div>
     </div>
 
     <div class="panel">
       <div class="panel__head">
-        <h2>Bộ đề bạn đã nhập</h2>
-        <button class="btn btn--ghost btn--sm" id="btnClearCustom" type="button">Xoá tất cả</button>
+        <h2 data-i18n="import.myPacks">Bộ đề bạn đã nhập</h2>
+        <button class="btn btn--ghost btn--sm" id="btnClearCustom" type="button" data-i18n="import.clearAll">Xoá tất cả</button>
       </div>
       <div id="customList" class="chapter-list"></div>
     </div>
@@ -224,12 +240,12 @@
   <section class="screen hidden" id="screenQuiz">
     <div class="quiz-bar">
       <div class="quiz-bar__left">
-        <button class="btn btn--ghost btn--sm" id="btnQuit" type="button">← Thoát</button>
+        <button class="btn btn--ghost btn--sm" id="btnQuit" type="button">←&nbsp;<span data-i18n="quiz.quit">Thoát</span></button>
         <span class="pill" id="quizCounter">1/40</span>
       </div>
       <div class="quiz-bar__right">
         <span class="pill pill--time" id="quizTimer">--:--</span>
-        <button class="btn btn--ghost btn--sm" id="btnGrid" type="button">☰ Danh sách</button>
+        <button class="btn btn--ghost btn--sm" id="btnGrid" type="button">☰&nbsp;<span data-i18n="quiz.list">Danh sách</span></button>
       </div>
     </div>
     <div class="progress"><div class="progress__bar" id="quizProgress"></div></div>
@@ -237,7 +253,7 @@
     <article class="question-card">
       <div class="question-card__meta">
         <span class="tag" id="qChapter"></span>
-        <button class="mark-btn" id="btnMark" type="button" title="Đánh dấu câu hỏi">☆ Đánh dấu</button>
+        <button class="mark-btn" id="btnMark" type="button" data-i18n-attr="title:quiz.markTitle"></button>
       </div>
       <h2 class="question-card__text" id="qText"></h2>
       <div class="options" id="qOptions"></div>
@@ -245,9 +261,9 @@
     </article>
 
     <div class="quiz-nav">
-      <button class="btn btn--ghost" id="btnPrev" type="button">← Câu trước</button>
-      <button class="btn btn--primary" id="btnNext" type="button">Câu sau →</button>
-      <button class="btn btn--success" id="btnSubmit" type="button">Nộp bài</button>
+      <button class="btn btn--ghost" id="btnPrev" type="button">←&nbsp;<span data-i18n="quiz.prev">Câu trước</span></button>
+      <button class="btn btn--primary" id="btnNext" type="button"><span data-i18n="quiz.next">Câu sau</span>&nbsp;→</button>
+      <button class="btn btn--success" id="btnSubmit" type="button" data-i18n="quiz.submit">Nộp bài</button>
     </div>
   </section>
 
@@ -258,31 +274,31 @@
         <span class="score-ring__num" id="resultScore">0</span>
         <span class="score-ring__label">/10</span>
       </div>
-      <h2 id="resultTitle">Kết quả</h2>
+      <h2 id="resultTitle" data-i18n="result.heading">Kết quả</h2>
       <p class="muted" id="resultSummary"></p>
     </div>
 
     <div class="result-grid">
-      <div class="kpi"><b id="resCorrect">0</b><span>Câu đúng</span></div>
-      <div class="kpi"><b id="resWrong">0</b><span>Câu sai</span></div>
-      <div class="kpi"><b id="resSkip">0</b><span>Bỏ trống</span></div>
-      <div class="kpi"><b id="resTime">0:00</b><span>Thời gian</span></div>
+      <div class="kpi"><b id="resCorrect">0</b><span data-i18n="result.correct">Câu đúng</span></div>
+      <div class="kpi"><b id="resWrong">0</b><span data-i18n="result.wrong">Câu sai</span></div>
+      <div class="kpi"><b id="resSkip">0</b><span data-i18n="result.skip">Bỏ trống</span></div>
+      <div class="kpi"><b id="resTime">0:00</b><span data-i18n="result.time">Thời gian</span></div>
     </div>
 
     <div class="panel">
-      <h2>Thống kê theo chương</h2>
+      <h2 data-i18n="result.byChapter">Thống kê theo chương</h2>
       <div class="bychapter" id="resByChapter"></div>
     </div>
 
     <div class="actions actions--wrap">
-      <button class="btn btn--primary" id="btnReview" type="button">Xem lại bài làm</button>
-      <button class="btn" id="btnRetryWrong" type="button">Luyện lại câu sai</button>
-      <button class="btn" id="btnRedo" type="button">Làm đề mới</button>
-      <button class="btn btn--ghost" data-nav="home" type="button">Về trang chủ</button>
+      <button class="btn btn--primary" id="btnReview" type="button" data-i18n="result.review">Xem lại bài làm</button>
+      <button class="btn" id="btnRetryWrong" type="button" data-i18n="result.retryWrong">Luyện lại câu sai</button>
+      <button class="btn" id="btnRedo" type="button" data-i18n="result.redo">Làm đề mới</button>
+      <button class="btn btn--ghost" data-nav="home" type="button" data-i18n="result.home">Về trang chủ</button>
     </div>
 
     <div class="panel hidden" id="panelReview">
-      <h2>Chi tiết bài làm</h2>
+      <h2 data-i18n="result.detail">Chi tiết bài làm</h2>
       <div class="review" id="reviewList"></div>
     </div>
   </section>
@@ -290,25 +306,29 @@
 </main>
 
 <footer class="footer">
-  <p>Ứng dụng ôn tập học phần <b>EC1606 – Khởi sự doanh nghiệp</b> · GV: NCS. Đỗ Thuý Hương</p>
-  <p class="muted">Ngân hàng 300 câu (5 chương × 60 câu) theo tài liệu học phần. Tiến độ làm bài được lưu ngay trên máy bạn (localStorage), không gửi đi đâu cả.</p>
+  <p data-i18n-html="footer.line1"></p>
+  <p class="muted" data-i18n-html="footer.line2"></p>
+  <p><a class="author-link" id="authorLink"
+        href="https://thuyhuongctu.github.io/M-AIDA/huong.html"
+        target="_blank" rel="noopener">🔗 <span data-i18n="footer.link">Trang cá nhân của tác giả</span></a></p>
+  <p class="muted copyright">© <span id="year">2026</span> Đỗ Thùy Hương</p>
 </footer>
 
 <!-- ============ MODAL: LƯỚI CÂU HỎI ============ -->
 <div class="modal hidden" id="modalGrid">
   <div class="modal__box">
     <div class="modal__head">
-      <h3>Danh sách câu hỏi</h3>
-      <button class="icon-btn" data-close type="button" aria-label="Đóng">✕</button>
+      <h3 data-i18n="grid.heading">Danh sách câu hỏi</h3>
+      <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
     </div>
     <div class="legend">
-      <span><i class="dot dot--answered"></i> Đã làm</span>
-      <span><i class="dot dot--marked"></i> Đánh dấu</span>
-      <span><i class="dot dot--empty"></i> Chưa làm</span>
+      <span><i class="dot dot--answered"></i> <span data-i18n="grid.answered">Đã làm</span></span>
+      <span><i class="dot dot--marked"></i> <span data-i18n="grid.markedDot">Đánh dấu</span></span>
+      <span><i class="dot dot--empty"></i> <span data-i18n="grid.empty">Chưa làm</span></span>
     </div>
     <div class="qgrid" id="qGrid"></div>
     <div class="modal__foot">
-      <button class="btn btn--success" id="btnSubmitFromGrid" type="button">Nộp bài</button>
+      <button class="btn btn--success" id="btnSubmitFromGrid" type="button" data-i18n="quiz.submit">Nộp bài</button>
     </div>
   </div>
 </div>
@@ -317,25 +337,32 @@
 <div class="modal hidden" id="modalSettings">
   <div class="modal__box">
     <div class="modal__head">
-      <h3>Cài đặt &amp; dữ liệu</h3>
-      <button class="icon-btn" data-close type="button" aria-label="Đóng">✕</button>
+      <h3 data-i18n="settings.heading">Cài đặt &amp; dữ liệu</h3>
+      <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
     </div>
     <div class="modal__body">
       <div class="field">
-        <label>Ngân hàng câu hỏi đang dùng</label>
+        <label data-i18n="settings.language">Ngôn ngữ</label>
+        <div class="chips" id="langChips">
+          <button class="chip" data-lang="vi" type="button">Tiếng Việt</button>
+          <button class="chip" data-lang="en" type="button">English</button>
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="settings.bank">Ngân hàng câu hỏi đang dùng</label>
         <div class="bank-info" id="bankInfo"></div>
       </div>
       <div class="field">
-        <label for="importFile">Nhập thêm câu hỏi (tệp <code>.json</code>)</label>
+        <label for="importFile" data-i18n-html="settings.importFile"></label>
         <input type="file" id="importFile" accept=".json,application/json" multiple>
-        <small class="muted">Câu hỏi mới được gộp tự động vào ngân hàng và loại bỏ trùng lặp. Xem cấu trúc tệp mẫu trong <code>data/</code>.</small>
+        <small class="muted" data-i18n-html="settings.importHint"></small>
         <div id="importLog" class="import-log"></div>
       </div>
       <div class="field">
-        <label>Dữ liệu cá nhân</label>
+        <label data-i18n="settings.personal">Dữ liệu cá nhân</label>
         <div class="actions actions--wrap">
-          <button class="btn btn--sm" id="btnExportProgress" type="button">Xuất tiến độ</button>
-          <button class="btn btn--sm btn--danger" id="btnResetAll" type="button">Xoá toàn bộ dữ liệu</button>
+          <button class="btn btn--sm" id="btnExportProgress" type="button" data-i18n="settings.export">Xuất tiến độ</button>
+          <button class="btn btn--sm btn--danger" id="btnResetAll" type="button" data-i18n="settings.reset">Xoá toàn bộ dữ liệu</button>
         </div>
       </div>
     </div>
@@ -344,6 +371,7 @@
 
 <div class="toast-wrap" id="toastWrap"></div>
 
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/storage.js"></script>
 <script src="assets/js/bank.js"></script>
 <script src="assets/js/parser.js"></script>

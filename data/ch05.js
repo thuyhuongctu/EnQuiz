@@ -1,9 +1,10 @@
 /* Chương 5 – Marketing cho doanh nghiệp mới
-   Nguồn: ngân hàng câu hỏi học phần EC1606 (60 câu/chương).
+   Nguồn: ngân hàng câu hỏi học phần (60 câu/chương).
    Tệp này được sinh tự động — sửa nội dung tại nguồn rồi tạo lại. */
 registerBank({
   "id": "ch05",
   "title": "Chương 5 – Marketing cho doanh nghiệp mới",
+  "titleEn": "Chapter 5 – Marketing for a new business",
   "order": 5,
   "questions": [
     {

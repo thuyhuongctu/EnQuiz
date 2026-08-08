@@ -1,9 +1,10 @@
 /* Chương 3 – Huy động vốn và các chỉ số tài chính cốt yếu
-   Nguồn: ngân hàng câu hỏi học phần EC1606 (60 câu/chương).
+   Nguồn: ngân hàng câu hỏi học phần (60 câu/chương).
    Tệp này được sinh tự động — sửa nội dung tại nguồn rồi tạo lại. */
 registerBank({
   "id": "ch03",
   "title": "Chương 3 – Huy động vốn và các chỉ số tài chính cốt yếu",
+  "titleEn": "Chapter 3 – Raising capital and key financial indicators",
   "order": 3,
   "questions": [
     {

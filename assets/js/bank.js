@@ -103,6 +103,7 @@
       explain: String(explain).trim(),
       chapterId: chapter.id,
       chapterTitle: chapter.title,
+      chapterTitleEn: chapter.titleEn || '',
       order: index
     };
   }
@@ -121,13 +122,15 @@
       chapterIndex[id] = {
         id: id,
         title: String(meta.title || id).trim(),
+        titleEn: String(meta.titleEn || '').trim(),
         order: typeof meta.order === 'number' ? meta.order : chapters.length + 1,
         questions: []
       };
       chapters.push(chapterIndex[id]);
-    } else if (meta.title && chapterIndex[id].title === id) {
+    } else {
       // bổ sung tiêu đề nếu lần đăng ký trước chưa có
-      chapterIndex[id].title = String(meta.title).trim();
+      if (meta.title && chapterIndex[id].title === id) chapterIndex[id].title = String(meta.title).trim();
+      if (meta.titleEn && !chapterIndex[id].titleEn) chapterIndex[id].titleEn = String(meta.titleEn).trim();
     }
     return chapterIndex[id];
   }

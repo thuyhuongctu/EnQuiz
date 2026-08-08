@@ -109,7 +109,7 @@ code {
   text-align: left;
   font-family: inherit;
 }
-.brand__logo { font-size: 1.6rem; line-height: 1; }
+.brand__logo { width: 34px; height: 34px; border-radius: 9px; display: block; }
 .brand__text { display: flex; flex-direction: column; }
 .brand__text strong { font-size: 1rem; }
 .brand__text small { color: var(--muted); font-size: .76rem; line-height: 1.2; }
@@ -129,6 +129,7 @@ code {
 }
 .icon-btn:hover { background: var(--bg-soft); }
 .icon-btn:active { transform: scale(.94); }
+.lang-btn { font-size: .74rem; font-weight: 800; letter-spacing: .03em; }
 
 /* ---------------- Layout ---------------- */
 .container {
@@ -167,8 +168,9 @@ code {
   margin-bottom: 1.2rem;
   box-shadow: var(--shadow);
 }
-.hero__title { font-size: 1.5rem; margin: 0 0 .2rem; }
-.hero__title span { display: block; font-size: 1.75rem; }
+.hero__title { font-size: 1.75rem; margin: 0 0 .2rem; }
+.hero__title span { display: block; }
+.hero__title .hero__title-sm { font-size: 1.5rem; font-weight: 600; opacity: .9; }
 .hero__sub { color: rgba(255, 255, 255, .85); margin: 0 0 1rem; font-size: .92rem; }
 .hero__stats {
   display: grid;
@@ -754,6 +756,23 @@ input[type="number"]:focus, input[type="file"]:focus {
   margin: 0 auto;
 }
 .footer p { margin: .2rem 0; }
+.author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  margin-top: .5rem;
+  padding: .4rem .9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .15s, border-color .15s;
+}
+.author-link:hover { background: var(--primary-soft); border-color: var(--primary); }
+.copyright { margin-top: .6rem; font-size: .78rem; }
+.preview-head { font-size: .95rem; margin: .6rem 0; }
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 620px) {

@@ -6,6 +6,7 @@
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  var t = function (key, vars) { return I18n.t(key, vars); };
 
   var LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
   var PASS_SCORE = 5; // thang 10
@@ -18,6 +19,8 @@
   var lastParse = null;
   var importMode = 'append';
   var tickHandle = null;
+  /** Sự kiện cài đặt PWA do trình duyệt cung cấp. */
+  var installEvent = null;
 
   /* =======================================================
      Tiện ích
@@ -33,7 +36,7 @@
     var a = arr.slice();
     for (var i = a.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
-      var t = a[i]; a[i] = a[j]; a[j] = t;
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
     }
     return a;
   }
@@ -61,10 +64,26 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  function currentScreen() {
+    var el = $$('.screen').filter(function (s) { return !s.classList.contains('hidden'); })[0];
+    return el ? el.id : '';
+  }
+
   function slugify(s) {
     return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '')
       .replace(/đ/gi, 'd').toLowerCase()
       .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'bo-de';
+  }
+
+  /** Tiêu đề chương theo ngôn ngữ đang chọn. */
+  function chapterLabel(c) {
+    if (!c) return '';
+    if (I18n.lang === 'en' && (c.titleEn || c.chapterTitleEn)) return c.titleEn || c.chapterTitleEn;
+    return c.title || c.chapterTitle || '';
+  }
+
+  function questionChapter(q) {
+    return (I18n.lang === 'en' && q.chapterTitleEn) ? q.chapterTitleEn : q.chapterTitle;
   }
 
   /* =======================================================
@@ -102,7 +121,7 @@
     var chapters = QuestionBank.chapters();
 
     if (!chapters.length) {
-      wrap.innerHTML = '<p class="muted">Chưa có câu hỏi nào. Hãy dùng công cụ “Ghép đề &amp; đáp án” để nhập bộ đề của bạn.</p>';
+      wrap.innerHTML = '<p class="muted">' + esc(t('chapters.empty')) + '</p>';
       return;
     }
 
@@ -117,28 +136,37 @@
       return '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
         '<span class="chapter-item__no">' + (i + 1) + '</span>' +
         '<span class="chapter-item__main">' +
-          '<span class="chapter-item__title">' + esc(c.title) + '</span>' +
-          '<span class="chapter-item__meta">' + c.questions.length + ' câu · đã làm ' + seen + ' · thuộc ' + pct + '%</span>' +
+          '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
+          '<span class="chapter-item__meta">' +
+            esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
+          '</span>' +
         '</span>' +
         '<span class="chapter-item__go">›</span>' +
       '</button>';
     }).join('');
   }
 
+  function historyLabel(h) {
+    return h.labelKey ? t(h.labelKey) : (h.label || '');
+  }
+
   function renderHistory() {
     var list = Store.get('history');
     var wrap = $('#historyList');
     if (!list.length) {
-      wrap.innerHTML = '<p class="muted">Chưa có lần làm bài nào được ghi lại.</p>';
+      wrap.innerHTML = '<p class="muted">' + esc(t('history.empty')) + '</p>';
       return;
     }
+    var locale = I18n.lang === 'en' ? 'en-GB' : 'vi-VN';
     wrap.innerHTML = list.slice(0, 10).map(function (h) {
       var d = new Date(h.at);
-      var stamp = d.toLocaleDateString('vi-VN') + ' ' +
+      var stamp = d.toLocaleDateString(locale) + ' ' +
         String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
       return '<div class="history-item">' +
-        '<span>' + esc(h.label) + '<br><small class="muted">' + stamp + ' · ' + h.correct + '/' + h.total + ' câu đúng</small></span>' +
-        '<span class="history-item__score ' + (h.score >= PASS_SCORE ? 'pass' : 'fail') + '">' + h.score.toFixed(1) + '</span>' +
+        '<span>' + esc(historyLabel(h)) + '<br><small class="muted">' + stamp + ' · ' +
+          esc(t('history.detail', { correct: h.correct, total: h.total })) + '</small></span>' +
+        '<span class="history-item__score ' + (h.score >= PASS_SCORE ? 'pass' : 'fail') + '">' +
+          h.score.toFixed(1) + '</span>' +
       '</div>';
     }).join('');
   }
@@ -147,12 +175,7 @@
      Màn hình thiết lập đề
      ======================================================= */
 
-  var MODE_INFO = {
-    exam: { title: 'Thi thử', desc: 'Đề ngẫu nhiên, có bấm giờ. Đáp án chỉ hiện sau khi nộp bài.' },
-    practice: { title: 'Ôn tập theo chương', desc: 'Chọn phạm vi và làm từng câu, có giải thích ngay sau mỗi lựa chọn.' },
-    wrong: { title: 'Luyện lại câu sai', desc: 'Tập hợp những câu bạn từng trả lời sai. Trả lời đúng thì câu đó sẽ được gỡ khỏi danh sách.' },
-    marked: { title: 'Câu đã đánh dấu', desc: 'Những câu bạn gắn cờ để xem lại.' }
-  };
+  var MODES = ['exam', 'practice', 'wrong', 'marked'];
 
   function poolFor(mode, chapterIds) {
     if (mode === 'wrong') return QuestionBank.byUids(Store.get('wrong'));
@@ -164,17 +187,14 @@
     var pool = poolFor(mode, presetChapter ? [presetChapter] : []);
 
     if (!pool.length) {
-      if (mode === 'wrong') toast('Chưa có câu sai nào được ghi nhận.');
-      else if (mode === 'marked') toast('Bạn chưa đánh dấu câu hỏi nào.');
-      else toast('Ngân hàng câu hỏi đang trống.');
+      if (mode === 'wrong') toast(t('toast.noWrong'));
+      else if (mode === 'marked') toast(t('toast.noMarked'));
+      else toast(t('toast.emptyBank'));
       return;
     }
 
     setup.mode = mode;
     setup.chapters = presetChapter ? [presetChapter] : QuestionBank.chapters().map(function (c) { return c.id; });
-
-    $('#setupTitle').textContent = MODE_INFO[mode].title;
-    $('#setupDesc').textContent = MODE_INFO[mode].desc;
 
     var scoped = (mode === 'wrong' || mode === 'marked');
     $('#fieldChapterPick').classList.toggle('hidden', scoped);
@@ -186,15 +206,21 @@
     $('#setupTime').value = mode === 'exam' ? 45 : 0;
 
     if (!scoped) renderChapterPicker();
+    renderSetupTexts();
     refreshSetupMax();
     show('screenSetup');
+  }
+
+  function renderSetupTexts() {
+    $('#setupTitle').textContent = t('mode.' + setup.mode);
+    $('#setupDesc').textContent = t('setup.desc.' + setup.mode);
   }
 
   function renderChapterPicker() {
     $('#setupChapters').innerHTML = QuestionBank.chapters().map(function (c) {
       var on = setup.chapters.indexOf(c.id) !== -1;
       return '<label><input type="checkbox" value="' + esc(c.id) + '"' + (on ? ' checked' : '') + '>' +
-        '<span>' + esc(c.title) + ' <small class="muted">(' + c.questions.length + ' câu)</small></span></label>';
+        '<span>' + esc(chapterLabel(c)) + ' <small class="muted">(' + c.questions.length + ')</small></span></label>';
     }).join('');
   }
 
@@ -206,7 +232,7 @@
   function refreshSetupMax() {
     var pool = poolFor(setup.mode, currentSetupChapters());
     var max = pool.length;
-    $('#setupMax').textContent = max;
+    $('#setupMaxNote').innerHTML = esc(t('setup.max', { n: max }));
     $('#setupCount').max = Math.max(1, max);
 
     var input = $('#setupCount');
@@ -216,11 +242,13 @@
     var presets = [10, 20, 30, 40, 60].filter(function (n) { return n < max; });
     presets.push(max);
     $('#setupCountChips').innerHTML = presets.map(function (n) {
-      return '<button class="chip" data-count="' + n + '" type="button">' + (n === max ? 'Tất cả (' + n + ')' : n + ' câu') + '</button>';
+      var label = n === max ? t('setup.chipAll', { n: n }) : t('setup.chipCount', { n: n });
+      return '<button class="chip" data-count="' + n + '" type="button">' + esc(label) + '</button>';
     }).join('');
 
     $('#setupTimeChips').innerHTML = [15, 30, 45, 60, 90, 0].map(function (n) {
-      return '<button class="chip" data-time="' + n + '" type="button">' + (n === 0 ? 'Không giới hạn' : n + ' phút') + '</button>';
+      var label = n === 0 ? t('setup.noLimit') : t('setup.chipTime', { n: n });
+      return '<button class="chip" data-time="' + n + '" type="button">' + esc(label) + '</button>';
     }).join('');
 
     $('#btnStart').disabled = max === 0;
@@ -235,10 +263,10 @@
     var pool = poolFor(setup.mode, chapterIds);
 
     if (setup.mode !== 'wrong' && setup.mode !== 'marked' && !chapterIds.length) {
-      toast('Hãy chọn ít nhất một chương.');
+      toast(t('toast.pickChapter'));
       return;
     }
-    if (!pool.length) { toast('Không có câu hỏi phù hợp.'); return; }
+    if (!pool.length) { toast(t('toast.noMatch')); return; }
 
     var count = Math.min(Math.max(1, parseInt($('#setupCount').value, 10) || pool.length), pool.length);
     var shuffleQ = $('#setupShuffleQ').checked;
@@ -247,17 +275,21 @@
     var minutes = $('#fieldTime').classList.contains('hidden') ? 0 : (parseInt($('#setupTime').value, 10) || 0);
 
     var picked = (shuffleQ ? shuffle(pool) : pool).slice(0, count);
+    buildSession(picked, 'mode.' + setup.mode, setup.mode, instant, minutes * 60, shuffleA);
+  }
 
+  function buildSession(pool, labelKey, mode, instant, limit, shuffleA) {
     session = {
-      mode: setup.mode,
-      label: MODE_INFO[setup.mode].title,
+      mode: mode,
+      labelKey: labelKey,
       instant: instant,
-      limit: minutes * 60,
+      limit: limit,
       startedAt: Date.now(),
       elapsed: 0,
       index: 0,
       submitted: false,
-      items: picked.map(function (q) {
+      saved: false,
+      items: pool.map(function (q) {
         var order = shuffleA ? shuffle(q.options.map(function (_, i) { return i; }))
                              : q.options.map(function (_, i) { return i; });
         return {
@@ -287,7 +319,7 @@
         el.textContent = mmss(left);
         el.classList.toggle('is-urgent', left <= 60);
         if (left <= 0) {
-          toast('Hết giờ — bài làm được nộp tự động.');
+          toast(t('quiz.timeUp'));
           submitQuiz(true);
         }
       } else {
@@ -301,18 +333,16 @@
   }
 
   function renderQuestion() {
+    if (!session) return;
     var it = session.items[session.index];
     var q = it.q;
 
     $('#quizCounter').textContent = (session.index + 1) + '/' + session.items.length;
     $('#quizProgress').style.width = ((session.index + 1) / session.items.length * 100) + '%';
-    $('#qChapter').textContent = q.chapterTitle;
+    $('#qChapter').textContent = questionChapter(q);
     $('#qText').textContent = q.text;
 
-    var markBtn = $('#btnMark');
-    var marked = Store.isMarked(q.uid);
-    markBtn.classList.toggle('is-on', marked);
-    markBtn.textContent = marked ? '★ Đã đánh dấu' : '☆ Đánh dấu';
+    updateMarkButton(Store.isMarked(q.uid));
 
     var reveal = it.revealed || session.submitted;
     $('#qOptions').innerHTML = it.order.map(function (origIdx, pos) {
@@ -331,7 +361,7 @@
 
     var ex = $('#qExplain');
     if (reveal && q.explain) {
-      ex.innerHTML = '<b>Giải thích</b>' + esc(q.explain);
+      ex.innerHTML = '<b>' + esc(t('quiz.explain')) + '</b>' + esc(q.explain);
       ex.classList.remove('hidden');
     } else {
       ex.classList.add('hidden');
@@ -340,6 +370,12 @@
     $('#btnPrev').disabled = session.index === 0;
     $('#btnNext').disabled = session.index >= session.items.length - 1;
     $('#quizTimer').textContent = session.limit > 0 ? mmss(session.limit - session.elapsed) : mmss(session.elapsed);
+  }
+
+  function updateMarkButton(on) {
+    var btn = $('#btnMark');
+    btn.classList.toggle('is-on', on);
+    btn.textContent = on ? '★ ' + t('quiz.marked') : '☆ ' + t('quiz.mark');
   }
 
   function pickOption(pos) {
@@ -364,7 +400,7 @@
   }
 
   function goTo(i) {
-    if (i < 0 || i >= session.items.length) return;
+    if (!session || i < 0 || i >= session.items.length) return;
     session.index = i;
     renderQuestion();
   }
@@ -388,7 +424,7 @@
 
     var unanswered = session.items.filter(function (it) { return it.picked === null; }).length;
     if (!auto && unanswered > 0) {
-      if (!confirm('Còn ' + unanswered + ' câu chưa trả lời. Bạn vẫn muốn nộp bài?')) return;
+      if (!confirm(t('quiz.confirmSubmit', { n: unanswered }))) return;
     }
 
     session.submitted = true;
@@ -405,6 +441,21 @@
     });
     Store.save();
 
+    // lưu lịch sử đúng một lần cho mỗi phiên
+    if (!session.saved) {
+      var r = computeResult();
+      Store.addHistory({
+        at: Date.now(),
+        labelKey: session.labelKey,
+        label: t(session.labelKey),
+        score: r.score,
+        correct: r.correct,
+        total: r.total,
+        seconds: Math.round(session.elapsed)
+      });
+      session.saved = true;
+    }
+
     renderResult();
     show('screenResult');
   }
@@ -414,7 +465,8 @@
     var byChapter = {};
 
     session.items.forEach(function (it) {
-      var c = byChapter[it.q.chapterId] || (byChapter[it.q.chapterId] = { title: it.q.chapterTitle, total: 0, correct: 0 });
+      var c = byChapter[it.q.chapterId];
+      if (!c) c = byChapter[it.q.chapterId] = { q: it.q, total: 0, correct: 0 };
       c.total++;
       if (it.picked === null) skip++;
       else if (it.picked === it.correctPos) { correct++; c.correct++; }
@@ -430,14 +482,17 @@
   }
 
   function renderResult() {
+    if (!session) return;
     var r = computeResult();
     var pass = r.score >= PASS_SCORE;
+    var pct = Math.round(r.correct / Math.max(1, r.total) * 100);
 
     $('#resultScore').textContent = r.score.toFixed(1);
-    $('#scoreRing').style.setProperty('--pct', (r.correct / Math.max(1, r.total) * 100) + '%');
-    $('#resultTitle').textContent = pass ? '🎉 Đạt yêu cầu!' : '💪 Cần ôn thêm';
-    $('#resultSummary').textContent = session.label + ' · đúng ' + r.correct + '/' + r.total +
-      ' câu (' + Math.round(r.correct / Math.max(1, r.total) * 100) + '%)';
+    $('#scoreRing').style.setProperty('--pct', pct + '%');
+    $('#resultTitle').textContent = pass ? t('result.pass') : t('result.fail');
+    $('#resultSummary').textContent = t('result.summary', {
+      label: t(session.labelKey), correct: r.correct, total: r.total, pct: pct
+    });
 
     $('#resCorrect').textContent = r.correct;
     $('#resWrong').textContent = r.wrong;
@@ -446,24 +501,17 @@
 
     $('#resByChapter').innerHTML = Object.keys(r.byChapter).map(function (k) {
       var c = r.byChapter[k];
-      var pct = Math.round(c.correct / c.total * 100);
+      var p = Math.round(c.correct / c.total * 100);
       return '<div class="bych-row">' +
-        '<div class="bych-row__head"><span>' + esc(c.title) + '</span><b>' + c.correct + '/' + c.total + '</b></div>' +
-        '<div class="bych-row__bar"><div class="bych-row__fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="bych-row__head"><span>' + esc(questionChapter(c.q)) + '</span><b>' +
+          c.correct + '/' + c.total + '</b></div>' +
+        '<div class="bych-row__bar"><div class="bych-row__fill" style="width:' + p + '%"></div></div>' +
       '</div>';
     }).join('');
 
-    Store.addHistory({
-      at: Date.now(),
-      label: session.label,
-      score: r.score,
-      correct: r.correct,
-      total: r.total,
-      seconds: Math.round(session.elapsed)
-    });
-
-    $('#panelReview').classList.add('hidden');
-    $('#btnReview').textContent = 'Xem lại bài làm';
+    var reviewOpen = !$('#panelReview').classList.contains('hidden');
+    $('#btnReview').textContent = reviewOpen ? t('result.hideReview') : t('result.review');
+    if (reviewOpen) renderReview();
     $('#btnRetryWrong').disabled = r.wrong + r.skip === 0;
   }
 
@@ -474,16 +522,18 @@
         var cls = 'review-opt';
         if (pos === it.correctPos) cls += ' correct';
         else if (pos === it.picked) cls += ' chosen-wrong';
-        return '<div class="' + cls + '"><b>' + LETTERS[pos] + '.</b><span>' + esc(it.q.options[origIdx]) + '</span></div>';
+        return '<div class="' + cls + '"><b>' + LETTERS[pos] + '.</b><span>' +
+          esc(it.q.options[origIdx]) + '</span></div>';
       }).join('');
 
       var note = it.picked === null
-        ? '<div class="preview-item__warn">Bạn đã bỏ trống câu này.</div>' : '';
+        ? '<div class="preview-item__warn">' + esc(t('result.skipped')) + '</div>' : '';
       var ex = it.q.explain
-        ? '<div class="explain"><b>Giải thích</b>' + esc(it.q.explain) + '</div>' : '';
+        ? '<div class="explain"><b>' + esc(t('quiz.explain')) + '</b>' + esc(it.q.explain) + '</div>' : '';
 
       return '<div class="review-item ' + (ok ? 'ok' : 'no') + '">' +
-        '<div class="review-item__q"><span class="review-item__no">Câu ' + (i + 1) + '.</span>' + esc(it.q.text) + '</div>' +
+        '<div class="review-item__q"><span class="review-item__no">' +
+          esc(t('result.q', { n: i + 1 })) + '</span>' + esc(it.q.text) + '</div>' +
         opts + note + ex +
       '</div>';
     }).join('');
@@ -501,11 +551,13 @@
 
   function renderImportTargets() {
     var sel = $('#impChapter');
+    var keep = sel.value;
     var opts = QuestionBank.chapters().map(function (c) {
-      return '<option value="' + esc(c.id) + '">' + esc(c.title) + ' (' + c.questions.length + ' câu)</option>';
+      return '<option value="' + esc(c.id) + '">' + esc(chapterLabel(c)) + ' (' + c.questions.length + ')</option>';
     });
-    opts.push('<option value="__new__">➕ Tạo chương mới…</option>');
+    opts.push('<option value="__new__">' + esc(t('import.newChapter')) + '</option>');
     sel.innerHTML = opts.join('');
+    if (keep && sel.querySelector('option[value="' + keep.replace(/"/g, '\\"') + '"]')) sel.value = keep;
     if (!QuestionBank.chapters().length) sel.value = '__new__';
     toggleNewName();
   }
@@ -519,7 +571,7 @@
     var custom = Store.get('custom');
     var wrap = $('#customList');
     if (!custom.length) {
-      wrap.innerHTML = '<p class="muted">Bạn chưa nhập bộ đề nào. Các bộ đề nhập vào được lưu trên máy và tự nạp lại ở lần mở sau.</p>';
+      wrap.innerHTML = '<p class="muted">' + esc(t('import.noPacks')) + '</p>';
       return;
     }
     wrap.innerHTML = custom.map(function (p, i) {
@@ -527,9 +579,10 @@
         '<span class="chapter-item__no">' + (i + 1) + '</span>' +
         '<span class="chapter-item__main">' +
           '<span class="chapter-item__title">' + esc(p.title) + '</span>' +
-          '<span class="chapter-item__meta">' + p.questions.length + ' câu</span>' +
+          '<span class="chapter-item__meta">' + p.questions.length + '</span>' +
         '</span>' +
-        '<button class="btn btn--sm btn--danger" data-delcustom="' + esc(p.id) + '" type="button">Xoá</button>' +
+        '<button class="btn btn--sm btn--danger" data-delcustom="' + esc(p.id) + '" type="button">' +
+          esc(t('import.delete')) + '</button>' +
       '</div>';
     }).join('');
   }
@@ -546,7 +599,7 @@
     var aText = $('#impA').value;
 
     if (!qText.trim()) {
-      status('err', '❌ Chưa có nội dung ở ô 1. Hãy dán phần câu hỏi vào trước.');
+      status('err', t('import.needQ'));
       $('#impPreview').classList.add('hidden');
       $('#btnImpSave').disabled = true;
       return null;
@@ -557,12 +610,13 @@
 
     var s = res.stats;
     if (!s.valid) {
-      status('err', '❌ Không nhận được câu hỏi hợp lệ nào. Kiểm tra lại định dạng đề (cần có A. B. C. D.) và danh sách đáp án.');
+      status('err', t('import.none'));
     } else if (s.invalid) {
-      status('warn', '⚠️ Nhận diện ' + s.detected + ' câu, trong đó ' + s.valid + ' câu hợp lệ và ' +
-        s.invalid + ' câu còn thiếu dữ liệu. Tìm thấy ' + s.answerKeys + ' đáp án trong ô 2. Chỉ các câu hợp lệ được lưu.');
+      status('warn', t('import.partial', {
+        detected: s.detected, valid: s.valid, invalid: s.invalid, keys: s.answerKeys
+      }));
     } else {
-      status('ok', '✅ Nhận diện đủ ' + s.valid + ' câu hỏi, khớp với ' + s.answerKeys + ' đáp án. Bấm “Ghép & lưu” để đưa vào ngân hàng.');
+      status('ok', t('import.ok', { valid: s.valid, keys: s.answerKeys }));
     }
 
     renderPreview(res.questions);
@@ -572,7 +626,7 @@
 
   function renderPreview(questions) {
     var wrap = $('#impPreview');
-    var head = '<h3 style="font-size:.95rem;margin:.6rem 0">Xem trước (' + questions.length + ' câu)</h3>';
+    var head = '<h3 class="preview-head">' + esc(t('import.preview', { n: questions.length })) + '</h3>';
 
     wrap.innerHTML = head + questions.map(function (q) {
       var opts = q.options.map(function (o, i) {
@@ -582,7 +636,7 @@
       var warn = q.warnings.length
         ? '<div class="preview-item__warn">⚠️ ' + esc(q.warnings.join(' · ')) + '</div>' : '';
       return '<div class="preview-item ' + (q.valid ? 'ok' : 'no') + '">' +
-        '<div class="preview-item__q">Câu ' + q.number + '. ' + esc(q.text || '(trống)') + '</div>' +
+        '<div class="preview-item__q">' + q.number + '. ' + esc(q.text || t('import.emptyQ')) + '</div>' +
         opts + warn +
       '</div>';
     }).join('');
@@ -599,25 +653,22 @@
 
     if (sel === '__new__') {
       var name = $('#impNewName').value.trim();
-      if (!name) { toast('Hãy đặt tên cho chương mới.'); $('#impNewName').focus(); return; }
+      if (!name) { toast(t('import.needName')); $('#impNewName').focus(); return; }
       chapterTitle = name;
       chapterId = 'custom-' + slugify(name);
       order = QuestionBank.chapters().length + 1;
-      if (QuestionBank.chapter(chapterId)) {
-        var existing = QuestionBank.chapter(chapterId);
-        chapterTitle = existing.title;
-        order = existing.order;
-      }
+      var already = QuestionBank.chapter(chapterId);
+      if (already) { chapterTitle = already.title; order = already.order; }
     } else {
       var c = QuestionBank.chapter(sel);
-      if (!c) { toast('Chương đích không còn tồn tại.'); renderImportTargets(); return; }
+      if (!c) { toast(t('import.missing')); renderImportTargets(); return; }
       chapterId = c.id;
       chapterTitle = c.title;
       order = c.order;
     }
 
     var replace = importMode === 'replace';
-    if (replace && !confirm('Thay thế toàn bộ câu hỏi hiện có của “' + chapterTitle + '”?')) return;
+    if (replace && !confirm(t('import.confirmReplace', { chapter: chapterTitle }))) return;
 
     var pack = Parser.toPack(res.questions, chapterId, chapterTitle, order);
 
@@ -630,9 +681,9 @@
       id: chapterId, title: chapterTitle, order: order, questions: stored.questions
     }, 'user-import');
 
-    status('ok', '✅ Đã lưu ' + pack.questions.length + ' câu vào “' + chapterTitle + '”. ' +
-      'Chương hiện có ' + merged.added + ' câu' +
-      (merged.duplicated ? ' (đã bỏ qua ' + merged.duplicated + ' câu trùng nội dung).' : '.'));
+    var msg = t('import.saved', { n: pack.questions.length, chapter: chapterTitle, total: merged.added });
+    if (merged.duplicated) msg += t('import.savedDup', { n: merged.duplicated });
+    status('ok', msg);
 
     lastParse = null;
     $('#impQ').value = '';
@@ -643,7 +694,7 @@
     renderImportTargets();
     renderCustomList();
     renderHome();
-    toast('Đã cập nhật ngân hàng câu hỏi.');
+    toast(t('import.updated'));
   }
 
   var DEMO_Q = 'Câu 1: Kế hoạch kinh doanh được ví như yếu tố nào đối với người khởi nghiệp?\n' +
@@ -673,9 +724,15 @@
     var srcs = QuestionBank.sources();
     var custom = Store.get('custom').length;
     $('#bankInfo').innerHTML =
-      '<div><b>' + QuestionBank.total() + '</b> câu hỏi · <b>' + QuestionBank.chapters().length + '</b> chương</div>' +
-      '<div>Nguồn dữ liệu: ' + srcs.length + ' tệp · Bộ đề bạn nhập: ' + custom + '</div>' +
-      (Store.available ? '' : '<div style="color:var(--warn)">⚠️ Trình duyệt đang chặn lưu trữ cục bộ — tiến độ sẽ mất khi đóng tab.</div>');
+      '<div>' + t('settings.bankLine1', {
+        total: QuestionBank.total(), chapters: QuestionBank.chapters().length
+      }) + '</div>' +
+      '<div>' + esc(t('settings.bankLine2', { sources: srcs.length, custom: custom })) + '</div>' +
+      (Store.available ? '' : '<div style="color:var(--warn)">' + esc(t('settings.noStorage')) + '</div>');
+
+    $$('#langChips .chip').forEach(function (c) {
+      c.classList.toggle('is-active', c.getAttribute('data-lang') === I18n.lang);
+    });
   }
 
   function importJSONFiles(files) {
@@ -693,10 +750,10 @@
         }
         done++;
         if (done === files.length) {
-          log.textContent = 'Đã thêm ' + added + ' câu · trùng ' + dup + ' · lỗi ' + bad + '.';
+          log.textContent = t('settings.jsonLog', { added: added, dup: dup, bad: bad });
           renderBankInfo();
           renderHome();
-          toast('Đã gộp ' + added + ' câu hỏi mới.');
+          toast(t('settings.jsonMerged', { n: added }));
         }
       };
       reader.readAsText(f, 'utf-8');
@@ -713,11 +770,63 @@
   }
 
   /* =======================================================
+     Ứng dụng cài đặt được (PWA)
+     ======================================================= */
+
+  function setupPWA() {
+    if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function (e) {
+          console.warn('Không đăng ký được service worker:', e);
+        });
+      });
+    }
+
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault();
+      installEvent = e;
+      $('#btnInstall').classList.remove('hidden');
+    });
+
+    window.addEventListener('appinstalled', function () {
+      installEvent = null;
+      $('#btnInstall').classList.add('hidden');
+      toast(t('toast.installed'));
+    });
+
+    $('#btnInstall').addEventListener('click', function () {
+      if (!installEvent) return;
+      installEvent.prompt();
+      installEvent.userChoice.finally(function () {
+        installEvent = null;
+        $('#btnInstall').classList.add('hidden');
+      });
+    });
+  }
+
+  /* =======================================================
+     Đổi ngôn ngữ
+     ======================================================= */
+
+  function onLanguageChanged() {
+    $('#btnLang').textContent = I18n.lang === 'vi' ? 'EN' : 'VI';
+
+    renderHome();
+    var screen = currentScreen();
+    if (screen === 'screenSetup') { renderSetupTexts(); renderChapterPicker(); refreshSetupMax(); }
+    if (screen === 'screenQuiz') renderQuestion();
+    if (screen === 'screenResult') renderResult();
+    if (screen === 'screenImport') { renderImportTargets(); renderCustomList(); if (lastParse) analyzeImport(); }
+    if (!$('#modalSettings').classList.contains('hidden')) renderBankInfo();
+  }
+
+  /* =======================================================
      Gắn sự kiện
      ======================================================= */
 
   function bindEvents() {
     $('#btnHome').addEventListener('click', function () { leaveQuiz(); show('screenHome'); renderHome(); });
+    $('#btnLang').addEventListener('click', function () { I18n.toggle(); });
     $('#btnTheme').addEventListener('click', function () {
       applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
@@ -727,22 +836,25 @@
     });
 
     document.addEventListener('click', function (e) {
-      var t = e.target;
+      var target = e.target;
 
-      var nav = t.closest('[data-nav="home"]');
+      var nav = target.closest('[data-nav="home"]');
       if (nav) { leaveQuiz(); show('screenHome'); renderHome(); return; }
 
-      var mode = t.closest('[data-mode]');
+      var mode = target.closest('[data-mode]');
       if (mode) {
         var m = mode.getAttribute('data-mode');
         if (m === 'import') openImport(); else openSetup(m);
         return;
       }
 
-      var chap = t.closest('[data-chapter]');
+      var langBtn = target.closest('[data-lang]');
+      if (langBtn) { I18n.set(langBtn.getAttribute('data-lang')); return; }
+
+      var chap = target.closest('[data-chapter]');
       if (chap) { openSetup('practice', chap.getAttribute('data-chapter')); return; }
 
-      var countChip = t.closest('[data-count]');
+      var countChip = target.closest('[data-count]');
       if (countChip) {
         $('#setupCount').value = countChip.getAttribute('data-count');
         $$('#setupCountChips .chip').forEach(function (c) { c.classList.remove('is-active'); });
@@ -750,7 +862,7 @@
         return;
       }
 
-      var timeChip = t.closest('[data-time]');
+      var timeChip = target.closest('[data-time]');
       if (timeChip) {
         $('#setupTime').value = timeChip.getAttribute('data-time');
         $$('#setupTimeChips .chip').forEach(function (c) { c.classList.remove('is-active'); });
@@ -758,17 +870,17 @@
         return;
       }
 
-      var opt = t.closest('.option[data-pos]');
+      var opt = target.closest('.option[data-pos]');
       if (opt) { pickOption(parseInt(opt.getAttribute('data-pos'), 10)); return; }
 
-      var jump = t.closest('[data-goto]');
+      var jump = target.closest('[data-goto]');
       if (jump) {
         goTo(parseInt(jump.getAttribute('data-goto'), 10));
         $('#modalGrid').classList.add('hidden');
         return;
       }
 
-      var impMode = t.closest('[data-impmode]');
+      var impMode = target.closest('[data-impmode]');
       if (impMode) {
         importMode = impMode.getAttribute('data-impmode');
         $$('[data-impmode]').forEach(function (c) { c.classList.remove('is-active'); });
@@ -776,25 +888,25 @@
         return;
       }
 
-      var del = t.closest('[data-delcustom]');
+      var del = target.closest('[data-delcustom]');
       if (del) {
         var id = del.getAttribute('data-delcustom');
-        if (confirm('Xoá bộ đề này khỏi ngân hàng?')) {
+        if (confirm(t('import.confirmDelete'))) {
           Store.removeCustom(id);
           QuestionBank.removeChapter(id);
           renderCustomList();
           renderImportTargets();
           renderHome();
-          toast('Đã xoá bộ đề.');
+          toast(t('import.deleted'));
         }
         return;
       }
 
-      if (t.closest('[data-close]')) {
-        t.closest('.modal').classList.add('hidden');
+      if (target.closest('[data-close]')) {
+        target.closest('.modal').classList.add('hidden');
         return;
       }
-      if (t.classList.contains('modal')) t.classList.add('hidden');
+      if (target.classList.contains('modal')) target.classList.add('hidden');
     });
 
     // ----- Thiết lập đề -----
@@ -815,7 +927,7 @@
       $('#modalGrid').classList.remove('hidden');
     });
     $('#btnQuit').addEventListener('click', function () {
-      if (confirm('Thoát khỏi bài làm? Kết quả chưa nộp sẽ không được lưu.')) {
+      if (confirm(t('quiz.confirmQuit'))) {
         leaveQuiz();
         show('screenHome');
         renderHome();
@@ -824,13 +936,12 @@
     $('#btnMark').addEventListener('click', function () {
       var q = session.items[session.index].q;
       var on = Store.toggleMark(q.uid);
-      $('#btnMark').classList.toggle('is-on', on);
-      $('#btnMark').textContent = on ? '★ Đã đánh dấu' : '☆ Đánh dấu';
-      toast(on ? 'Đã đánh dấu câu hỏi.' : 'Đã bỏ đánh dấu.');
+      updateMarkButton(on);
+      toast(on ? t('quiz.marked.on') : t('quiz.marked.off'));
     });
 
     document.addEventListener('keydown', function (e) {
-      if ($('#screenQuiz').classList.contains('hidden')) return;
+      if ($('#screenQuiz').classList.contains('hidden') || !session) return;
       if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) return;
 
       if (e.key === 'ArrowRight') goTo(session.index + 1);
@@ -847,20 +958,22 @@
       if (p.classList.contains('hidden')) {
         renderReview();
         p.classList.remove('hidden');
-        this.textContent = 'Ẩn bài làm';
+        this.textContent = t('result.hideReview');
         p.scrollIntoView({ behavior: 'smooth' });
       } else {
         p.classList.add('hidden');
-        this.textContent = 'Xem lại bài làm';
+        this.textContent = t('result.review');
       }
     });
-    $('#btnRedo').addEventListener('click', function () { openSetup(session ? session.mode : 'exam'); });
+    $('#btnRedo').addEventListener('click', function () {
+      openSetup(session && MODES.indexOf(session.mode) !== -1 ? session.mode : 'exam');
+    });
     $('#btnRetryWrong').addEventListener('click', function () {
       var missed = session.items
         .filter(function (it) { return it.picked !== it.correctPos; })
         .map(function (it) { return it.q; });
-      if (!missed.length) { toast('Bạn không sai câu nào!'); return; }
-      startFromPool(missed, 'Luyện lại câu sai');
+      if (!missed.length) { toast(t('result.noWrong')); return; }
+      buildSession(missed, 'result.retryLabel', 'wrong', true, 0, false);
     });
 
     // ----- Ghép đề -----
@@ -881,19 +994,19 @@
       analyzeImport();
     });
     $('#btnClearCustom').addEventListener('click', function () {
-      if (!Store.get('custom').length) { toast('Chưa có bộ đề nào để xoá.'); return; }
-      if (!confirm('Xoá toàn bộ bộ đề bạn đã nhập?')) return;
+      if (!Store.get('custom').length) { toast(t('import.nothingToDelete')); return; }
+      if (!confirm(t('import.confirmDeleteAll'))) return;
       Store.get('custom').forEach(function (p) { QuestionBank.removeChapter(p.id); });
       Store.clearCustom();
       renderCustomList();
       renderImportTargets();
       renderHome();
-      toast('Đã xoá toàn bộ bộ đề tự nhập.');
+      toast(t('import.deletedAll'));
     });
 
     // ----- Lịch sử & dữ liệu -----
     $('#btnClearHistory').addEventListener('click', function () {
-      if (!confirm('Xoá toàn bộ lịch sử làm bài?')) return;
+      if (!confirm(t('history.confirmClear'))) return;
       Store.clearHistory();
       renderHome();
     });
@@ -902,10 +1015,10 @@
       this.value = '';
     });
     $('#btnExportProgress').addEventListener('click', function () {
-      download('ksdn-tien-do.json', Store.exportJSON());
+      download('tien-do-on-thi.json', Store.exportJSON());
     });
     $('#btnResetAll').addEventListener('click', function () {
-      if (!confirm('Xoá toàn bộ tiến độ, lịch sử và bộ đề đã nhập? Thao tác này không thể hoàn tác.')) return;
+      if (!confirm(t('settings.confirmReset'))) return;
       Store.reset();
       location.reload();
     });
@@ -913,26 +1026,6 @@
     window.addEventListener('beforeunload', function (e) {
       if (session && !session.submitted) { e.preventDefault(); e.returnValue = ''; }
     });
-  }
-
-  function startFromPool(pool, label) {
-    session = {
-      mode: 'wrong',
-      label: label,
-      instant: true,
-      limit: 0,
-      startedAt: Date.now(),
-      elapsed: 0,
-      index: 0,
-      submitted: false,
-      items: pool.map(function (q) {
-        var order = q.options.map(function (_, i) { return i; });
-        return { q: q, order: order, correctPos: q.correct, picked: null, revealed: false };
-      })
-    };
-    startTimer();
-    renderQuestion();
-    show('screenQuiz');
   }
 
   function leaveQuiz() {
@@ -946,8 +1039,13 @@
 
   function boot() {
     Store.init();
+    I18n.init();
+    I18n.onChange(onLanguageChanged);
     applyTheme(Store.get('theme') || 'light');
+    $('#btnLang').textContent = I18n.lang === 'vi' ? 'EN' : 'VI';
+    $('#year').textContent = new Date().getFullYear();
     bindEvents();
+    setupPWA();
 
     var files = (window.DATA_FILES || []).map(function (f) { return 'data/' + f; });
 
@@ -957,19 +1055,15 @@
         QuestionBank.merge(p, 'localStorage');
       });
 
-      if (res.failed.length) {
-        console.warn('Không nạp được các tệp dữ liệu:', res.failed);
-      }
-      if (!QuestionBank.total()) {
-        toast('Ngân hàng câu hỏi trống — hãy dùng công cụ ghép đề để nhập.');
-      }
+      if (res.failed.length) console.warn('Không nạp được các tệp dữ liệu:', res.failed);
+      if (!QuestionBank.total()) toast(t('toast.emptyBankHint'));
 
       renderHome();
       show('screenHome');
     }).catch(function (err) {
       console.error(err);
       $('#screenLoading').innerHTML =
-        '<div class="loader"><p>Không nạp được dữ liệu câu hỏi.</p><p class="muted">' + esc(err.message) + '</p></div>';
+        '<div class="loader"><p>' + esc(t('error.load')) + '</p><p class="muted">' + esc(err.message) + '</p></div>';
     });
   }
 
