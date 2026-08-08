@@ -460,6 +460,75 @@ code {
 .insight__text { margin: 0; font-size: .93rem; line-height: 1.6; }
 .insight__cta { margin-top: .7rem; }
 
+/* ---------------- Hai thẻ đứng cạnh nhau ---------------- */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; align-items: start; }
+.duo > .panel { margin-bottom: 1.1rem; }
+
+/* ---------------- Đồng hồ hai múi giờ ---------------- */
+.clock {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "place time" "date time";
+  align-items: center;
+  gap: 0 .8rem;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--border-soft, var(--border));
+}
+.clock:last-of-type { border-bottom: 0; }
+.clock__place { grid-area: place; font-weight: 600; font-size: .9rem; }
+.clock__date { grid-area: date; color: var(--muted); font-size: .73rem; }
+.clock__time {
+  grid-area: time;
+  justify-self: end;
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;   /* giây nhảy mà số không xê dịch */
+  color: var(--primary);
+  letter-spacing: -.02em;
+}
+.clock__gap { margin: .6rem 0 0; font-size: .76rem; color: var(--muted); }
+
+/* ---------------- Thẻ âm nhạc ---------------- */
+.music__intro { margin: 0 0 .8rem; font-size: .82rem; color: var(--muted); }
+.moods { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.mood {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .3rem;
+  padding: .8rem .4rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  color: var(--text);
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.mood:hover { transform: translateY(-2px); border-color: var(--primary); }
+.mood.is-on {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  box-shadow: 0 0 18px var(--glow);
+}
+.mood__ico { font-size: 1.15rem; color: var(--primary); line-height: 1; }
+.mood b { font-size: .78rem; font-weight: 600; }
+.nowplaying {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: .8rem;
+  padding-top: .8rem;
+  border-top: 1px solid var(--border);
+  font-size: .82rem;
+  color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .duo { grid-template-columns: 1fr; }
+}
+
 /* ---------------- Huy hiệu ---------------- */
 .badges {
   display: grid;
