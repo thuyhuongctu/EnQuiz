@@ -101,6 +101,15 @@
      Trang chủ
      ======================================================= */
 
+  /* Ba con số trên thanh trên cùng. Thanh này hiện ở mọi màn nên phải cập
+     nhật cả khi vừa chấm bài xong, không riêng lúc quay về trang chủ. */
+  function renderHud() {
+    var best = Store.bestScore();
+    $('#hudDone').textContent = Store.get('history').length;
+    $('#hudBest').textContent = best === null ? '–' : best.toFixed(1);
+    $('#hudWrong').textContent = QuestionBank.byUids(Store.get('wrong')).length;
+  }
+
   function renderHome() {
     var total = QuestionBank.total();
     $('#statTotal').textContent = total;
@@ -112,6 +121,8 @@
 
     $('#cntWrong').textContent = QuestionBank.byUids(Store.get('wrong')).length;
     $('#cntMarked').textContent = QuestionBank.byUids(Store.get('marked')).length;
+
+    renderHud();
 
     renderChapterList();
     renderHistory();
@@ -493,6 +504,7 @@
 
   function renderResult() {
     if (!session) return;
+    renderHud();                 // vừa chấm xong, ba con số trên thanh đổi theo
     var r = computeResult();
     var pass = r.score >= PASS_SCORE;
     var pct = Math.round(r.correct / Math.max(1, r.total) * 100);

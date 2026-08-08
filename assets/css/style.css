@@ -70,6 +70,10 @@
   --holo-text: linear-gradient(120deg, #0E7FA4 0%, #7A4E9E 45%, #B85585 100%);
 
   --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  /* Chữ đơn cách lấy sẵn của máy — dùng cho con số và nhãn ngắn kiểu bảng
+     điều khiển. Không tải thêm phông nào để ứng dụng vẫn chạy khi mất mạng. */
+  --mono: ui-monospace, "SF Mono", "SFMono-Regular", "JetBrains Mono",
+          "Roboto Mono", Menlo, Consolas, monospace;
   --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
   --display: "Bricolage Grotesque", "Be Vietnam Pro", system-ui, sans-serif;
 }
@@ -578,8 +582,23 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   opacity: .7;
 }
 .stat:hover { transform: translateY(-3px); box-shadow: 0 0 18px var(--glow); }
-.stat b { display: block; font-size: 1.35rem; font-family: var(--display); font-weight: 800; }
-.stat span { font-size: .7rem; color: var(--muted); }
+/* Con số dùng chữ đơn cách và bề rộng chữ số cố định: các ô đứng thành
+   cột thẳng hàng, và số không nhảy ngang mỗi lần đổi giá trị. */
+.stat b {
+  display: block;
+  font-size: 1.35rem;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+}
+.stat span {
+  font-size: .66rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .09em;
+}
 
 /* ---------------- Lời giới thiệu trong khối đầu trang ----------------
    Trước đây có thêm một thẻ giảng viên riêng ngay bên dưới, nhưng nó lặp
@@ -608,12 +627,21 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
 }
 
 /* ---------------- Mode cards ---------------- */
+/* Lưới bento: thẻ to nhỏ xen kẽ trên 12 cột thay vì các ô đều tăm tắp.
+   Thi thử là việc chính nên chiếm ô lớn cao gấp đôi, các thẻ còn lại xếp
+   quanh. Bố cục:
+     hàng 1   Thi thử (7)  |  Ôn theo chương (5)
+     hàng 2   Thi thử tiếp |  Luyện câu sai   (5)
+     hàng 3   Đã đánh dấu (5)  |  Ghép đề     (7)   */
 .modes {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: .75rem;
   margin-bottom: 1.2rem;
 }
+.modes > .mode-card { grid-column: span 5; }
+.mode-card--primary { grid-column: span 7; grid-row: span 2; }
+.mode-card--wide { grid-column: span 7; }
 .mode-card {
   display: flex;
   align-items: center;
@@ -664,8 +692,64 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
   opacity: .55;
   transition: transform .25s ease, opacity .25s;
 }
+
+/* Vạch màu bên trái để nhận ra loại việc mà không cần đọc chữ:
+   lam là làm bài, hồng là ôn lại, đỏ là câu sai, vàng là đã đánh dấu,
+   xanh lá là công cụ ghép đề. */
+.modes .mode-card { border-left-width: 4px; }
+.modes [data-mode="exam"]     { border-left-color: var(--primary); }
+.modes [data-mode="practice"] { border-left-color: var(--secondary); }
+.modes [data-mode="wrong"]    { border-left-color: var(--danger); }
+.modes [data-mode="marked"]   { border-left-color: var(--gold); }
+.modes [data-mode="import"]   { border-left-color: var(--tertiary); }
+.modes [data-mode="practice"] .mode-card__icon { color: var(--secondary); }
+.modes [data-mode="wrong"] .mode-card__icon    { color: var(--danger); }
+.modes [data-mode="marked"] .mode-card__icon   { color: var(--gold); }
+.modes [data-mode="import"] .mode-card__icon   { color: var(--tertiary); }
+
+/* ---------------- Ba con số trên thanh trên cùng ---------------- */
+.hud {
+  display: none;                 /* chỉ hiện ở màn rộng, xem media query */
+  align-items: center;
+  gap: 1.6rem;
+  padding: .3rem 1.1rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  border: 1px solid var(--glass-stroke);
+}
+.hud__item { display: flex; flex-direction: column; align-items: center; line-height: 1.15; }
+.hud__k {
+  font-family: var(--mono);
+  font-size: .6rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+}
+.hud__v {
+  font-family: var(--mono);
+  font-size: .95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--primary);
+}
+.hud__v--gold { color: var(--gold); }
+.hud__v--warn { color: var(--danger); }
 .mode-card:hover .mode-card__go { transform: translateX(3px); opacity: 1; color: var(--primary); }
-.mode-card--wide { grid-column: 1 / -1; }
+/* Ô lớn cao gấp đôi nên xếp dọc: biểu tượng to, tên, mô tả, rồi mũi tên
+   đẩy xuống đáy — không dàn ngang như các thẻ nhỏ. */
+.mode-card--primary {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;       /* dồn vào giữa, tránh khoảng trống hẫng ở đáy */
+  gap: .6rem;
+  padding: 1.25rem;
+}
+.mode-card--primary .mode-card__icon { width: 56px; height: 56px; border-radius: 16px; }
+.mode-card--primary .mode-card__icon .ico { width: 28px; height: 28px; }
+.mode-card--primary .mode-card__body { flex: 0 0 auto; }
+.mode-card--primary .mode-card__body strong { font-size: 1.35rem; font-family: var(--display); }
+.mode-card--primary .mode-card__body small { font-size: .87rem; margin-top: .2rem; }
+.mode-card--primary .mode-card__go { width: 22px; height: 22px; opacity: .8; }
 
 /* thẻ chính nổi hơn hẳn phần còn lại */
 .mode-card--primary .mode-card__icon {
@@ -1600,6 +1684,7 @@ input[type="number"]:focus, input[type="file"]:focus {
   }
   .container { padding-bottom: 5rem; }   /* chừa chỗ cho nút tour nổi ở góc */
   .topbar__inner { max-width: none; padding-left: 1.2rem; padding-right: 1.2rem; }
+  .hud { display: flex; }
 }
 
 /* Màn hẹp: thanh dưới chiếm chỗ, chừa đệm để không che nội dung */
@@ -1623,7 +1708,26 @@ input[type="number"]:focus, input[type="file"]:focus {
   .hero__veil { background: linear-gradient(180deg,
                 color-mix(in srgb, var(--bg) 70%, transparent) 0%,
                 color-mix(in srgb, var(--bg) 40%, transparent) 100%); }
+  /* Màn hẹp: bỏ lưới bento, xếp một cột. Phải trả các thẻ về ô mặc định,
+     nếu không phần chiếm 7/12 và cao gấp đôi vẫn còn hiệu lực. */
   .modes { grid-template-columns: 1fr; }
+  .modes > .mode-card,
+  .mode-card--primary,
+  .mode-card--wide { grid-column: auto; grid-row: auto; }
+  .mode-card--primary {
+    flex-direction: row;
+    align-items: center;
+    gap: .75rem;
+    padding: .9rem;
+  }
+  .mode-card--primary .mode-card__icon { width: 44px; height: 44px; border-radius: 13px; }
+  .mode-card--primary .mode-card__icon .ico { width: 22px; height: 22px; }
+  /* Trả lại khả năng co: bản màn rộng khoá flex: 0 0 auto cho ô lớn xếp dọc,
+     giữ nguyên ở đây thì phần chữ không thu lại và đẩy mũi tên ra ngoài thẻ. */
+  .mode-card--primary .mode-card__body { flex: 1 1 auto; min-width: 0; }
+  .mode-card--primary .mode-card__body strong { font-size: 1rem; font-family: inherit; }
+  .mode-card--primary .mode-card__body small { font-size: .79rem; }
+  .mode-card--primary .mode-card__go { width: 18px; height: 18px; flex: 0 0 auto; }
   .result-grid { grid-template-columns: repeat(2, 1fr); }
   .quiz-nav { grid-template-columns: 1fr 1fr; }
   .quiz-nav .btn--success { grid-column: 1 / -1; }
