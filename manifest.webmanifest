@@ -1,0 +1,48 @@
+{
+  "name": "EnQuiz — Ôn thi Khởi sự doanh nghiệp",
+  "short_name": "EnQuiz",
+  "description": "EnQuiz — ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp — 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.",
+  "lang": "vi",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4efe9",
+  "theme_color": "#9e3b4e",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Thi thử",
+      "short_name": "Thi thử",
+      "url": "./index.html?mode=exam",
+      "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Luyện câu sai",
+      "short_name": "Câu sai",
+      "url": "./index.html?mode=wrong",
+      "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
