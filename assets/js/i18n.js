@@ -22,6 +22,7 @@
       'teacher.name': 'NCS. Đỗ Thùy Hương',
       'teacher.role': 'Giảng viên · Tác giả ngân hàng câu hỏi',
       'teacher.note': 'Mỗi ngày một đề nhỏ, kiến thức sẽ chắc dần. Sai ở đâu, ứng dụng ghi lại giúp bạn ôn lại đúng chỗ đó.',
+      'teacher.fr': "Bonjour ! Je m'appelle Hương.",
       'teacher.cta': 'Xem trang cá nhân',
       'teacher.alt': 'Ảnh minh hoạ giảng viên Đỗ Thùy Hương đang giảng bài',
 
@@ -219,6 +220,7 @@
       'tour.finish': 'Kết thúc',
       'tour.close': 'Đóng',
       'tour.noVoice': 'Thiết bị chưa có giọng đọc tiếng Việt — bạn có thể đọc phần chữ bên trên.',
+      'tour.s0': "Bonjour ! Je m'appelle Hương. Bienvenue sur EnQuiz, l'application de révision de Madame Đỗ Thùy Hương.",
       'tour.s1': 'Xin chào, mình là Hương AI, trợ lý của cô Đỗ Thùy Hương. Mình sẽ dẫn bạn đi một vòng ứng dụng EnQuiz trong khoảng một phút. Đây là bảng tổng quan: ba trăm câu hỏi, chia thành năm chương, kèm số lượt bạn đã luyện và điểm cao nhất.',
       'tour.s2': 'Đây là lời nhắn của cô Đỗ Thùy Hương, tác giả ngân hàng câu hỏi. Bấm vào nút bên dưới nếu bạn muốn ghé thăm trang cá nhân của cô.',
       'tour.s3': 'Bốn chế độ luyện tập. Thi thử rút đề ngẫu nhiên và bấm giờ giống thi thật. Ôn tập theo chương thì hiện đáp án ngay sau mỗi câu để bạn hiểu bài. Luyện câu sai gom lại những câu bạn từng trả lời sai. Câu đã đánh dấu giữ những câu bạn muốn xem lại.',
@@ -248,6 +250,7 @@
       'teacher.name': 'Do Thuy Huong, PhD Candidate',
       'teacher.role': 'Lecturer · Author of the question bank',
       'teacher.note': 'A short paper every day and the material sticks. Whatever you miss, the app remembers so you can revise exactly that.',
+      'teacher.fr': "Bonjour ! Je m'appelle Hương.",
       'teacher.cta': 'Visit homepage',
       'teacher.alt': 'Illustration of lecturer Do Thuy Huong teaching a class',
 
@@ -445,6 +448,7 @@
       'tour.finish': 'Finish',
       'tour.close': 'Close',
       'tour.noVoice': 'No English voice is installed on this device — you can read the text above instead.',
+      'tour.s0': "Bonjour ! Je m'appelle Hương. Bienvenue sur EnQuiz, l'application de révision de Madame Đỗ Thùy Hương.",
       'tour.s1': 'Hello, I am Huong AI, assistant to Ms. Do Thuy Huong. Let me walk you through EnQuiz in about a minute. This is the overview: three hundred questions across five chapters, along with how many sessions you have practised and your best score.',
       'tour.s2': 'This is a message from Ms. Do Thuy Huong, the author of the question bank. Tap the button below if you would like to visit her homepage.',
       'tour.s3': 'There are four practice modes. Mock exam draws a random paper with a countdown, just like the real thing. Practice by chapter reveals the answer after every question so you learn as you go. Missed questions gathers everything you previously got wrong. Flagged questions keeps the ones you want to revisit.',

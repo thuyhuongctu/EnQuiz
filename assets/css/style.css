@@ -1045,3 +1045,12 @@ input[type="number"]:focus, input[type="file"]:focus {
   .footer { text-align: center; justify-content: center; }
   .footer__links { text-align: center; }
 }
+
+/* Lời chào tiếng Pháp trong khối giới thiệu giảng viên */
+.teacher__fr {
+  margin: 0 0 .45rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: .93rem;
+  color: var(--primary);
+}

@@ -49,7 +49,8 @@ Giao diện có bản tiếng Anh; nội dung câu hỏi giữ nguyên tiếng V
   hỗ trợ phím tắt `A/B/C/D` và `←/→`.
 - Cài được như ứng dụng trên điện thoại và máy tính, chạy offline.
 - Khối giới thiệu giảng viên ngay trang chủ, kèm liên kết tới trang cá nhân.
-- **Hương AI hướng dẫn** — tour 7 bước có giọng đọc tiếng Việt và tiếng Anh, làm
+- **Hương AI hướng dẫn** — tour 8 bước có giọng đọc tiếng Việt và tiếng Anh, mở
+  đầu bằng lời chào tiếng Pháp “Bonjour ! Je m'appelle Hương.” đọc bằng giọng Pháp; làm
   nổi từng khu vực đang được giới thiệu. Dùng Web Speech API sẵn có của trình
   duyệt nên không cần tệp âm thanh; máy không có giọng đọc thì phần lời vẫn hiện
   thành chữ nên tour luôn dùng được.
