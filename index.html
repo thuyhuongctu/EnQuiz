@@ -84,6 +84,22 @@
         <small data-i18n="app.tagline">Ôn thi Khởi sự doanh nghiệp</small>
       </span>
     </button>
+    <!-- Ba con số theo dõi thường xuyên, luôn nhìn thấy dù đang ở màn nào.
+         Màn hẹp giấu đi vì thanh trên cùng đã chật. -->
+    <div class="hud">
+      <div class="hud__item">
+        <span class="hud__k" data-i18n="home.stat.done">lượt luyện</span>
+        <b class="hud__v" id="hudDone">0</b>
+      </div>
+      <div class="hud__item">
+        <span class="hud__k" data-i18n="home.stat.best">điểm cao nhất</span>
+        <b class="hud__v hud__v--gold" id="hudBest">–</b>
+      </div>
+      <div class="hud__item">
+        <span class="hud__k" data-i18n="nav.wrong">Câu sai</span>
+        <b class="hud__v hud__v--warn" id="hudWrong">0</b>
+      </div>
+    </div>
     <div class="topbar__actions">
       <button class="icon-btn hidden" id="btnInstall" type="button"
               data-i18n-attr="title:btn.install;aria-label:btn.install"><svg class="ico" aria-hidden="true"><use href="#i-down"/></svg></button>
