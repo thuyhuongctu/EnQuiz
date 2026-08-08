@@ -239,6 +239,8 @@
       'tour.s3': 'Bốn chế độ luyện tập. Thi thử rút đề ngẫu nhiên và bấm giờ giống thi thật. Ôn tập theo chương thì hiện đáp án ngay sau mỗi câu để bạn hiểu bài. Luyện câu sai gom lại những câu bạn từng trả lời sai. Câu đã đánh dấu giữ những câu bạn muốn xem lại.',
       'tour.s4': 'Đây là công cụ ghép đề. Bạn dán câu hỏi vào một ô và dán danh sách đáp án vào ô còn lại, hệ thống sẽ tự khớp theo số thứ tự câu ghi trong đề.',
       'tour.s5': 'Năm chương của học phần, mỗi chương sáu mươi câu. Dòng chữ nhỏ cho biết bạn đã làm bao nhiêu câu và thuộc bao nhiêu phần trăm.',
+      'tour.nav': 'Thanh bên trái là đường đi tắt: bấm một cái là sang thẳng chế độ bạn muốn, không phải quay về trang chủ. Mục đang mở luôn được tô sáng để bạn biết mình đang ở đâu.',
+      'tour.navm': 'Thanh dưới màn hình là đường đi tắt: trang chủ, thi thử, danh sách chương và cài đặt. Mục đang mở luôn được tô sáng để bạn biết mình đang ở đâu.',
       'tour.s6': 'Ba nút ở góc trên bên phải: chuyển giữa tiếng Việt và tiếng Anh, đổi giao diện sáng tối, và mở phần cài đặt. Trong cài đặt bạn có thể xuất tiến độ hoặc xoá toàn bộ dữ liệu.',
       'tour.s7': 'Cuối cùng, một lưu ý quan trọng: toàn bộ câu hỏi và phần mềm thuộc bản quyền của cô Đỗ Thùy Hương. Bạn được dùng miễn phí để tự học, nhưng xin đừng sao chép hay phát tán lại. Chúc bạn ôn tập thật tốt và thi đạt điểm cao nhé!',
 
@@ -480,6 +482,8 @@
       'tour.s3': 'There are four practice modes. Mock exam draws a random paper with a countdown, just like the real thing. Practice by chapter reveals the answer after every question so you learn as you go. Missed questions gathers everything you previously got wrong. Flagged questions keeps the ones you want to revisit.',
       'tour.s4': 'This is the merge tool. Paste your questions into one box and the answer key into the other, and the app matches them by the question number printed in the paper.',
       'tour.s5': 'The five chapters of the course, sixty questions each. The small line tells you how many you have attempted and how much you have mastered.',
+      'tour.nav': 'The rail on the left is your shortcut: one tap takes you straight to a mode without going back to the home screen. Whichever one you are in stays highlighted, so you always know where you are.',
+      'tour.navm': 'The bar along the bottom is your shortcut: home, mock exam, the chapter list and settings. Whichever one you are in stays highlighted, so you always know where you are.',
       'tour.s6': 'Three controls in the top right corner: switch between Vietnamese and English, toggle light or dark mode, and open settings. In settings you can export your progress or erase all data.',
       'tour.s7': 'Finally, one important note: all questions and the software are copyright of Ms. Do Thuy Huong. You are welcome to use them free of charge for your own study, but please do not copy or redistribute them. Good luck with your revision!',
 

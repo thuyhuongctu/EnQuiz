@@ -4,13 +4,26 @@
    Đổi CACHE_VERSION mỗi lần phát hành bản mới để trình duyệt
    tải lại toàn bộ tài nguyên thay vì dùng bản đã lưu.
    ========================================================= */
-const CACHE_VERSION = 'enquiz-v12';
+const CACHE_VERSION = 'enquiz-v13';
 
 const SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
   './assets/css/style.css',
+  './assets/css/fonts.css',
+  './assets/fonts/be-vietnam-pro-400-latin.woff2',
+  './assets/fonts/be-vietnam-pro-400-vietnamese.woff2',
+  './assets/fonts/be-vietnam-pro-500-latin.woff2',
+  './assets/fonts/be-vietnam-pro-500-vietnamese.woff2',
+  './assets/fonts/be-vietnam-pro-600-latin.woff2',
+  './assets/fonts/be-vietnam-pro-600-vietnamese.woff2',
+  './assets/fonts/be-vietnam-pro-700-latin.woff2',
+  './assets/fonts/be-vietnam-pro-700-vietnamese.woff2',
+  './assets/fonts/bricolage-grotesque-600-latin.woff2',
+  './assets/fonts/bricolage-grotesque-600-vietnamese.woff2',
+  './assets/fonts/bricolage-grotesque-800-latin.woff2',
+  './assets/fonts/bricolage-grotesque-800-vietnamese.woff2',
   './assets/js/i18n.js',
   './assets/js/storage.js',
   './assets/js/bank.js',
