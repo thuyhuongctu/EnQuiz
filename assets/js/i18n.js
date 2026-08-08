@@ -23,14 +23,12 @@
       'teacher.role': 'Giảng viên · Tác giả ngân hàng câu hỏi',
       'teacher.note': 'Mỗi ngày một đề nhỏ, kiến thức sẽ chắc dần. Sai ở đâu, ứng dụng ghi lại giúp bạn ôn lại đúng chỗ đó.',
       'teacher.fr': "Bonjour ! Je m'appelle Hương.",
-      'teacher.cta': 'Xem trang cá nhân',
       'teacher.alt': 'Ảnh minh hoạ giảng viên Đỗ Thùy Hương đang giảng bài',
 
       'btn.theme': 'Đổi giao diện sáng/tối',
       'btn.lang': 'Chuyển sang English',
       'btn.settings': 'Cài đặt',
       'btn.home': 'Trang chủ',
-      'btn.author': 'Trang cá nhân của tác giả',
       'btn.install': 'Cài đặt ứng dụng',
 
       'loading': 'Đang nạp ngân hàng câu hỏi…',
@@ -183,9 +181,7 @@
 
       'footer.line1': '<b>EnQuiz</b> — ôn tập môn Khởi sự doanh nghiệp · Tác giả: NCS. Đỗ Thùy Hương',
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
-      'footer.link': 'Trang cá nhân của tác giả',
 
-      'footer.author': 'Trang cá nhân',
       'footer.policy': 'Bản quyền',
       'footer.privacy': 'Quyền riêng tư',
       'footer.place': 'Cần Thơ, Việt Nam',
@@ -230,7 +226,7 @@
       'tour.done.again': '↻ Xem lại hướng dẫn',
       'tour.s0': "Bonjour ! Je m'appelle Hương. Bienvenue sur EnQuiz, l'application de révision de Madame Đỗ Thùy Hương.",
       'tour.s1': 'Xin chào, mình là Hương AI, trợ lý của cô Đỗ Thùy Hương. Mình sẽ dẫn bạn đi một vòng ứng dụng EnQuiz trong khoảng một phút. Đây là bảng tổng quan: ba trăm câu hỏi, chia thành năm chương, kèm số lượt bạn đã luyện và điểm cao nhất.',
-      'tour.s2': 'Đây là lời nhắn của cô Đỗ Thùy Hương, tác giả ngân hàng câu hỏi. Bấm vào nút bên dưới nếu bạn muốn ghé thăm trang cá nhân của cô.',
+      'tour.s2': 'Đây là lời nhắn của cô Đỗ Thùy Hương, tác giả ngân hàng câu hỏi và là người biên soạn toàn bộ ứng dụng này.',
       'tour.s3': 'Bốn chế độ luyện tập. Thi thử rút đề ngẫu nhiên và bấm giờ giống thi thật. Ôn tập theo chương thì hiện đáp án ngay sau mỗi câu để bạn hiểu bài. Luyện câu sai gom lại những câu bạn từng trả lời sai. Câu đã đánh dấu giữ những câu bạn muốn xem lại.',
       'tour.s4': 'Đây là công cụ ghép đề. Bạn dán câu hỏi vào một ô và dán danh sách đáp án vào ô còn lại, hệ thống sẽ tự khớp theo số thứ tự câu ghi trong đề.',
       'tour.s5': 'Năm chương của học phần, mỗi chương sáu mươi câu. Dòng chữ nhỏ cho biết bạn đã làm bao nhiêu câu và thuộc bao nhiêu phần trăm.',
@@ -259,14 +255,12 @@
       'teacher.role': 'Lecturer · Author of the question bank',
       'teacher.note': 'A short paper every day and the material sticks. Whatever you miss, the app remembers so you can revise exactly that.',
       'teacher.fr': "Bonjour ! Je m'appelle Hương.",
-      'teacher.cta': 'Visit homepage',
       'teacher.alt': 'Illustration of lecturer Do Thuy Huong teaching a class',
 
       'btn.theme': 'Toggle light/dark theme',
       'btn.lang': 'Chuyển sang Tiếng Việt',
       'btn.settings': 'Settings',
       'btn.home': 'Home',
-      'btn.author': "Author's homepage",
       'btn.install': 'Install app',
 
       'loading': 'Loading the question bank…',
@@ -419,9 +413,7 @@
 
       'footer.line1': '<b>EnQuiz</b> — Entrepreneurship practice · by Do Thuy Huong, PhD Candidate',
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',
-      'footer.link': "Author's homepage",
 
-      'footer.author': 'Homepage',
       'footer.policy': 'Copyright',
       'footer.privacy': 'Privacy',
       'footer.place': 'Can Tho, Vietnam',
@@ -466,7 +458,7 @@
       'tour.done.again': '↻ Replay the tour',
       'tour.s0': "Bonjour ! Je m'appelle Hương. Bienvenue sur EnQuiz, l'application de révision de Madame Đỗ Thùy Hương.",
       'tour.s1': 'Hello, I am Huong AI, assistant to Ms. Do Thuy Huong. Let me walk you through EnQuiz in about a minute. This is the overview: three hundred questions across five chapters, along with how many sessions you have practised and your best score.',
-      'tour.s2': 'This is a message from Ms. Do Thuy Huong, the author of the question bank. Tap the button below if you would like to visit her homepage.',
+      'tour.s2': 'This is a message from Ms. Do Thuy Huong, who wrote the question bank and built this app.',
       'tour.s3': 'There are four practice modes. Mock exam draws a random paper with a countdown, just like the real thing. Practice by chapter reveals the answer after every question so you learn as you go. Missed questions gathers everything you previously got wrong. Flagged questions keeps the ones you want to revisit.',
       'tour.s4': 'This is the merge tool. Paste your questions into one box and the answer key into the other, and the app matches them by the question number printed in the paper.',
       'tour.s5': 'The five chapters of the course, sixty questions each. The small line tells you how many you have attempted and how much you have mastered.',
