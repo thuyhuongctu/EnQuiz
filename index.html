@@ -290,31 +290,24 @@
         <p class="clock__gap" id="clockGap"></p>
       </div>
 
-      <!-- Thẻ âm nhạc: chọn theo tâm trạng, nghe nhạc do chính tác giả sáng tác -->
+      <!-- Thẻ âm nhạc: đúng một bài, có lời, do chính tác giả sáng tác -->
       <div class="panel">
         <p class="eyebrow" data-i18n="music.eyebrow">Nghe một chút</p>
-        <h2 data-i18n="music.heading">Hôm nay bạn thế nào?</h2>
-        <p class="music__intro" data-i18n="music.intro">Nhạc do cô Đỗ Thùy Hương sáng tác.</p>
-        <div class="moods">
-          <button class="mood" type="button" data-song="soft">
-            <span class="mood__ico" aria-hidden="true">☾</span>
-            <b data-i18n="music.sad">Đang buồn</b>
-          </button>
-          <button class="mood" type="button" data-song="bright">
-            <span class="mood__ico" aria-hidden="true">☀</span>
-            <b data-i18n="music.happy">Đang vui</b>
-          </button>
-          <button class="mood" type="button" data-song="calm">
-            <span class="mood__ico" aria-hidden="true">✦</span>
-            <b data-i18n="music.none">Không gì cả</b>
-          </button>
+        <h2 data-i18n="music.heading">Nhạc của cô</h2>
+        <p class="music__intro" data-i18n="music.intro">Nhạc và lời do cô Đỗ Thùy Hương sáng tác.</p>
+        <div class="player">
+          <button class="player__btn" id="musicToggle" type="button"
+                  data-i18n-attr="aria-label:music.toggle">▶</button>
+          <div class="player__meta">
+            <b class="player__title">Golden Silt Route</b>
+            <small class="player__by" data-i18n="music.by">Đỗ Thùy Hương</small>
+          </div>
+          <!-- Chỉ hiện thời gian đã nghe, không hiện tổng thời lượng: tệp không
+               có bảng Xing nên trình duyệt đoán tổng sai tới mấy phút. -->
+          <span class="player__time" id="musicTime">0:00</span>
         </div>
-        <div class="nowplaying hidden" id="musicNow">
-          <button class="icon-btn" id="musicToggle" type="button"
-                  data-i18n-attr="aria-label:music.toggle">❚❚</button>
-          <span id="musicTitle"></span>
-        </div>
-        <audio id="musicPlayer" preload="none"></audio>
+        <audio id="musicPlayer" preload="none"
+               src="assets/audio/song/golden-silt-route.mp3"></audio>
       </div>
     </div>
 
