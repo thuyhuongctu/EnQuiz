@@ -4,7 +4,7 @@
    Đổi CACHE_VERSION mỗi lần phát hành bản mới để trình duyệt
    tải lại toàn bộ tài nguyên thay vì dùng bản đã lưu.
    ========================================================= */
-const CACHE_VERSION = 'enquiz-v7';
+const CACHE_VERSION = 'enquiz-v8';
 
 const SHELL = [
   './',
@@ -59,6 +59,15 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+/* Ghi bản mới vào kho lưu, bỏ qua lỗi để không chặn việc trả kết quả. */
+function keep(req, res) {
+  if (res && res.status === 200 && res.type === 'basic') {
+    const copy = res.clone();
+    caches.open(CACHE_VERSION).then((cache) => cache.put(req, copy));
+  }
+  return res;
+}
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
@@ -66,19 +75,26 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;   // để trình duyệt tự xử lý liên kết ngoài
 
-  // Trả bản đã lưu ngay cho nhanh, đồng thời tải bản mới về cho lần sau.
+  // Trang, mã nguồn và dữ liệu: ưu tiên bản trên mạng để phát hành mới hiện ra
+  // ngay, không phải tải lại trang mới thấy. Mất mạng thì lấy bản đã lưu.
+  const isShell = req.mode === 'navigate' ||
+                  /\.(html|css|js|webmanifest)$/.test(url.pathname) ||
+                  url.pathname.endsWith('/');
+
+  if (isShell) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => keep(req, res))
+        .catch(() => caches.match(req).then((c) => c || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // Ảnh và biểu tượng gần như không đổi: trả bản đã lưu cho nhanh,
+  // đồng thời tải bản mới về dùng cho lần sau.
   event.respondWith(
     caches.match(req).then((cached) => {
-      const network = fetch(req)
-        .then((res) => {
-          if (res && res.status === 200 && res.type === 'basic') {
-            const copy = res.clone();
-            caches.open(CACHE_VERSION).then((cache) => cache.put(req, copy));
-          }
-          return res;
-        })
-        .catch(() => cached);
-
+      const network = fetch(req).then((res) => keep(req, res)).catch(() => cached);
       return cached || network;
     })
   );

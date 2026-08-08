@@ -1340,6 +1340,44 @@ input[type="number"]:focus, input[type="file"]:focus {
 .tour-panel__nav .btn { padding: .35rem .8rem; font-size: .82rem; }
 .tour-note { font-size: .74rem; color: var(--muted); margin: .45rem 0 0; }
 
+/* Thẻ chốt sau khi đi hết tour */
+.tour-done__lead {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  margin: 0 0 .7rem;
+  background: linear-gradient(92deg, var(--primary), var(--secondary) 60%, var(--tertiary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tour-done__title {
+  margin: 0 0 .4rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--tertiary);
+}
+.tour-done__list {
+  list-style: none;
+  margin: 0 0 .8rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+.tour-done__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  font-size: .88rem;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+.tour-done__list li > span:first-child { flex: 0 0 auto; }
+
 /* vùng đang được thuyết minh */
 .tour-spot {
   position: relative;
