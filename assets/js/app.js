@@ -631,11 +631,12 @@
     $('#scoreRing').classList.toggle('pass', pass);
     $('#resultTitle').textContent = pass ? t('result.pass') : t('result.fail');
 
-    // Hương AI đổi tư thế theo điểm: reo mừng khi giỏi, mời xem lại khi chưa đạt
+    // Ảnh giảng đường đổi theo điểm: dang tay chúc mừng khi giỏi, đang giảng khi
+    // đạt, cầm giấy dò lại bài khi chưa đạt.
     var huong = $('#resultHuong');
     if (huong) {
-      var pose = r.score >= 8 ? 'cheer' : (pass ? 'welcome' : 'tablet');
-      huong.setAttribute('src', 'assets/img/huong-' + pose + '.webp');
+      var shot = r.score >= 8 ? 'stage' : (pass ? 'talk' : 'notes');
+      huong.setAttribute('src', 'assets/img/class-' + shot + '.webp');
     }
     $('#resultSummary').textContent = t('result.summary', {
       label: t(session.labelKey), correct: r.correct, total: r.total, pct: pct
