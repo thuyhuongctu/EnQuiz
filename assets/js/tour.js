@@ -14,6 +14,7 @@
 
   /* Mỗi bước gắn với một vùng trên trang; thiếu vùng thì bước đó được bỏ qua. */
   var STEPS = [
+    { key: 'tour.s0', target: '.teacher', lang: 'fr' },   // lời chào tiếng Pháp
     { key: 'tour.s1', target: '.hero' },
     { key: 'tour.s2', target: '.teacher' },
     { key: 'tour.s3', target: '.modes' },
@@ -29,12 +30,13 @@
   var steps = [];
   var spot = null;
   var synth = global.speechSynthesis || null;
+  var lastVoiceLang = null;
 
   /* ---------------- Giọng đọc ---------------- */
 
   function voiceFor(lang) {
     if (!synth) return null;
-    var want = lang === 'en' ? 'en' : 'vi';
+    var want = (lang === 'en' || lang === 'fr') ? lang : 'vi';
     var voices = synth.getVoices() || [];
     var exact = voices.filter(function (v) {
       return (v.lang || '').toLowerCase().indexOf(want) === 0;
@@ -45,21 +47,24 @@
     return (local[0] || exact[0]);
   }
 
-  function speak(text, onEnd) {
+  var FALLBACK_LANG = { en: 'en-US', vi: 'vi-VN', fr: 'fr-FR' };
+
+  function speak(text, langOverride, onEnd) {
     if (!synth) { showVoiceNote(true); return; }
     synth.cancel();
 
     var u = new SpeechSynthesisUtterance(text);
-    var lang = global.I18n.lang;
+    var lang = langOverride || global.I18n.lang;
     var v = voiceFor(lang);
     if (v) u.voice = v;
-    u.lang = v ? v.lang : (lang === 'en' ? 'en-US' : 'vi-VN');
+    u.lang = v ? v.lang : (FALLBACK_LANG[lang] || 'vi-VN');
     u.rate = lang === 'en' ? 0.98 : 1.0;
     u.pitch = 1.05;
     u.onend = function () { if (onEnd) onEnd(); };
     u.onerror = function () { showVoiceNote(true); };
 
     showVoiceNote(!v);
+    lastVoiceLang = lang;
     synth.speak(u);
   }
 
@@ -112,7 +117,7 @@
     paused = false;
     render();
     highlight(steps[index].target);
-    speak(t(steps[index].key), function () {
+    speak(t(steps[index].key), steps[index].lang, function () {
       // tự chuyển bước khi đọc xong, trừ bước cuối
       if (running && !paused && index < steps.length - 1) {
         setTimeout(function () { if (running && !paused) go(index + 1); }, 700);
@@ -170,7 +175,7 @@
       if (running) {
         render();
         // đọc lại bước hiện tại bằng ngôn ngữ mới
-        if (!paused) speak(t(steps[index].key));
+        if (!paused) speak(t(steps[index].key), steps[index].lang);
       }
     },
 
@@ -185,7 +190,7 @@
       // danh sách giọng đọc thường nạp không đồng bộ
       if (synth && typeof synth.onvoiceschanged !== 'undefined') {
         synth.onvoiceschanged = function () {
-          if (running && !paused) showVoiceNote(!voiceFor(global.I18n.lang));
+          if (running && !paused) showVoiceNote(!voiceFor(lastVoiceLang || global.I18n.lang));
         };
       }
 
