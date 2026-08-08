@@ -1870,3 +1870,204 @@ input[type="number"]:focus, input[type="file"]:focus {
   .sidenav, .botnav { display: none !important; }
   .container { margin-left: 0; padding-bottom: 0; }
 }
+/* =========================================================
+   LỚP HIỆN ĐẠI HOÁ (modern layer) — ghi đè có chủ đích
+   Phong cách: phẳng, kính mờ, viền gradient hologram,
+   chuyển động ngắn và tinh tế. Dùng token nên hợp cả 2 theme.
+   ========================================================= */
+
+/* ---- 1. Nhịp bo góc & bóng mềm hơn ---- */
+:root {
+  --radius: 18px;
+  --radius-sm: 13px;
+  --radius-lg: 28px;
+}
+
+/* ---- 2. Topbar: kính mờ sâu + chỉ gradient dưới chân ---- */
+.topbar {
+  box-shadow: none;
+  border-bottom: 0;
+}
+.topbar::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg,
+              transparent 0%,
+              color-mix(in srgb, var(--secondary) 55%, transparent) 30%,
+              color-mix(in srgb, var(--primary) 65%, transparent) 70%,
+              transparent 100%);
+}
+.brand__logo { filter: drop-shadow(0 0 10px var(--glow)); border-radius: 10px; }
+
+/* ---- 3. Nút: phẳng, hiện đại (bỏ bệ nổi 3D) ---- */
+.btn {
+  box-shadow: none;
+  border-radius: 12px;
+  padding: .66rem 1.15rem;
+  letter-spacing: .01em;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px var(--glass-stroke), 0 10px 26px -8px var(--glow); }
+.btn:active { transform: translateY(0) scale(.985); box-shadow: none; }
+.btn--sm { box-shadow: none; }
+
+.btn--primary {
+  background-image: var(--holo);
+  background-size: 220% auto;
+  color: var(--on-primary);
+  font-weight: 700;
+  box-shadow: 0 8px 24px -6px var(--glow);
+}
+.btn--primary:hover {
+  box-shadow: 0 12px 30px -6px var(--glow), 0 0 0 1px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+.btn--primary:active { box-shadow: 0 4px 12px -4px var(--glow); }
+
+.btn--success, .btn--danger { box-shadow: none; }
+.btn--success:hover { box-shadow: 0 10px 26px -8px color-mix(in srgb, var(--success) 45%, transparent); }
+.btn--danger:hover  { box-shadow: 0 10px 26px -8px color-mix(in srgb, var(--danger) 45%, transparent); }
+
+.icon-btn { border-radius: 12px; }
+
+/* ---- 4. Sidenav: vạch gradient bên trái mục đang chọn ---- */
+.sidenav__item { position: relative; border-radius: 12px; }
+.sidenav__item.is-active {
+  box-shadow: none;
+  border-color: transparent;
+  background: color-mix(in srgb, var(--secondary) 12%, transparent);
+}
+.sidenav__item.is-active::before {
+  content: "";
+  position: absolute;
+  left: -2px; top: 18%; bottom: 18%;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--secondary), var(--primary));
+}
+
+/* ---- 5. Thẻ chức năng: viền gradient khi hover, icon đổi màu ---- */
+.mode-card { border-radius: var(--radius); }
+.mode-card:hover {
+  transform: translateY(-3px);
+  border-color: transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    var(--holo) border-box;
+  box-shadow: 0 18px 40px -14px var(--glow);
+}
+.mode-card:hover .mode-card__icon {
+  background: var(--holo);
+  color: var(--on-primary);
+  border-color: transparent;
+  transform: scale(1.06) rotate(-3deg);
+}
+.mode-card:hover .mode-card__go { transform: translateX(4px); color: var(--primary); }
+.mode-card__go { transition: transform .25s ease, color .2s; }
+.mode-card__icon { border-radius: 14px; }
+
+/* Thẻ chính: luôn mang viền gradient hologram */
+.mode-card--primary {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    var(--holo) border-box;
+}
+.mode-card--primary .mode-card__icon {
+  background: var(--holo);
+  color: var(--on-primary);
+  border-color: transparent;
+}
+
+/* ---- 6. Đáp án: phím tròn, trạng thái rõ, viền gradient khi chọn ---- */
+.option { border-radius: 14px; }
+.option:hover { transform: translateX(3px); }
+.option__key {
+  flex-basis: 30px;
+  height: 30px;
+  font-family: var(--display);
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+}
+.option.is-selected {
+  border-color: transparent;
+  background:
+    linear-gradient(color-mix(in srgb, var(--primary) 9%, var(--surface)),
+                    color-mix(in srgb, var(--primary) 9%, var(--surface))) padding-box,
+    linear-gradient(120deg, var(--primary), var(--secondary)) border-box;
+}
+.option.is-selected .option__key {
+  transform: scale(1.08);
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+.option.is-correct .option__key,
+.option.is-wrong .option__key { border-color: transparent; }
+
+/* ---- 7. Thanh tiến độ & vòng điểm: gradient hologram ---- */
+.progress { border-radius: 999px; overflow: hidden; }
+.progress__bar {
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+  border-radius: 999px;
+  box-shadow: 0 0 12px var(--glow);
+}
+.score-ring {
+  background: conic-gradient(var(--secondary) 0%,
+              var(--primary) var(--pct, 0%),
+              var(--bg-soft) 0);
+}
+.score-ring.pass {
+  background: conic-gradient(var(--tertiary) 0%,
+              var(--primary) var(--pct, 0%),
+              var(--bg-soft) 0);
+}
+
+/* ---- 8. Lưới câu hỏi & pill giờ ---- */
+.qgrid button { border-radius: 12px; }
+.qgrid button:hover { transform: translateY(-2px); border-color: var(--primary); }
+.pill--time { font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+
+/* ---- 9. Danh sách chương / lịch sử: hover trượt nhẹ ---- */
+.chapter-item, .history-item { border-radius: var(--radius-sm); transition: transform .2s, border-color .2s, background .2s; }
+.chapter-item:hover, .history-item:hover {
+  transform: translateX(4px);
+  border-color: color-mix(in srgb, var(--primary) 45%, transparent);
+}
+.chapter-item__no {
+  font-family: var(--display);
+}
+
+/* ---- 10. Modal: bo lớn + chỉ gradient trên đầu ---- */
+.modal__box {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.modal__box::before {
+  content: "";
+  display: block;
+  height: 3px;
+  background: var(--holo);
+}
+
+/* ---- 11. Hero: tiêu đề lớn hơn, gradient chuyển động chậm ---- */
+.hero { border-radius: var(--radius-lg); }
+.hero__title { font-size: clamp(2rem, 5vw, 2.6rem); letter-spacing: -.02em; }
+.hero__title span:not(.hero__title-sm) { background-size: 200% auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero__title span:not(.hero__title-sm) { animation: holoShift 8s ease-in-out infinite alternate; }
+}
+@keyframes holoShift {
+  from { background-position: 0% center; }
+  to   { background-position: 100% center; }
+}
+.stat b { font-family: var(--display); font-weight: 800; }
+
+/* ---- 12. Chi tiết chung ---- */
+::selection { background: color-mix(in srgb, var(--secondary) 35%, transparent); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--primary) 50%, var(--border)); }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 6px; }
+
+.panel { border-radius: var(--radius-lg); }
+.footer { font-size: .84rem; }
