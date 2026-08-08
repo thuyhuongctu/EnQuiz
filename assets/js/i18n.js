@@ -25,6 +25,15 @@
       'teacher.fr': "Bonjour ! Je m'appelle Hương.",
       'teacher.alt': 'Ảnh minh hoạ giảng viên Đỗ Thùy Hương đang giảng bài',
 
+      'nav.home': 'Trang chủ',
+      'nav.exam': 'Thi thử',
+      'nav.practice': 'Ôn theo chương',
+      'nav.wrong': 'Câu sai',
+      'nav.marked': 'Đã đánh dấu',
+      'nav.import': 'Ghép đề',
+      'nav.chapters': 'Chương',
+      'nav.settings': 'Cài đặt',
+
       'btn.theme': 'Đổi giao diện sáng/tối',
       'btn.lang': 'Chuyển sang English',
       'btn.settings': 'Cài đặt',
@@ -256,6 +265,15 @@
       'teacher.note': 'A short paper every day and the material sticks. Whatever you miss, the app remembers so you can revise exactly that.',
       'teacher.fr': "Bonjour ! Je m'appelle Hương.",
       'teacher.alt': 'Illustration of lecturer Do Thuy Huong teaching a class',
+
+      'nav.home': 'Home',
+      'nav.exam': 'Mock exam',
+      'nav.practice': 'By chapter',
+      'nav.wrong': 'Missed',
+      'nav.marked': 'Flagged',
+      'nav.import': 'Merge',
+      'nav.chapters': 'Chapters',
+      'nav.settings': 'Settings',
 
       'btn.theme': 'Toggle light/dark theme',
       'btn.lang': 'Chuyển sang Tiếng Việt',

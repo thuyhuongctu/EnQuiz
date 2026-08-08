@@ -55,6 +55,9 @@ Vietnamese, as taught in the course.
   `A/B/C/D` and `←/→`.
 - Installable as an app on phones and desktops, and runs offline.
 - An author card on the home screen.
+- **Navigation shell** — a side rail on wide screens and a bottom bar on phones,
+  both wired to the real modes (home, mock exam, by chapter, missed, flagged,
+  merge, settings).
 - **Huong AI guided tour** — an 8-step tour with spoken narration in Vietnamese and
   English, opening with a French greeting (“Bonjour ! Je m'appelle Hương.”) read in
   a French voice, highlighting each area as it is introduced. The illustrated guide

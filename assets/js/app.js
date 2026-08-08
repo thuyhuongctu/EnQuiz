@@ -891,15 +891,38 @@
       $('#modalSettings').classList.remove('hidden');
     });
 
+    /* Đánh dấu mục đang mở trên hai thanh điều hướng. */
+    function markNav(el) {
+      var group = el.closest('.sidenav') ? '.sidenav__item' : '.botnav__item';
+      Array.prototype.forEach.call(document.querySelectorAll(group), function (b) {
+        b.classList.remove('is-active');
+      });
+      el.classList.add('is-active');
+    }
+
     document.addEventListener('click', function (e) {
       var target = e.target;
 
       var nav = target.closest('[data-nav="home"]');
-      if (nav) { leaveQuiz(); show('screenHome'); renderHome(); return; }
+      if (nav) { leaveQuiz(); show('screenHome'); renderHome(); markNav(nav); return; }
+
+      // Thanh điều hướng: về trang chủ rồi cuộn tới danh sách chương
+      var chap = target.closest('[data-nav="chapters"]');
+      if (chap) {
+        leaveQuiz(); show('screenHome'); renderHome(); markNav(chap);
+        var list = $('#chapterList');
+        if (list) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
+      var setg = target.closest('[data-nav="settings"]');
+      if (setg) { $('#btnSettings').click(); return; }
 
       var mode = target.closest('[data-mode]');
       if (mode) {
         var m = mode.getAttribute('data-mode');
+        if (mode.classList.contains('sidenav__item') ||
+            mode.classList.contains('botnav__item')) markNav(mode);
         if (m === 'import') openImport(); else openSetup(m);
         return;
       }
