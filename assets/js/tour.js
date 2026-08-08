@@ -47,6 +47,7 @@
 
   var index = 0;
   var running = false;
+  var done = false;
   var paused = false;
   var steps = [];
   var spot = null;
@@ -132,8 +133,26 @@
     $('#tourPlay').textContent = paused ? t('tour.resume') : t('tour.play');
   }
 
+  /* Thẻ chốt: đi hết tour thì mời vào làm bài thay vì đóng cái rụp. */
+  function showDone() {
+    stopSpeaking();
+    clearSpot();
+    done = true;
+    $('#tourSteps').classList.add('hidden');
+    $('#tourDone').classList.remove('hidden');
+    $('#tourStep').textContent = '';
+    setPose('cheer');
+  }
+
+  function hideDone() {
+    done = false;
+    $('#tourDone').classList.add('hidden');
+    $('#tourSteps').classList.remove('hidden');
+  }
+
   function go(i) {
-    if (i < 0 || i >= steps.length) { stop(); return; }
+    if (i < 0) return;
+    if (i >= steps.length) { showDone(); return; }
     index = i;
     paused = false;
     render();
@@ -141,8 +160,8 @@
     highlight(steps[index].target);
     speak(t(steps[index].key), steps[index].lang, function () {
       // tự chuyển bước khi đọc xong, trừ bước cuối
-      if (running && !paused && index < steps.length - 1) {
-        setTimeout(function () { if (running && !paused) go(index + 1); }, 700);
+      if (running && !paused) {
+        setTimeout(function () { if (running && !paused && !done) go(index + 1); }, 700);
       }
     });
   }
@@ -157,6 +176,7 @@
     running = true;
     paused = false;
     index = 0;
+    hideDone();
     panel().classList.remove('hidden');
     $('#tourFab').classList.add('hidden');
     go(0);
@@ -165,6 +185,7 @@
   function stop() {
     running = false;
     paused = false;
+    hideDone();
     stopSpeaking();
     clearSpot();
     var p = panel();
@@ -194,7 +215,7 @@
     /** Dịch lại nhãn khi người dùng đổi ngôn ngữ giữa chừng. */
     refresh: function () {
       $('#tourFabLabel').textContent = t('tour.start');
-      if (running) {
+      if (running && !done) {
         render();
         // đọc lại bước hiện tại bằng ngôn ngữ mới
         if (!paused) speak(t(steps[index].key), steps[index].lang);
@@ -208,6 +229,14 @@
       $('#tourPrev').addEventListener('click', function () { go(index - 1); });
       $('#tourNext').addEventListener('click', function () { go(index + 1); });
       $('#tourPlay').addEventListener('click', togglePlay);
+
+      // "Bắt đầu làm bài": đóng tour rồi mở thẳng màn thiết lập đề thi
+      $('#tourGo').addEventListener('click', function () {
+        stop();
+        var card = document.querySelector('.mode-card[data-mode="exam"]');
+        if (card) card.click();
+      });
+      $('#tourAgain').addEventListener('click', function () { hideDone(); start(); });
 
       // danh sách giọng đọc thường nạp không đồng bộ
       if (synth && typeof synth.onvoiceschanged !== 'undefined') {

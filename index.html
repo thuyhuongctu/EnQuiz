@@ -459,6 +459,23 @@
   </div>
   <img class="tour-panel__huong" id="tourHuong" src="assets/img/huong-welcome.webp"
        width="612" height="1000" loading="lazy" decoding="async" alt="" aria-hidden="true">
+
+  <!-- Thẻ chốt sau khi đi hết tour -->
+  <div class="tour-done hidden" id="tourDone">
+    <p class="tour-done__lead" data-i18n="tour.done.lead"></p>
+    <p class="tour-done__title" data-i18n="tour.done.title"></p>
+    <ul class="tour-done__list">
+      <li><span aria-hidden="true">📝</span><span data-i18n="tour.done.b1"></span></li>
+      <li><span aria-hidden="true">📊</span><span data-i18n="tour.done.b2"></span></li>
+      <li><span aria-hidden="true">🤖</span><span data-i18n="tour.done.b3"></span></li>
+    </ul>
+    <div class="tour-panel__nav">
+      <button class="btn btn--primary" id="tourGo" type="button" data-i18n="tour.done.go"></button>
+      <button class="btn btn--ghost" id="tourAgain" type="button" data-i18n="tour.done.again"></button>
+    </div>
+  </div>
+
+  <div id="tourSteps">
   <p class="tour-panel__text" id="tourText"></p>
   <div class="tour-panel__nav">
     <button class="btn" id="tourPrev" type="button">← Trước</button>
@@ -466,6 +483,7 @@
     <button class="btn btn--ghost" id="tourPlay" type="button">▶ Đọc lại</button>
   </div>
   <p class="tour-note hidden" id="tourNote"></p>
+  </div>
 </div>
 
 <!-- ============ MODAL: BẢN QUYỀN ============ -->
