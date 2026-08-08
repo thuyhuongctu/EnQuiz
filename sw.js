@@ -4,7 +4,7 @@
    Đổi CACHE_VERSION mỗi lần phát hành bản mới để trình duyệt
    tải lại toàn bộ tài nguyên thay vì dùng bản đã lưu.
    ========================================================= */
-const CACHE_VERSION = 'enquiz-v17';
+const CACHE_VERSION = 'enquiz-v18';
 
 const SHELL = [
   './',
@@ -48,7 +48,13 @@ const SHELL = [
   './assets/img/huong-welcome.webp',
   './assets/img/huong-point.webp',
   './assets/img/huong-cheer.webp',
-  './assets/img/huong-tablet.webp'
+  './assets/img/huong-tablet.webp',
+  './assets/img/vest-welcome.webp',
+  './assets/img/vest-stand.webp',
+  './assets/img/vest-point.webp',
+  './assets/img/vest-cheer.webp',
+  './assets/img/vest-tablet.webp',
+  './assets/img/vest-avatar.webp'
 ];
 
 self.addEventListener('install', (event) => {

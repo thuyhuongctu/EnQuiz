@@ -29,12 +29,15 @@
     { key: 'tour.s7', target: '.footer', pose: 'welcome' }
   ];
 
+  /* Người dẫn tour mặc áo len, khác với ảnh áo dài dùng ở thẻ giảng viên và
+     màn hình kết quả: tour là lúc trò chuyện hướng dẫn nên bộ dáng đời thường
+     hợp hơn, và cũng để người học phân biệt ngay đâu là lời dẫn. */
   var POSE_SRC = {
-    welcome: 'assets/img/huong-welcome.webp',
-    stand: 'assets/img/huong-stand.webp',
-    point: 'assets/img/huong-point.webp',
-    tablet: 'assets/img/huong-tablet.webp',
-    cheer: 'assets/img/huong-cheer.webp'
+    welcome: 'assets/img/vest-welcome.webp',
+    stand: 'assets/img/vest-stand.webp',
+    point: 'assets/img/vest-point.webp',
+    tablet: 'assets/img/vest-tablet.webp',
+    cheer: 'assets/img/vest-cheer.webp'
   };
 
   /* Đổi tư thế nhân vật, có nhoè nhẹ để không giật hình. */
