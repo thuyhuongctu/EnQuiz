@@ -3,8 +3,13 @@
 *Liệt kê từng thành phần của tác phẩm, ai tạo ra và ngày tạo. Ngày lấy từ lịch
 sử kho mã nguồn — mỗi mốc đều đối chiếu được với một commit có dấu thời gian.*
 
-Tác giả duy nhất của mọi thành phần dưới đây: **Đỗ Thùy Hương**.
-Không sử dụng kinh phí của tổ chức nào; không thực hiện theo nhiệm vụ được giao.
+Tác giả duy nhất của mọi thành phần dưới đây: **Đỗ Thùy Hương** — giảng viên
+Trường Đại học Sư phạm Kỹ thuật Vĩnh Long, nghiên cứu sinh Đại học Cần Thơ.
+
+Tác phẩm tạo ra với tư cách cá nhân: **không sử dụng kinh phí của tổ chức nào,
+không thực hiện theo nhiệm vụ được giao**. Việc tác giả có giảng dạy học phần
+này không đồng nghĩa với việc được giao biên soạn tác phẩm — xem
+`CAM_KET_TAC_GIA.md`.
 
 ## 1. Mã nguồn — 9.249 dòng, 16 tệp
 

@@ -8,6 +8,7 @@ EnQuiz. Ba tệp dưới đây viết tay, hai tệp PDF thì kết xuất bằn
 | `MO_TA_TAC_PHAM.md` | Bản mô tả tác phẩm — nộp kèm tờ khai |
 | `DANH_MUC_TAI_SAN.md` | Liệt kê từng thành phần, ai tạo, ngày nào |
 | `DONG_THOI_GIAN.md` | Dòng thời gian sáng tạo, rút từ lịch sử commit |
+| `CAM_KET_TAC_GIA.md` | Bản cam đoan để ký, kèm mẫu văn bản đề nghị trường xác nhận |
 
 ## Kết xuất hai tệp PDF
 
@@ -30,7 +31,11 @@ vênh.
 
 ## Lưu ý về quyền sở hữu
 
-Tác phẩm do **Đỗ Thùy Hương** tạo ra với tư cách cá nhân: không sử dụng kinh
-phí của tổ chức nào, không thực hiện theo nhiệm vụ được giao. Tác giả là
-nghiên cứu sinh, không phải viên chức được giao nhiệm vụ sáng tạo tác phẩm này.
-Do đó quyền nhân thân và quyền tài sản đều thuộc về tác giả.
+Tác phẩm do **Đỗ Thùy Hương** — giảng viên Trường Đại học Sư phạm Kỹ thuật
+Vĩnh Long, nghiên cứu sinh Đại học Cần Thơ — tạo ra với tư cách cá nhân: không
+sử dụng kinh phí của tổ chức nào, không thực hiện theo nhiệm vụ được giao.
+
+Tác giả có giảng dạy học phần này, nhưng giảng dạy một học phần không đồng
+nghĩa với được giao biên soạn tài liệu hay phần mềm cho học phần ấy. Chi tiết
+và mẫu văn bản đề nghị trường xác nhận nằm ở `CAM_KET_TAC_GIA.md` — nên xin
+văn bản đó trước khi nộp hồ sơ.

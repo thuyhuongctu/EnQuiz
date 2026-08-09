@@ -6,7 +6,9 @@
 |---|---|
 | **Tên tác phẩm** | EnQuiz — Ứng dụng ôn thi trắc nghiệm Khởi sự doanh nghiệp |
 | **Loại hình** | Chương trình máy tính |
-| **Tác giả, chủ sở hữu** | Đỗ Thùy Hương — Nghiên cứu sinh, Đại học Cần Thơ |
+| **Tác giả, chủ sở hữu** | Đỗ Thùy Hương |
+| **Nơi công tác** | Giảng viên, Trường Đại học Sư phạm Kỹ thuật Vĩnh Long (VLUTE) |
+| **Học vị đang theo** | Nghiên cứu sinh, Đại học Cần Thơ |
 | **ORCID** | 0000-0002-7711-2487 |
 | **Ngày hoàn thành bản đầu** | 08/08/2026 |
 | **Ngày công bố** | 08/08/2026, tại https://thuyhuongctu.github.io/EnQuiz/ |
@@ -85,3 +87,18 @@ liệu *Ngân hàng câu hỏi* nộp kèm.
 | 4 | Lựa chọn mô hình kinh doanh | 60 |
 | 5 | Marketing cho doanh nghiệp mới | 60 |
 | | **Tổng** | **300** |
+
+## 6. Quyền sở hữu
+
+Tác giả là giảng viên Trường Đại học Sư phạm Kỹ thuật Vĩnh Long và có giảng dạy
+học phần Khởi sự doanh nghiệp. Tuy nhiên tác phẩm này **không thuộc nhiệm vụ
+được giao**: tác giả không được cơ quan giao biên soạn hay phát triển phần mềm,
+tác phẩm không nằm trong kế hoạch công tác, đề tài hay nhiệm vụ khoa học công
+nghệ nào, và **không sử dụng kinh phí** của cơ quan hay của bất kỳ tổ chức nào.
+
+Tác phẩm được tạo ra bằng thời gian, thiết bị và chi phí cá nhân, ngoài giờ làm
+việc — điều này đối chiếu được với dấu thời gian của 42 commit trong
+`DONG_THOI_GIAN.md`.
+
+Do đó quyền nhân thân và quyền tài sản đối với tác phẩm đều thuộc về tác giả.
+Bản cam đoan và mẫu văn bản đề nghị cơ quan xác nhận nằm ở `CAM_KET_TAC_GIA.md`.
