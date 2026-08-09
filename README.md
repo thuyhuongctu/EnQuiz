@@ -229,13 +229,10 @@ are in `POSE_SRC` in `assets/js/tour.js`.
 
 ## Citation
 
-EnQuiz is archived on Zenodo. Cite the **concept DOI** unless you need to pin an
-exact release — it always resolves to the newest version.
-
-| | DOI |
-|---|---|
-| All versions (concept) | [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735) |
-| Release v.1.0 | [10.5281/zenodo.21850736](https://doi.org/10.5281/zenodo.21850736) |
+EnQuiz is archived on Zenodo under the concept DOI
+[10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735), which always
+resolves to the newest release. Each individual release also receives its own
+version DOI, listed on the Zenodo record page.
 
 Machine-readable metadata is in `CITATION.cff` and `.zenodo.json`.
 

@@ -1,8 +1,6 @@
 {
   "title": "EnQuiz: an offline-first bilingual quiz app for entrepreneurship revision",
-  "version": "1.0",
   "upload_type": "software",
-  "publication_date": "2026-08-08",
   "description": "EnQuiz is a browser-based revision app for an undergraduate Entrepreneurship course. It holds a 300-question bank across five chapters and offers timed mock exams, chapter practice with immediate explanations, automatic tracking of missed questions, flagging, a per-chapter breakdown of each paper, and an importer that matches a pasted question paper to a pasted answer key by question number. The interface is bilingual Vietnamese-English with light and dark themes, is narrated by a ten-step guided tour recorded in the author's own voice, installs as a progressive web app, and continues to work with no network connection. It is written in plain HTML, CSS and JavaScript with no framework, no build step and no server; all learner data stays in the browser.",
   "creators": [
     {
