@@ -1079,8 +1079,19 @@
     });
   }
 
+  /* Tên hiện trong hộp "Cài đặt ứng dụng" lấy từ manifest, mà manifest thì chỉ
+     có một tên. Nên mỗi ngôn ngữ một tệp, đổi luôn khi người dùng bấm EN/VI —
+     trình duyệt đọc manifest ngay lúc bấm cài, nên đổi trước là kịp. */
+  function syncManifest() {
+    var link = document.querySelector('link[rel="manifest"]');
+    if (!link) return;
+    var tep = I18n.lang === 'en' ? 'manifest.en.webmanifest' : 'manifest.webmanifest';
+    if (link.getAttribute('href') !== tep) link.setAttribute('href', tep);
+  }
+
   function onLanguageChanged() {
     syncLangUI();
+    syncManifest();
     if (window.Tour) Tour.refresh();
 
     renderHome();
@@ -1363,6 +1374,7 @@
     // ai đổi sang nền sáng thì lựa chọn đó được nhớ cho lần sau.
     startTheme();
     syncLangUI();
+    syncManifest();
     var yr = String(new Date().getFullYear());
     $$('#year, .yr').forEach(function (el) { el.textContent = yr; });
     bindEvents();
