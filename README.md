@@ -5,6 +5,7 @@
 Author: **Do Thuy Huong**, PhD Candidate, Can Tho University.
 
 ▶️ **Live app: <https://thuyhuongctu.github.io/EnQuiz/>**
+📦 **Archived on Zenodo: [10.5281/zenodo.21850736](https://doi.org/10.5281/zenodo.21850736)**
 
 Bilingual **English – Vietnamese**, **light/dark** themes, a **10-step guided tour
 narrated in the author's own recorded voice**, and it installs to the home screen as
@@ -223,6 +224,35 @@ the dress. Keeping the background removes the problem at the source.
 To change a picture, replace the file and keep the name. Which picture appears on the
 result screen is decided in `renderResult()` in `assets/js/app.js`; the tour poses
 are in `POSE_SRC` in `assets/js/tour.js`.
+
+---
+
+## Citation
+
+Release v.1.0 is archived on Zenodo with the DOI
+[10.5281/zenodo.21850736](https://doi.org/10.5281/zenodo.21850736).
+Machine-readable metadata is in `CITATION.cff` and `.zenodo.json`.
+
+**APA**
+
+> Do, T. H. (2026). *EnQuiz: an offline-first bilingual quiz app for
+> entrepreneurship revision* (Version 1.0) [Computer software]. Zenodo.
+> https://doi.org/10.5281/zenodo.21850736
+
+**BibTeX**
+
+```bibtex
+@software{do_enquiz_2026,
+  author    = {Do, Thuy Huong},
+  title     = {{EnQuiz: an offline-first bilingual quiz app for
+               entrepreneurship revision}},
+  version   = {1.0},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21850736},
+  url       = {https://doi.org/10.5281/zenodo.21850736}
+}
+```
 
 ---
 
