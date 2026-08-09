@@ -90,11 +90,32 @@
      Giao diện sáng / tối
      ======================================================= */
 
-  function applyTheme(theme) {
+  /* Chưa chọn gì thì đi theo cài đặt của máy. Bấm nút trăng/mặt trời một lần
+     là chốt lựa chọn ấy, từ đó máy đổi sáng tối cũng mặc kệ. */
+  var darkQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+  function systemTheme() {
+    return darkQuery && darkQuery.matches ? 'dark' : 'light';
+  }
+
+  function themePref() {
+    return Store.get('theme') || 'auto';
+  }
+
+  function applyTheme(theme, remember) {
     document.documentElement.setAttribute('data-theme', theme);
     var ti = $('#btnTheme').querySelector('use');
     if (ti) ti.setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
-    Store.set('theme', theme);
+    if (remember) Store.set('theme', theme);
+  }
+
+  function startTheme() {
+    var pref = themePref();
+    applyTheme(pref === 'auto' ? systemTheme() : pref, false);
+    if (!darkQuery || !darkQuery.addEventListener) return;
+    darkQuery.addEventListener('change', function (e) {
+      if (themePref() === 'auto') applyTheme(e.matches ? 'dark' : 'light', false);
+    });
   }
 
   /* =======================================================
@@ -1065,7 +1086,7 @@
     $('#btnHome').addEventListener('click', function () { leaveQuiz(); show('screenHome'); renderHome(); });
 
     $('#btnTheme').addEventListener('click', function () {
-      applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
     });
     $('#hintClose').addEventListener('click', function () {
       Store.set('hintSeen', true);
@@ -1322,7 +1343,7 @@
     I18n.onChange(onLanguageChanged);
     // Bộ nhận diện Cosmic vốn dựng trên nền tối nên mở mặc định bằng nền tối;
     // ai đổi sang nền sáng thì lựa chọn đó được nhớ cho lần sau.
-    applyTheme(Store.get('theme') || 'dark');
+    startTheme();
     syncLangUI();
     var yr = String(new Date().getFullYear());
     $$('#year, .yr').forEach(function (el) { el.textContent = yr; });

@@ -7,7 +7,7 @@
   var KEY = 'ksdn.progress.v1';
 
   var DEFAULTS = {
-    theme: 'light',
+    theme: 'auto',   // theo cài đặt sáng/tối của máy, tới khi người dùng tự chọn
     marked: [],      // danh sách uid câu hỏi được đánh dấu
     wrong: [],       // danh sách uid câu hỏi từng trả lời sai
     history: [],     // lịch sử các lần làm bài (tối đa 30 bản ghi)
