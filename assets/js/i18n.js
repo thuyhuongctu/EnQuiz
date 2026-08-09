@@ -227,7 +227,8 @@
       'settings.theme.auto': 'Theo máy',
       'settings.theme.light': 'Nền sáng',
       'settings.theme.dark': 'Nền tối',
-      'settings.theme.hint': 'Chọn "Theo máy" thì ứng dụng đổi sáng – tối theo cài đặt của điện thoại.',
+      'settings.theme.clay': 'Đất sét noir',
+      'settings.theme.hint': 'Chọn "Theo máy" thì ứng dụng đổi sáng – tối theo cài đặt của điện thoại. "Đất sét noir" là nền đá đen, khối nổi như nặn tay, nhấn vàng đồng.',
 
       'footer.line1': '<b>EnQuiz</b> — ôn tập môn Khởi sự doanh nghiệp · Tác giả: NCS. Đỗ Thùy Hương',
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
@@ -513,7 +514,8 @@
       'settings.theme.auto': 'Follow device',
       'settings.theme.light': 'Light',
       'settings.theme.dark': 'Dark',
-      'settings.theme.hint': 'With "Follow device", the app switches light and dark along with your phone.',
+      'settings.theme.clay': 'Clay noir',
+      'settings.theme.hint': 'With "Follow device", the app switches light and dark along with your phone. "Clay noir" is a dark stone background with hand-moulded panels and gold accents.',
 
       'footer.line1': '<b>EnQuiz</b> — Entrepreneurship practice · by Do Thuy Huong, PhD Candidate',
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',

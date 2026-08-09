@@ -105,7 +105,8 @@
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     var ti = $('#btnTheme').querySelector('use');
-    if (ti) ti.setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
+    // Nền nào cũng tối trừ 'light', nên nút mời sang nền sáng.
+    if (ti) ti.setAttribute('href', theme === 'light' ? '#i-moon' : '#i-sun');
   }
 
   /** Đặt lựa chọn: 'auto' theo máy, hoặc chốt hẳn 'light' / 'dark'. */
@@ -1112,7 +1113,7 @@
 
     // Nút ở thanh trên chốt hẳn một nền; muốn quay lại "theo máy" thì vào Cài đặt.
     $('#btnTheme').addEventListener('click', function () {
-      setThemePref(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      setThemePref(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
     });
     $$('[data-theme-pref]').forEach(function (b) {
       b.addEventListener('click', function () { setThemePref(b.getAttribute('data-theme-pref')); });

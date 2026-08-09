@@ -136,6 +136,139 @@ html[data-theme="dark"] {
   --holo-text: var(--holo);
 }
 
+/* ---------------------------------------------------------------
+   Chủ đề "Đất sét noir"
+   ---------------------------------------------------------------
+   Nền đá đen ấm, thẻ nổi khối như nặn bằng đất sét, nhấn màu đồng và
+   vàng cổ. Toàn bộ độ nổi làm bằng bóng đổ CSS — không thêm một tệp
+   ảnh nào, nên vẫn giữ nguyên cam kết chạy được khi mất mạng.
+
+   Chữ cố ý sáng hơn mẫu tham khảo: sinh viên đọc đề bốn mươi phút
+   liên tục trên điện thoại, chữ xám trên nền xám thì mỏi mắt.
+   --------------------------------------------------------------- */
+html[data-theme="clay"] {
+  --void: #17150F;
+  --bg: #17150F;
+  --bg-soft: #201C15;
+  --paper: #17150F;
+
+  --surface: #262117;
+  --surface-2: #2F291D;
+  --glass: rgba(38, 33, 23, .82);
+  --glass-2: rgba(47, 41, 29, .62);
+  --glass-stroke: #3E3626;
+  --border: #3E3626;
+
+  --text: #F3ECDF;
+  --text-soft: #DACFBB;
+  --muted: #AFA48D;
+
+  --primary: #E3B75C;          /* vàng cổ: liên kết, tiêu điểm, tiến độ */
+  --primary-dark: #C99A3C;
+  --primary-soft: #3A301B;
+  --on-primary: #1A1508;
+
+  --secondary: #D08F58;        /* đồng */
+  --secondary-soft: #33251A;
+  --on-secondary: #24160B;
+
+  --tertiary: #9ABF86;
+  --tertiary-soft: #222C1B;
+  --on-tertiary: #16200F;
+
+  --berry: #D08F58;
+  --gold: #E9C776;
+
+  --success: #9ABF86;
+  --success-soft: #222C1B;
+  --on-success: #16200F;
+  --danger: #E08A78;
+  --danger-soft: #33201A;
+  --on-danger: #2A100A;
+  --warn: #E3B75C;
+  --warn-soft: #33290F;
+  --on-warn: #241A00;
+
+  --glow: rgba(227, 183, 92, .20);
+  --glow-2: rgba(208, 143, 88, .16);
+
+  /* Nền đá tĩnh, không có tinh vân trôi như bản vũ trụ */
+  --nebula-1: rgba(227, 183, 92, .05);
+  --nebula-2: rgba(208, 143, 88, .04);
+  --star: rgba(243, 236, 223, .18);
+
+  --shadow: 0 16px 34px rgba(0, 0, 0, .62);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, .5), 0 8px 20px rgba(0, 0, 0, .4);
+
+  --holo: linear-gradient(120deg, #F3ECDF 0%, #E9C776 40%, #D08F58 100%);
+  --holo-text: var(--holo);
+}
+
+/* Khối nổi: bóng đổ phía dưới, vệt sáng mảnh trên mép, và bóng chìm bên
+   trong ở đáy — ba lớp ấy hợp lại mới ra cảm giác đất sét nặn tay. */
+html[data-theme="clay"] .panel,
+html[data-theme="clay"] .glass,
+html[data-theme="clay"] .mode-card,
+html[data-theme="clay"] .question-card,
+html[data-theme="clay"] .result-hero,
+html[data-theme="clay"] .kpi,
+html[data-theme="clay"] .badge,
+html[data-theme="clay"] .chapter-row,
+html[data-theme="clay"] .modal__box {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .55),
+              inset 0 1px 0 rgba(255, 236, 200, .10),
+              inset 0 -3px 8px rgba(0, 0, 0, .42);
+  backdrop-filter: none;
+}
+
+html[data-theme="clay"] .btn,
+html[data-theme="clay"] .chip,
+html[data-theme="clay"] .icon-btn,
+html[data-theme="clay"] .mood,
+html[data-theme="clay"] .player__btn {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .5),
+              inset 0 1px 0 rgba(255, 236, 200, .14),
+              inset 0 -2px 5px rgba(0, 0, 0, .38);
+}
+/* Bấm xuống thì lún vào trong, đúng như bấm lên một khối đất sét */
+html[data-theme="clay"] .btn:active,
+html[data-theme="clay"] .chip:active,
+html[data-theme="clay"] .icon-btn:active,
+html[data-theme="clay"] .player__btn:active {
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, .55),
+              inset 0 -1px 0 rgba(255, 236, 200, .06);
+  transform: translateY(1px);
+}
+
+/* Ô đáp án và ô nhập cũng chìm xuống, cho khác hẳn khối nổi bên trên */
+html[data-theme="clay"] .option,
+html[data-theme="clay"] input[type="text"],
+html[data-theme="clay"] input[type="number"],
+html[data-theme="clay"] textarea {
+  background: #201C14;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .5),
+              inset 0 -1px 0 rgba(255, 236, 200, .05);
+}
+
+/* Bản đồ nền trên nền đá phải chìm hơn và ngả sang tông đồng, để không thành
+   một mảng xanh lạc lõng giữa bảng màu ấm. */
+html[data-theme="clay"] .hero__map {
+  opacity: .30;
+  mix-blend-mode: soft-light;
+  filter: sepia(.7) saturate(.8);
+}
+/* Thanh dưới và nhãn nhỏ lấy màu vàng đồng thay cho xanh lá — xanh lá trong
+   chủ đề này chỉ dành riêng cho câu trả lời đúng. */
+html[data-theme="clay"] .botnav__item.is-active,
+html[data-theme="clay"] .sidenav__item.is-active {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+}
+html[data-theme="clay"] .eyebrow { color: var(--secondary); }
+html[data-theme="clay"] .eyebrow::before { background: var(--primary); }
+
 * { box-sizing: border-box; }
 
 html {
