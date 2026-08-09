@@ -223,6 +223,11 @@
       'settings.jsonMerged': 'Đã gộp {n} câu hỏi mới.',
       'settings.jsonLog': 'Đã thêm {added} câu · trùng {dup} · lỗi {bad}.',
       'settings.language': 'Ngôn ngữ',
+      'settings.theme': 'Giao diện',
+      'settings.theme.auto': 'Theo máy',
+      'settings.theme.light': 'Nền sáng',
+      'settings.theme.dark': 'Nền tối',
+      'settings.theme.hint': 'Chọn "Theo máy" thì ứng dụng đổi sáng – tối theo cài đặt của điện thoại.',
 
       'footer.line1': '<b>EnQuiz</b> — ôn tập môn Khởi sự doanh nghiệp · Tác giả: NCS. Đỗ Thùy Hương',
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
@@ -504,6 +509,11 @@
       'settings.jsonMerged': 'Merged {n} new questions.',
       'settings.jsonLog': 'Added {added} · duplicates {dup} · errors {bad}.',
       'settings.language': 'Language',
+      'settings.theme': 'Appearance',
+      'settings.theme.auto': 'Follow device',
+      'settings.theme.light': 'Light',
+      'settings.theme.dark': 'Dark',
+      'settings.theme.hint': 'With "Follow device", the app switches light and dark along with your phone.',
 
       'footer.line1': '<b>EnQuiz</b> — Entrepreneurship practice · by Do Thuy Huong, PhD Candidate',
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',

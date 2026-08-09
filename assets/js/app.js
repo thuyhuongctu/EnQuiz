@@ -102,19 +102,33 @@
     return Store.get('theme') || 'auto';
   }
 
-  function applyTheme(theme, remember) {
+  function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     var ti = $('#btnTheme').querySelector('use');
     if (ti) ti.setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
-    if (remember) Store.set('theme', theme);
+  }
+
+  /** Đặt lựa chọn: 'auto' theo máy, hoặc chốt hẳn 'light' / 'dark'. */
+  function setThemePref(pref) {
+    Store.set('theme', pref);
+    applyTheme(pref === 'auto' ? systemTheme() : pref);
+    syncThemeUI();
+  }
+
+  function syncThemeUI() {
+    var pref = themePref();
+    $$('[data-theme-pref]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-theme-pref') === pref);
+    });
   }
 
   function startTheme() {
     var pref = themePref();
-    applyTheme(pref === 'auto' ? systemTheme() : pref, false);
+    applyTheme(pref === 'auto' ? systemTheme() : pref);
+    syncThemeUI();
     if (!darkQuery || !darkQuery.addEventListener) return;
     darkQuery.addEventListener('change', function (e) {
-      if (themePref() === 'auto') applyTheme(e.matches ? 'dark' : 'light', false);
+      if (themePref() === 'auto') applyTheme(e.matches ? 'dark' : 'light');
     });
   }
 
@@ -1085,8 +1099,12 @@
   function bindEvents() {
     $('#btnHome').addEventListener('click', function () { leaveQuiz(); show('screenHome'); renderHome(); });
 
+    // Nút ở thanh trên chốt hẳn một nền; muốn quay lại "theo máy" thì vào Cài đặt.
     $('#btnTheme').addEventListener('click', function () {
-      applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
+      setThemePref(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+    $$('[data-theme-pref]').forEach(function (b) {
+      b.addEventListener('click', function () { setThemePref(b.getAttribute('data-theme-pref')); });
     });
     $('#hintClose').addEventListener('click', function () {
       Store.set('hintSeen', true);
