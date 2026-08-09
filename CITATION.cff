@@ -17,8 +17,11 @@ version: "1.0"
 date-released: "2026-08-08"
 repository-code: "https://github.com/thuyhuongctu/EnQuiz"
 url: "https://thuyhuongctu.github.io/EnQuiz/"
-doi: "10.5281/zenodo.21850736"
+doi: "10.5281/zenodo.21850735"
 identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21850735"
+    description: "Zenodo concept DOI (all versions)"
   - type: doi
     value: "10.5281/zenodo.21850736"
     description: "Zenodo version DOI (release v.1.0)"

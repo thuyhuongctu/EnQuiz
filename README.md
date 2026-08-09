@@ -5,7 +5,7 @@
 Author: **Do Thuy Huong**, PhD Candidate, Can Tho University.
 
 ▶️ **Live app: <https://thuyhuongctu.github.io/EnQuiz/>**
-📦 **Archived on Zenodo: [10.5281/zenodo.21850736](https://doi.org/10.5281/zenodo.21850736)**
+📦 **Archived on Zenodo: [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735)**
 
 Bilingual **English – Vietnamese**, **light/dark** themes, a **10-step guided tour
 narrated in the author's own recorded voice**, and it installs to the home screen as
@@ -229,15 +229,21 @@ are in `POSE_SRC` in `assets/js/tour.js`.
 
 ## Citation
 
-Release v.1.0 is archived on Zenodo with the DOI
-[10.5281/zenodo.21850736](https://doi.org/10.5281/zenodo.21850736).
+EnQuiz is archived on Zenodo. Cite the **concept DOI** unless you need to pin an
+exact release — it always resolves to the newest version.
+
+| | DOI |
+|---|---|
+| All versions (concept) | [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735) |
+| Release v.1.0 | [10.5281/zenodo.21850736](https://doi.org/10.5281/zenodo.21850736) |
+
 Machine-readable metadata is in `CITATION.cff` and `.zenodo.json`.
 
 **APA**
 
 > Do, T. H. (2026). *EnQuiz: an offline-first bilingual quiz app for
-> entrepreneurship revision* (Version 1.0) [Computer software]. Zenodo.
-> https://doi.org/10.5281/zenodo.21850736
+> entrepreneurship revision* [Computer software]. Zenodo.
+> https://doi.org/10.5281/zenodo.21850735
 
 **BibTeX**
 
@@ -246,11 +252,10 @@ Machine-readable metadata is in `CITATION.cff` and `.zenodo.json`.
   author    = {Do, Thuy Huong},
   title     = {{EnQuiz: an offline-first bilingual quiz app for
                entrepreneurship revision}},
-  version   = {1.0},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.21850736},
-  url       = {https://doi.org/10.5281/zenodo.21850736}
+  doi       = {10.5281/zenodo.21850735},
+  url       = {https://doi.org/10.5281/zenodo.21850735}
 }
 ```
 

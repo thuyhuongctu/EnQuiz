@@ -15,6 +15,11 @@
   "notes": "The question bank, interface, imagery and voice recordings are the intellectual property of the author. Free use is granted for personal study and exam revision; redistribution of the question content, republication of the app elsewhere, commercial use and derivative works require written permission from the author (thuyhuongctu@gmail.com). See the Copyright section of README.md.",
   "related_identifiers": [
     {
+      "identifier": "10.5281/zenodo.21850735",
+      "relation": "isVersionOf",
+      "scheme": "doi"
+    },
+    {
       "identifier": "https://github.com/thuyhuongctu/EnQuiz",
       "relation": "isSupplementTo",
       "scheme": "url"
