@@ -7,7 +7,8 @@ Author: **Do Thuy Huong**, PhD Candidate, Can Tho University.
 ▶️ **Live app: <https://thuyhuongctu.github.io/EnQuiz/>**
 📦 **Archived on Zenodo: [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735)**
 
-Bilingual **English – Vietnamese**, **light/dark** themes, a **10-step guided tour
+Bilingual **English – Vietnamese**, **light and dark** themes that follow the
+device setting until you choose one, a **10-step guided tour
 narrated in the author's own recorded voice**, and it installs to the home screen as
 an app (**PWA**) that keeps working with no network.
 
@@ -65,6 +66,14 @@ the course.
   from named time zones, so it stays correct across daylight saving.
 - **The author's song** — *Golden Silt Route*, words and music by Do Thuy Huong.
   The file is only downloaded when you press play.
+
+**Light and dark**
+
+Before you choose anything, the app follows the device's own light/dark setting
+and switches with it, live. Tapping the moon/sun button fixes your choice: from
+then on the app stays where you put it and ignores the device. The choice is
+remembered per browser, so clearing the app's data returns it to following the
+device.
 
 **Guided tour**
 
