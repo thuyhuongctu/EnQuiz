@@ -1,0 +1,37 @@
+{
+  "title": "EnQuiz: an offline-first bilingual quiz app for entrepreneurship revision",
+  "version": "1.0",
+  "upload_type": "software",
+  "publication_date": "2026-08-08",
+  "description": "EnQuiz is a browser-based revision app for an undergraduate Entrepreneurship course. It holds a 300-question bank across five chapters and offers timed mock exams, chapter practice with immediate explanations, automatic tracking of missed questions, flagging, a per-chapter breakdown of each paper, and an importer that matches a pasted question paper to a pasted answer key by question number. The interface is bilingual Vietnamese-English with light and dark themes, is narrated by a ten-step guided tour recorded in the author's own voice, installs as a progressive web app, and continues to work with no network connection. It is written in plain HTML, CSS and JavaScript with no framework, no build step and no server; all learner data stays in the browser.",
+  "creators": [
+    {
+      "name": "Do, Thuy Huong",
+      "orcid": "0000-0002-7711-2487",
+      "affiliation": "Can Tho University"
+    }
+  ],
+  "access_right": "open",
+  "notes": "The question bank, interface, imagery and voice recordings are the intellectual property of the author. Free use is granted for personal study and exam revision; redistribution of the question content, republication of the app elsewhere, commercial use and derivative works require written permission from the author (thuyhuongctu@gmail.com). See the Copyright section of README.md.",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/thuyhuongctu/EnQuiz",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://thuyhuongctu.github.io/EnQuiz/",
+      "relation": "isIdenticalTo",
+      "scheme": "url"
+    }
+  ],
+  "keywords": [
+    "entrepreneurship education",
+    "multiple-choice assessment",
+    "spaced revision",
+    "progressive web app",
+    "offline-first",
+    "bilingual learning",
+    "Vietnam"
+  ]
+}

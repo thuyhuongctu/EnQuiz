@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use EnQuiz in your work, please cite it as below."
+title: "EnQuiz: an offline-first bilingual quiz app for entrepreneurship revision"
+abstract: >-
+  EnQuiz is a browser-based revision app for an undergraduate Entrepreneurship
+  course. It holds a 300-question bank across five chapters and offers timed mock
+  exams, chapter practice with immediate explanations, automatic tracking of missed
+  questions, flagging, a per-chapter breakdown of each paper, and an importer that
+  matches a pasted question paper to a pasted answer key by question number. The
+  interface is bilingual Vietnamese-English with light and dark themes, is narrated
+  by a ten-step guided tour recorded in the author's own voice, installs as a
+  progressive web app, and continues to work with no network connection. It is
+  written in plain HTML, CSS and JavaScript with no framework, no build step and no
+  server; all learner data stays in the browser.
+type: software
+version: "1.0"
+date-released: "2026-08-08"
+repository-code: "https://github.com/thuyhuongctu/EnQuiz"
+url: "https://thuyhuongctu.github.io/EnQuiz/"
+doi: "10.5281/zenodo.21850736"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21850736"
+    description: "Zenodo version DOI (release v.1.0)"
+authors:
+  - family-names: "Do"
+    given-names: "Thuy Huong"
+    email: "thuyhuongctu@gmail.com"
+    orcid: "https://orcid.org/0000-0002-7711-2487"
+    affiliation: "Can Tho University (PhD Candidate)"
+keywords:
+  - entrepreneurship education
+  - multiple-choice assessment
+  - spaced revision
+  - progressive web app
+  - offline-first
+  - bilingual learning
+  - Vietnam
