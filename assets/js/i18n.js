@@ -226,9 +226,9 @@
       'settings.theme': 'Giao diện',
       'settings.theme.auto': 'Theo máy',
       'settings.theme.light': 'Nền sáng',
-      'settings.theme.dark': 'Nền tối',
+      'settings.theme.dark': 'Nền tối vũ trụ',
       'settings.theme.clay': 'Đất sét noir',
-      'settings.theme.hint': 'Chọn "Theo máy" thì ứng dụng đổi sáng – tối theo cài đặt của điện thoại. "Đất sét noir" là nền đá đen, khối nổi như nặn tay, nhấn vàng đồng.',
+      'settings.theme.hint': 'Chọn "Theo máy" thì máy để nền sáng ứng dụng sẽ sáng, máy để nền tối ứng dụng lấy "Đất sét noir" – nền đá đen, khối nổi như nặn tay, nhấn vàng đồng. "Nền tối vũ trụ" là diện mạo tối của các bản trước.',
 
       'footer.line1': '<b>EnQuiz</b> — ôn tập môn Khởi sự doanh nghiệp · Tác giả: NCS. Đỗ Thùy Hương',
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
@@ -513,9 +513,9 @@
       'settings.theme': 'Appearance',
       'settings.theme.auto': 'Follow device',
       'settings.theme.light': 'Light',
-      'settings.theme.dark': 'Dark',
+      'settings.theme.dark': 'Cosmic dark',
       'settings.theme.clay': 'Clay noir',
-      'settings.theme.hint': 'With "Follow device", the app switches light and dark along with your phone. "Clay noir" is a dark stone background with hand-moulded panels and gold accents.',
+      'settings.theme.hint': 'With "Follow device", a phone set to light gives you the light theme and a phone set to dark gives you "Clay noir" - a dark stone background with hand-moulded panels and gold accents. "Cosmic dark" is the dark look of earlier versions.',
 
       'footer.line1': '<b>EnQuiz</b> — Entrepreneurship practice · by Do Thuy Huong, PhD Candidate',
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',

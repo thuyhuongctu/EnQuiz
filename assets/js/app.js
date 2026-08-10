@@ -91,11 +91,15 @@
      ======================================================= */
 
   /* Chưa chọn gì thì đi theo cài đặt của máy. Bấm nút trăng/mặt trời một lần
-     là chốt lựa chọn ấy, từ đó máy đổi sáng tối cũng mặc kệ. */
+     là chốt lựa chọn ấy, từ đó máy đổi sáng tối cũng mặc kệ.
+
+     Máy đang để nền tối thì lấy "Đất sét noir" — đó là diện mạo tối chính thức
+     của ứng dụng. Ai muốn nền tối vũ trụ cũ vẫn chọn được trong Cài đặt. */
   var darkQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  var DARK_DEFAULT = 'clay';
 
   function systemTheme() {
-    return darkQuery && darkQuery.matches ? 'dark' : 'light';
+    return darkQuery && darkQuery.matches ? DARK_DEFAULT : 'light';
   }
 
   function themePref() {
@@ -124,12 +128,20 @@
   }
 
   function startTheme() {
+    /* Ai đã bấm nút trăng/mặt trời từ trước thì đang bị chốt ở nền tối vũ trụ cũ,
+       nên sẽ không thấy diện mạo mới. Dời một lần duy nhất sang Đất sét noir;
+       sau đó họ vẫn tự chọn lại được trong Cài đặt và không bị dời nữa. */
+    if (!Store.get('themeMoved')) {
+      Store.set('themeMoved', 1);
+      if (Store.get('theme') === 'dark') Store.set('theme', 'clay');
+    }
+
     var pref = themePref();
     applyTheme(pref === 'auto' ? systemTheme() : pref);
     syncThemeUI();
     if (!darkQuery || !darkQuery.addEventListener) return;
     darkQuery.addEventListener('change', function (e) {
-      if (themePref() === 'auto') applyTheme(e.matches ? 'dark' : 'light');
+      if (themePref() === 'auto') applyTheme(e.matches ? DARK_DEFAULT : 'light');
     });
   }
 
@@ -1113,7 +1125,7 @@
 
     // Nút ở thanh trên chốt hẳn một nền; muốn quay lại "theo máy" thì vào Cài đặt.
     $('#btnTheme').addEventListener('click', function () {
-      setThemePref(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+      setThemePref(document.documentElement.getAttribute('data-theme') === 'light' ? DARK_DEFAULT : 'light');
     });
     $$('[data-theme-pref]').forEach(function (b) {
       b.addEventListener('click', function () { setThemePref(b.getAttribute('data-theme-pref')); });
