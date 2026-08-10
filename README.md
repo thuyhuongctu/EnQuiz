@@ -240,7 +240,7 @@ sets stay in your own browser. *Erase all data* in Settings clears everything.
 | File | Where it appears |
 |---|---|
 | `huong-welcome.webp` | home header, and results at the pass mark |
-| `huong-quiz.webp` | beside the question card, and results below the pass mark |
+| `huong-quiz.webp` | opens the chapter list on the home screen, sits beside the question card while answering, and appears on results below the pass mark |
 | `huong-cheer.webp` | results, score 8 and above |
 | `video-poster.webp` | the video cover — a real frame from the video itself |
 | `class-group.webp` | the banner on the exam setup screen |

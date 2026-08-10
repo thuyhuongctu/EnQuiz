@@ -1391,8 +1391,22 @@ select,
 }
 @media (max-width: 720px) { .setup-banner { height: 108px; } }
 
-/* Hai nhân vật đứng hai bên danh sách chương. Cùng đứng trên một mặt sàn nên
-   canh đáy; ảnh áo dài là ảnh vuông nên thấp hơn, đúng như bản phác. */
+/* Ảnh mở đầu phần nội dung học phần: tràn hết bề ngang thẻ, cắt theo chiều cao
+   để tấm ngang 16:9 không đẩy danh sách chương xuống quá sâu. */
+.chapters-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Hiện nguyên khung, không cắt: cắt theo chiều cao là phạm ngay vào đầu
+     nhân vật, vì trong khung ấy cô đứng chiếm gần hết chiều dọc. */
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-stroke);
+  margin: 0 0 1rem;
+}
+
+/* Hương AI đứng cạnh danh sách chương. */
 .chapters-stage { display: flex; align-items: center; gap: 1rem; }
 .chapters-stage .chapter-list { flex: 1 1 auto; min-width: 0; }
 .chapters-stage__figure {
