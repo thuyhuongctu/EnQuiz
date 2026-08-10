@@ -302,6 +302,10 @@
     el.classList.toggle('hidden', Store.get('hintSeen') === true);
   }
 
+  /* Biểu tượng theo đề tài từng chương, xếp đúng thứ tự năm chương của học
+     phần. Bộ đề nhập thêm nằm ngoài năm chương ấy nên rơi về hình quyển sách. */
+  var CHAPTER_ICONS = ['i-bulb', 'i-target', 'i-coins', 'i-blocks', 'i-megaphone'];
+
   function renderChapterList() {
     var wrap = $('#chapterList');
     var chapters = QuestionBank.chapters();
@@ -320,7 +324,10 @@
       });
       var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
       return '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
-        '<span class="chapter-item__no">' + (i + 1) + '</span>' +
+        '<span class="chapter-item__no">' +
+          '<svg class="ico" aria-hidden="true"><use href="#' +
+            (CHAPTER_ICONS[i] || 'i-book') + '"/></svg>' +
+        '</span>' +
         '<span class="chapter-item__main">' +
           '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
           '<span class="chapter-item__meta">' +

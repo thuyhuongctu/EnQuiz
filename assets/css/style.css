@@ -1237,6 +1237,11 @@ select,
   font-size: .88rem;
   box-shadow: 0 0 14px var(--glow);
 }
+/* Ô này nay đựng biểu tượng đề tài chương thay cho con số: số chương đã nằm
+   sẵn trong tên chương ("Chương 1 – …") nên in lại là thừa, còn hình thì
+   nhận ra được từ xa. */
+.chapter-item__no .ico { width: 20px; height: 20px; vertical-align: 0; }
+.chapter-item__no .ico use { stroke-width: 1.9; }
 .chapter-item__main { flex: 1; min-width: 0; }
 .chapter-item__title { display: block; font-weight: 600; font-size: .93rem; }
 .chapter-item__meta { display: block; color: var(--muted); font-size: .78rem; }
