@@ -1,5 +1,5 @@
 /* Chương 3 – Huy động vốn và các chỉ số tài chính cốt yếu
-   Nguồn: ngân hàng câu hỏi học phần (60 câu/chương).
+   Do NCS. Đỗ Thùy Hương biên soạn theo nội dung học phần (60 câu/chương).
    Tệp này được sinh tự động — sửa nội dung tại nguồn rồi tạo lại. */
 registerBank({
   "id": "ch03",
