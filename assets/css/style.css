@@ -147,60 +147,65 @@ html[data-theme="dark"] {
    liên tục trên điện thoại, chữ xám trên nền xám thì mỏi mắt.
    --------------------------------------------------------------- */
 html[data-theme="clay"] {
-  --void: #17150F;
-  --bg: #17150F;
-  --bg-soft: #201C15;
-  --paper: #17150F;
+  --void: #0C0E10;
+  --bg: #121416;
+  --bg-soft: #1A1C1E;
+  --paper: #121416;
 
-  --surface: #262117;
-  --surface-2: #2F291D;
-  --glass: rgba(38, 33, 23, .82);
-  --glass-2: rgba(47, 41, 29, .62);
-  --glass-stroke: #3E3626;
-  --border: #3E3626;
+  --surface: #1E2022;
+  --surface-2: #282A2C;
+  --glass: rgba(30, 32, 34, .84);
+  --glass-2: rgba(40, 42, 44, .64);
+  --glass-stroke: #333537;
+  --border: #333537;
 
-  --text: #F3ECDF;
-  --text-soft: #DACFBB;
-  --muted: #AFA48D;
+  --text: #E2E2E5;
+  --text-soft: #D0C5AF;        /* kem ấm, dùng cho dòng phụ */
+  --muted: #A6A8AC;
 
-  --primary: #E3B75C;          /* vàng cổ: liên kết, tiêu điểm, tiến độ */
-  --primary-dark: #C99A3C;
-  --primary-soft: #3A301B;
-  --on-primary: #1A1508;
+  --primary: #F2CA50;          /* vàng: liên kết, tiêu điểm, tiến độ */
+  --primary-dark: #D4AF37;
+  --primary-soft: #34301F;
+  --on-primary: #3C2F00;
 
-  --secondary: #D08F58;        /* đồng */
-  --secondary-soft: #33251A;
-  --on-secondary: #24160B;
+  --secondary: #D4AF37;        /* vàng cổ, đậm hơn primary một bậc */
+  --secondary-soft: #2E2A18;
+  --on-secondary: #241C00;
 
   --tertiary: #9ABF86;
-  --tertiary-soft: #222C1B;
+  --tertiary-soft: #1F2A1E;
   --on-tertiary: #16200F;
 
-  --berry: #D08F58;
-  --gold: #E9C776;
+  --berry: #D4AF37;
+  --gold: #F2CA50;
 
   --success: #9ABF86;
-  --success-soft: #222C1B;
+  --success-soft: #1F2A1E;
   --on-success: #16200F;
   --danger: #E08A78;
-  --danger-soft: #33201A;
+  --danger-soft: #2E211E;
   --on-danger: #2A100A;
-  --warn: #E3B75C;
-  --warn-soft: #33290F;
-  --on-warn: #241A00;
+  --warn: #F2CA50;
+  --warn-soft: #34301F;
+  --on-warn: #3C2F00;
 
-  --glow: rgba(227, 183, 92, .20);
-  --glow-2: rgba(208, 143, 88, .16);
+  --glow: rgba(242, 202, 80, .22);
+  --glow-2: rgba(212, 175, 55, .18);
 
   /* Nền đá tĩnh, không có tinh vân trôi như bản vũ trụ */
-  --nebula-1: rgba(227, 183, 92, .05);
-  --nebula-2: rgba(208, 143, 88, .04);
-  --star: rgba(243, 236, 223, .18);
+  --nebula-1: rgba(242, 202, 80, .045);
+  --nebula-2: rgba(212, 175, 55, .035);
+  --star: rgba(226, 226, 229, .16);
 
   --shadow: 0 16px 34px rgba(0, 0, 0, .62);
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, .5), 0 8px 20px rgba(0, 0, 0, .4);
 
-  --holo: linear-gradient(120deg, #F3ECDF 0%, #E9C776 40%, #D08F58 100%);
+  /* Bo tròn rộng hơn hai chủ đề kia: khối đất sét không có góc sắc */
+  --radius: 22px;
+  --radius-sm: 16px;
+  --radius-lg: 30px;
+
+  --holo: linear-gradient(120deg, #E2E2E5 0%, #F2CA50 42%, #D4AF37 100%);
   --holo-text: var(--holo);
 }
 
@@ -217,29 +222,42 @@ html[data-theme="clay"] .chapter-row,
 html[data-theme="clay"] .modal__box {
   background: var(--surface);
   border-color: var(--border);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, .55),
-              inset 0 1px 0 rgba(255, 236, 200, .10),
-              inset 0 -3px 8px rgba(0, 0, 0, .42);
+  box-shadow: 6px 10px 24px rgba(0, 0, 0, .42),
+              inset 2px 2px 5px rgba(255, 255, 255, .05),
+              inset -4px -4px 10px rgba(0, 0, 0, .5);
   backdrop-filter: none;
 }
+/* Thẻ chọn chế độ và dòng chương nhấc nhẹ khi rê chuột, như nhấc một khối
+   đất sét khỏi mặt bàn. Trên điện thoại không có :hover nên không ảnh hưởng. */
+html[data-theme="clay"] .mode-card,
+html[data-theme="clay"] .chapter-row { transition: transform .18s ease, box-shadow .18s ease; }
+html[data-theme="clay"] .mode-card:hover,
+html[data-theme="clay"] .chapter-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 14px 30px rgba(0, 0, 0, .5),
+              inset 2px 2px 5px rgba(255, 255, 255, .06),
+              inset -4px -4px 10px rgba(0, 0, 0, .5);
+}
+/* Thẻ câu hỏi là khối lớn nhất trên màn: bo sâu hơn và lõm rõ hơn */
+html[data-theme="clay"] .question-card { border-radius: var(--radius-lg); }
 
 html[data-theme="clay"] .btn,
 html[data-theme="clay"] .chip,
 html[data-theme="clay"] .icon-btn,
 html[data-theme="clay"] .mood,
 html[data-theme="clay"] .player__btn {
-  box-shadow: 0 6px 14px rgba(0, 0, 0, .5),
-              inset 0 1px 0 rgba(255, 236, 200, .14),
-              inset 0 -2px 5px rgba(0, 0, 0, .38);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, .45),
+              inset 1px 1px 3px rgba(255, 255, 255, .06),
+              inset -2px -2px 5px rgba(0, 0, 0, .4);
 }
 /* Bấm xuống thì lún vào trong, đúng như bấm lên một khối đất sét */
 html[data-theme="clay"] .btn:active,
 html[data-theme="clay"] .chip:active,
 html[data-theme="clay"] .icon-btn:active,
 html[data-theme="clay"] .player__btn:active {
-  box-shadow: inset 0 3px 8px rgba(0, 0, 0, .55),
-              inset 0 -1px 0 rgba(255, 236, 200, .06);
-  transform: translateY(1px);
+  box-shadow: inset 3px 3px 8px rgba(0, 0, 0, .6),
+              inset -1px -1px 3px rgba(255, 255, 255, .04);
+  transform: scale(.98);
 }
 
 /* Ô đáp án và ô nhập cũng chìm xuống, cho khác hẳn khối nổi bên trên */
@@ -247,9 +265,9 @@ html[data-theme="clay"] .option,
 html[data-theme="clay"] input[type="text"],
 html[data-theme="clay"] input[type="number"],
 html[data-theme="clay"] textarea {
-  background: #201C14;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .5),
-              inset 0 -1px 0 rgba(255, 236, 200, .05);
+  background: #16181A;
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, .6),
+              inset -1px -1px 2px rgba(255, 255, 255, .04);
 }
 
 /* Bản đồ nền trên nền đá phải chìm hơn và ngả sang tông đồng, để không thành
@@ -268,6 +286,53 @@ html[data-theme="clay"] .sidenav__item.is-active {
 }
 html[data-theme="clay"] .eyebrow { color: var(--secondary); }
 html[data-theme="clay"] .eyebrow::before { background: var(--primary); }
+/* Dòng nhỏ trên tên môn cũng theo tông vàng đồng; xanh lá ở chủ đề này chỉ
+   dành cho câu trả lời đúng, để mắt học từ màu chứ không phải đọc lại. */
+html[data-theme="clay"] .hero__title .hero__title-sm { color: var(--text-soft); }
+/* Màn che hộp thoại của hai chủ đề kia ngả xanh navy; ở đây phải là đá đen,
+   nếu không nền mờ phía sau lại thành một mảng xanh giữa bảng màu trung tính. */
+html[data-theme="clay"] .modal { background: rgba(8, 10, 12, .72); }
+
+/* Máng chìm: thanh tiến độ và khay lưới câu hỏi được khoét vào mặt đất sét,
+   nên chỉ có bóng chìm, không có bóng đổ ra ngoài. */
+html[data-theme="clay"] .progress {
+  height: 9px;
+  background: #131517;
+  border-color: #101214;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, .7),
+              inset -1px -1px 2px rgba(255, 255, 255, .04);
+}
+html[data-theme="clay"] .progress__bar {
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+  box-shadow: 0 0 10px rgba(242, 202, 80, .5);
+}
+html[data-theme="clay"] .bych-row__bar {
+  background: #131517;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, .7),
+              inset -1px -1px 2px rgba(255, 255, 255, .04);
+}
+html[data-theme="clay"] .bych-row__fill {
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+  box-shadow: 0 0 10px rgba(242, 202, 80, .45);
+}
+html[data-theme="clay"] .qgrid {
+  background: #131517;
+  border-radius: var(--radius);
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, .7),
+              inset -1px -1px 2px rgba(255, 255, 255, .04);
+}
+html[data-theme="clay"] .qgrid button {
+  background: var(--surface-2);
+  border-color: transparent;
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, .45),
+              inset 1px 1px 2px rgba(255, 255, 255, .05);
+}
+html[data-theme="clay"] .qgrid button:hover { box-shadow: 4px 5px 10px rgba(0, 0, 0, .5); }
+html[data-theme="clay"] .qgrid button.answered { border-color: var(--tertiary); }
+html[data-theme="clay"] .qgrid button.current {
+  outline-color: var(--primary);
+  box-shadow: 0 0 14px rgba(242, 202, 80, .45);
+}
 
 * { box-sizing: border-box; }
 

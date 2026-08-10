@@ -67,13 +67,15 @@ the course.
 - **The author's song** — *Golden Silt Route*, words and music by Do Thuy Huong.
   The file is only downloaded when you press play.
 
-**Light and dark**
+**Appearance**
 
-Before you choose anything, the app follows the device's own light/dark setting
-and switches with it, live. Tapping the moon/sun button fixes your choice: from
-then on the app stays where you put it and ignores the device. The choice is
-remembered per browser, so clearing the app's data returns it to following the
-device.
+Four settings, in *Settings → Appearance*: **Follow device**, **Light**, **Dark**
+and **Clay noir**. Until you choose, the app follows the device's own light/dark
+setting and switches with it, live; tapping the moon/sun button in the header fixes
+your choice. **Clay noir** is a dark stone background whose panels look moulded by
+hand — the depth is entirely CSS shadow, so it adds no image files and no download.
+The choice is remembered per browser, so clearing the app's data returns it to
+following the device.
 
 **Guided tour**
 
