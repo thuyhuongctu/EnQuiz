@@ -290,12 +290,14 @@
         </div>
         <button class="btn btn--ghost btn--sm" id="btnAllChapters" type="button" data-i18n="chapters.all">Ôn tất cả</button>
       </div>
-      <!-- Hai nhân vật đứng hai bên danh sách chương, chỉ trên màn thật rộng.
+      <!-- Ảnh cô Hương mở đầu phần nội dung học phần, tràn hết bề ngang thẻ.
+           Trước đây chỗ này là một tấm nhỏ đứng bên trái, nhưng tấm ấy trùng
+           đúng ảnh ở đầu trang nên trang chủ có hai lần cùng một hình. -->
+      <img class="chapters-banner" src="assets/img/huong-quiz.webp" width="1280" height="720"
+           loading="lazy" decoding="async" data-i18n-attr="alt:teacher.alt" alt="">
+      <!-- Hương AI đứng cạnh danh sách chương, chỉ trên màn thật rộng.
            Màn hẹp thì ẩn hẳn để danh sách chiếm trọn bề ngang. -->
       <div class="chapters-stage">
-        <img class="chapters-stage__figure chapters-stage__figure--co"
-             src="assets/img/huong-welcome.webp" width="1280" height="720"
-             loading="lazy" decoding="async" data-i18n-attr="alt:teacher.alt" alt="">
         <div class="chapter-list" id="chapterList"></div>
         <img class="chapters-stage__figure chapters-stage__figure--ai"
              src="assets/img/vest-tablet.webp" width="542" height="900"
