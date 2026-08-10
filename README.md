@@ -67,8 +67,9 @@ the course.
 - **Milestones** — first attempt, a seven-day streak, a perfect 10, and 50 attempts.
 - **Two clocks**, Vietnam and France, with the current gap between them. Computed
   from named time zones, so it stays correct across daylight saving.
-- **The author's song** — *La lampe brûle encore*, words and music by Do Thuy Huong.
-  The file is only downloaded when you press play.
+- **The author's music**, in two versions: *La lampe brûle encore* with vocals, and
+  an **instrumental** meant to sit quietly under your revision. Both loop, and
+  neither is downloaded until you press play. Your choice is remembered.
 
 **Appearance**
 
@@ -294,6 +295,10 @@ Machine-readable metadata is in `CITATION.cff` and `.zenodo.json`.
 
 - Question bank, interface, text and voice narration: **Do Thuy Huong**.
 - *La lampe brûle encore*: words and music by **Do Thuy Huong**.
+- The instrumental track is the author's own, carried over from her
+  [M-AIDA](https://github.com/thuyhuongctu/M-AIDA) project
+  (`assets/maida_song_instrumental.mp3` there, `assets/audio/song/khong-loi.mp3`
+  here).
 - Character illustrations and the introduction video: made by the author for this
   project.
 
