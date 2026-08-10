@@ -93,20 +93,19 @@ dung đại ý:
 Xin văn bản này lúc chưa có tranh chấp thì dễ; xin lúc đã có tranh chấp thì khó
 và muộn.
 
-## Một điều cần xác nhận về ngân hàng câu hỏi
+## Ngân hàng câu hỏi — đã xác nhận
 
-Tệp dữ liệu hiện ghi chú *"Nguồn: ngân hàng câu hỏi học phần"*. Câu chữ này có
-thể hiểu thành **ngân hàng đề chung của bộ môn** — nếu vậy thì phần nội dung
-không thuộc quyền tác giả của riêng cô, và mục 1 của bản cam đoan sẽ sai.
+Tác giả xác nhận **toàn bộ 300 câu hỏi do chính mình biên soạn** theo nội dung
+học phần, không lấy từ ngân hàng đề chung của bộ môn.
 
-Cần làm rõ trước khi nộp:
+Ghi chú đầu năm tệp `data/ch01.js` … `ch05.js` trước đây viết *"Nguồn: ngân hàng
+câu hỏi học phần"* — câu chữ ấy có thể bị hiểu thành ngân hàng đề của bộ môn, nên
+đã sửa thành *"Do NCS. Đỗ Thùy Hương biên soạn theo nội dung học phần"*.
 
-- Nếu **300 câu do chính cô soạn**: sửa dòng ghi chú trong `data/ch0*.js` thành
-  *"Do tác giả biên soạn theo nội dung học phần"* cho khỏi hiểu nhầm.
-- Nếu **lấy từ ngân hàng đề của bộ môn**: bỏ phần đăng ký *tác phẩm viết* cho
-  ngân hàng câu hỏi, chỉ đăng ký *chương trình máy tính*, và ghi rõ trong bản
-  mô tả rằng nội dung câu hỏi thuộc về bộ môn.
+Nhờ vậy mục 1 của bản cam đoan ký được đúng như đang viết, và ngân hàng câu hỏi
+đăng ký được như một **tác phẩm viết** riêng, bên cạnh phần **chương trình máy
+tính**.
 
 Ý tưởng, dữ kiện và nội dung kiến thức của học phần thì không ai độc quyền
-được; nhưng **cách diễn đạt cụ thể của từng câu hỏi** thì có. Chỗ này phải
-chính xác, không suy đoán.
+được; nhưng **cách diễn đạt cụ thể của từng câu hỏi** thì có — và phần ấy thuộc
+về tác giả.

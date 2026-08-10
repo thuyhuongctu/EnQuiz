@@ -1,5 +1,5 @@
 /* Chương 2 – Đánh giá cơ hội, ý tưởng phát triển kế hoạch kinh doanh
-   Nguồn: ngân hàng câu hỏi học phần (60 câu/chương).
+   Do NCS. Đỗ Thùy Hương biên soạn theo nội dung học phần (60 câu/chương).
    Tệp này được sinh tự động — sửa nội dung tại nguồn rồi tạo lại. */
 registerBank({
   "id": "ch02",
