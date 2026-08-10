@@ -251,10 +251,9 @@ sets stay in your own browser. *Erase all data* in Settings clears everything.
 Two characters, kept apart on purpose: **Ms. Huong** in an ao dai carries the
 course, and **Huong AI** in the knit vest runs the guided tour.
 
-The Ms. Huong pictures on the home screen and the answering screen are **frames
-from the introduction video**, cropped to drop the captions, the corner badge and
-the copyright line the video carries — the app puts its own text around them. The
-video cover keeps its full frame, since it is a frame of that very video.
+The Ms. Huong pictures on the home screen, the answering screen and the video
+cover are **whole frames from the introduction video**, used uncropped, keeping the
+video's own banner, caption and copyright line.
 
 The pictures keep the backdrop they were rendered on rather than being cut out, and
 each is framed as a rounded card. Cut-outs were tried and abandoned: the
