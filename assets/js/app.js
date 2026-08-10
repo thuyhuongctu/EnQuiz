@@ -285,6 +285,39 @@
     v.addEventListener('ended', function () { strip.classList.remove('is-playing'); });
   }
 
+  /* Hai bản của cùng một mạch nhạc: bản có lời để nghe, bản không lời để mở
+     nhỏ làm nền lúc ngồi ôn. Cả hai đặt lặp lại, vì làm một đề mất lâu hơn
+     một bài hát. Không bản nào nằm trong danh sách nạp sẵn nên chỉ tải khi bấm. */
+  var SONGS = {
+    vocal: { file: 'assets/audio/song/la-lampe-brule-encore.mp3', title: 'La lampe brûle encore' },
+    instrumental: { file: 'assets/audio/song/khong-loi.mp3', titleKey: 'music.instrumental.title' }
+  };
+
+  function songPref() {
+    return SONGS[Store.get('song')] ? Store.get('song') : 'vocal';
+  }
+
+  /** Đổi bản đang chọn. Đang nghe dở thì bản mới chạy tiếp luôn. */
+  function setSong(key, keepPlaying) {
+    if (!SONGS[key]) key = 'vocal';
+    var au = $('#musicPlayer');
+    var s = SONGS[key];
+    Store.set('song', key);
+    if (au && au.getAttribute('src') !== s.file) {
+      var wasOn = keepPlaying && !au.paused;
+      au.pause();
+      au.setAttribute('src', s.file);
+      au.load();
+      if (wasOn) au.play().catch(function () { /* trình duyệt chặn thì thôi */ });
+    }
+    var ti = $('#musicTitle');
+    if (ti) ti.textContent = s.titleKey ? t(s.titleKey) : s.title;
+    $$('[data-song]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-song') === key);
+    });
+    syncMusic();
+  }
+
   function toggleMusic() {
     var au = $('#musicPlayer');
     if (!au) return;
@@ -1142,6 +1175,7 @@
   function onLanguageChanged() {
     syncLangUI();
     syncManifest();
+    setSong(songPref(), true);
     if (window.Tour) Tour.refresh();
 
     renderHome();
@@ -1173,6 +1207,9 @@
     });
 
     $('#musicToggle').addEventListener('click', toggleMusic);
+    $$('[data-song]').forEach(function (b) {
+      b.addEventListener('click', function () { setSong(b.getAttribute('data-song'), true); });
+    });
     ['play', 'pause', 'ended', 'timeupdate'].forEach(function (ev) {
       $('#musicPlayer').addEventListener(ev, syncMusic);
     });
@@ -1428,6 +1465,7 @@
     var yr = String(new Date().getFullYear());
     $$('#year, .yr').forEach(function (el) { el.textContent = yr; });
     bindEvents();
+    setSong(songPref(), false);
     armIntroVideo();
     setupPWA();
     protectContent();

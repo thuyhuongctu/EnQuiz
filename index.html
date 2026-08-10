@@ -335,23 +335,28 @@
         <p class="clock__gap" id="clockGap"></p>
       </div>
 
-      <!-- Thẻ âm nhạc: đúng một bài, có lời, do chính tác giả sáng tác -->
+      <!-- Thẻ âm nhạc: hai bản, đều do chính tác giả sáng tác — một bản có lời
+           và một bản không lời để mở nhỏ làm nền lúc ngồi ôn bài. -->
       <div class="panel">
         <p class="eyebrow" data-i18n="music.eyebrow">Nghe một chút</p>
         <h2 data-i18n="music.heading">Nhạc của cô</h2>
         <p class="music__intro" data-i18n="music.intro">Nhạc và lời do cô Đỗ Thùy Hương sáng tác.</p>
+        <div class="chips" id="songChips">
+          <button class="chip" data-song="vocal" type="button" data-i18n="music.vocal">Bản có lời</button>
+          <button class="chip" data-song="instrumental" type="button" data-i18n="music.instrumental">Nhạc nền không lời</button>
+        </div>
         <div class="player">
           <button class="player__btn" id="musicToggle" type="button"
                   data-i18n-attr="aria-label:music.toggle">▶</button>
           <div class="player__meta">
-            <b class="player__title">La lampe brûle encore</b>
+            <b class="player__title" id="musicTitle">La lampe brûle encore</b>
             <small class="player__by" data-i18n="music.by">Đỗ Thùy Hương</small>
           </div>
           <!-- Chỉ hiện thời gian đã nghe, không hiện tổng thời lượng: tệp không
                có bảng Xing nên trình duyệt đoán tổng sai tới mấy phút. -->
           <span class="player__time" id="musicTime">0:00</span>
         </div>
-        <audio id="musicPlayer" preload="none"
+        <audio id="musicPlayer" preload="none" loop
                src="assets/audio/song/la-lampe-brule-encore.mp3"></audio>
       </div>
     </div>

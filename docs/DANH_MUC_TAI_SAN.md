@@ -56,6 +56,7 @@ này không đồng nghĩa với việc được giao biên soạn tác phẩm �
 | Thuyết minh tiếng Việt | 12 | Giọng đọc của tác giả, một tệp mỗi bước |
 | Thuyết minh tiếng Anh | 12 | Giọng đọc của tác giả |
 | Ca khúc *La lampe brûle encore* | 1 | Nhạc và lời của tác giả, 4 phút 37 |
+| Bản hoà tấu không lời | 1 | Của tác giả, 3 phút 01, lấy từ dự án M-AIDA của chính tác giả |
 
 ## 5. Mốc thời gian
 

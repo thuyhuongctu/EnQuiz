@@ -145,7 +145,10 @@
       'video.note': 'Video khoảng 24 MB, chỉ tải khi bạn bấm xem. Nếu đang dùng 3G/4G thì cân nhắc.',
       'music.eyebrow': 'Nghe một chút',
       'music.heading': 'Nhạc của cô',
-      'music.intro': 'Nhạc và lời do cô Đỗ Thùy Hương sáng tác.',
+      'music.intro': 'Nhạc và lời do cô Đỗ Thùy Hương sáng tác. Bản không lời để mở nhỏ làm nền lúc ngồi ôn bài.',
+      'music.vocal': 'Bản có lời',
+      'music.instrumental': 'Nhạc nền không lời',
+      'music.instrumental.title': 'Bản hoà tấu — không lời',
       'music.by': 'Đỗ Thùy Hương',
       'music.toggle': 'Tạm dừng hoặc nghe tiếp',
 
@@ -440,7 +443,10 @@
       'video.note': 'The video is about 24 MB and is only downloaded when you press play — worth knowing on mobile data.',
       'music.eyebrow': 'Take a listen',
       'music.heading': "The author's song",
-      'music.intro': 'Words and music by Ms. Do Thuy Huong.',
+      'music.intro': 'Words and music by Ms. Do Thuy Huong. The instrumental is meant to sit quietly under your revision.',
+      'music.vocal': 'With vocals',
+      'music.instrumental': 'Instrumental',
+      'music.instrumental.title': 'Instrumental — no vocals',
       'music.by': 'Do Thuy Huong',
       'music.toggle': 'Pause or resume',
 

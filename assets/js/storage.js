@@ -9,6 +9,7 @@
   var DEFAULTS = {
     theme: 'auto',   // theo cài đặt sáng/tối của máy, tới khi người dùng tự chọn
     themeMoved: 0,   // đã một lần dời "nền tối" cũ sang Đất sét noir hay chưa
+    song: 'vocal',   // bản nhạc đang chọn: 'vocal' có lời hoặc 'instrumental' không lời
     marked: [],      // danh sách uid câu hỏi được đánh dấu
     wrong: [],       // danh sách uid câu hỏi từng trả lời sai
     history: [],     // lịch sử các lần làm bài (tối đa 30 bản ghi)
