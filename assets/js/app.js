@@ -219,6 +219,31 @@
     return Math.round((asUTC(a) - asUTC(b)) / 3600000);
   }
 
+  /* Nhãn múi giờ theo lối quốc tế: UTC+7, UTC+2. Không chép cứng con số vì
+     Pháp đổi giờ mùa hè — hè UTC+2, đông UTC+1. Trình duyệt mới trả sẵn dạng
+     "GMT+7"; máy cũ không có thì tự tính chênh lệch so với giờ quốc tế. */
+  function zoneLabel(zone, when) {
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: zone, timeZoneName: 'shortOffset', hour: '2-digit'
+      }).formatToParts(when);
+      for (var i = 0; i < parts.length; i++) {
+        if (parts[i].type === 'timeZoneName') {
+          var s = parts[i].value.replace('GMT', 'UTC');
+          return s === 'UTC' ? 'UTC+0' : s;
+        }
+      }
+    } catch (e) { /* trình duyệt cũ không hiểu shortOffset thì tính tay */ }
+
+    var p = zoneParts(zone, when);
+    var local = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
+    var mins = Math.round((local - Math.floor(when.getTime() / 1000) * 1000) / 60000);
+    var sign = mins < 0 ? '-' : '+';
+    mins = Math.abs(mins);
+    var hh = Math.floor(mins / 60), mm = mins % 60;
+    return 'UTC' + sign + hh + (mm ? ':' + ('0' + mm).slice(-2) : '');
+  }
+
   function renderClocks() {
     var vn = $('#clockVN');
     if (!vn) return;
@@ -231,6 +256,8 @@
       $('#date' + k).textContent = new Intl.DateTimeFormat(locale, {
         timeZone: ZONES[k], weekday: 'long', day: 'numeric', month: 'long'
       }).format(now);
+      var z = $('#zone' + k);
+      if (z) z.textContent = zoneLabel(ZONES[k], now);
     });
 
     var gap = zoneGapHours(ZONES.VN, ZONES.FR, now);

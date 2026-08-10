@@ -68,8 +68,10 @@ the course.
   icon drawn for its subject — a bulb, a target, coins, blocks, a megaphone.
 - **Attempt history**, clearable at any time.
 - **Milestones** — first attempt, a seven-day streak, a perfect 10, and 50 attempts.
-- **Two clocks**, Vietnam and France, with the current gap between them. Computed
-  from named time zones, so it stays correct across daylight saving.
+- **Two clocks**, Vietnam and France, each with its flag and its UTC offset
+  (UTC+7, UTC+2), and the current gap between them. Computed from named time
+  zones, so the offsets and the gap stay correct across daylight saving — France
+  is UTC+2 in summer and UTC+1 in winter.
 - **The author's music**, in two versions: *La lampe brûle encore* with vocals, and
   an **instrumental** meant to sit quietly under your revision. Both loop, and
   neither is downloaded until you press play. Your choice is remembered.

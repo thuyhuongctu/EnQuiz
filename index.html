@@ -52,6 +52,10 @@
   <g id="i-coins"><ellipse cx="12" cy="6.6" rx="7" ry="3"/><path d="M5 6.6v4.4c0 1.7 3.1 3 7 3s7-1.3 7-3V6.6"/><path d="M5 11v4.4c0 1.7 3.1 3 7 3s7-1.3 7-3V11"/></g>
   <g id="i-blocks"><rect x="3.6" y="3.6" width="7.2" height="7.2" rx="1.8"/><rect x="13.2" y="3.6" width="7.2" height="7.2" rx="1.8"/><rect x="3.6" y="13.2" width="7.2" height="7.2" rx="1.8"/><rect x="13.2" y="13.2" width="7.2" height="7.2" rx="1.8"/></g>
   <g id="i-megaphone"><path d="M4 10.2v3.6a1.6 1.6 0 0 0 1.6 1.6h1.8l7.4 4.2V4.4L7.4 8.6H5.6A1.6 1.6 0 0 0 4 10.2z"/><path d="M18.4 8.6a4.6 4.6 0 0 1 0 6.8"/><path d="M7.4 15.4v3.4a1.4 1.4 0 0 0 1.4 1.4h1"/></g>
+  <!-- Hai lá cờ vẽ bằng hình khối, không dùng ký tự cờ emoji: Windows không có
+       phông cờ nên emoji cờ ở đó hiện ra hai chữ cái "VN", "FR". -->
+  <g id="flag-vn"><rect width="24" height="16" rx="2" fill="#DA251D"/><path fill="#FF0" d="m12 3.6 1.86 3.77 4.16.6-3.01 2.94.71 4.15L12 12.9l-3.72 1.96.71-4.15-3.01-2.94 4.16-.6z"/></g>
+  <g id="flag-fr"><rect width="24" height="16" rx="2" fill="#F5F5F5"/><path fill="#002395" d="M2 0h6v16H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/><path fill="#ED2939" d="M16 0h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6z"/></g>
 </defs></svg>
 
 <!-- Nền chìm: bản đồ Việt Nam (gồm Hoàng Sa, Trường Sa) -->
@@ -323,12 +327,20 @@
         <p class="eyebrow" data-i18n="clock.eyebrow">Hai múi giờ</p>
         <h2 data-i18n="clock.heading">Bây giờ là</h2>
         <div class="clock">
-          <span class="clock__place" data-i18n="clock.vn">Việt Nam</span>
+          <span class="clock__place">
+            <svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><use href="#flag-vn"/></svg>
+            <span data-i18n="clock.vn">Việt Nam</span>
+            <b class="clock__zone" id="zoneVN"></b>
+          </span>
           <b class="clock__time" id="clockVN">--:--:--</b>
           <small class="clock__date" id="dateVN"></small>
         </div>
         <div class="clock">
-          <span class="clock__place" data-i18n="clock.fr">Pháp</span>
+          <span class="clock__place">
+            <svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><use href="#flag-fr"/></svg>
+            <span data-i18n="clock.fr">Pháp</span>
+            <b class="clock__zone" id="zoneFR"></b>
+          </span>
           <b class="clock__time" id="clockFR">--:--:--</b>
           <small class="clock__date" id="dateFR"></small>
         </div>
