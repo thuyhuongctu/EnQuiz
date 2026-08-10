@@ -7,6 +7,9 @@ Author: **Do Thuy Huong**, PhD Candidate, Can Tho University.
 ▶️ **Live app: <https://thuyhuongctu.github.io/EnQuiz/>**
 📦 **Archived on Zenodo: [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735)**
 
+![Do Thuy Huong, PhD Candidate, founder of EnQuiz, teaching an entrepreneurship
+class in front of a start-up dashboard](docs/img/gioi-thieu.webp)
+
 Bilingual **English – Vietnamese**, a light look and two dark ones that follow the
 device setting until you choose, a **10-step guided tour narrated in the author's
 own recorded voice**, and it installs to the home screen as an app (**PWA**) that
@@ -237,7 +240,8 @@ sets stay in your own browser. *Erase all data* in Settings clears everything.
 | `huong-welcome.webp` | home header, and results at the pass mark |
 | `huong-quiz.webp` | beside the question card, and results below the pass mark |
 | `huong-cheer.webp` | results, score 8 and above |
-| `class-group.webp` | the video cover, and the banner on the exam setup screen |
+| `video-poster.webp` | the video cover — a real frame from the video itself |
+| `class-group.webp` | the banner on the exam setup screen |
 | `vest-*.webp` | Huong AI in the tour panel, one file per pose |
 | `vest-avatar.webp` | tour button, tour panel, advice card |
 | `logo.svg` | header mark and browser tab |
@@ -246,6 +250,11 @@ sets stay in your own browser. *Erase all data* in Settings clears everything.
 
 Two characters, kept apart on purpose: **Ms. Huong** in an ao dai carries the
 course, and **Huong AI** in the knit vest runs the guided tour.
+
+The Ms. Huong pictures on the home screen and the answering screen are **frames
+from the introduction video**, cropped to drop the captions, the corner badge and
+the copyright line the video carries — the app puts its own text around them. The
+video cover keeps its full frame, since it is a frame of that very video.
 
 The pictures keep the backdrop they were rendered on rather than being cut out, and
 each is framed as a rounded card. Cut-outs were tried and abandoned: the
