@@ -247,7 +247,7 @@
      Thẻ âm nhạc
      ======================================================= */
 
-  /* Cả app chỉ có đúng một bài: Golden Silt Route, nhạc và lời của cô. Tệp nhạc
+  /* Cả app chỉ có đúng một bài: La lampe brûle encore, nhạc và lời của cô. Tệp nhạc
      nằm ngoài danh sách nạp sẵn, chỉ tải khi sinh viên bấm nghe. */
 
   function clock(sec) {
@@ -683,8 +683,8 @@
     // đạt, cầm giấy dò lại bài khi chưa đạt.
     var huong = $('#resultHuong');
     if (huong) {
-      var shot = r.score >= 8 ? 'stage' : (pass ? 'talk' : 'notes');
-      huong.setAttribute('src', 'assets/img/class-' + shot + '.webp');
+      var shot = r.score >= 8 ? 'cheer' : (pass ? 'welcome' : 'notes');
+      huong.setAttribute('src', 'assets/img/huong-' + shot + '.webp');
     }
     $('#resultSummary').textContent = t('result.summary', {
       label: t(session.labelKey), correct: r.correct, total: r.total, pct: pct

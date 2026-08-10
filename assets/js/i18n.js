@@ -23,7 +23,7 @@
       'teacher.role': 'Giảng viên · Tác giả ngân hàng câu hỏi',
       'teacher.note': 'Mỗi ngày một đề nhỏ, kiến thức sẽ chắc dần. Sai ở đâu, ứng dụng ghi lại giúp bạn ôn lại đúng chỗ đó.',
       'teacher.fr': "Bonjour ! Je m'appelle Hương.",
-      'teacher.alt': 'Ảnh minh hoạ giảng viên Đỗ Thùy Hương đang giảng bài',
+      'teacher.alt': 'Nhân vật cô Hương mặc áo dài, dang tay chào',
 
       'hint.text': 'Bấm <b>VI</b> ở góc trên để đọc bằng tiếng Việt, và nút <b>trăng/mặt trời</b> để đổi nền sáng — tối.',
       'hint.close': 'Ẩn gợi ý',
@@ -310,7 +310,7 @@
       'teacher.role': 'Lecturer · Author of the question bank',
       'teacher.note': 'A short paper every day and the material sticks. Whatever you miss, the app remembers so you can revise exactly that.',
       'teacher.fr': "Bonjour ! Je m'appelle Hương.",
-      'teacher.alt': 'Illustration of lecturer Do Thuy Huong teaching a class',
+      'teacher.alt': 'The character of Ms. Huong in an ao dai, arms open in welcome',
 
       'hint.text': 'Tap <b>VI</b> in the top corner to read in Vietnamese, and the <b>moon / sun</b> button to switch between light and dark.',
       'hint.close': 'Hide this tip',

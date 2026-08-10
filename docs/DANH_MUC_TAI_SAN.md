@@ -39,15 +39,14 @@ này không đồng nghĩa với việc được giao biên soạn tác phẩm �
 
 | Tệp | Ngày đưa vào | Mô tả |
 |---|---|---|
-| `class-journey.webp` | 08/08/2026 | Nhân vật trên con đường dữ liệu — dùng ở đầu trang và làm biểu tượng ứng dụng |
-| `class-desk.webp` | 08/08/2026 | Nhân vật ngồi bàn làm việc — màn hình làm bài |
-| `class-stage.webp` | 08/08/2026 | Giảng đường, toàn thân — kết quả từ 8 điểm |
-| `class-talk.webp` | 08/08/2026 | Giảng đường, cận cảnh — kết quả đạt |
-| `class-notes.webp` | 08/08/2026 | Giảng đường, cầm giấy — kết quả chưa đạt |
+| `huong-welcome.webp` | 10/08/2026 | Cô Hương áo dài, dang tay chào — đầu trang và kết quả đạt |
+| `huong-quiz.webp` | 10/08/2026 | Cô Hương chỉ vào bảng — màn hình làm bài |
+| `huong-cheer.webp` | 10/08/2026 | Cô Hương giơ hai tay reo mừng — kết quả từ 8 điểm |
+| `huong-notes.webp` | 10/08/2026 | Cô Hương cầm bảng — kết quả chưa đạt |
 | `logo.svg` | 08/08/2026 | Logo EnQuiz, dựng bằng đồ hoạ vector |
 | `globe.svg` | 08/08/2026 | Quả địa cầu lưới kinh – vĩ tuyến, tính bằng phép chiếu trực giao |
 | `mekong-map.webp` | 08/08/2026 | Bản đồ đồng bằng sông Cửu Long làm nền chìm |
-| `vest-*.webp` | 08/08/2026 | 6 tệp — nhân vật dẫn phần hướng dẫn |
+| `vest-*.webp` | 10/08/2026 | 6 tệp — nhân vật Hương AI dẫn phần hướng dẫn |
 | Bộ biểu tượng ứng dụng | 08–09/08/2026 | 6 tệp, gồm bản dành cho màn hình bo tròn |
 
 ## 4. Âm thanh
@@ -56,7 +55,7 @@ này không đồng nghĩa với việc được giao biên soạn tác phẩm �
 |---|---:|---|
 | Thuyết minh tiếng Việt | 12 | Giọng đọc của tác giả, một tệp mỗi bước |
 | Thuyết minh tiếng Anh | 12 | Giọng đọc của tác giả |
-| Ca khúc *Golden Silt Route* | 1 | Nhạc và lời của tác giả, 10 phút 29 |
+| Ca khúc *La lampe brûle encore* | 1 | Nhạc và lời của tác giả, 4 phút 37 |
 
 ## 5. Mốc thời gian
 

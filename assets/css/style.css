@@ -2002,7 +2002,11 @@ html[data-theme="dark"] .footer__lockup { filter: brightness(1.18) saturate(1.05
      thì nhân vật sẽ cao thấp nhấp nhô mỗi lần chuyển bước */
   height: 190px;
   width: auto;
-  filter: drop-shadow(0 8px 20px var(--glow));
+  /* Ảnh giữ nguyên nền tối lúc dựng chứ không tách nền, nên đóng khung bo tròn
+     cho ra dáng một tấm hình chứ không phải mảng chữ nhật thừa. */
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: var(--shadow-sm), 0 12px 30px var(--glow);
   pointer-events: none;
   transition: opacity .25s ease;
 }
