@@ -262,7 +262,17 @@
         </div>
         <button class="btn btn--ghost btn--sm" id="btnAllChapters" type="button" data-i18n="chapters.all">Ôn tất cả</button>
       </div>
-      <div class="chapter-list" id="chapterList"></div>
+      <!-- Hai nhân vật đứng hai bên danh sách chương, chỉ trên màn thật rộng.
+           Màn hẹp thì ẩn hẳn để danh sách chiếm trọn bề ngang. -->
+      <div class="chapters-stage">
+        <img class="chapters-stage__figure chapters-stage__figure--co"
+             src="assets/img/huong-welcome.webp" width="900" height="900"
+             loading="lazy" decoding="async" data-i18n-attr="alt:teacher.alt" alt="">
+        <div class="chapter-list" id="chapterList"></div>
+        <img class="chapters-stage__figure chapters-stage__figure--ai"
+             src="assets/img/vest-tablet.webp" width="334" height="900"
+             loading="lazy" decoding="async" data-i18n-attr="alt:tour.alt" alt="">
+      </div>
     </div>
 
     <div class="panel" id="panelHistory">

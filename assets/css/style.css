@@ -1240,6 +1240,27 @@ select,
 /* Ô này nay đựng biểu tượng đề tài chương thay cho con số: số chương đã nằm
    sẵn trong tên chương ("Chương 1 – …") nên in lại là thừa, còn hình thì
    nhận ra được từ xa. */
+/* Hai nhân vật đứng hai bên danh sách chương. Cùng đứng trên một mặt sàn nên
+   canh đáy; ảnh áo dài là ảnh vuông nên thấp hơn, đúng như bản phác. */
+.chapters-stage { display: flex; align-items: center; gap: 1rem; }
+.chapters-stage .chapter-list { flex: 1 1 auto; min-width: 0; }
+.chapters-stage__figure {
+  flex: 0 0 auto;
+  width: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: var(--shadow-sm), 0 14px 34px var(--glow);
+  pointer-events: none;
+  margin-bottom: .2rem;
+}
+.chapters-stage__figure--co { height: 220px; }
+.chapters-stage__figure--ai { height: 300px; }
+@media (prefers-reduced-motion: no-preference) {
+  .chapters-stage__figure--ai { animation: floaty 8s ease-in-out infinite; }
+}
+/* Dưới ngưỡng này danh sách cần trọn bề ngang, tên chương vốn đã dài. */
+@media (max-width: 1180px) { .chapters-stage__figure { display: none; } }
+
 .chapter-item__no .ico { width: 20px; height: 20px; vertical-align: 0; }
 .chapter-item__no .ico use { stroke-width: 1.9; }
 .chapter-item__main { flex: 1; min-width: 0; }
@@ -2189,7 +2210,8 @@ html[data-theme="dark"] .footer__lockup { filter: brightness(1.18) saturate(1.05
 @media print {
   html { background: #fff; }
   body::before, #vnmark, #globemark, .hero__map, .hero__huong,
-  .quiz-huong, .result-hero__huong, .tour-panel__huong { display: none !important; }
+  .quiz-huong, .result-hero__huong, .tour-panel__huong,
+  .chapters-stage__figure { display: none !important; }
   .topbar, .quiz-nav, .actions, .modal, .footer, .toast-wrap, .tour-fab,
   .sidenav, .botnav { display: none !important; }
   .container { margin-left: 0; padding-bottom: 0; }
