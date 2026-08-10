@@ -57,6 +57,7 @@ Tác giả của toàn bộ 42 commit: **Đỗ Thùy Hương**.
 |---|---|---|
 | Công bố bản v.1.0 | 08/08/2026 | Zenodo, DOI 10.5281/zenodo.21850736 |
 | Công bố bản v.1.1 | 09/08/2026 | Zenodo, cùng concept DOI 10.5281/zenodo.21850735 |
+| Công bố bản v.1.2 | 10/08/2026 | Video giới thiệu, nhạc nền không lời, diện mạo Đất sét noir, giấy phép độc quyền ghi thành tệp LICENSE |
 
 Bản lưu trữ do CERN vận hành, tác giả không sửa được dấu thời gian —
 đây là chứng cứ ngày hoàn thành do bên thứ ba giữ.

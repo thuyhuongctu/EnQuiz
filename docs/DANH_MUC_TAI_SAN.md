@@ -66,6 +66,7 @@ này không đồng nghĩa với việc được giao biên soạn tác phẩm �
 | Công bố bản v.1.0 | 08/08/2026 |
 | Lưu trữ trên Zenodo, cấp DOI | 08/08/2026 |
 | Công bố bản v.1.1 | 09/08/2026 |
+| Công bố bản v.1.2 | 10/08/2026 |
 | Số commit tính tới nay | 40 |
 
 Toàn bộ lịch sử tạo lập kiểm chứng được tại
