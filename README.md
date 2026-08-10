@@ -7,10 +7,10 @@ Author: **Do Thuy Huong**, PhD Candidate, Can Tho University.
 ▶️ **Live app: <https://thuyhuongctu.github.io/EnQuiz/>**
 📦 **Archived on Zenodo: [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735)**
 
-Bilingual **English – Vietnamese**, **light and dark** themes that follow the
-device setting until you choose one, a **10-step guided tour
-narrated in the author's own recorded voice**, and it installs to the home screen as
-an app (**PWA**) that keeps working with no network.
+Bilingual **English – Vietnamese**, a light look and two dark ones that follow the
+device setting until you choose, a **10-step guided tour narrated in the author's
+own recorded voice**, and it installs to the home screen as an app (**PWA**) that
+keeps working with no network.
 
 Everything is plain HTML, CSS and JavaScript — **no framework, no build step, no
 server**. Clone it and open `index.html`.
@@ -59,7 +59,10 @@ the course.
 
 **On the home screen**
 
-- **Chapter list** with per-chapter progress and mastery.
+- **A 22-second introduction video**, with a cover image and a play button. Nothing
+  is downloaded until you press play.
+- **Chapter list** with per-chapter progress and mastery. Each chapter carries an
+  icon drawn for its subject — a bulb, a target, coins, blocks, a megaphone.
 - **Attempt history**, clearable at any time.
 - **Milestones** — first attempt, a seven-day streak, a perfect 10, and 50 attempts.
 - **Two clocks**, Vietnam and France, with the current gap between them. Computed
@@ -69,13 +72,20 @@ the course.
 
 **Appearance**
 
-Four settings, in *Settings → Appearance*: **Follow device**, **Light**, **Dark**
-and **Clay noir**. Until you choose, the app follows the device's own light/dark
-setting and switches with it, live; tapping the moon/sun button in the header fixes
-your choice. **Clay noir** is a dark stone background whose panels look moulded by
-hand — the depth is entirely CSS shadow, so it adds no image files and no download.
-The choice is remembered per browser, so clearing the app's data returns it to
-following the device.
+Four settings, in *Settings → Appearance*: **Follow device**, **Light**, **Clay
+noir** and **Cosmic dark**.
+
+**Clay noir** is the app's dark look: a dark stone background whose panels appear
+moulded by hand, lit in gold. The depth is made entirely of layered CSS shadow, so
+it adds no image files and nothing to download; every text pair on it was measured
+against WCAG AA, the lowest coming out at 6.05:1. **Cosmic dark** is the dark look
+of earlier versions, kept for anyone who preferred it.
+
+With **Follow device** — the setting until you choose otherwise — a phone set to
+light gives you the light theme and a phone set to dark gives you Clay noir, and it
+switches live when the phone does. Tapping the sun/moon button in the header fixes
+your choice. The choice is remembered per browser, so clearing the app's data
+returns it to following the device.
 
 **Guided tour**
 
@@ -178,9 +188,10 @@ manifest.webmanifest    installable-app (PWA) declaration
 sw.js                   service worker: offline copy of the app
 assets/css/style.css    themes, layout, every component
 assets/icons/           app icons, including the maskable pair Android crops to a circle
-assets/img/             photographs, logo, globe, Mekong map
+assets/img/             character art, logo, globe, Mekong map
 assets/audio/vi|en/     recorded tour narration, one file per step
 assets/audio/song/      the author's song
+assets/video/           the introduction video
 assets/js/i18n.js       bilingual dictionary and translation engine
 assets/js/storage.js    progress, history, streak and imported sets (localStorage)
 assets/js/bank.js       loads, normalises and merges the question bank
@@ -203,6 +214,12 @@ Large media is **deliberately left out of the pre-cache**: the song and the tour
 narration are only downloaded when someone actually presses play, so opening the app
 on a phone data plan costs a few hundred kilobytes, not several megabytes.
 
+The **introduction video** goes further. Its `<video>` element carries no `src` at
+all until the play button is pressed, and the service worker skips `assets/video/`
+entirely — a 24 MB file would fill most of the storage a web app is allowed, and a
+player asks for byte ranges to seek, which a cache can only answer with the whole
+file.
+
 ---
 
 ## Privacy
@@ -217,9 +234,9 @@ sets stay in your own browser. *Erase all data* in Settings clears everything.
 | File | Where it appears |
 |---|---|
 | `huong-welcome.webp` | home header, and results at the pass mark |
-| `huong-quiz.webp` | beside the question card while answering |
+| `huong-quiz.webp` | beside the question card, and results below the pass mark |
 | `huong-cheer.webp` | results, score 8 and above |
-| `huong-notes.webp` | results, below the pass mark |
+| `class-group.webp` | the video cover, and the banner on the exam setup screen |
 | `vest-*.webp` | Huong AI in the tour panel, one file per pose |
 | `vest-avatar.webp` | tour button, tour panel, advice card |
 | `logo.svg` | header mark and browser tab |
@@ -229,11 +246,12 @@ sets stay in your own browser. *Erase all data* in Settings clears everything.
 Two characters, kept apart on purpose: **Ms. Huong** in an ao dai carries the
 course, and **Huong AI** in the knit vest runs the guided tour.
 
-The pictures keep the dark backdrop they were rendered on rather than being cut
-out. Earlier versions used cut-out figures; the transparency had hard edges and a
-dark residue along the outline, which showed as a jagged fringe around the hair and
-the dress. Keeping the backdrop and framing each picture as a rounded card removes
-the problem at the source.
+The pictures keep the backdrop they were rendered on rather than being cut out, and
+each is framed as a rounded card. Cut-outs were tried and abandoned: the
+transparency had hard edges and a dark residue along the outline, measured at
+40–42% of the edge pixels, which showed as a jagged fringe around the hair and the
+dress. The **app icon** is the exception — it comes from a cut-out whose outline
+measured 3.5% dark, clean enough to sit on the icon's own background.
 
 To change a picture, replace the file and keep the name. Which picture appears on the
 result screen is decided in `renderResult()` in `assets/js/app.js`; the tour poses
@@ -276,7 +294,8 @@ Machine-readable metadata is in `CITATION.cff` and `.zenodo.json`.
 
 - Question bank, interface, text and voice narration: **Do Thuy Huong**.
 - *La lampe brûle encore*: words and music by **Do Thuy Huong**.
-- Character illustrations: generated by the author for this project.
+- Character illustrations and the introduction video: made by the author for this
+  project.
 
 ---
 
