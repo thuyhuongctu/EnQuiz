@@ -673,7 +673,33 @@ code {
   border-bottom: 1px solid var(--border-soft, var(--border));
 }
 .clock:last-of-type { border-bottom: 0; }
-.clock__place { grid-area: place; font-weight: 600; font-size: .9rem; }
+.clock__place {
+  grid-area: place;
+  font-weight: 600;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+/* Cờ vẽ bằng hình khối nên phải cho tô màu tự do, không ăn theo màu chữ như
+   bộ biểu tượng nét vẽ. Viền mảnh để lá cờ Pháp không lẫn vào nền sáng. */
+.flag {
+  width: 21px;
+  height: 14px;
+  flex: 0 0 auto;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--glass-stroke), 0 1px 3px rgba(0, 0, 0, .35);
+}
+.clock__zone {
+  font-family: var(--mono);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .05rem .38rem;
+}
 .clock__date { grid-area: date; color: var(--muted); font-size: .73rem; }
 .clock__time {
   grid-area: time;
