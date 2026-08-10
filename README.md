@@ -329,6 +329,9 @@ re-publish the app on another platform, even with attribution; use it commercial
 or in paid training; modify, translate, create derivative works, or remove copyright
 notices.
 
+The full terms are in [`LICENSE`](LICENSE), in English and Vietnamese. This is a
+proprietary licence — not open source, not Creative Commons.
+
 For any other use, write to thuyhuongctu@gmail.com for written permission.
 
 Copying and the right-click menu are disabled in the app as a reminder. That is a
