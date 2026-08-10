@@ -1240,6 +1240,131 @@ select,
 /* Ô này nay đựng biểu tượng đề tài chương thay cho con số: số chương đã nằm
    sẵn trong tên chương ("Chương 1 – …") nên in lại là thừa, còn hình thì
    nhận ra được từ xa. */
+/* ---------------- Khối video giới thiệu ----------------
+   Không đóng trong thẻ panel như các mục khác: ảnh bìa tràn hết khung, chữ và
+   nút phát nằm đè lên, giống cách các trang giới thiệu sản phẩm hay làm. Khung
+   16:9 khoá sẵn nên trang không nhảy lúc video nạp xong. */
+.filmstrip { margin-bottom: 1.1rem; }
+.filmstrip__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--glass-stroke);
+  box-shadow: var(--shadow);
+}
+.filmstrip__poster,
+.filmstrip__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.filmstrip__video { opacity: 0; pointer-events: none; }
+/* Khi đã bấm phát: video hiện lên, ảnh bìa và lớp chữ lui hết. */
+.filmstrip.is-playing .filmstrip__video { opacity: 1; pointer-events: auto; object-fit: contain; }
+.filmstrip.is-playing .filmstrip__poster,
+.filmstrip.is-playing .filmstrip__veil { opacity: 0; pointer-events: none; }
+
+.filmstrip__veil {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity .3s ease;
+  /* Tối dần từ giữa xuống đáy để chữ trắng nào cũng đọc được, không phụ thuộc
+     ảnh bìa sáng hay tối. */
+  background: linear-gradient(180deg,
+              rgba(0, 0, 0, .30) 0%, rgba(0, 0, 0, .18) 38%, rgba(0, 0, 0, .82) 100%);
+}
+.filmstrip__play {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .38);
+  background: rgba(18, 20, 22, .55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+.filmstrip__play svg { width: 30px; height: 30px; fill: currentColor; margin-left: 3px; }
+.filmstrip__play:hover {
+  transform: scale(1.07);
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: 0 0 26px var(--glow);
+}
+.filmstrip__play:active { transform: scale(.97); }
+
+.filmstrip__caption {
+  position: absolute;
+  left: 1.3rem;
+  right: 1.3rem;
+  bottom: 1.1rem;
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, .6);
+}
+.filmstrip__eyebrow {
+  margin: 0 0 .2rem;
+  font-size: .69rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.filmstrip__title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.4rem;
+  line-height: 1.15;
+  color: #fff;
+}
+.filmstrip__sub { margin: .25rem 0 0; font-size: .86rem; color: rgba(255, 255, 255, .82); }
+.filmstrip__len {
+  position: absolute;
+  top: .9rem;
+  right: .9rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #fff;
+  background: rgba(0, 0, 0, .55);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 999px;
+  padding: .18rem .5rem;
+}
+.filmstrip__note { display: block; margin-top: .5rem; font-size: .76rem; line-height: 1.45; }
+
+@media (max-width: 720px) {
+  .filmstrip__play { width: 58px; height: 58px; }
+  .filmstrip__play svg { width: 24px; height: 24px; }
+  .filmstrip__caption { left: .9rem; right: .9rem; bottom: .8rem; }
+  .filmstrip__title { font-size: 1.08rem; }
+  .filmstrip__sub { font-size: .78rem; }
+}
+@media print { .filmstrip { display: none !important; } }
+
+/* Ảnh cả lớp trên màn thiết lập đề. Cắt theo chiều cao cố định để tấm ảnh
+   ngang không đẩy phần chọn số câu xuống quá sâu. */
+.setup-banner {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: 50% 42%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-stroke);
+  margin: 0 0 1rem;
+}
+@media (max-width: 720px) { .setup-banner { height: 108px; } }
+
 /* Hai nhân vật đứng hai bên danh sách chương. Cùng đứng trên một mặt sàn nên
    canh đáy; ảnh áo dài là ảnh vuông nên thấp hơn, đúng như bản phác. */
 .chapters-stage { display: flex; align-items: center; gap: 1rem; }

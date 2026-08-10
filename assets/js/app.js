@@ -255,6 +255,36 @@
     return Math.floor(sec / 60) + ':' + ('0' + (sec % 60)).slice(-2);
   }
 
+  /* Video giới thiệu nặng hơn hẳn mọi thứ khác trong ứng dụng, nên thẻ <video>
+     để trống địa chỉ; chỉ khi có người thật sự chạm vào mới gắn địa chỉ và tải.
+     Ai chỉ mở trang chủ rồi làm bài thì không tốn một byte nào cho nó. */
+  var VIDEO_SRC = 'assets/video/gioi-thieu.mp4';
+
+  function armIntroVideo() {
+    var v = $('#introVideo');
+    var btn = $('#videoPlay');
+    if (!v || !btn) return;
+    var strip = v.closest('.filmstrip');
+    var loaded = false;
+
+    btn.addEventListener('click', function () {
+      if (!loaded) {
+        loaded = true;
+        v.setAttribute('src', VIDEO_SRC);
+        v.setAttribute('controls', '');
+        v.load();
+      }
+      strip.classList.add('is-playing');
+      v.play().catch(function () {
+        /* Trình duyệt chặn tự chạy: video đã có thanh điều khiển, người xem
+           bấm lại một lần nữa là được. */
+      });
+    });
+
+    // Xem xong thì trả về ảnh bìa, để thẻ không nằm trơ một khung hình đen.
+    v.addEventListener('ended', function () { strip.classList.remove('is-playing'); });
+  }
+
   function toggleMusic() {
     var au = $('#musicPlayer');
     if (!au) return;
@@ -690,7 +720,7 @@
     // đạt, cầm giấy dò lại bài khi chưa đạt.
     var huong = $('#resultHuong');
     if (huong) {
-      var shot = r.score >= 8 ? 'cheer' : (pass ? 'welcome' : 'notes');
+      var shot = r.score >= 8 ? 'cheer' : (pass ? 'welcome' : 'quiz');
       huong.setAttribute('src', 'assets/img/huong-' + shot + '.webp');
     }
     $('#resultSummary').textContent = t('result.summary', {
@@ -1398,6 +1428,7 @@
     var yr = String(new Date().getFullYear());
     $$('#year, .yr').forEach(function (el) { el.textContent = yr; });
     bindEvents();
+    armIntroVideo();
     setupPWA();
     protectContent();
     if (window.Tour) Tour.init();

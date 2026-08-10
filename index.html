@@ -206,7 +206,7 @@
         <p class="hero__bubble" data-i18n="teacher.greeting">Chào bạn, cùng ôn bài nhé!</p>
         <!-- Ảnh giữ nguyên nền giảng đường: không tách nền thì không có răng cưa
              quanh tóc và tà áo như mấy ảnh cắt trước. -->
-        <img class="hero__huong" src="assets/img/huong-welcome.webp" width="900" height="900"
+        <img class="hero__huong" src="assets/img/huong-welcome.webp" width="604" height="900"
              loading="lazy" decoding="async" data-i18n-attr="alt:teacher.alt" alt="">
       </div>
     </div>
@@ -253,6 +253,30 @@
         <svg class="ico mode-card__go" aria-hidden="true"><use href="#i-chevron"/></svg>
       </button>
     </div>
+
+    <!-- Khối video giới thiệu. Ảnh bìa và chữ nằm đè lên khung; chỉ khi bấm nút
+         phát mới gắn địa chỉ tệp và tải về, nên mở trang chủ không tốn gì. -->
+    <section class="filmstrip" aria-labelledby="videoHeading">
+      <div class="filmstrip__frame">
+        <img class="filmstrip__poster" src="assets/img/class-group.webp" width="1200" height="670"
+             loading="lazy" decoding="async" alt="">
+        <video class="filmstrip__video" id="introVideo" preload="none" playsinline
+               width="1920" height="1080" data-i18n-attr="aria-label:video.heading"></video>
+        <div class="filmstrip__veil" id="videoVeil">
+          <button class="filmstrip__play" id="videoPlay" type="button"
+                  data-i18n-attr="aria-label:video.play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.4v13.2L19 12z"/></svg>
+          </button>
+          <div class="filmstrip__caption">
+            <p class="filmstrip__eyebrow" data-i18n="video.eyebrow">Xem một phút</p>
+            <h2 class="filmstrip__title" id="videoHeading" data-i18n="video.heading">Video giới thiệu</h2>
+            <p class="filmstrip__sub" data-i18n="video.intro"></p>
+          </div>
+          <span class="filmstrip__len" data-i18n="video.len">0:22</span>
+        </div>
+      </div>
+      <small class="muted filmstrip__note" data-i18n="video.note"></small>
+    </section>
 
     <div class="panel">
       <div class="panel__head">
@@ -338,6 +362,9 @@
   <section class="screen hidden" id="screenSetup">
     <button class="btn btn--ghost btn--sm back-link" data-nav="home" type="button">←&nbsp;<span data-i18n="result.home">Về trang chủ</span></button>
     <div class="panel">
+      <!-- Ảnh cả nhóm ôn bài, đặt ngay trước lúc vào đề cho đỡ đơn độc -->
+      <img class="setup-banner" src="assets/img/class-group.webp" width="1200" height="670"
+           loading="lazy" decoding="async" data-i18n-attr="alt:setup.alt" alt="">
       <h2 id="setupTitle" data-i18n="setup.title">Thiết lập đề thi</h2>
       <p class="muted" id="setupDesc"></p>
 
@@ -460,7 +487,7 @@
     <div class="progress"><div class="progress__bar" id="quizProgress"></div></div>
 
     <div class="quiz-stage">
-      <img class="quiz-huong" src="assets/img/huong-quiz.webp" width="900" height="900"
+      <img class="quiz-huong" src="assets/img/huong-quiz.webp" width="604" height="900"
            loading="lazy" decoding="async" alt="" aria-hidden="true">
       <div class="quiz-stage__main">
         <article class="question-card">

@@ -137,6 +137,12 @@
       'clock.fr': 'Pháp',
       'clock.gap': 'Việt Nam đi trước Pháp {n} giờ.',
 
+      'video.eyebrow': 'Xem thử',
+      'video.play': 'Phát video giới thiệu',
+      'video.len': '0:22',
+      'video.heading': 'Video giới thiệu',
+      'video.intro': 'Hai mươi hai giây để biết ứng dụng làm được gì.',
+      'video.note': 'Video khoảng 24 MB, chỉ tải khi bạn bấm xem. Nếu đang dùng 3G/4G thì cân nhắc.',
       'music.eyebrow': 'Nghe một chút',
       'music.heading': 'Nhạc của cô',
       'music.intro': 'Nhạc và lời do cô Đỗ Thùy Hương sáng tác.',
@@ -256,6 +262,7 @@
       'privacy.title': 'Quyền riêng tư',
       'privacy.body': 'Ứng dụng không có máy chủ và không thu thập bất kỳ thông tin cá nhân nào. Kết quả làm bài, câu sai, câu đã đánh dấu và bộ đề bạn tự nhập chỉ được lưu trong trình duyệt trên máy bạn (localStorage) và không được gửi đi đâu. Bạn có thể xoá sạch bằng nút “Xoá toàn bộ dữ liệu” trong phần Cài đặt.',
 
+      'setup.alt': 'Sinh viên ngồi ôn bài trong phòng học',
       'tour.alt': 'Nhân vật Hương AI mặc áo len, dang tay giới thiệu',
       'tour.name': 'Hương AI',
       'tour.role': 'Hướng dẫn viên',
@@ -425,6 +432,12 @@
       'clock.fr': 'France',
       'clock.gap': 'Vietnam runs {n} hours ahead of France.',
 
+      'video.eyebrow': 'Watch',
+      'video.play': 'Play the introduction video',
+      'video.len': '0:22',
+      'video.heading': 'Introducing EnQuiz',
+      'video.intro': 'Twenty-two seconds on what the app does.',
+      'video.note': 'The video is about 24 MB and is only downloaded when you press play — worth knowing on mobile data.',
       'music.eyebrow': 'Take a listen',
       'music.heading': "The author's song",
       'music.intro': 'Words and music by Ms. Do Thuy Huong.',
@@ -544,6 +557,7 @@
       'privacy.title': 'Privacy',
       'privacy.body': 'The app has no server and collects no personal data. Your results, missed questions, flagged questions and imported sets are stored only in your own browser (localStorage) and are never sent anywhere. You can erase everything with the “Erase all data” button in Settings.',
 
+      'setup.alt': 'Students revising together in a classroom',
       'tour.alt': 'The character Huong AI in a knit vest, presenting with an open hand',
       'tour.name': 'Huong AI',
       'tour.role': 'Guide',

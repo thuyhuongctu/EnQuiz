@@ -4,7 +4,7 @@
    Đổi CACHE_VERSION mỗi lần phát hành bản mới để trình duyệt
    tải lại toàn bộ tài nguyên thay vì dùng bản đã lưu.
    ========================================================= */
-const CACHE_VERSION = 'enquiz-v44';
+const CACHE_VERSION = 'enquiz-v46';
 
 const SHELL = [
   './',
@@ -52,7 +52,7 @@ const SHELL = [
   './assets/img/huong-welcome.webp',
   './assets/img/huong-quiz.webp',
   './assets/img/huong-cheer.webp',
-  './assets/img/huong-notes.webp',
+  './assets/img/class-group.webp',
   './assets/img/vest-welcome.webp',
   './assets/img/vest-stand.webp',
   './assets/img/vest-point.webp',
@@ -97,6 +97,11 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;   // để trình duyệt tự xử lý liên kết ngoài
+
+  // Video để trình duyệt tự lo, không đụng vào: tệp nặng hai tư megabyte, giữ
+  // lại là chiếm gần hết phần dung lượng ứng dụng được phép dùng. Trình phát
+  // còn xin từng đoạn một (Range) để tua, mà kho lưu chỉ trả được cả tệp.
+  if (url.pathname.indexOf('/assets/video/') !== -1) return;
 
   // Trang, mã nguồn và dữ liệu: ưu tiên bản trên mạng để phát hành mới hiện ra
   // ngay, không phải tải lại trang mới thấy. Mất mạng thì lấy bản đã lưu.
