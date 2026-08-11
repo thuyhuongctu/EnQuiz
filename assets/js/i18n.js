@@ -263,7 +263,7 @@
       'policy.copyBlocked': '⛔ Nội dung có bản quyền — không sao chép.',
 
       'privacy.title': 'Quyền riêng tư',
-      'privacy.body': 'Ứng dụng không có máy chủ và không thu thập bất kỳ thông tin cá nhân nào. Kết quả làm bài, câu sai, câu đã đánh dấu và bộ đề bạn tự nhập chỉ được lưu trong trình duyệt trên máy bạn (localStorage) và không được gửi đi đâu. Bạn có thể xoá sạch bằng nút “Xoá toàn bộ dữ liệu” trong phần Cài đặt.',
+      'privacy.body': 'Ứng dụng không có máy chủ và không thu thập bất kỳ thông tin cá nhân nào. Kết quả làm bài, câu sai, câu đã đánh dấu và bộ đề bạn tự nhập chỉ được lưu trong trình duyệt trên máy bạn (localStorage) và không được gửi đi đâu. Bạn có thể xoá sạch bằng nút “Xoá toàn bộ dữ liệu” trong phần Cài đặt.\n\nỨng dụng chỉ đếm lượt truy cập ẩn danh bằng GoatCounter — công cụ không dùng cookie, không lưu địa chỉ IP, không nhận dạng cá nhân và không theo dõi bạn sang trang khác. Nó chỉ cho tác giả biết mỗi ngày có bao nhiêu lượt mở, không cho biết ai mở và cũng không thấy bài làm của bạn.',
 
       'setup.alt': 'Sinh viên ngồi ôn bài trong phòng học',
       'tour.alt': 'Nhân vật Hương AI mặc áo len, dang tay giới thiệu',
@@ -561,7 +561,7 @@
       'policy.copyBlocked': '⛔ Copyrighted content — copying is not permitted.',
 
       'privacy.title': 'Privacy',
-      'privacy.body': 'The app has no server and collects no personal data. Your results, missed questions, flagged questions and imported sets are stored only in your own browser (localStorage) and are never sent anywhere. You can erase everything with the “Erase all data” button in Settings.',
+      'privacy.body': 'The app has no server and collects no personal data. Your results, missed questions, flagged questions and imported sets are stored only in your own browser (localStorage) and are never sent anywhere. You can erase everything with the “Erase all data” button in Settings.\n\nThe app counts anonymous visits with GoatCounter — a cookieless tool that stores no IP address, identifies no individual and does not follow you across sites. It tells the author how many times the app was opened each day; it does not say who opened it, and it never sees your answers.',
 
       'setup.alt': 'Students revising together in a classroom',
       'tour.alt': 'The character Huong AI in a knit vest, presenting with an open hand',
