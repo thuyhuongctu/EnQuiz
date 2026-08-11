@@ -72,3 +72,9 @@ này không đồng nghĩa với việc được giao biên soạn tác phẩm �
 Toàn bộ lịch sử tạo lập kiểm chứng được tại
 <https://github.com/thuyhuongctu/EnQuiz/commits/main>, và bản lưu trữ độc lập
 do CERN vận hành tại <https://doi.org/10.5281/zenodo.21850735>.
+
+## Ghi chú về thống kê truy cập
+
+Từ 11/08/2026, ứng dụng nạp thêm một tệp lệnh đếm lượt truy cập của GoatCounter (`gc.zgo.at/count.js`, tài khoản `thuyhuongctu.goatcounter.com`). Đây là **yêu cầu ra ngoài duy nhất** của ứng dụng. Công cụ này không dùng cookie, không lưu địa chỉ IP, không nhận dạng cá nhân và không theo dõi người dùng sang trang khác; nó chỉ ghi số lượt mở theo ngày, theo trang và theo quốc gia.
+
+Dữ liệu học tập của người dùng — kết quả, câu sai, câu đánh dấu, bộ đề tự nhập — **không** đi qua công cụ này và vẫn chỉ nằm trong trình duyệt trên máy người học. Việc đếm đã được công bố trong bảng Quyền riêng tư của ứng dụng, bằng cả hai thứ tiếng.

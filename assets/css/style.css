@@ -2104,6 +2104,9 @@ html[data-theme="dark"] .footer__lockup { filter: brightness(1.18) saturate(1.05
 
 /* ---------------- Chính sách bản quyền ---------------- */
 .policy { font-size: .9rem; color: var(--text-soft); }
+/* Đoạn quyền riêng tư có xuống dòng thật trong từ điển; giữ lại chỗ ngắt ấy
+   để hai ý — dữ liệu học tập và việc đếm lượt truy cập — không dính làm một. */
+.policy p { white-space: pre-line; }
 .policy h4 { font-family: var(--display); font-size: .98rem; margin: 1rem 0 .3rem; color: var(--text); }
 .policy ul { margin: .3rem 0 .6rem; padding-left: 1.1rem; }
 .policy li { margin: .2rem 0; }

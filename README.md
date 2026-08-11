@@ -37,7 +37,8 @@ each one is a constraint the code is held to:
 **No server.** There is no backend, no account, no database. Every result, every
 missed question and every imported set lives in the learner's own browser. This is
 not a deployment convenience — it is what makes the privacy claim below verifiable
-by reading the source rather than trusting an operator.
+by reading the source rather than trusting an operator. The one external request
+the app makes is an anonymous, cookieless visit counter, described under *Privacy*.
 
 **No build step.** The published site is the repository. There is no bundler, no
 transpiler and no dependency tree, so the archived Zenodo snapshot is directly
@@ -191,10 +192,21 @@ file.
 
 ## Privacy
 
-There is no server and no analytics. Results, missed questions, flags and imported
-sets stay in the learner's own browser. *Erase all data* in Settings clears
-everything. Nothing is transmitted anywhere, which is why the application has no
-usage counter of its own.
+**Learning data never leaves the device.** There is no server and no account.
+Results, missed questions, flags and imported sets stay in the learner's own
+browser; *Erase all data* in Settings clears everything. No answer, score or
+progress figure is transmitted anywhere.
+
+**Visits are counted, anonymously.** The app loads
+[GoatCounter](https://www.goatcounter.com/), a cookieless analytics script that
+stores no IP address, sets no identifier and does not follow visitors across sites.
+It reports how many times the app was opened, on which day, and from which country
+— nothing that identifies a person, and nothing about what a learner answered. This
+is disclosed in the app's own *Privacy* panel, in both languages.
+
+The counter is the single external request the app makes. It is served from a
+different origin, so the service worker does not touch it; with no network it fails
+silently and the app carries on.
 
 ---
 
