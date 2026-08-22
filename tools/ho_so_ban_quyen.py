@@ -17,7 +17,7 @@ import re
 import subprocess
 import sys
 
-TAC_GIA = 'Đỗ Thùy Hương'
+TAC_GIA = 'Đỗ Thùy Hương · Phan Anh Tú'
 TAC_PHAM = 'EnQuiz — Ứng dụng ôn thi trắc nghiệm Khởi sự doanh nghiệp'
 
 # Thứ tự này theo mạch đọc: vỏ ứng dụng, giao diện, rồi tới mã xử lý, cuối cùng

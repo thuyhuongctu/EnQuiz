@@ -3,6 +3,23 @@
 *Bản thảo để tác giả rà lại, ký tên và nộp kèm hồ sơ. Đây là tài liệu tự khai,
 không thay được văn bản xác nhận của cơ quan.*
 
+> **Cần sửa trước khi ký — tác phẩm nay có hai đồng tác giả.**
+>
+> Bản cam đoan dưới đây viết cho một tác giả duy nhất. Từ ngày 11/08/2026, tác
+> phẩm ghi nhận **hai đồng tác giả: Đỗ Thùy Hương và Phan Anh Tú** (Trường Kinh
+> tế, Đại học Cần Thơ). Trước khi ký, phải sửa ba chỗ:
+>
+> 1. **Mục 1** đang cam đoan "tôi là người trực tiếp sáng tạo toàn bộ tác phẩm".
+>    Sửa lại cho khớp phần đóng góp thật của từng người — bảng phân chia đóng góp
+>    ở mục 6 của `MO_TA_TAC_PHAM.md`.
+> 2. **Chủ sở hữu quyền tài sản** phải chốt trước: hai cá nhân, hay có thêm Đại
+>    học Cần Thơ. Xem ba phương án ở mục 5 tài liệu hồ sơ.
+> 3. Nếu giữ hình thức tự khai thì **cả hai đồng tác giả cùng ký**, hoặc làm hai
+>    bản riêng.
+>
+> Ký bản viết cho một tác giả trong khi hồ sơ khai hai tác giả là mâu thuẫn ngay
+> trong cùng một bộ giấy tờ.
+
 ---
 
 **CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM**

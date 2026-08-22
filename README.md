@@ -11,15 +11,17 @@ matches a pasted question paper to a pasted answer key by question number. It ru
 entirely in the browser, installs to the home screen, and keeps working with no
 network connection.
 
-**Author**
+**Authors**
 
 - Do Thuy Huong ([ORCID 0000-0002-7711-2487](https://orcid.org/0000-0002-7711-2487)),
   lecturer at Vinh Long University of Technology Education and PhD Candidate,
   School of Economics, Can Tho University.
+- Phan Anh Tu ([ORCID 0000-0003-0667-3137](https://orcid.org/0000-0003-0667-3137)),
+  School of Economics, Can Tho University.
 
-Written for the *Khởi sự doanh nghiệp* (Entrepreneurship) course the author
+Written for the *Khởi sự doanh nghiệp* (Entrepreneurship) course the first author
 teaches. The question bank, the interface, the character artwork, the narration
-and the songs are all the author's own work.
+and the songs are the first author's own work.
 
 ▶️ **Live app: <https://thuyhuongctu.github.io/EnQuiz/>**
 📦 **Archived on Zenodo: [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735)**
@@ -329,20 +331,24 @@ reference. Machine-readable metadata is in `CITATION.cff` and `.zenodo.json`.
 
 ## Authorship, ownership and computational assistance
 
-**Author and copyright holder:** Do Thuy Huong. Copyright subsists automatically
-under the Intellectual Property Law of Viet Nam and the Berne Convention from the
-moment of creation; a Copyright Office of Viet Nam registration is in preparation.
+**Authors:** Do Thuy Huong and Phan Anh Tu, School of Economics, Can Tho
+University. Copyright subsists automatically under the Intellectual Property Law of
+Viet Nam and the Berne Convention from the moment of creation; a Copyright Office of
+Viet Nam registration is in preparation.
 
-**Scope of authorship.** All 300 questions were written by the author for this
-course; they are not drawn from a departmental question pool. The interface text,
-the character artwork, the recorded narration, the introduction video and both
-songs are likewise the author's own work.
+**Scope of authorship.** All 300 questions were written by Do Thuy Huong for the
+course she teaches; they are not drawn from a departmental question pool. The
+interface text, the character artwork, the recorded narration, the introduction
+video and both songs are likewise her own work. Phan Anh Tu contributed as
+academic supervisor and co-author.
 
-**Institutional position.** The author is a lecturer at Vinh Long University of
-Technology Education and a PhD candidate at Can Tho University. This work was
-created outside any assigned task, research project or funded programme of either
-institution, and without using their funds or facilities. It is therefore not a
-work made for hire, and ownership rests with the author.
+**Institutional position.** The first author is a lecturer at Vinh Long University
+of Technology Education and a PhD candidate at Can Tho University; the second author
+is at the School of Economics, Can Tho University. The work was created outside any
+assigned task, research project or funded programme of either institution and
+without using their funds or facilities. Because a Can Tho University staff member
+is named as co-author, the university's intellectual-property regulations are being
+checked before the registration is filed.
 
 **Role of computational assistance.** Generative tools were used to produce
 character artwork and to assist with implementation. They did not write the
@@ -354,7 +360,8 @@ the named human author.
 
 ## Licence
 
-EnQuiz is **proprietary software. All rights reserved.** It is not open source and
+EnQuiz is **proprietary software. © 2026 Do Thuy Huong and Phan Anh Tu. All rights
+reserved.** It is not open source and
 it is not under a Creative Commons licence. The full terms, in English and
 Vietnamese, are in [`LICENSE`](LICENSE).
 
