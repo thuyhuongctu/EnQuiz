@@ -6,7 +6,7 @@
 |---|---|
 | **Tên tác phẩm** | EnQuiz — Ứng dụng ôn thi trắc nghiệm Khởi sự doanh nghiệp |
 | **Loại hình** | Chương trình máy tính |
-| **Tác giả, chủ sở hữu** | Đỗ Thùy Hương |
+| **Đồng tác giả** | Đỗ Thùy Hương · Phan Anh Tú |
 | **Nơi công tác** | Giảng viên, Trường Đại học Sư phạm Kỹ thuật Vĩnh Long (VLUTE) |
 | **Học vị đang theo** | Nghiên cứu sinh, Đại học Cần Thơ |
 | **ORCID** | 0000-0002-7711-2487 |
@@ -88,17 +88,41 @@ liệu *Ngân hàng câu hỏi* nộp kèm.
 | 5 | Marketing cho doanh nghiệp mới | 60 |
 | | **Tổng** | **300** |
 
-## 6. Quyền sở hữu
+## 6. Đồng tác giả và quyền sở hữu
 
-Tác giả là giảng viên Trường Đại học Sư phạm Kỹ thuật Vĩnh Long và có giảng dạy
-học phần Khởi sự doanh nghiệp. Tuy nhiên tác phẩm này **không thuộc nhiệm vụ
-được giao**: tác giả không được cơ quan giao biên soạn hay phát triển phần mềm,
-tác phẩm không nằm trong kế hoạch công tác, đề tài hay nhiệm vụ khoa học công
-nghệ nào, và **không sử dụng kinh phí** của cơ quan hay của bất kỳ tổ chức nào.
+Tác phẩm có **hai đồng tác giả**:
+
+| | Họ tên | Nơi công tác | Phần đóng góp |
+|---|---|---|---|
+| 1 | **Đỗ Thùy Hương** | Giảng viên VLUTE; NCS Trường Kinh tế, ĐH Cần Thơ | Ý tưởng, toàn bộ mã nguồn, 300 câu hỏi, giao diện, hình ảnh nhân vật, thu âm thuyết minh, video giới thiệu, ca khúc |
+| 2 | **Phan Anh Tú** | Trường Kinh tế, Đại học Cần Thơ | Hướng dẫn khoa học, góp ý nội dung và phương pháp |
+
+*Bảng phân chia đóng góp ở trên cần hai đồng tác giả xác nhận trước khi nộp; cơ
+quan đăng ký căn cứ vào đó để ghi tên trên giấy chứng nhận.*
+
+Tác giả thứ nhất là giảng viên Trường Đại học Sư phạm Kỹ thuật Vĩnh Long và có
+giảng dạy học phần Khởi sự doanh nghiệp. Tuy nhiên tác phẩm này **không thuộc
+nhiệm vụ được giao**: tác giả không được cơ quan giao biên soạn hay phát triển
+phần mềm, tác phẩm không nằm trong kế hoạch công tác, đề tài hay nhiệm vụ khoa
+học công nghệ nào, và **không sử dụng kinh phí** của cơ quan hay của bất kỳ tổ
+chức nào.
 
 Tác phẩm được tạo ra bằng thời gian, thiết bị và chi phí cá nhân, ngoài giờ làm
-việc — điều này đối chiếu được với dấu thời gian của 42 commit trong
+việc — điều này đối chiếu được với dấu thời gian các commit trong
 `DONG_THOI_GIAN.md`.
 
-Do đó quyền nhân thân và quyền tài sản đối với tác phẩm đều thuộc về tác giả.
+**Điểm cần làm rõ trước khi nộp.** Tác giả thứ hai là viên chức Đại học Cần Thơ.
+Việc đưa tên đồng tác giả là viên chức của một cơ sở giáo dục đại học có thể làm
+phát sinh quyền của cơ sở ấy theo quy chế sở hữu trí tuệ nội bộ — như dự án
+M-AIDA của cùng nhóm tác giả, nơi Đại học Cần Thơ được ghi là đồng chủ sở hữu.
+Hai đồng tác giả cần thống nhất bằng văn bản:
+
+1. **Ai là chủ sở hữu quyền tài sản** — hai cá nhân, hay có thêm Đại học Cần Thơ.
+2. **Tỷ lệ quyền** giữa các chủ sở hữu.
+3. Nếu Đại học Cần Thơ tham gia: xin ý kiến bộ phận quản lý khoa học của Trường
+   trước khi nộp, theo đúng quy chế sở hữu trí tuệ của Trường.
+
+Chừng nào ba điểm trên chưa chốt thì **chưa nộp tờ khai**, vì mục "chủ sở hữu"
+trên tờ khai khai sai sẽ phải làm lại từ đầu.
+
 Bản cam đoan và mẫu văn bản đề nghị cơ quan xác nhận nằm ở `CAM_KET_TAC_GIA.md`.
