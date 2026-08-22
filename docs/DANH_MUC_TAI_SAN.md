@@ -78,3 +78,19 @@ do CERN vận hành tại <https://doi.org/10.5281/zenodo.21850735>.
 Từ 11/08/2026, ứng dụng nạp thêm một tệp lệnh đếm lượt truy cập của GoatCounter (`gc.zgo.at/count.js`, tài khoản `thuyhuongctu.goatcounter.com`). Đây là **yêu cầu ra ngoài duy nhất** của ứng dụng. Công cụ này không dùng cookie, không lưu địa chỉ IP, không nhận dạng cá nhân và không theo dõi người dùng sang trang khác; nó chỉ ghi số lượt mở theo ngày, theo trang và theo quốc gia.
 
 Dữ liệu học tập của người dùng — kết quả, câu sai, câu đánh dấu, bộ đề tự nhập — **không** đi qua công cụ này và vẫn chỉ nằm trong trình duyệt trên máy người học. Việc đếm đã được công bố trong bảng Quyền riêng tư của ứng dụng, bằng cả hai thứ tiếng.
+
+## Ghi chú về dấu hiệu của chủ thể khác
+
+Ảnh nhân vật trong ứng dụng là khung hình cắt từ video giới thiệu. Rà lại toàn bộ 17 tệp ảnh ngày 11/08/2026 phát hiện **5 chỗ có logo quả táo của Apple** trên nắp máy tính xách tay:
+
+| Tệp | Số chỗ |
+|---|---|
+| `assets/img/class-group.webp` | 3 |
+| `assets/img/huong-quiz.webp` | 1 |
+| `assets/img/video-poster.webp` | 1 |
+
+Cả 5 đã được xoá bằng cách nội suy trơn từ viền xung quanh (giải phương trình Laplace trên vùng bị che), mặt nắp máy giữ nguyên vẻ tự nhiên. Việc này để đáp ứng yêu cầu của hồ sơ đăng ký quyền tác giả: ảnh giao diện in nộp phải loại bỏ mọi logo, hình ảnh của chủ thể khác.
+
+Trên màn hình lớn trong ảnh có một thanh tác vụ kiểu Windows, nhưng phóng to bảy lần chỉ thấy các biểu tượng chung chung — mũi tên, loa, đồng hồ, chữ ENG — không có logo bốn ô của Microsoft nào đọc ra được, nên không xử lý.
+
+Video `assets/video/gioi-thieu.mp4` vẫn còn các logo ấy vì không có công cụ biên tập video; video không nằm trong danh mục nộp kèm hồ sơ.
