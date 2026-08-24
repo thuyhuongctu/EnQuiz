@@ -3,18 +3,19 @@
 *Bản thảo để hai đồng tác giả rà lại, ký tên và nộp kèm hồ sơ. Đây là tài liệu
 tự khai, không thay được văn bản xác nhận của cơ quan.*
 
-> Chủ sở hữu quyền tài sản đã chốt, còn ký tắt, ký tên và xin văn bản kèm
-> theo.
+> Chủ sở hữu quyền tài sản đã chốt, còn ký tắt và ký tên.
 >
 > Hai đồng tác giả đã chọn phương án B: chỉ hai cá nhân đồng sở hữu, chia đều
 > 50/50, không có Đại học Cần Thơ. Mục 1 của mỗi bản cam đoan dưới đây đã sửa
 > lại cho khớp phần đóng góp thật của từng người, và tác phẩm có hai bản cam
 > đoan riêng, mỗi tác giả ký bản của mình. Việc còn lại: (1) ký tắt vào ô
 > "Xác nhận chủ sở hữu quyền tài sản" ngay dưới đây, (2) điền thông tin cá
-> nhân còn để trống và ký hai bản cam đoan, (3) xin văn bản xác nhận của
-> VLUTE (mục "Nên xin thêm một văn bản của trường"; mục về Đại học Cần Thơ
-> không còn bắt buộc vì đã chọn phương án B, nhưng vẫn nên xin cho chắc),
-> (4) chuẩn bị CCCD bản sao y chứng thực của cả hai người.
+> nhân còn để trống và ký hai bản cam đoan, (3) chuẩn bị CCCD bản sao y chứng
+> thực của cả hai người.
+>
+> Hai đồng tác giả đã quyết định không xin văn bản xác nhận của VLUTE và
+> Đại học Cần Thơ (mục "Văn bản xác nhận của trường" bên dưới), chấp nhận
+> dùng hai bản cam đoan tự khai làm chứng cứ duy nhất cho điểm này.
 
 ---
 
@@ -173,7 +174,7 @@ băm trên chỉ đúng với đúng commit ghi ở trên, không đúng với b
 
 ---
 
-## Nên xin thêm một văn bản của trường
+## Văn bản xác nhận của trường: đã quyết định không xin
 
 Cam kết tự khai là chứng cứ yếu nhất trong hồ sơ, vì nó do chính người có
 lợi ích viết ra. Điểm dễ bị vặn nhất trong trường hợp của cô là: tác giả
@@ -181,11 +182,12 @@ lợi ích viết ra. Điểm dễ bị vặn nhất trong trường hợp của
 phần ấy có phải nhiệm vụ được giao không?
 
 Trả lời "không" là đúng: giảng dạy một học phần không đồng nghĩa với được
-giao biên soạn tài liệu hay phần mềm cho học phần ấy. Nhưng nếu có một dòng
-xác nhận của trường thì câu hỏi ấy tắt hẳn, thay vì để ngỏ.
+giao biên soạn tài liệu hay phần mềm cho học phần ấy. Một dòng xác nhận
+của trường sẽ khiến câu hỏi ấy tắt hẳn thay vì để ngỏ, nhưng hai đồng tác
+giả đã quyết định không xin văn bản này, chấp nhận dùng mục 3 của bản cam
+đoan (tác giả thứ nhất) làm chứng cứ duy nhất cho điểm này.
 
-Đề nghị xin Phòng Tổ chức hoặc Phòng Quản lý Khoa học một văn bản ngắn, nội
-dung đại ý:
+Mẫu văn bản dưới đây giữ lại để tham khảo, phòng khi sau này cần xin:
 
 > Trường Đại học Sư phạm Kỹ thuật Vĩnh Long xác nhận: bà Đỗ Thùy Hương,
 > giảng viên của Trường, không được Trường giao nhiệm vụ xây dựng phần mềm
@@ -193,18 +195,12 @@ dung đại ý:
 > không nằm trong kế hoạch công tác, đề tài hay nhiệm vụ khoa học công nghệ
 > nào của Trường và không sử dụng kinh phí của Trường.
 
-Xin văn bản này lúc chưa có tranh chấp thì dễ, xin lúc đã có tranh chấp thì
-khó và muộn.
-
-## Nên xin thêm một văn bản của Đại học Cần Thơ
+## Văn bản xác nhận của Đại học Cần Thơ: đã quyết định không xin
 
 Đã chọn phương án B, Đại học Cần Thơ không phải chủ sở hữu, nên văn bản này
-không bắt buộc, nhưng vẫn nên xin để củng cố hồ sơ. Cùng lý lẽ như trường
-hợp tác giả thứ nhất: dù ông Phan Anh Tú giữ chức Phó Hiệu trưởng Trường
-Kinh tế, việc ông định hướng phương pháp khoa học cho tác phẩm này không
-đồng nghĩa với việc Trường giao nhiệm vụ tham gia xây dựng phần mềm. Nên
-xin bộ phận quản lý khoa học của Trường Kinh tế hoặc Đại học Cần Thơ một
-văn bản ngắn, nội dung đại ý:
+không bắt buộc; hai đồng tác giả cũng quyết định không xin, cùng lý do như
+mục trên. Mẫu văn bản dưới đây giữ lại để tham khảo, phòng khi sau này cần
+xin:
 
 > Đại học Cần Thơ xác nhận: ông Phan Anh Tú, Phó giáo sư, tiến sĩ, Phó Hiệu
 > trưởng Trường Kinh tế, không được Trường giao nhiệm vụ tham gia xây dựng

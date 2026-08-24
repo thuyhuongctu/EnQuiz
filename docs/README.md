@@ -60,6 +60,7 @@ nghĩa với được giao biên soạn tài liệu hay phần mềm cho học p
 
 Chủ sở hữu quyền tài sản đã chốt: hai cá nhân đồng sở hữu ngang nhau, mỗi
 người 50%, không có Đại học Cần Thơ. Còn lại: ký tắt vào ô xác nhận, điền
-thông tin cá nhân và ký hai bản cam đoan (một cho mỗi đồng tác giả), rồi xin
-văn bản xác nhận của VLUTE (và của Đại học Cần Thơ nếu muốn củng cố thêm hồ
-sơ). Tất cả nằm ở `CAM_KET_TAC_GIA.md`.
+thông tin cá nhân và ký hai bản cam đoan (một cho mỗi đồng tác giả). Hai
+đồng tác giả đã quyết định không xin văn bản xác nhận của VLUTE và Đại học
+Cần Thơ, chấp nhận dùng bản cam đoan tự khai làm chứng cứ duy nhất cho
+điểm này. Tất cả nằm ở `CAM_KET_TAC_GIA.md`.
