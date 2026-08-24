@@ -3,32 +3,31 @@
 *Bản thảo để hai đồng tác giả rà lại, ký tên và nộp kèm hồ sơ. Đây là tài liệu
 tự khai, không thay được văn bản xác nhận của cơ quan.*
 
-> **Còn một việc phải chốt trước khi ký — chủ sở hữu quyền tài sản.**
+> **Chủ sở hữu quyền tài sản đã chốt — còn ký tắt, ký tên và xin văn bản kèm
+> theo.**
 >
-> Mục 1 của mỗi bản cam đoan dưới đây đã sửa lại cho khớp phần đóng góp thật
-> của từng người, và tác phẩm nay có hai bản cam đoan riêng — mỗi tác giả ký
-> bản của mình, đúng phương án 3 đã nêu trước đây. Việc còn lại duy nhất là
-> **ô "Xác nhận chủ sở hữu quyền tài sản"** ngay dưới đây: hai đồng tác giả
-> phải đánh dấu chọn và ký tắt trước khi ký hai bản cam đoan, vì mục "chủ sở
-> hữu" trên tờ khai nộp cho Cục Bản quyền tác giả khai sai sẽ phải làm lại từ
-> đầu. Xem phân tích đầy đủ ở mục 6 của `MO_TA_TAC_PHAM.md`.
+> Hai đồng tác giả đã chọn **phương án B**: chỉ hai cá nhân đồng sở hữu, chia
+> đều 50/50, không có Đại học Cần Thơ. Mục 1 của mỗi bản cam đoan dưới đây đã
+> sửa lại cho khớp phần đóng góp thật của từng người, và tác phẩm có hai bản
+> cam đoan riêng — mỗi tác giả ký bản của mình. Việc còn lại: (1) ký tắt vào ô
+> "Xác nhận chủ sở hữu quyền tài sản" ngay dưới đây, (2) điền thông tin cá nhân
+> còn để trống và ký hai bản cam đoan, (3) xin văn bản xác nhận của VLUTE (mục
+> "Nên xin thêm một văn bản của trường" — mục về Đại học Cần Thơ không còn bắt
+> buộc vì đã chọn phương án B, nhưng vẫn nên xin cho chắc), (4) chuẩn bị CCCD
+> bản sao y chứng thực của cả hai người.
 
 ---
 
 ## Xác nhận chủ sở hữu quyền tài sản
 
-*Đánh dấu ☑ đúng một phương án, ghi tỷ lệ nếu chọn phương án có chia tỷ lệ, rồi
-cả hai đồng tác giả ký tắt vào cột bên phải trước khi ký các bản cam đoan phía
-dưới.*
+*Đã chọn phương án B. Hai đồng tác giả ký tắt vào cột bên phải trước khi ký các
+bản cam đoan phía dưới.*
 
 | Phương án | Nội dung | Ký tắt |
 |---|---|---|
 | ☐ A | Hai cá nhân đồng sở hữu: Đỗ Thùy Hương và Phan Anh Tú, tỷ lệ ……… % / ……… %. | ĐTH: …… · PAT: …… |
-| ☐ B | Hai cá nhân đồng sở hữu ngang nhau, mỗi người 50%. | ĐTH: …… · PAT: …… |
+| ☑ B | Hai cá nhân đồng sở hữu ngang nhau, mỗi người 50%. | ĐTH: …… · PAT: …… |
 | ☐ C | Ba bên đồng sở hữu — Đỗ Thùy Hương, Phan Anh Tú và Đại học Cần Thơ — theo quy chế sở hữu trí tuệ nội bộ của Đại học Cần Thơ, tỷ lệ theo văn bản của Trường. *Chỉ chọn phương án này sau khi đã có ý kiến bằng văn bản của bộ phận quản lý khoa học, Đại học Cần Thơ.* | ĐTH: …… · PAT: …… |
-
-Nếu chọn phương án C, đính kèm văn bản của Đại học Cần Thơ vào hồ sơ trước khi
-nộp tờ khai.
 
 ---
 
@@ -176,11 +175,12 @@ và muộn.
 
 ## Nên xin thêm một văn bản của Đại học Cần Thơ
 
-Ông Phan Anh Tú là viên chức Đại học Cần Thơ, nên áp dụng cùng lý lẽ: việc ông
-hướng dẫn khoa học cho một sinh viên/nghiên cứu sinh không đồng nghĩa với việc
-Trường giao nhiệm vụ tham gia xây dựng phần mềm này. Nên xin bộ phận quản lý
-khoa học của Trường Kinh tế hoặc Đại học Cần Thơ một văn bản ngắn, nội dung đại
-ý:
+Đã chọn phương án B — Đại học Cần Thơ không phải chủ sở hữu — nên văn bản này
+không bắt buộc, nhưng vẫn nên xin để củng cố hồ sơ: cùng lý lẽ như trường hợp
+tác giả thứ nhất, việc ông Phan Anh Tú hướng dẫn khoa học cho một sinh
+viên/nghiên cứu sinh không đồng nghĩa với việc Trường giao nhiệm vụ tham gia
+xây dựng phần mềm này. Nên xin bộ phận quản lý khoa học của Trường Kinh tế
+hoặc Đại học Cần Thơ một văn bản ngắn, nội dung đại ý:
 
 > Đại học Cần Thơ xác nhận: ông Phan Anh Tú, viên chức Trường Kinh tế, **không
 > được Trường giao nhiệm vụ** tham gia xây dựng phần mềm "EnQuiz — Ứng dụng ôn
@@ -188,12 +188,9 @@ khoa học của Trường Kinh tế hoặc Đại học Cần Thơ một văn b
 > phẩm này **không nằm trong kế hoạch công tác, đề tài hay nhiệm vụ khoa học
 > công nghệ nào** của Trường và **không sử dụng kinh phí** của Trường.
 
-Nếu chọn **phương án C** ở mục "Xác nhận chủ sở hữu quyền tài sản" phía trên —
-Đại học Cần Thơ là đồng chủ sở hữu — thì văn bản này phải thay bằng ý kiến
-chính thức của bộ phận quản lý khoa học nêu rõ tỷ lệ sở hữu của Trường, chứ
-không phải bản xác nhận "không giao nhiệm vụ" ở trên; hai loại văn bản có nội
-dung ngược nhau, dùng nhầm sẽ mâu thuẫn với mục "chủ sở hữu" đã chọn trên tờ
-khai.
+*(Nếu sau này đổi sang phương án C — Đại học Cần Thơ là đồng chủ sở hữu — thì
+văn bản này phải thay bằng ý kiến chính thức nêu rõ tỷ lệ sở hữu của Trường,
+nội dung ngược hẳn với bản xác nhận "không giao nhiệm vụ" ở trên.)*
 
 ## Ngân hàng câu hỏi — đã xác nhận
 

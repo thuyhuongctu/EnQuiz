@@ -111,19 +111,14 @@ Tác phẩm được tạo ra bằng thời gian, thiết bị và chi phí cá 
 việc — điều này đối chiếu được với dấu thời gian các commit trong
 `DONG_THOI_GIAN.md`.
 
-**Điểm cần làm rõ trước khi nộp.** Tác giả thứ hai là viên chức Đại học Cần Thơ.
-Việc đưa tên đồng tác giả là viên chức của một cơ sở giáo dục đại học có thể làm
-phát sinh quyền của cơ sở ấy theo quy chế sở hữu trí tuệ nội bộ — như dự án
-M-AIDA của cùng nhóm tác giả, nơi Đại học Cần Thơ được ghi là đồng chủ sở hữu.
-Hai đồng tác giả cần thống nhất bằng văn bản:
-
-1. **Ai là chủ sở hữu quyền tài sản** — hai cá nhân, hay có thêm Đại học Cần Thơ.
-2. **Tỷ lệ quyền** giữa các chủ sở hữu.
-3. Nếu Đại học Cần Thơ tham gia: xin ý kiến bộ phận quản lý khoa học của Trường
-   trước khi nộp, theo đúng quy chế sở hữu trí tuệ của Trường.
-
-Chừng nào ba điểm trên chưa chốt thì **chưa nộp tờ khai**, vì mục "chủ sở hữu"
-trên tờ khai khai sai sẽ phải làm lại từ đầu.
+**Chủ sở hữu quyền tài sản — đã chốt.** Tác giả thứ hai là viên chức Đại học
+Cần Thơ, nên việc đưa tên đồng tác giả là viên chức của một cơ sở giáo dục đại
+học có thể làm phát sinh quyền của cơ sở ấy theo quy chế sở hữu trí tuệ nội bộ
+— như dự án M-AIDA của cùng nhóm tác giả, nơi Đại học Cần Thơ được ghi là đồng
+chủ sở hữu. Hai đồng tác giả đã thống nhất: **chỉ hai cá nhân đồng sở hữu,
+chia đều 50/50, không có Đại học Cần Thơ tham gia**. Vẫn nên xin một văn bản
+ngắn của Đại học Cần Thơ xác nhận không giao nhiệm vụ, để củng cố hồ sơ (mẫu ở
+`CAM_KET_TAC_GIA.md`), dù không bắt buộc như trường hợp có Trường đồng sở hữu.
 
 Hai bản cam đoan (một cho mỗi đồng tác giả), ô chọn phương án chủ sở hữu, và
 mẫu văn bản đề nghị VLUTE và Đại học Cần Thơ xác nhận đều nằm ở

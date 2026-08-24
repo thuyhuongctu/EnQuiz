@@ -43,8 +43,8 @@ kinh phí của tổ chức nào, không thực hiện theo nhiệm vụ đượ
 nhất có giảng dạy học phần này, nhưng giảng dạy một học phần không đồng nghĩa
 với được giao biên soạn tài liệu hay phần mềm cho học phần ấy.
 
-**Trước khi nộp hồ sơ, phải chốt chủ sở hữu quyền tài sản** — hai cá nhân, hay
-có thêm Đại học Cần Thơ theo quy chế sở hữu trí tuệ nội bộ của Trường — và xin
-văn bản xác nhận của cả VLUTE và Đại học Cần Thơ. Ô chọn phương án, mẫu hai
-bản cam đoan (một cho mỗi đồng tác giả) và mẫu văn bản đề nghị hai trường xác
-nhận đều nằm ở `CAM_KET_TAC_GIA.md`.
+**Chủ sở hữu quyền tài sản đã chốt:** hai cá nhân đồng sở hữu ngang nhau, mỗi
+người 50% — không có Đại học Cần Thơ. Còn lại: ký tắt vào ô xác nhận, điền
+thông tin cá nhân và ký hai bản cam đoan (một cho mỗi đồng tác giả), rồi xin
+văn bản xác nhận của VLUTE (và của Đại học Cần Thơ nếu muốn củng cố thêm hồ
+sơ). Tất cả nằm ở `CAM_KET_TAC_GIA.md`.
