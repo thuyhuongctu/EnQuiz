@@ -47,7 +47,7 @@
 
       'home.title': 'Ôn thi môn',
       'home.subject': 'Khởi sự doanh nghiệp',
-      'home.author': 'Biên soạn: NCS. Đỗ Thùy Hương',
+      'home.author': 'Biên soạn: NCS. Đỗ Thùy Hương · Phan Anh Tú',
       'home.stat.total': 'câu hỏi',
       'home.stat.chapters': 'chương',
       'home.stat.done': 'lượt luyện',
@@ -219,6 +219,10 @@
       'fmt.explain': '<b>Giải thích (tuỳ chọn):</b> ghi <code>Giải thích: ...</code> ở cuối mỗi câu.',
 
       'settings.heading': 'Cài đặt & dữ liệu',
+      'settings.refresh': 'Cập nhật ứng dụng',
+      'settings.refreshBtn': '🔄 Làm mới ứng dụng',
+      'settings.refreshHint': 'Chưa thấy bản mới nhất? Bấm để tải lại — không xoá tiến độ học của bạn.',
+      'settings.refreshing': 'Đang làm mới…',
       'settings.bank': 'Ngân hàng câu hỏi đang dùng',
       'settings.bankLine1': '<b>{total}</b> câu hỏi · <b>{chapters}</b> chương',
       'settings.bankLine2': 'Nguồn dữ liệu: {sources} tệp · Bộ đề bạn nhập: {custom}',
@@ -345,7 +349,7 @@
 
       'home.title': 'Practice for',
       'home.subject': 'Entrepreneurship',
-      'home.author': 'Written by Do Thuy Huong, PhD Candidate',
+      'home.author': 'Written by Do Thuy Huong, PhD Candidate · Phan Anh Tu',
       'home.stat.total': 'questions',
       'home.stat.chapters': 'chapters',
       'home.stat.done': 'attempts',
@@ -517,6 +521,10 @@
       'fmt.explain': '<b>Explanation (optional):</b> write <code>Explanation: ...</code> at the end of a question.',
 
       'settings.heading': 'Settings & data',
+      'settings.refresh': 'Update the app',
+      'settings.refreshBtn': '🔄 Refresh app',
+      'settings.refreshHint': "Not seeing the latest version? Tap to reload — this won't erase your progress.",
+      'settings.refreshing': 'Refreshing…',
       'settings.bank': 'Question bank in use',
       'settings.bankLine1': '<b>{total}</b> questions · <b>{chapters}</b> chapters',
       'settings.bankLine2': 'Data sources: {sources} files · Your imports: {custom}',

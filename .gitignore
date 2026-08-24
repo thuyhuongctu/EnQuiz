@@ -1,3 +1,8 @@
 node_modules/
 .DS_Store
 *.log
+__pycache__/
+
+# Thông tin định danh cá nhân (CCCD, ngày sinh, địa chỉ, SĐT), không đưa lên
+# GitHub công khai. Xem docs/private/README.md.
+docs/private/
