@@ -160,17 +160,20 @@ mã nguồn, nội dung và tư liệu. Những cam kết trên không chỉ là
 | Không dùng thư viện của người khác | Toàn bộ mã nguồn in trong `ma-nguon.pdf`, không có tệp nào của bên thứ ba |
 | Nội dung nộp không đổi sau ngày này | Mã băm SHA-256 dưới đây, tính từ chính tệp mã nguồn trong kho Git. Ai cũng tính lại được cùng kết quả bằng `python3 tools/tinh_ma_bam.py` |
 
-**Mã băm xác thực nội dung nộp**, tính ngày 24/08/2026 tại commit
-`8ffc64c48052f248afc1e2f38a775bfdacffb847`:
+**Mã băm xác thực nội dung nộp**, tính ngày 24/08/2026, xác nhận lại còn
+đúng tại commit `7465090f1eae224b34a3db671c25829342624dd3`:
 
 - Mã nguồn chương trình (16 tệp, đúng thứ tự in trong `ma-nguon.pdf`):
   `2f4985a444672745e979a75673804042407cc091b64ff63546bce3f15a9d0882`
 - Ngân hàng câu hỏi (5 tệp `data/ch01.js` đến `ch05.js`):
   `0e938a34db0d2c5654c8979085597e82e04faed6b66efad1c6b5fe98b59b9c9f`
 
-Nếu sau ngày nộp hồ sơ mã nguồn còn thay đổi (sửa lỗi, thêm tính năng),
-chạy lại `tools/tinh_ma_bam.py` ở đúng commit đã nộp để đối chiếu; hai mã
-băm trên chỉ đúng với đúng commit ghi ở trên, không đúng với bản mới hơn.
+Mã băm này tính trên nội dung của 16 tệp mã nguồn và 5 tệp dữ liệu câu
+hỏi, không phụ thuộc các tệp khác (tài liệu, giấy phép…) trong kho, nên
+vẫn đúng qua nhiều commit miễn 21 tệp đó không đổi. Nếu sau ngày nộp hồ
+sơ mã nguồn hay dữ liệu câu hỏi có thay đổi (sửa lỗi, thêm tính năng),
+chạy lại `tools/tinh_ma_bam.py` để lấy mã băm mới; hai mã băm trên chỉ
+đúng với đúng nội dung đã băm ở đây, không đúng với bản đã sửa.
 
 ---
 
