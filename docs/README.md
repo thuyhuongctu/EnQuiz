@@ -31,11 +31,20 @@ vênh.
 
 ## Lưu ý về quyền sở hữu
 
-Tác phẩm do **Đỗ Thùy Hương** — giảng viên Trường Đại học Sư phạm Kỹ thuật
-Vĩnh Long, nghiên cứu sinh Đại học Cần Thơ — tạo ra với tư cách cá nhân: không
-sử dụng kinh phí của tổ chức nào, không thực hiện theo nhiệm vụ được giao.
+Tác phẩm có **hai đồng tác giả**: **Đỗ Thùy Hương** — giảng viên Trường Đại
+học Sư phạm Kỹ thuật Vĩnh Long, nghiên cứu sinh Đại học Cần Thơ, người trực
+tiếp sáng tạo toàn bộ mã nguồn, nội dung và tư liệu — và **Phan Anh Tú**,
+Trường Kinh tế, Đại học Cần Thơ, đóng góp hướng dẫn khoa học và góp ý nội
+dung, phương pháp. Bảng phân chia đóng góp đầy đủ nằm ở mục 6 của
+`MO_TA_TAC_PHAM.md`.
 
-Tác giả có giảng dạy học phần này, nhưng giảng dạy một học phần không đồng
-nghĩa với được giao biên soạn tài liệu hay phần mềm cho học phần ấy. Chi tiết
-và mẫu văn bản đề nghị trường xác nhận nằm ở `CAM_KET_TAC_GIA.md` — nên xin
-văn bản đó trước khi nộp hồ sơ.
+Tác phẩm tạo ra với tư cách cá nhân của cả hai đồng tác giả: không sử dụng
+kinh phí của tổ chức nào, không thực hiện theo nhiệm vụ được giao. Tác giả thứ
+nhất có giảng dạy học phần này, nhưng giảng dạy một học phần không đồng nghĩa
+với được giao biên soạn tài liệu hay phần mềm cho học phần ấy.
+
+**Trước khi nộp hồ sơ, phải chốt chủ sở hữu quyền tài sản** — hai cá nhân, hay
+có thêm Đại học Cần Thơ theo quy chế sở hữu trí tuệ nội bộ của Trường — và xin
+văn bản xác nhận của cả VLUTE và Đại học Cần Thơ. Ô chọn phương án, mẫu hai
+bản cam đoan (một cho mỗi đồng tác giả) và mẫu văn bản đề nghị hai trường xác
+nhận đều nằm ở `CAM_KET_TAC_GIA.md`.

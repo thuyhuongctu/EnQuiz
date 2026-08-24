@@ -125,4 +125,6 @@ Hai đồng tác giả cần thống nhất bằng văn bản:
 Chừng nào ba điểm trên chưa chốt thì **chưa nộp tờ khai**, vì mục "chủ sở hữu"
 trên tờ khai khai sai sẽ phải làm lại từ đầu.
 
-Bản cam đoan và mẫu văn bản đề nghị cơ quan xác nhận nằm ở `CAM_KET_TAC_GIA.md`.
+Hai bản cam đoan (một cho mỗi đồng tác giả), ô chọn phương án chủ sở hữu, và
+mẫu văn bản đề nghị VLUTE và Đại học Cần Thơ xác nhận đều nằm ở
+`CAM_KET_TAC_GIA.md`.

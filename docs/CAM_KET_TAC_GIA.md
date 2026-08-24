@@ -1,31 +1,41 @@
 # Cam kết của tác giả
 
-*Bản thảo để tác giả rà lại, ký tên và nộp kèm hồ sơ. Đây là tài liệu tự khai,
-không thay được văn bản xác nhận của cơ quan.*
+*Bản thảo để hai đồng tác giả rà lại, ký tên và nộp kèm hồ sơ. Đây là tài liệu
+tự khai, không thay được văn bản xác nhận của cơ quan.*
 
-> **Cần sửa trước khi ký — tác phẩm nay có hai đồng tác giả.**
+> **Còn một việc phải chốt trước khi ký — chủ sở hữu quyền tài sản.**
 >
-> Bản cam đoan dưới đây viết cho một tác giả duy nhất. Từ ngày 11/08/2026, tác
-> phẩm ghi nhận **hai đồng tác giả: Đỗ Thùy Hương và Phan Anh Tú** (Trường Kinh
-> tế, Đại học Cần Thơ). Trước khi ký, phải sửa ba chỗ:
->
-> 1. **Mục 1** đang cam đoan "tôi là người trực tiếp sáng tạo toàn bộ tác phẩm".
->    Sửa lại cho khớp phần đóng góp thật của từng người — bảng phân chia đóng góp
->    ở mục 6 của `MO_TA_TAC_PHAM.md`.
-> 2. **Chủ sở hữu quyền tài sản** phải chốt trước: hai cá nhân, hay có thêm Đại
->    học Cần Thơ. Xem ba phương án ở mục 5 tài liệu hồ sơ.
-> 3. Nếu giữ hình thức tự khai thì **cả hai đồng tác giả cùng ký**, hoặc làm hai
->    bản riêng.
->
-> Ký bản viết cho một tác giả trong khi hồ sơ khai hai tác giả là mâu thuẫn ngay
-> trong cùng một bộ giấy tờ.
+> Mục 1 của mỗi bản cam đoan dưới đây đã sửa lại cho khớp phần đóng góp thật
+> của từng người, và tác phẩm nay có hai bản cam đoan riêng — mỗi tác giả ký
+> bản của mình, đúng phương án 3 đã nêu trước đây. Việc còn lại duy nhất là
+> **ô "Xác nhận chủ sở hữu quyền tài sản"** ngay dưới đây: hai đồng tác giả
+> phải đánh dấu chọn và ký tắt trước khi ký hai bản cam đoan, vì mục "chủ sở
+> hữu" trên tờ khai nộp cho Cục Bản quyền tác giả khai sai sẽ phải làm lại từ
+> đầu. Xem phân tích đầy đủ ở mục 6 của `MO_TA_TAC_PHAM.md`.
+
+---
+
+## Xác nhận chủ sở hữu quyền tài sản
+
+*Đánh dấu ☑ đúng một phương án, ghi tỷ lệ nếu chọn phương án có chia tỷ lệ, rồi
+cả hai đồng tác giả ký tắt vào cột bên phải trước khi ký các bản cam đoan phía
+dưới.*
+
+| Phương án | Nội dung | Ký tắt |
+|---|---|---|
+| ☐ A | Hai cá nhân đồng sở hữu: Đỗ Thùy Hương và Phan Anh Tú, tỷ lệ ……… % / ……… %. | ĐTH: …… · PAT: …… |
+| ☐ B | Hai cá nhân đồng sở hữu ngang nhau, mỗi người 50%. | ĐTH: …… · PAT: …… |
+| ☐ C | Ba bên đồng sở hữu — Đỗ Thùy Hương, Phan Anh Tú và Đại học Cần Thơ — theo quy chế sở hữu trí tuệ nội bộ của Đại học Cần Thơ, tỷ lệ theo văn bản của Trường. *Chỉ chọn phương án này sau khi đã có ý kiến bằng văn bản của bộ phận quản lý khoa học, Đại học Cần Thơ.* | ĐTH: …… · PAT: …… |
+
+Nếu chọn phương án C, đính kèm văn bản của Đại học Cần Thơ vào hồ sơ trước khi
+nộp tờ khai.
 
 ---
 
 **CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM**
 **Độc lập – Tự do – Hạnh phúc**
 
-## GIẤY CAM ĐOAN
+## GIẤY CAM ĐOAN — Tác giả thứ nhất
 
 **Kính gửi:** Cục Bản quyền tác giả
 
@@ -37,26 +47,29 @@ Tôi tên: **Đỗ Thùy Hương**
 - Nơi công tác: Trường Đại học Sư phạm Kỹ thuật Vĩnh Long
 - Email: huongdt@vlute.edu.vn
 
-Là tác giả của tác phẩm: **EnQuiz — Ứng dụng ôn thi trắc nghiệm Khởi sự doanh
-nghiệp**, loại hình *chương trình máy tính*, hoàn thành ngày 08/8/2026, công bố
-lần đầu cùng ngày tại địa chỉ https://thuyhuongctu.github.io/EnQuiz/
+Là đồng tác giả của tác phẩm: **EnQuiz — Ứng dụng ôn thi trắc nghiệm Khởi sự
+doanh nghiệp**, loại hình *chương trình máy tính*, hoàn thành ngày 08/8/2026,
+công bố lần đầu cùng ngày tại địa chỉ https://thuyhuongctu.github.io/EnQuiz/,
+đồng tác giả cùng ông Phan Anh Tú (Trường Kinh tế, Đại học Cần Thơ).
 
 Tôi xin cam đoan những điều sau đây là đúng sự thật:
 
-1. Tôi là người **trực tiếp sáng tạo** toàn bộ tác phẩm: mã nguồn, giao diện,
-   ngân hàng 300 câu hỏi, hình ảnh, bản thu giọng thuyết minh và ca khúc kèm
-   theo. Không có đồng tác giả.
+1. Tôi là người **trực tiếp sáng tạo** mã nguồn, giao diện, ngân hàng 300 câu
+   hỏi, hình ảnh, bản thu giọng thuyết minh và ca khúc kèm theo tác phẩm. Ông
+   Phan Anh Tú là đồng tác giả với phần đóng góp là hướng dẫn khoa học, góp ý
+   nội dung và phương pháp, đúng như bảng phân chia đóng góp ở mục 6 của
+   `MO_TA_TAC_PHAM.md`.
 
-2. Tác phẩm được tạo ra **bằng thời gian, thiết bị và chi phí cá nhân của tôi**,
-   ngoài giờ làm việc.
+2. Phần đóng góp của tôi được tạo ra **bằng thời gian, thiết bị và chi phí cá
+   nhân của tôi**, ngoài giờ làm việc.
 
-3. Tác phẩm **không thuộc nhiệm vụ được giao**: tôi không được cơ quan giao
-   nhiệm vụ biên soạn, thiết kế hay phát triển tác phẩm này, và tác phẩm không
-   nằm trong kế hoạch công tác, đề tài, dự án hay nhiệm vụ khoa học công nghệ
-   nào của cơ quan.
+3. Phần đóng góp của tôi **không thuộc nhiệm vụ được giao**: tôi không được cơ
+   quan giao nhiệm vụ biên soạn, thiết kế hay phát triển tác phẩm này, và tác
+   phẩm không nằm trong kế hoạch công tác, đề tài, dự án hay nhiệm vụ khoa học
+   công nghệ nào của cơ quan.
 
-4. Tác phẩm **không sử dụng kinh phí** từ ngân sách nhà nước, từ cơ quan tôi
-   công tác, hay từ bất kỳ tổ chức, cá nhân nào khác.
+4. Phần đóng góp của tôi **không sử dụng kinh phí** từ ngân sách nhà nước, từ
+   cơ quan tôi công tác, hay từ bất kỳ tổ chức, cá nhân nào khác.
 
 5. Tác phẩm **không phải sản phẩm của hợp đồng** thuê sáng tạo với bất kỳ bên
    nào.
@@ -64,7 +77,56 @@ Tôi xin cam đoan những điều sau đây là đúng sự thật:
 6. Tác phẩm **không sao chép** của người khác, không xâm phạm quyền tác giả,
    quyền liên quan hay quyền sở hữu trí tuệ của bất kỳ tổ chức, cá nhân nào.
 
-7. Tôi chưa chuyển nhượng quyền tác giả đối với tác phẩm này cho ai.
+7. Tôi chưa chuyển nhượng quyền tác giả đối với phần đóng góp của mình cho ai.
+
+Tôi xin chịu trách nhiệm trước pháp luật về nội dung cam đoan trên.
+
+…………, ngày …… tháng …… năm 20……
+**Người cam đoan**
+*(ký, ghi rõ họ tên)*
+
+---
+
+**CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM**
+**Độc lập – Tự do – Hạnh phúc**
+
+## GIẤY CAM ĐOAN — Tác giả thứ hai
+
+**Kính gửi:** Cục Bản quyền tác giả
+
+Tôi tên: **Phan Anh Tú**
+
+- Ngày sinh: ……………………………
+- Số CCCD: …………………… cấp ngày …………… tại ……………………………
+- Địa chỉ thường trú: ……………………………
+- Nơi công tác: Trường Kinh tế, Đại học Cần Thơ
+- Email: patu@ctu.edu.vn
+
+Là đồng tác giả của tác phẩm: **EnQuiz — Ứng dụng ôn thi trắc nghiệm Khởi sự
+doanh nghiệp**, loại hình *chương trình máy tính*, hoàn thành ngày 08/8/2026,
+công bố lần đầu cùng ngày tại địa chỉ https://thuyhuongctu.github.io/EnQuiz/,
+đồng tác giả cùng bà Đỗ Thùy Hương (Trường Đại học Sư phạm Kỹ thuật Vĩnh Long).
+
+Tôi xin cam đoan những điều sau đây là đúng sự thật:
+
+1. Phần đóng góp của tôi vào tác phẩm là **hướng dẫn khoa học, góp ý nội dung
+   và phương pháp**, đúng như bảng phân chia đóng góp ở mục 6 của
+   `MO_TA_TAC_PHAM.md`. Tôi không trực tiếp viết mã nguồn, giao diện, ngân hàng
+   câu hỏi, hình ảnh, bản thu âm hay ca khúc của tác phẩm — phần đó do bà Đỗ
+   Thùy Hương trực tiếp sáng tạo.
+
+2. Phần đóng góp của tôi **không thuộc nhiệm vụ được giao**: tôi không được cơ
+   quan giao nhiệm vụ hướng dẫn hay tham gia tác phẩm này, và tác phẩm không
+   nằm trong kế hoạch công tác, đề tài, dự án hay nhiệm vụ khoa học công nghệ
+   nào của cơ quan.
+
+3. Phần đóng góp của tôi **không sử dụng kinh phí** từ ngân sách nhà nước, từ
+   cơ quan tôi công tác, hay từ bất kỳ tổ chức, cá nhân nào khác.
+
+4. Tác phẩm **không phải sản phẩm của hợp đồng** thuê sáng tạo với bất kỳ bên
+   nào.
+
+5. Tôi chưa chuyển nhượng quyền tác giả đối với phần đóng góp của mình cho ai.
 
 Tôi xin chịu trách nhiệm trước pháp luật về nội dung cam đoan trên.
 
@@ -76,7 +138,9 @@ Tôi xin chịu trách nhiệm trước pháp luật về nội dung cam đoan t
 
 ## Chứng cứ kèm theo cam kết
 
-Những cam kết trên không chỉ là lời khai — mỗi ý đều đối chiếu được:
+Đối chiếu cho bản cam đoan của tác giả thứ nhất — phần đóng góp trực tiếp vào
+mã nguồn, nội dung và tư liệu. Những cam kết trên không chỉ là lời khai — mỗi ý
+đều đối chiếu được:
 
 | Cam kết | Chứng cứ |
 |---|---|
@@ -109,6 +173,27 @@ dung đại ý:
 
 Xin văn bản này lúc chưa có tranh chấp thì dễ; xin lúc đã có tranh chấp thì khó
 và muộn.
+
+## Nên xin thêm một văn bản của Đại học Cần Thơ
+
+Ông Phan Anh Tú là viên chức Đại học Cần Thơ, nên áp dụng cùng lý lẽ: việc ông
+hướng dẫn khoa học cho một sinh viên/nghiên cứu sinh không đồng nghĩa với việc
+Trường giao nhiệm vụ tham gia xây dựng phần mềm này. Nên xin bộ phận quản lý
+khoa học của Trường Kinh tế hoặc Đại học Cần Thơ một văn bản ngắn, nội dung đại
+ý:
+
+> Đại học Cần Thơ xác nhận: ông Phan Anh Tú, viên chức Trường Kinh tế, **không
+> được Trường giao nhiệm vụ** tham gia xây dựng phần mềm "EnQuiz — Ứng dụng ôn
+> thi trắc nghiệm Khởi sự doanh nghiệp"; việc hướng dẫn khoa học của ông cho tác
+> phẩm này **không nằm trong kế hoạch công tác, đề tài hay nhiệm vụ khoa học
+> công nghệ nào** của Trường và **không sử dụng kinh phí** của Trường.
+
+Nếu chọn **phương án C** ở mục "Xác nhận chủ sở hữu quyền tài sản" phía trên —
+Đại học Cần Thơ là đồng chủ sở hữu — thì văn bản này phải thay bằng ý kiến
+chính thức của bộ phận quản lý khoa học nêu rõ tỷ lệ sở hữu của Trường, chứ
+không phải bản xác nhận "không giao nhiệm vụ" ở trên; hai loại văn bản có nội
+dung ngược nhau, dùng nhầm sẽ mâu thuẫn với mục "chủ sở hữu" đã chọn trên tờ
+khai.
 
 ## Ngân hàng câu hỏi — đã xác nhận
 
