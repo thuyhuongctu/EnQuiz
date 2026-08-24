@@ -25,9 +25,9 @@ các bản cam đoan phía dưới.*
 
 | Phương án | Nội dung | Ký tắt |
 |---|---|---|
-| ☐ A | Hai cá nhân đồng sở hữu: Đỗ Thùy Hương và Phan Anh Tú, tỷ lệ ……… % / ……… %. | ĐTH: …… · PAT: …… |
-| ☑ B | Hai cá nhân đồng sở hữu ngang nhau, mỗi người 50%. | ĐTH: …… · PAT: …… |
-| ☐ C | Ba bên đồng sở hữu: Đỗ Thùy Hương, Phan Anh Tú và Đại học Cần Thơ, theo quy chế sở hữu trí tuệ nội bộ của Đại học Cần Thơ, tỷ lệ theo văn bản của Trường. Chỉ chọn phương án này sau khi đã có ý kiến bằng văn bản của bộ phận quản lý khoa học, Đại học Cần Thơ. | ĐTH: …… · PAT: …… |
+| [ ] A | Hai cá nhân đồng sở hữu: Đỗ Thùy Hương và Phan Anh Tú, tỷ lệ ……… % / ……… %. | ĐTH: …… · PAT: …… |
+| [X] B | Hai cá nhân đồng sở hữu ngang nhau, mỗi người 50%. | ĐTH: …… · PAT: …… |
+| [ ] C | Ba bên đồng sở hữu: Đỗ Thùy Hương, Phan Anh Tú và Đại học Cần Thơ, theo quy chế sở hữu trí tuệ nội bộ của Đại học Cần Thơ, tỷ lệ theo văn bản của Trường. Chỉ chọn phương án này sau khi đã có ý kiến bằng văn bản của bộ phận quản lý khoa học, Đại học Cần Thơ. | ĐTH: …… · PAT: …… |
 
 ---
 
@@ -83,7 +83,9 @@ Tôi xin cam đoan những điều sau đây là đúng sự thật:
 Tôi xin chịu trách nhiệm trước pháp luật về nội dung cam đoan trên.
 
 …………, ngày …… tháng …… năm 20……
+
 Người cam đoan
+
 *(ký, ghi rõ họ tên)*
 
 ---
@@ -136,7 +138,9 @@ Tôi xin cam đoan những điều sau đây là đúng sự thật:
 Tôi xin chịu trách nhiệm trước pháp luật về nội dung cam đoan trên.
 
 …………, ngày …… tháng …… năm 20……
+
 Người cam đoan
+
 *(ký, ghi rõ họ tên)*
 
 ---
