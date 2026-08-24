@@ -52,13 +52,16 @@ CSS = '''
   .bia dd { margin: 0 0 .5em 46mm; }
   .muc-luc { page-break-after: always; }
   .muc-luc h1 { font-size: 15pt; }
-  .muc-luc ol { padding-left: 1.4em; }
+  .muc-luc ol { padding-left: 2.6em; }
   .muc-luc li { margin: .28em 0; }
   .muc-luc small { color: #555; }
   .tep { page-break-before: always; }
-  .tep h1 { font-size: 13pt; font-family: "DejaVu Sans Mono", monospace; }
+  .tep h1 { font-size: 13pt; font-family: "Liberation Mono", "DejaVu Sans Mono", monospace; }
   .tep .ghi-chu { color: #555; font-size: 9pt; margin: 0 0 .7em; }
-  pre { font: 8.2pt/1.35 "DejaVu Sans Mono", "Courier New", monospace;
+  /* DejaVu Sans Mono thiếu glyph cho nhiều nguyên âm tiếng Việt có dấu chồng
+     (ể, ỗ, ẵ, ẳ, ẫ, ắ, ế, ề…) — trình duyệt tách dấu ra vẽ rời, sai vị trí.
+     Liberation Mono có đủ bộ glyph nên xếp trước. */
+  pre { font: 8.2pt/1.35 "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
         margin: 0; white-space: pre-wrap; word-break: break-word; }
   /* Dòng dài bị bẻ thì phần gãy phải thụt vào ngang chỗ mã, không được trôi ra
      lề trái đè lên cột số dòng. */
