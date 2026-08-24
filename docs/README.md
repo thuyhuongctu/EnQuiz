@@ -6,7 +6,7 @@ kết xuất bằng lệnh.
 
 | Tệp | Dùng vào việc gì |
 |---|---|
-| `MO_TA_TAC_PHAM.md` | Bản mô tả tác phẩm — nộp kèm tờ khai |
+| `MO_TA_TAC_PHAM.md` | Bản mô tả tác phẩm, nộp kèm tờ khai |
 | `DANH_MUC_TAI_SAN.md` | Liệt kê từng thành phần, ai tạo, ngày nào |
 | `DONG_THOI_GIAN.md` | Dòng thời gian sáng tạo, rút từ lịch sử commit |
 | `CAM_KET_TAC_GIA.md` | Bản cam đoan để ký, kèm mẫu văn bản đề nghị trường xác nhận |
@@ -22,40 +22,39 @@ python3 tools/dong_thoi_gian.py > docs/DONG_THOI_GIAN.md
 
 Ra sáu tệp PDF:
 
-- **`MO_TA_TAC_PHAM.pdf`**, **`DANH_MUC_TAI_SAN.pdf`**, **`DONG_THOI_GIAN.pdf`**,
-  **`CAM_KET_TAC_GIA.pdf`** — bốn tệp Markdown ở trên, dựng cùng một kiểu
-  trình bày để in.
-- **`ma-nguon.pdf`** — toàn bộ mã nguồn, đánh số dòng, có bìa và mục lục,
-  đánh số trang. Nộp cho phần *chương trình máy tính*.
-- **`ngan-hang-cau-hoi.pdf`** — 300 câu hỏi kèm đáp án đúng. Nộp cho phần
-  *tác phẩm viết*, nếu đăng ký riêng nội dung câu hỏi.
+- `MO_TA_TAC_PHAM.pdf`, `DANH_MUC_TAI_SAN.pdf`, `DONG_THOI_GIAN.pdf`,
+  `CAM_KET_TAC_GIA.pdf`: bốn tệp Markdown ở trên, dựng cùng một kiểu trình
+  bày để in.
+- `ma-nguon.pdf`: toàn bộ mã nguồn, đánh số dòng, có bìa và mục lục, đánh số
+  trang. Nộp cho phần chương trình máy tính.
+- `ngan-hang-cau-hoi.pdf`: 300 câu hỏi kèm đáp án đúng. Nộp cho phần tác
+  phẩm viết, nếu đăng ký riêng nội dung câu hỏi.
 
 Ngày ghi trên bìa lấy từ commit mới nhất chứ không lấy đồng hồ máy, nên kết
-xuất lại lúc nào cũng ra cùng một tệp — người thẩm định đối chiếu không thấy
+xuất lại lúc nào cũng ra cùng một tệp, người thẩm định đối chiếu không thấy
 vênh.
 
-Phông chữ cho phần mã nguồn và mục lục dùng **Liberation Mono** trước
-**DejaVu Sans Mono**: DejaVu Sans Mono thiếu glyph cho nhiều nguyên âm tiếng
-Việt có dấu chồng (`ể ỗ ẵ ẳ ẫ ắ ế ề`…), trình duyệt tách dấu ra vẽ rời và lệch
-vị trí nếu dùng riêng nó.
+Phông chữ cho phần mã nguồn và mục lục dùng Liberation Mono trước DejaVu Sans
+Mono. DejaVu Sans Mono thiếu glyph cho nhiều nguyên âm tiếng Việt có dấu
+chồng (`ể ỗ ẵ ẳ ẫ ắ ế ề`…), trình duyệt tách dấu ra vẽ rời và lệch vị trí nếu
+dùng riêng nó.
 
 ## Lưu ý về quyền sở hữu
 
-Tác phẩm có **hai đồng tác giả**: **Đỗ Thùy Hương** — giảng viên Trường Đại
-học Sư phạm Kỹ thuật Vĩnh Long, nghiên cứu sinh Đại học Cần Thơ, người trực
-tiếp sáng tạo toàn bộ mã nguồn, nội dung và tư liệu — và **Phan Anh Tú**,
-Trường Kinh tế, Đại học Cần Thơ, đóng góp định hướng phương pháp khoa học,
-thiết kế mô hình logic và góp ý nội dung. Bảng phân chia đóng góp đầy đủ nằm ở
-mục 6 của
-`MO_TA_TAC_PHAM.md`.
+Tác phẩm có hai đồng tác giả. Đỗ Thùy Hương, giảng viên Trường Đại học Sư
+phạm Kỹ thuật Vĩnh Long, nghiên cứu sinh Đại học Cần Thơ, là người trực tiếp
+sáng tạo toàn bộ mã nguồn, nội dung và tư liệu. Phan Anh Tú, Phó giáo sư,
+tiến sĩ, Phó Hiệu trưởng Trường Kinh tế, Đại học Cần Thơ, đóng góp định
+hướng phương pháp khoa học, thiết kế mô hình logic và góp ý nội dung. Bảng
+phân chia đóng góp đầy đủ nằm ở mục 6 của `MO_TA_TAC_PHAM.md`.
 
 Tác phẩm tạo ra với tư cách cá nhân của cả hai đồng tác giả: không sử dụng
-kinh phí của tổ chức nào, không thực hiện theo nhiệm vụ được giao. Tác giả thứ
-nhất có giảng dạy học phần này, nhưng giảng dạy một học phần không đồng nghĩa
-với được giao biên soạn tài liệu hay phần mềm cho học phần ấy.
+kinh phí của tổ chức nào, không thực hiện theo nhiệm vụ được giao. Tác giả
+thứ nhất có giảng dạy học phần này, nhưng giảng dạy một học phần không đồng
+nghĩa với được giao biên soạn tài liệu hay phần mềm cho học phần ấy.
 
-**Chủ sở hữu quyền tài sản đã chốt:** hai cá nhân đồng sở hữu ngang nhau, mỗi
-người 50% — không có Đại học Cần Thơ. Còn lại: ký tắt vào ô xác nhận, điền
+Chủ sở hữu quyền tài sản đã chốt: hai cá nhân đồng sở hữu ngang nhau, mỗi
+người 50%, không có Đại học Cần Thơ. Còn lại: ký tắt vào ô xác nhận, điền
 thông tin cá nhân và ký hai bản cam đoan (một cho mỗi đồng tác giả), rồi xin
 văn bản xác nhận của VLUTE (và của Đại học Cần Thơ nếu muốn củng cố thêm hồ
 sơ). Tất cả nằm ở `CAM_KET_TAC_GIA.md`.

@@ -44,7 +44,7 @@ CSS = '''
 
 def bia(tieu_de, ngay):
     return ('<div class="bia"><h1>%s</h1>'
-            '<p>EnQuiz — Ứng dụng ôn thi trắc nghiệm Khởi sự doanh nghiệp</p>'
+            '<p>EnQuiz: Ứng dụng ôn thi trắc nghiệm Khởi sự doanh nghiệp</p>'
             '<p>Đỗ Thùy Hương · Phan Anh Tú</p>'
             '<p>Kết xuất ngày %s</p></div>'
             % (html.escape(tieu_de), html.escape(ngay)))
