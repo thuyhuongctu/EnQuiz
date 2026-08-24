@@ -47,7 +47,7 @@
 
       'home.title': 'Ôn thi môn',
       'home.subject': 'Khởi sự doanh nghiệp',
-      'home.author': 'Biên soạn: NCS. Đỗ Thùy Hương',
+      'home.author': 'Biên soạn: NCS. Đỗ Thùy Hương · Phan Anh Tú',
       'home.stat.total': 'câu hỏi',
       'home.stat.chapters': 'chương',
       'home.stat.done': 'lượt luyện',
@@ -345,7 +345,7 @@
 
       'home.title': 'Practice for',
       'home.subject': 'Entrepreneurship',
-      'home.author': 'Written by Do Thuy Huong, PhD Candidate',
+      'home.author': 'Written by Do Thuy Huong, PhD Candidate · Phan Anh Tu',
       'home.stat.total': 'questions',
       'home.stat.chapters': 'chapters',
       'home.stat.done': 'attempts',
