@@ -43,7 +43,7 @@ NGUON = [
 
 CSS = '''
   @page { size: A4; margin: 18mm 14mm 16mm 16mm; }
-  body { font: 10pt/1.45 "DejaVu Serif", Georgia, serif; color: #111; margin: 0; }
+  body { font: 10pt/1.45 "DejaVu Serif", Georgia, serif; color: #000; margin: 0; }
   h1 { font-size: 19pt; margin: 0 0 .2em; }
   h2 { font-size: 12pt; margin: 0 0 .6em; font-weight: 600; color: #444; }
   .bia { page-break-after: always; padding-top: 55mm; text-align: center; }

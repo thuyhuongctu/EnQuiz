@@ -18,7 +18,12 @@ python3 tools/ho_so_ban_quyen.py ./hoso   # mã nguồn + ngân hàng câu hỏi
 python3 tools/dung_tai_lieu_md.py ./hoso  # 4 tệp .md ở trên -> HTML
 node tools/in_pdf.js ./hoso               # in mọi .html trong thư mục ra PDF khổ A4
 python3 tools/dong_thoi_gian.py > docs/DONG_THOI_GIAN.md
+python3 tools/tinh_ma_bam.py              # in mã băm SHA-256 của mã nguồn và ngân hàng câu hỏi
 ```
+
+Nếu mã nguồn hay dữ liệu câu hỏi có thay đổi, chạy lại `tinh_ma_bam.py` và
+cập nhật tay hai mã băm cùng số commit trong mục "Chứng cứ kèm theo cam
+kết" của `CAM_KET_TAC_GIA.md`.
 
 Ra sáu tệp PDF:
 
@@ -55,6 +60,7 @@ nghĩa với được giao biên soạn tài liệu hay phần mềm cho học p
 
 Chủ sở hữu quyền tài sản đã chốt: hai cá nhân đồng sở hữu ngang nhau, mỗi
 người 50%, không có Đại học Cần Thơ. Còn lại: ký tắt vào ô xác nhận, điền
-thông tin cá nhân và ký hai bản cam đoan (một cho mỗi đồng tác giả), rồi xin
-văn bản xác nhận của VLUTE (và của Đại học Cần Thơ nếu muốn củng cố thêm hồ
-sơ). Tất cả nằm ở `CAM_KET_TAC_GIA.md`.
+thông tin cá nhân và ký hai bản cam đoan (một cho mỗi đồng tác giả). Hai
+đồng tác giả đã quyết định không xin văn bản xác nhận của VLUTE và Đại học
+Cần Thơ, chấp nhận dùng bản cam đoan tự khai làm chứng cứ duy nhất cho
+điểm này. Tất cả nằm ở `CAM_KET_TAC_GIA.md`.

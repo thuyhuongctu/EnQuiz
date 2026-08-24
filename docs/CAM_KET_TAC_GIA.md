@@ -3,18 +3,19 @@
 *Bản thảo để hai đồng tác giả rà lại, ký tên và nộp kèm hồ sơ. Đây là tài liệu
 tự khai, không thay được văn bản xác nhận của cơ quan.*
 
-> Chủ sở hữu quyền tài sản đã chốt, còn ký tắt, ký tên và xin văn bản kèm
-> theo.
+> Chủ sở hữu quyền tài sản đã chốt, còn ký tắt và ký tên.
 >
 > Hai đồng tác giả đã chọn phương án B: chỉ hai cá nhân đồng sở hữu, chia đều
 > 50/50, không có Đại học Cần Thơ. Mục 1 của mỗi bản cam đoan dưới đây đã sửa
 > lại cho khớp phần đóng góp thật của từng người, và tác phẩm có hai bản cam
 > đoan riêng, mỗi tác giả ký bản của mình. Việc còn lại: (1) ký tắt vào ô
 > "Xác nhận chủ sở hữu quyền tài sản" ngay dưới đây, (2) điền thông tin cá
-> nhân còn để trống và ký hai bản cam đoan, (3) xin văn bản xác nhận của
-> VLUTE (mục "Nên xin thêm một văn bản của trường"; mục về Đại học Cần Thơ
-> không còn bắt buộc vì đã chọn phương án B, nhưng vẫn nên xin cho chắc),
-> (4) chuẩn bị CCCD bản sao y chứng thực của cả hai người.
+> nhân còn để trống và ký hai bản cam đoan, (3) chuẩn bị CCCD bản sao y chứng
+> thực của cả hai người.
+>
+> Hai đồng tác giả đã quyết định không xin văn bản xác nhận của VLUTE và
+> Đại học Cần Thơ (mục "Văn bản xác nhận của trường" bên dưới), chấp nhận
+> dùng hai bản cam đoan tự khai làm chứng cứ duy nhất cho điểm này.
 
 ---
 
@@ -157,10 +158,26 @@ mã nguồn, nội dung và tư liệu. Những cam kết trên không chỉ là
 | Ngày hoàn thành | Bản lưu trữ Zenodo do CERN vận hành, DOI 10.5281/zenodo.21850735. Tác giả không sửa được dấu thời gian |
 | Làm ngoài giờ | Dấu thời gian commit: phần lớn rơi vào buổi tối và đêm |
 | Không dùng thư viện của người khác | Toàn bộ mã nguồn in trong `ma-nguon.pdf`, không có tệp nào của bên thứ ba |
+| Nội dung nộp không đổi sau ngày này | Mã băm SHA-256 dưới đây, tính từ chính tệp mã nguồn trong kho Git. Ai cũng tính lại được cùng kết quả bằng `python3 tools/tinh_ma_bam.py` |
+
+**Mã băm xác thực nội dung nộp**, tính ngày 24/08/2026, xác nhận lại còn
+đúng tại commit `7465090f1eae224b34a3db671c25829342624dd3`:
+
+- Mã nguồn chương trình (16 tệp, đúng thứ tự in trong `ma-nguon.pdf`):
+  `2f4985a444672745e979a75673804042407cc091b64ff63546bce3f15a9d0882`
+- Ngân hàng câu hỏi (5 tệp `data/ch01.js` đến `ch05.js`):
+  `0e938a34db0d2c5654c8979085597e82e04faed6b66efad1c6b5fe98b59b9c9f`
+
+Mã băm này tính trên nội dung của 16 tệp mã nguồn và 5 tệp dữ liệu câu
+hỏi, không phụ thuộc các tệp khác (tài liệu, giấy phép…) trong kho, nên
+vẫn đúng qua nhiều commit miễn 21 tệp đó không đổi. Nếu sau ngày nộp hồ
+sơ mã nguồn hay dữ liệu câu hỏi có thay đổi (sửa lỗi, thêm tính năng),
+chạy lại `tools/tinh_ma_bam.py` để lấy mã băm mới; hai mã băm trên chỉ
+đúng với đúng nội dung đã băm ở đây, không đúng với bản đã sửa.
 
 ---
 
-## Nên xin thêm một văn bản của trường
+## Văn bản xác nhận của trường: đã quyết định không xin
 
 Cam kết tự khai là chứng cứ yếu nhất trong hồ sơ, vì nó do chính người có
 lợi ích viết ra. Điểm dễ bị vặn nhất trong trường hợp của cô là: tác giả
@@ -168,11 +185,12 @@ lợi ích viết ra. Điểm dễ bị vặn nhất trong trường hợp của
 phần ấy có phải nhiệm vụ được giao không?
 
 Trả lời "không" là đúng: giảng dạy một học phần không đồng nghĩa với được
-giao biên soạn tài liệu hay phần mềm cho học phần ấy. Nhưng nếu có một dòng
-xác nhận của trường thì câu hỏi ấy tắt hẳn, thay vì để ngỏ.
+giao biên soạn tài liệu hay phần mềm cho học phần ấy. Một dòng xác nhận
+của trường sẽ khiến câu hỏi ấy tắt hẳn thay vì để ngỏ, nhưng hai đồng tác
+giả đã quyết định không xin văn bản này, chấp nhận dùng mục 3 của bản cam
+đoan (tác giả thứ nhất) làm chứng cứ duy nhất cho điểm này.
 
-Đề nghị xin Phòng Tổ chức hoặc Phòng Quản lý Khoa học một văn bản ngắn, nội
-dung đại ý:
+Mẫu văn bản dưới đây giữ lại để tham khảo, phòng khi sau này cần xin:
 
 > Trường Đại học Sư phạm Kỹ thuật Vĩnh Long xác nhận: bà Đỗ Thùy Hương,
 > giảng viên của Trường, không được Trường giao nhiệm vụ xây dựng phần mềm
@@ -180,18 +198,12 @@ dung đại ý:
 > không nằm trong kế hoạch công tác, đề tài hay nhiệm vụ khoa học công nghệ
 > nào của Trường và không sử dụng kinh phí của Trường.
 
-Xin văn bản này lúc chưa có tranh chấp thì dễ, xin lúc đã có tranh chấp thì
-khó và muộn.
-
-## Nên xin thêm một văn bản của Đại học Cần Thơ
+## Văn bản xác nhận của Đại học Cần Thơ: đã quyết định không xin
 
 Đã chọn phương án B, Đại học Cần Thơ không phải chủ sở hữu, nên văn bản này
-không bắt buộc, nhưng vẫn nên xin để củng cố hồ sơ. Cùng lý lẽ như trường
-hợp tác giả thứ nhất: dù ông Phan Anh Tú giữ chức Phó Hiệu trưởng Trường
-Kinh tế, việc ông định hướng phương pháp khoa học cho tác phẩm này không
-đồng nghĩa với việc Trường giao nhiệm vụ tham gia xây dựng phần mềm. Nên
-xin bộ phận quản lý khoa học của Trường Kinh tế hoặc Đại học Cần Thơ một
-văn bản ngắn, nội dung đại ý:
+không bắt buộc; hai đồng tác giả cũng quyết định không xin, cùng lý do như
+mục trên. Mẫu văn bản dưới đây giữ lại để tham khảo, phòng khi sau này cần
+xin:
 
 > Đại học Cần Thơ xác nhận: ông Phan Anh Tú, Phó giáo sư, tiến sĩ, Phó Hiệu
 > trưởng Trường Kinh tế, không được Trường giao nhiệm vụ tham gia xây dựng
