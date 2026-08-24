@@ -16,7 +16,7 @@
       'app.tagline': 'Ôn thi Khởi sự doanh nghiệp',
       'app.title': 'EnQuiz — Ôn thi Khởi sự doanh nghiệp',
       'app.desc': 'EnQuiz — ứng dụng ôn thi trắc nghiệm môn Khởi sự doanh nghiệp: 300 câu hỏi, thi thử có bấm giờ, luyện lại câu sai.',
-      'app.author': 'Đỗ Thùy Hương',
+      'app.author': 'Đỗ Thùy Hương và Phan Anh Tú',
 
       'teacher.greeting': 'Chào bạn, cùng ôn bài nhé!',
       'teacher.name': 'NCS. Đỗ Thùy Hương',
@@ -248,7 +248,7 @@
       'footer.place': 'Cần Thơ, Việt Nam',
 
       'policy.title': 'Bản quyền & điều kiện sử dụng',
-      'policy.intro': 'Toàn bộ ngân hàng câu hỏi, phần mềm, giao diện, hình ảnh và tên gọi <b>EnQuiz</b> là tài sản trí tuệ của <b>NCS. Đỗ Thùy Hương</b>, được bảo hộ theo Luật Sở hữu trí tuệ Việt Nam và các điều ước quốc tế mà Việt Nam là thành viên.',
+      'policy.intro': 'Toàn bộ ngân hàng câu hỏi, phần mềm, giao diện, hình ảnh và tên gọi <b>EnQuiz</b> là tài sản trí tuệ của các đồng tác giả <b>NCS. Đỗ Thùy Hương</b> và <b>Phan Anh Tú</b>, được bảo hộ theo Luật Sở hữu trí tuệ Việt Nam và các điều ước quốc tế mà Việt Nam là thành viên.',
       'policy.allowed': 'Bạn được phép',
       'policy.allowed1': 'Sử dụng miễn phí để tự học và ôn thi cá nhân.',
       'policy.allowed2': 'Chia sẻ đường dẫn tới ứng dụng cho bạn học và đồng nghiệp.',
@@ -314,7 +314,7 @@
       'app.tagline': 'Entrepreneurship practice',
       'app.title': 'EnQuiz — Entrepreneurship Quiz',
       'app.desc': 'EnQuiz — a multiple-choice practice app for an Entrepreneurship course: 300 questions, timed mock exams, and review of missed questions.',
-      'app.author': 'Do Thuy Huong',
+      'app.author': 'Do Thuy Huong and Phan Anh Tu',
 
       'teacher.greeting': 'Hello — let us revise together!',
       'teacher.name': 'Do Thuy Huong, PhD Candidate',
@@ -546,7 +546,7 @@
       'footer.place': 'Can Tho, Vietnam',
 
       'policy.title': 'Copyright & terms of use',
-      'policy.intro': 'The entire question bank, software, interface, imagery and the name <b>EnQuiz</b> are the intellectual property of <b>Do Thuy Huong, PhD Candidate</b>, protected under the Intellectual Property Law of Vietnam and the international treaties to which Vietnam is a party.',
+      'policy.intro': 'The entire question bank, software, interface, imagery and the name <b>EnQuiz</b> are the intellectual property of the co-authors <b>Do Thuy Huong, PhD Candidate</b> and <b>Phan Anh Tu</b>, protected under the Intellectual Property Law of Vietnam and the international treaties to which Vietnam is a party.',
       'policy.allowed': 'You may',
       'policy.allowed1': 'Use the app free of charge for your own study and exam revision.',
       'policy.allowed2': 'Share the link to the app with classmates and colleagues.',
