@@ -18,7 +18,12 @@ python3 tools/ho_so_ban_quyen.py ./hoso   # mã nguồn + ngân hàng câu hỏi
 python3 tools/dung_tai_lieu_md.py ./hoso  # 4 tệp .md ở trên -> HTML
 node tools/in_pdf.js ./hoso               # in mọi .html trong thư mục ra PDF khổ A4
 python3 tools/dong_thoi_gian.py > docs/DONG_THOI_GIAN.md
+python3 tools/tinh_ma_bam.py              # in mã băm SHA-256 của mã nguồn và ngân hàng câu hỏi
 ```
+
+Nếu mã nguồn hay dữ liệu câu hỏi có thay đổi, chạy lại `tinh_ma_bam.py` và
+cập nhật tay hai mã băm cùng số commit trong mục "Chứng cứ kèm theo cam
+kết" của `CAM_KET_TAC_GIA.md`.
 
 Ra sáu tệp PDF:
 

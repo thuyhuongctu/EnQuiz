@@ -157,6 +157,19 @@ mã nguồn, nội dung và tư liệu. Những cam kết trên không chỉ là
 | Ngày hoàn thành | Bản lưu trữ Zenodo do CERN vận hành, DOI 10.5281/zenodo.21850735. Tác giả không sửa được dấu thời gian |
 | Làm ngoài giờ | Dấu thời gian commit: phần lớn rơi vào buổi tối và đêm |
 | Không dùng thư viện của người khác | Toàn bộ mã nguồn in trong `ma-nguon.pdf`, không có tệp nào của bên thứ ba |
+| Nội dung nộp không đổi sau ngày này | Mã băm SHA-256 dưới đây, tính từ chính tệp mã nguồn trong kho Git. Ai cũng tính lại được cùng kết quả bằng `python3 tools/tinh_ma_bam.py` |
+
+**Mã băm xác thực nội dung nộp**, tính ngày 24/08/2026 tại commit
+`8ffc64c48052f248afc1e2f38a775bfdacffb847`:
+
+- Mã nguồn chương trình (16 tệp, đúng thứ tự in trong `ma-nguon.pdf`):
+  `2f4985a444672745e979a75673804042407cc091b64ff63546bce3f15a9d0882`
+- Ngân hàng câu hỏi (5 tệp `data/ch01.js` đến `ch05.js`):
+  `0e938a34db0d2c5654c8979085597e82e04faed6b66efad1c6b5fe98b59b9c9f`
+
+Nếu sau ngày nộp hồ sơ mã nguồn còn thay đổi (sửa lỗi, thêm tính năng),
+chạy lại `tools/tinh_ma_bam.py` ở đúng commit đã nộp để đối chiếu; hai mã
+băm trên chỉ đúng với đúng commit ghi ở trên, không đúng với bản mới hơn.
 
 ---
 
