@@ -18,7 +18,7 @@ import subprocess
 import sys
 
 TAC_GIA = 'Đỗ Thùy Hương · Phan Anh Tú'
-TAC_PHAM = 'EnQuiz — Ứng dụng ôn thi trắc nghiệm Khởi sự doanh nghiệp'
+TAC_PHAM = 'EnQuiz: Ứng dụng ôn thi trắc nghiệm Khởi sự doanh nghiệp'
 
 # Thứ tự này theo mạch đọc: vỏ ứng dụng, giao diện, rồi tới mã xử lý, cuối cùng
 # là dữ liệu — người thẩm định lật từ đầu là hiểu ngay kiến trúc.
@@ -34,11 +34,11 @@ NGUON = [
     ('assets/js/i18n.js', 'Từ điển song ngữ và bộ dịch'),
     ('assets/js/tour.js', 'Phần hướng dẫn mười bước có thuyết minh'),
     ('data/manifest.js', 'Danh sách tệp dữ liệu'),
-    ('data/ch01.js', 'Chương 1 — 60 câu'),
-    ('data/ch02.js', 'Chương 2 — 60 câu'),
-    ('data/ch03.js', 'Chương 3 — 60 câu'),
-    ('data/ch04.js', 'Chương 4 — 60 câu'),
-    ('data/ch05.js', 'Chương 5 — 60 câu'),
+    ('data/ch01.js', 'Chương 1, 60 câu'),
+    ('data/ch02.js', 'Chương 2, 60 câu'),
+    ('data/ch03.js', 'Chương 3, 60 câu'),
+    ('data/ch04.js', 'Chương 4, 60 câu'),
+    ('data/ch05.js', 'Chương 5, 60 câu'),
 ]
 
 CSS = '''
@@ -52,13 +52,16 @@ CSS = '''
   .bia dd { margin: 0 0 .5em 46mm; }
   .muc-luc { page-break-after: always; }
   .muc-luc h1 { font-size: 15pt; }
-  .muc-luc ol { padding-left: 1.4em; }
+  .muc-luc ol { padding-left: 2.6em; }
   .muc-luc li { margin: .28em 0; }
   .muc-luc small { color: #555; }
   .tep { page-break-before: always; }
-  .tep h1 { font-size: 13pt; font-family: "DejaVu Sans Mono", monospace; }
+  .tep h1 { font-size: 13pt; font-family: "Liberation Mono", "DejaVu Sans Mono", monospace; }
   .tep .ghi-chu { color: #555; font-size: 9pt; margin: 0 0 .7em; }
-  pre { font: 8.2pt/1.35 "DejaVu Sans Mono", "Courier New", monospace;
+  /* DejaVu Sans Mono thiếu glyph cho nhiều nguyên âm tiếng Việt có dấu chồng
+     (ể, ỗ, ẵ, ẳ, ẫ, ắ, ế, ề…) — trình duyệt tách dấu ra vẽ rời, sai vị trí.
+     Liberation Mono có đủ bộ glyph nên xếp trước. */
+  pre { font: 8.2pt/1.35 "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
         margin: 0; white-space: pre-wrap; word-break: break-word; }
   /* Dòng dài bị bẻ thì phần gãy phải thụt vào ngang chỗ mã, không được trôi ra
      lề trái đè lên cột số dòng. */
@@ -86,7 +89,7 @@ def bia(tieu_de, phu, so_dong=None, so_cau=None, ngay=''):
     if so_cau:
         d.append('<dt>Khối lượng</dt><dd>%d câu hỏi, 5 chương</dd>' % so_cau)
     d.append('<dt>Ngày kết xuất</dt><dd>%s</dd>' % ngay)
-    d.append('<dt>Lưu trữ</dt><dd>Zenodo — 10.5281/zenodo.21850735</dd>')
+    d.append('<dt>Lưu trữ</dt><dd>Zenodo, 10.5281/zenodo.21850735</dd>')
     d.append('<dt>Mã nguồn</dt><dd>github.com/thuyhuongctu/EnQuiz</dd>')
     return ('<div class="bia"><h1>%s</h1><h2>%s</h2><dl>%s</dl></div>'
             % (html.escape(tieu_de), html.escape(TAC_PHAM), ''.join(d)))
@@ -100,11 +103,11 @@ def dung_ma_nguon(goc, ngay):
         if dong and dong[-1] == '':
             dong.pop()
         tong += len(dong)
-        muc.append('<li><b>%s</b> — %s <small>(%d dòng)</small></li>'
+        muc.append('<li><b>%s</b>: %s <small>(%d dòng)</small></li>'
                    % (html.escape(ten), html.escape(mo_ta), len(dong)))
         than = ''.join('<span class="l"><span class="d">%d</span>%s</span>' % (n, html.escape(d))
                        for n, d in enumerate(dong, 1))
-        phan.append('<div class="tep"><h1>%d. %s</h1><p class="ghi-chu">%s — %d dòng</p><pre>%s</pre></div>'
+        phan.append('<div class="tep"><h1>%d. %s</h1><p class="ghi-chu">%s, %d dòng</p><pre>%s</pre></div>'
                     % (i, html.escape(ten), html.escape(mo_ta), len(dong), than))
     ml = '<div class="muc-luc"><h1>Mục lục tệp</h1><ol>%s</ol></div>' % ''.join(muc)
     return ('<!doctype html><html lang="vi"><meta charset="utf-8"><title>Mã nguồn EnQuiz</title>'

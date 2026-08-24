@@ -11,7 +11,7 @@ const path = require('path');
 const CHAN_TRANG = `
   <div style="width:100%;font:8pt 'DejaVu Serif',Georgia,serif;color:#666;
               padding:0 16mm;display:flex;justify-content:space-between">
-    <span>EnQuiz — Đỗ Thùy Hương</span>
+    <span>EnQuiz: Đỗ Thùy Hương, Phan Anh Tú</span>
     <span>Trang <span class="pageNumber"></span>/<span class="totalPages"></span></span>
   </div>`;
 

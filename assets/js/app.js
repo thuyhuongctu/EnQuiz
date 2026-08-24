@@ -1136,6 +1136,24 @@
     });
   }
 
+  /* Xoá bộ đệm ngoại tuyến (sw.js) và đăng ký lại service worker, để lấy
+     đúng bản mới nhất khi trình duyệt còn giữ bản cũ. Không đụng tới
+     localStorage nên tiến độ học của người dùng không mất. */
+  function refreshApp() {
+    var xong = function () { location.reload(); };
+    if (!('serviceWorker' in navigator)) { xong(); return; }
+    navigator.serviceWorker.getRegistrations()
+      .then(function (regs) { return Promise.all(regs.map(function (r) { return r.unregister(); })); })
+      .then(function () {
+        if (!('caches' in window)) return;
+        return caches.keys().then(function (keys) {
+          return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+        });
+      })
+      .catch(function () {})
+      .then(xong);
+  }
+
   /* =======================================================
      Nhắc nhở bản quyền
      -------------------------------------------------------
@@ -1244,6 +1262,13 @@
     $('#btnSettings').addEventListener('click', function () {
       renderBankInfo();
       $('#modalSettings').classList.remove('hidden');
+    });
+
+    $('#btnRefreshApp').addEventListener('click', function () {
+      var btn = this;
+      btn.disabled = true;
+      btn.textContent = t('settings.refreshing');
+      refreshApp();
     });
 
     /* Đánh dấu mục đang mở trên hai thanh điều hướng. */
