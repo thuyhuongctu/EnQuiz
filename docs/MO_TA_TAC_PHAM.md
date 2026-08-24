@@ -92,10 +92,10 @@ liệu *Ngân hàng câu hỏi* nộp kèm.
 
 Tác phẩm có **hai đồng tác giả**:
 
-| | Họ tên | Nơi công tác | Phần đóng góp |
-|---|---|---|---|
-| 1 | **Đỗ Thùy Hương** | Giảng viên VLUTE; NCS Trường Kinh tế, ĐH Cần Thơ | Ý tưởng, toàn bộ mã nguồn, 300 câu hỏi, giao diện, hình ảnh nhân vật, thu âm thuyết minh, video giới thiệu, ca khúc |
-| 2 | **Phan Anh Tú** | Trường Kinh tế, Đại học Cần Thơ | Hướng dẫn khoa học, góp ý nội dung và phương pháp |
+| | Họ tên | Nơi công tác | Vai trò sáng tạo | Phần đóng góp |
+|---|---|---|---|---|
+| 1 | **Đỗ Thùy Hương** | Giảng viên VLUTE; NCS Trường Kinh tế, ĐH Cần Thơ | Tác giả chính | Thiết kế hệ thống, lập trình cốt lõi và giao diện; ý tưởng, toàn bộ mã nguồn, 300 câu hỏi, hình ảnh nhân vật, thu âm thuyết minh, video giới thiệu, ca khúc |
+| 2 | **Phan Anh Tú** | Trường Kinh tế, Đại học Cần Thơ | Đồng tác giả | Định hướng phương pháp khoa học, thiết kế mô hình logic; góp ý nội dung |
 
 *Bảng phân chia đóng góp ở trên cần hai đồng tác giả xác nhận trước khi nộp; cơ
 quan đăng ký căn cứ vào đó để ghi tên trên giấy chứng nhận.*

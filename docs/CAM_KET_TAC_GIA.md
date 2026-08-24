@@ -55,9 +55,9 @@ Tôi xin cam đoan những điều sau đây là đúng sự thật:
 
 1. Tôi là người **trực tiếp sáng tạo** mã nguồn, giao diện, ngân hàng 300 câu
    hỏi, hình ảnh, bản thu giọng thuyết minh và ca khúc kèm theo tác phẩm. Ông
-   Phan Anh Tú là đồng tác giả với phần đóng góp là hướng dẫn khoa học, góp ý
-   nội dung và phương pháp, đúng như bảng phân chia đóng góp ở mục 6 của
-   `MO_TA_TAC_PHAM.md`.
+   Phan Anh Tú là đồng tác giả với phần đóng góp là định hướng phương pháp
+   khoa học, thiết kế mô hình logic và góp ý nội dung, đúng như bảng phân chia
+   đóng góp ở mục 6 của `MO_TA_TAC_PHAM.md`.
 
 2. Phần đóng góp của tôi được tạo ra **bằng thời gian, thiết bị và chi phí cá
    nhân của tôi**, ngoài giờ làm việc.
@@ -108,11 +108,11 @@ công bố lần đầu cùng ngày tại địa chỉ https://thuyhuongctu.gith
 
 Tôi xin cam đoan những điều sau đây là đúng sự thật:
 
-1. Phần đóng góp của tôi vào tác phẩm là **hướng dẫn khoa học, góp ý nội dung
-   và phương pháp**, đúng như bảng phân chia đóng góp ở mục 6 của
-   `MO_TA_TAC_PHAM.md`. Tôi không trực tiếp viết mã nguồn, giao diện, ngân hàng
-   câu hỏi, hình ảnh, bản thu âm hay ca khúc của tác phẩm — phần đó do bà Đỗ
-   Thùy Hương trực tiếp sáng tạo.
+1. Phần đóng góp của tôi vào tác phẩm là **định hướng phương pháp khoa học,
+   thiết kế mô hình logic và góp ý nội dung**, đúng như bảng phân chia đóng
+   góp ở mục 6 của `MO_TA_TAC_PHAM.md`. Tôi không trực tiếp viết mã nguồn,
+   giao diện, ngân hàng câu hỏi, hình ảnh, bản thu âm hay ca khúc của tác
+   phẩm — phần đó do bà Đỗ Thùy Hương trực tiếp sáng tạo.
 
 2. Phần đóng góp của tôi **không thuộc nhiệm vụ được giao**: tôi không được cơ
    quan giao nhiệm vụ hướng dẫn hay tham gia tác phẩm này, và tác phẩm không

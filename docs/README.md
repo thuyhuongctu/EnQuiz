@@ -34,8 +34,9 @@ vênh.
 Tác phẩm có **hai đồng tác giả**: **Đỗ Thùy Hương** — giảng viên Trường Đại
 học Sư phạm Kỹ thuật Vĩnh Long, nghiên cứu sinh Đại học Cần Thơ, người trực
 tiếp sáng tạo toàn bộ mã nguồn, nội dung và tư liệu — và **Phan Anh Tú**,
-Trường Kinh tế, Đại học Cần Thơ, đóng góp hướng dẫn khoa học và góp ý nội
-dung, phương pháp. Bảng phân chia đóng góp đầy đủ nằm ở mục 6 của
+Trường Kinh tế, Đại học Cần Thơ, đóng góp định hướng phương pháp khoa học,
+thiết kế mô hình logic và góp ý nội dung. Bảng phân chia đóng góp đầy đủ nằm ở
+mục 6 của
 `MO_TA_TAC_PHAM.md`.
 
 Tác phẩm tạo ra với tư cách cá nhân của cả hai đồng tác giả: không sử dụng
