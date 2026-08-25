@@ -16,6 +16,9 @@ kết xuất bằng lệnh.
 ```bash
 python3 tools/ho_so_ban_quyen.py ./hoso   # mã nguồn + ngân hàng câu hỏi -> HTML
 python3 tools/dung_tai_lieu_md.py ./hoso  # 4 tệp .md ở trên -> HTML
+python3 -m http.server 8791 &             # phục vụ ứng dụng để chụp ảnh giao diện
+node tools/anh_giao_dien.js http://127.0.0.1:8791/ ./hoso   # chụp 4 ảnh -> HTML
+kill %1                                   # tắt http.server sau khi chụp xong
 node tools/in_pdf.js ./hoso               # in mọi .html trong thư mục ra PDF khổ A4
 python3 tools/dong_thoi_gian.py > docs/DONG_THOI_GIAN.md
 python3 tools/tinh_ma_bam.py              # in mã băm SHA-256 của mã nguồn và ngân hàng câu hỏi
@@ -25,7 +28,7 @@ Nếu mã nguồn hay dữ liệu câu hỏi có thay đổi, chạy lại `tinh
 cập nhật tay hai mã băm cùng số commit trong mục "Chứng cứ kèm theo cam
 kết" của `CAM_KET_TAC_GIA.md`.
 
-Ra sáu tệp PDF:
+Ra bảy tệp PDF:
 
 - `MO_TA_TAC_PHAM.pdf`, `DANH_MUC_TAI_SAN.pdf`, `DONG_THOI_GIAN.pdf`,
   `CAM_KET_TAC_GIA.pdf`: bốn tệp Markdown ở trên, dựng cùng một kiểu trình
@@ -34,6 +37,12 @@ Ra sáu tệp PDF:
   trang. Nộp cho phần chương trình máy tính.
 - `ngan-hang-cau-hoi.pdf`: 300 câu hỏi kèm đáp án đúng. Nộp cho phần tác
   phẩm viết, nếu đăng ký riêng nội dung câu hỏi.
+- `GIAO_DIEN_CHUONG_TRINH.pdf`: bốn ảnh chụp thật từ ứng dụng đang chạy
+  (trang chủ, thiết lập đề, làm bài, kết quả), tiếng Việt, nền sáng, không
+  có hộp thoại hay logo của bên thứ ba. Nộp kèm mã nguồn để minh hoạ giao
+  diện chương trình. `tools/anh_giao_dien.js` tự chọn đúng đáp án khi làm
+  5 câu minh hoạ, tra thẳng trong ngân hàng câu hỏi, để màn kết quả không
+  hiện 0 điểm.
 
 Ngày ghi trên bìa lấy từ commit mới nhất chứ không lấy đồng hồ máy, nên kết
 xuất lại lúc nào cũng ra cùng một tệp, người thẩm định đối chiếu không thấy
