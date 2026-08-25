@@ -161,7 +161,7 @@ mã nguồn, nội dung và tư liệu. Những cam kết trên không chỉ là
 | Nội dung nộp không đổi sau ngày này | Mã băm SHA-256 dưới đây, tính từ chính tệp mã nguồn trong kho Git. Ai cũng tính lại được cùng kết quả bằng `python3 tools/tinh_ma_bam.py` |
 
 **Mã băm xác thực nội dung nộp**, tính ngày 24/08/2026, xác nhận lại còn
-đúng tại commit `7465090f1eae224b34a3db671c25829342624dd3`:
+đúng tại commit `7b26537025205acfe029ea9a33dba48fc7d9c3b2`:
 
 - Mã nguồn chương trình (16 tệp, đúng thứ tự in trong `ma-nguon.pdf`):
   `2f4985a444672745e979a75673804042407cc091b64ff63546bce3f15a9d0882`
