@@ -377,6 +377,7 @@
     renderHud();
 
     renderChapterList();
+    renderSpecialSets();
     renderHistory();
     renderBadges();
     renderHint();
@@ -417,6 +418,44 @@
         '<span class="chapter-item__no">' +
           '<svg class="ico" aria-hidden="true"><use href="#' +
             (CHAPTER_ICONS[i] || 'i-book') + '"/></svg>' +
+        '</span>' +
+        '<span class="chapter-item__main">' +
+          '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
+          '<span class="chapter-item__meta">' +
+            esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
+          '</span>' +
+        '</span>' +
+        '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
+      '</button>';
+    }).join('');
+  }
+
+  /* Khối nội dung RIÊNG (ngoài 5 chương học phần) — ví dụ bộ đề của giảng viên.
+     KHÔNG tính vào "300 câu / 5 chương" và KHÔNG vào đề thi thử; bấm để luyện riêng. */
+  function renderSpecialSets() {
+    var wrap = $('#specialList');
+    var panel = $('#panelSpecial');
+    if (!wrap || !panel) return;
+    var special = QuestionBank.chapters('kt330h');
+    if (!special.length) { panel.classList.add('hidden'); return; }
+    panel.classList.remove('hidden');
+
+    var en = (window.I18n && I18n.lang === 'en');
+    var head = $('#specialHeading'), eye = $('#specialEyebrow');
+    if (head) head.textContent = en ? 'Separate set — Assoc. Prof. Phan Anh Tú' : 'Nội dung riêng — Thầy Phan Anh Tú';
+    if (eye) eye.textContent = en ? 'Outside the 5-chapter course' : 'Ngoài 5 chương học phần';
+
+    var stats = Store.get('stats');
+    wrap.innerHTML = special.map(function (c) {
+      var seen = 0, correct = 0;
+      c.questions.forEach(function (q) {
+        var s = stats[q.uid];
+        if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
+      });
+      var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
+      return '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
+        '<span class="chapter-item__no">' +
+          '<svg class="ico" aria-hidden="true"><use href="#i-book"/></svg>' +
         '</span>' +
         '<span class="chapter-item__main">' +
           '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +

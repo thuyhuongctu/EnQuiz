@@ -123,6 +123,7 @@
         id: id,
         title: String(meta.title || id).trim(),
         titleEn: String(meta.titleEn || '').trim(),
+        group: String(meta.group || 'course').trim(),
         order: typeof meta.order === 'number' ? meta.order : chapters.length + 1,
         questions: []
       };
@@ -275,7 +276,10 @@
     },
 
     /* ----- Truy vấn ----- */
-    chapters: function () { return chapters; },
+    chapters: function (group) {
+      var g = group || 'course';
+      return chapters.filter(function (c) { return (c.group || 'course') === g; });
+    },
 
     chapter: function (id) { return chapterIndex[id] || null; },
 
@@ -296,8 +300,8 @@
                      .reduce(function (acc, c) { return acc.concat(c.questions); }, []);
     },
 
-    total: function () {
-      return chapters.reduce(function (n, c) { return n + c.questions.length; }, 0);
+    total: function (group) {
+      return this.chapters(group).reduce(function (n, c) { return n + c.questions.length; }, 0);
     },
 
     sources: function () { return sources; }
