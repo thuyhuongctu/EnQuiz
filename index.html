@@ -309,15 +309,37 @@
       </div>
     </div>
 
-    <div class="panel hidden" id="panelSpecial">
+    <div class="panel hidden panel--advisor" id="panelSpecial">
       <div class="panel__head">
         <div>
           <p class="eyebrow" id="specialEyebrow">Ngoài 5 chương học phần</p>
           <h2 id="specialHeading">Nội dung riêng — Thầy Phan Anh Tú</h2>
         </div>
-        <button class="btn btn--ghost btn--sm" data-open="advisor" type="button" data-i18n="advisor.button">Hồ sơ Cố vấn</button>
+        <div class="panel__head-actions">
+          <span class="tag tag--gold" data-i18n="advisor.badge">Case study chuyên sâu</span>
+          <button class="btn btn--ghost btn--sm" data-open="advisor" type="button" data-i18n="advisor.button">Hồ sơ Cố vấn</button>
+        </div>
       </div>
-      <div class="chapter-list" id="specialList"></div>
+      <div class="advisor-showcase">
+        <div class="advisor-showcase__col">
+          <p class="advisor-intro" data-i18n-html="advisor.intro">Case study chiến lược do <strong>PGS.TS. Phan Anh Tú</strong> trực tiếp biên soạn dành riêng cho học phần KT330H nâng cao.</p>
+          <div class="chapter-list" id="specialList"></div>
+          <div class="advisor-foot">
+            <span class="advisor-foot__standard"><span class="advisor-foot__dot" aria-hidden="true"></span><span data-i18n="advisor.standard">Chuẩn chương trình KT330H chất lượng cao</span></span>
+            <button class="advisor-foot__link" data-open="advisor" type="button" data-i18n="advisor.detailLink">Chi tiết Cố vấn Thầy Tú →</button>
+          </div>
+        </div>
+        <button class="advisor-card" data-open="advisor" type="button" data-i18n-attr="aria-label:advisor.button">
+          <img class="advisor-card__img" src="assets/img/tu-portrait.webp" width="640" height="1146"
+               loading="lazy" decoding="async" alt="">
+          <span class="advisor-card__hint" data-i18n="advisor.viewProfile">Xem hồ sơ</span>
+          <span class="advisor-card__info">
+            <span class="advisor-card__kicker" data-i18n="advisor.kicker">★ Cố vấn chiến lược học thuật</span>
+            <span class="advisor-card__name" data-i18n="advisor.name">PGS.TS. Phan Anh Tú</span>
+            <span class="advisor-card__role" data-i18n="advisor.role">Phó Hiệu trưởng Trường Kinh tế, Đại học Cần Thơ</span>
+          </span>
+        </button>
+      </div>
     </div>
 
     <div class="panel" id="panelHistory">
