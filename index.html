@@ -830,6 +830,44 @@
         🔊 <span data-i18n="advisor.listen">Nghe giới thiệu</span>
       </button>
       <p class="muted hidden" id="advisorVoiceNote"></p>
+      <h4 data-i18n="advisor.docsTitle">Tài liệu case study gốc</h4>
+      <p class="muted" data-i18n="unlock.hint">Cần nhập email trường một lần để mở khoá.</p>
+      <ul>
+        <li><button class="link-btn" data-unlock="ch06" type="button">Tired City ↗</button></li>
+        <li><button class="link-btn" data-unlock="ch07" type="button">Betterteem (Cross-Border Expansion) ↗</button></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: MỞ KHOÁ TÀI LIỆU (EMAIL TRƯỜNG) ============ -->
+<div class="modal hidden" id="modalUnlock">
+  <div class="modal__box">
+    <div class="modal__head">
+      <h3 data-i18n="unlock.title">Mở khoá tài liệu case study</h3>
+      <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
+    </div>
+    <div class="modal__body policy">
+      <p data-i18n="unlock.desc">Nhập email trường để Thầy Tú/Cô Hương biết ai đã xem tài liệu case study gốc — chỉ cần nhập một lần trên máy này.</p>
+      <div class="field">
+        <label for="unlockEmail" data-i18n="unlock.label">Email trường</label>
+        <input type="email" id="unlockEmail" data-i18n-attr="placeholder:unlock.placeholder" placeholder="ten@truong.edu.vn" autocomplete="email">
+      </div>
+      <p class="err" id="unlockErr"></p>
+      <button class="btn btn--primary" id="btnUnlockSubmit" type="button" data-i18n="unlock.submit">Mở khoá</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: TÓM TẮT CASE (INFOGRAPHIC) ============ -->
+<div class="modal hidden" id="modalCaseInfographic">
+  <div class="modal__box modal__box--wide">
+    <div class="modal__head">
+      <h3 data-i18n="caseInfo.title">Tóm tắt case study</h3>
+      <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
+    </div>
+    <div class="modal__body">
+      <img class="case-infographic__img" id="caseInfographicImg" src="" alt="" loading="lazy" decoding="async">
     </div>
   </div>
 </div>

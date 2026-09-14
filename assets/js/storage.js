@@ -18,7 +18,8 @@
     days: [],        // các ngày từng làm bài, dạng 'YYYY-MM-DD', không trùng
     attempts: 0,     // tổng số lần làm bài, không bị cắt bớt
     stats: {},       // uid -> { seen, correct }
-    custom: []       // các bộ đề do người dùng nhập, dạng gói của QuestionBank
+    custom: [],      // các bộ đề do người dùng nhập, dạng gói của QuestionBank
+    docUnlockEmail: null  // email trường đã dùng để mở khoá tài liệu case study gốc
   };
 
   /* Ngày theo giờ địa phương; không dùng toISOString vì nó quy về giờ UTC,
