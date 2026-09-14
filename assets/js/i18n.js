@@ -47,7 +47,7 @@
 
       'home.title': 'Ôn thi môn',
       'home.subject': 'Khởi sự doanh nghiệp',
-      'home.author': 'Biên soạn: NCS. Đỗ Thùy Hương · Phan Anh Tú',
+      'home.author': 'Biên soạn: NCS. Đỗ Thùy Hương · PGS.TS. Phan Anh Tú',
       'home.stat.total': 'câu hỏi',
       'home.stat.chapters': 'chương',
       'home.stat.done': 'lượt luyện',
