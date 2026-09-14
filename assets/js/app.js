@@ -468,10 +468,14 @@
     }).join('');
   }
 
-  /* Giọng đọc AI (Web Speech API) cho hồ sơ Cố vấn, không có tệp thu âm sẵn
-     nên dùng thẳng giọng máy, ưu tiên giọng cài sẵn trong máy để đọc được
-     cả khi không có mạng. */
+  /* Giọng giới thiệu cho hồ sơ Cố vấn: ưu tiên bản ghi âm thật (hiện có
+     bản tiếng Việt, assets/audio/vi/advisor-intro.mp3); tệp không tải
+     được (vd. chưa có bản tiếng Anh) thì tự rơi về giọng máy (Web Speech
+     API), cùng cách xử lý đã dùng cho Tour AI của Hương. */
+  var advisorAudio = null;
+
   function stopAdvisorVoice() {
+    if (advisorAudio) advisorAudio.pause();
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     var btn = $('#btnAdvisorVoice');
     if (btn) btn.classList.remove('is-on');
@@ -479,12 +483,11 @@
     if (note) note.classList.add('hidden');
   }
 
-  function speakAdvisorBio() {
+  function speakAdvisorBioTTS() {
     var synth = window.speechSynthesis;
     var note = $('#advisorVoiceNote');
     if (!synth) return;
     var btn = $('#btnAdvisorVoice');
-    if (synth.speaking) { stopAdvisorVoice(); return; }
 
     var text = t('advisor.name') + '. ' + t('advisor.role') + '. ' + t('advisor.bio');
     var u = new SpeechSynthesisUtterance(text);
@@ -505,6 +508,27 @@
     }
     if (btn) btn.classList.add('is-on');
     synth.speak(u);
+  }
+
+  function speakAdvisorBio() {
+    var btn = $('#btnAdvisorVoice');
+    var playing = (advisorAudio && !advisorAudio.paused) ||
+      (window.speechSynthesis && window.speechSynthesis.speaking);
+    if (playing) { stopAdvisorVoice(); return; }
+
+    var lang = (window.I18n && I18n.lang === 'en') ? 'en' : 'vi';
+    var note = $('#advisorVoiceNote');
+    if (note) note.classList.add('hidden');
+
+    if (!advisorAudio) advisorAudio = new Audio();
+    advisorAudio.onended = null;
+    advisorAudio.onerror = null;
+    advisorAudio.src = 'assets/audio/' + lang + '/advisor-intro.mp3';
+    advisorAudio.onended = function () { if (btn) btn.classList.remove('is-on'); };
+    advisorAudio.onerror = function () { speakAdvisorBioTTS(); };
+    if (btn) btn.classList.add('is-on');
+    var p = advisorAudio.play();
+    if (p && p.catch) p.catch(function () { speakAdvisorBioTTS(); });
   }
 
   function historyLabel(h) {

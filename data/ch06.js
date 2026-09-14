@@ -5,8 +5,9 @@
    mốc 09/2022, quy mô VLAG, mở rộng danh mục sản phẩm, vòng lặp cộng đồng-
    thương mại, công cụ AI nêu tên, số liệu McKinsey, ba hướng dùng AI, khác
    biệt AI với công nghệ trước đó, và người ra quyết định trong case).
-   ⚠️ ĐÁP ÁN ("c") của câu 10-19 LÀ ĐỀ XUẤT của Claude — Thầy Tú PHẢI xác
-   nhận trước khi dùng chính thức.
+   ⚠️ ĐÁP ÁN ("c") của câu 10-19 LÀ ĐỀ XUẤT của Claude, chưa được Thầy Tú
+   xác nhận — theo yêu cầu của Thầy, vẫn dùng ngay nhưng có ghi chú "Đáp
+   án gợi ý" (field "e") hiện ngay dưới mỗi câu khi lộ đáp án.
    'c' là chỉ số đáp án đúng (0-based: A=0, B=1, C=2, D=3). */
 registerBank({
   "id": "ch06",
@@ -113,7 +114,8 @@ registerBank({
         "A subsidiary launched by a state-owned retailer, in 2016",
         "Nguyễn Việt Nam, a fashion designer, in 2020"
       ],
-      "c": 1
+      "c": 1,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "By September 2022, roughly how many artists had Tired City collaborated with, and how many original artworks had it introduced?",
@@ -123,7 +125,8 @@ registerBank({
         "About 50 artists and 100 original artworks",
         "More than 300 artists and over 10,000 original artworks"
       ],
-      "c": 0
+      "c": 0,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "Approximately how large had the Vietnam Local Artist Group (VLAG) grown to by the time described in the case?",
@@ -133,7 +136,8 @@ registerBank({
         "Exactly 300 members, matching the number of licensed artists",
         "VLAG had not yet launched at that point"
       ],
-      "c": 1
+      "c": 1,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "Beyond its original T-shirts, which of the following best describes how Tired City expanded its product portfolio?",
@@ -143,7 +147,8 @@ registerBank({
         "It licensed its designs exclusively to a single multinational retailer",
         "It restricted its catalog to a single flagship product to protect exclusivity"
       ],
-      "c": 1
+      "c": 1,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "How does the case describe the relationship between Tired City's community activities (competitions, exhibitions) and its commercial success?",
@@ -153,7 +158,8 @@ registerBank({
         "They form a mutually reinforcing ecosystem: community activities surface new talent, which is commercialized, generating opportunities for further engagement",
         "Commercial success made community activities unnecessary over time"
       ],
-      "c": 2
+      "c": 2,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "Which of the following tools does the case cite as examples of mainstream generative AI creative tools reshaping the wider creative industry?",
@@ -163,7 +169,8 @@ registerBank({
         "Shopify, WooCommerce, and Magento",
         "Zoom, Slack, and Microsoft Teams"
       ],
-      "c": 1
+      "c": 1,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "According to the McKinsey statistic cited in the case, what share of organizations had adopted generative AI in at least one business function by 2024?",
@@ -173,7 +180,8 @@ registerBank({
         "65%",
         "90%"
       ],
-      "c": 2
+      "c": 2,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "The case identifies three distinct ways AI could be used at Tired City. Which of the following is NOT one of them?",
@@ -183,7 +191,8 @@ registerBank({
         "As part of the design process itself",
         "As a replacement for the Vietnam Local Artist Group's curatorial role"
       ],
-      "c": 3
+      "c": 3,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "According to the case's concluding section, how does generative AI differ from earlier technologies Tired City had already adopted (e.g., e-commerce and social media)?",
@@ -193,7 +202,8 @@ registerBank({
         "Generative AI only affects marketing, while earlier technology affected the actual design process",
         "There is no meaningful difference; both are described as equivalent tools"
       ],
-      "c": 0
+      "c": 0,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     },
     {
       "q": "Who is the case's central decision-maker weighing Tired City's AI strategy?",
@@ -203,7 +213,8 @@ registerBank({
         "A member of the Vietnam Local Artist Group",
         "An external management consultant hired for the case"
       ],
-      "c": 1
+      "c": 1,
+      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
     }
   ]
 });
