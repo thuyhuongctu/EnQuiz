@@ -1892,6 +1892,22 @@ input[type="number"]:focus, input[type="file"]:focus {
 .modal__head h3 { margin: 0; font-size: 1rem; }
 .modal__body { padding: 1rem; overflow-y: auto; }
 .modal__foot { padding: .8rem 1rem; border-top: 1px solid var(--glass-stroke); }
+
+.advisor__head { display: flex; align-items: center; gap: .8rem; margin-bottom: .8rem; }
+.advisor__avatar {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  border: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
+}
+.advisor__name { font-weight: 700; margin: 0; }
+#btnAdvisorVoice.is-on { color: var(--primary); border-color: var(--primary); }
 .modal__foot .btn { width: 100%; }
 
 .legend { display: flex; gap: 1rem; flex-wrap: wrap; padding: .7rem 1rem 0; font-size: .78rem; color: var(--muted); }

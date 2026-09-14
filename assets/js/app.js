@@ -468,6 +468,45 @@
     }).join('');
   }
 
+  /* Giọng đọc AI (Web Speech API) cho hồ sơ Cố vấn, không có tệp thu âm sẵn
+     nên dùng thẳng giọng máy, ưu tiên giọng cài sẵn trong máy để đọc được
+     cả khi không có mạng. */
+  function stopAdvisorVoice() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    var btn = $('#btnAdvisorVoice');
+    if (btn) btn.classList.remove('is-on');
+    var note = $('#advisorVoiceNote');
+    if (note) note.classList.add('hidden');
+  }
+
+  function speakAdvisorBio() {
+    var synth = window.speechSynthesis;
+    var note = $('#advisorVoiceNote');
+    if (!synth) return;
+    var btn = $('#btnAdvisorVoice');
+    if (synth.speaking) { stopAdvisorVoice(); return; }
+
+    var text = t('advisor.name') + '. ' + t('advisor.role') + '. ' + t('advisor.bio');
+    var u = new SpeechSynthesisUtterance(text);
+    var lang = (window.I18n && I18n.lang === 'en') ? 'en' : 'vi';
+    var voices = synth.getVoices() || [];
+    var match = voices.filter(function (v) { return (v.lang || '').toLowerCase().indexOf(lang) === 0; });
+    var local = match.filter(function (v) { return v.localService; });
+    var voice = local[0] || match[0];
+    if (voice) u.voice = voice;
+    u.lang = voice ? voice.lang : (lang === 'en' ? 'en-US' : 'vi-VN');
+    u.rate = lang === 'en' ? 0.98 : 1.0;
+    u.onend = function () { if (btn) btn.classList.remove('is-on'); };
+    u.onerror = function () { if (btn) btn.classList.remove('is-on'); };
+
+    if (note) {
+      note.textContent = voice ? '' : t('tour.noVoice');
+      note.classList.toggle('hidden', !!voice);
+    }
+    if (btn) btn.classList.add('is-on');
+    synth.speak(u);
+  }
+
   function historyLabel(h) {
     return h.labelKey ? t(h.labelKey) : (h.label || '');
   }
@@ -1303,6 +1342,8 @@
       $('#modalSettings').classList.remove('hidden');
     });
 
+    $('#btnAdvisorVoice').addEventListener('click', speakAdvisorBio);
+
     $('#btnRefreshApp').addEventListener('click', function () {
       var btn = this;
       btn.disabled = true;
@@ -1350,8 +1391,10 @@
       if (opener) {
         e.preventDefault();
         var which = opener.getAttribute('data-open');
-        var box = which === 'policy' ? $('#modalPolicy') : $('#modalPrivacy');
+        var box = which === 'policy' ? $('#modalPolicy') :
+                  which === 'advisor' ? $('#modalAdvisor') : $('#modalPrivacy');
         if (box) box.classList.remove('hidden');
+        if (which === 'advisor') speakAdvisorBio();
         return;
       }
 
@@ -1411,9 +1454,10 @@
 
       if (target.closest('[data-close]')) {
         target.closest('.modal').classList.add('hidden');
+        stopAdvisorVoice();
         return;
       }
-      if (target.classList.contains('modal')) target.classList.add('hidden');
+      if (target.classList.contains('modal')) { target.classList.add('hidden'); stopAdvisorVoice(); }
     });
 
     // ----- Thiết lập đề -----
