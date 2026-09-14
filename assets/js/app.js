@@ -14,7 +14,7 @@
   /** Phiên làm bài hiện tại. */
   var session = null;
   /** Cấu hình đang thiết lập ở màn hình chuẩn bị. */
-  var setup = { mode: 'exam', chapters: [] };
+  var setup = { mode: 'exam', chapters: [], locked: false };
   /** Kết quả phân tích gần nhất của công cụ ghép đề. */
   var lastParse = null;
   var importMode = 'append';
@@ -557,7 +557,14 @@
     setup.mode = mode;
     setup.chapters = presetChapter ? [presetChapter] : QuestionBank.chapters().map(function (c) { return c.id; });
 
-    var scoped = (mode === 'wrong' || mode === 'marked');
+    /* Chương "Nội dung riêng" (vd. case study Thầy Tú) không nằm trong nhóm
+       'course' nên không có mặt trong danh sách chọn chương bên dưới — nếu
+       không khoá lại thì màn thiết lập sẽ hiện 0 câu (không ô nào được chọn). */
+    var presetChap = presetChapter ? QuestionBank.chapter(presetChapter) : null;
+    var isOutsideCourse = !!(presetChap && (presetChap.group || 'course') !== 'course');
+    setup.locked = isOutsideCourse;
+
+    var scoped = (mode === 'wrong' || mode === 'marked' || isOutsideCourse);
     $('#fieldChapterPick').classList.toggle('hidden', scoped);
     $('#fieldTime').classList.toggle('hidden', mode !== 'exam');
     $('#fieldInstant').classList.toggle('hidden', mode === 'exam');
@@ -587,6 +594,7 @@
 
   function currentSetupChapters() {
     if (setup.mode === 'wrong' || setup.mode === 'marked') return [];
+    if (setup.locked) return setup.chapters.slice();
     return $$('#setupChapters input:checked').map(function (i) { return i.value; });
   }
 
