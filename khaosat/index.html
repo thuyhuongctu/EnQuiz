@@ -1,0 +1,122 @@
+<!doctype html><html lang="vi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Khảo sát & Đồng thuận · BizOn / EnQuiz</title>
+<style>
+:root{--teal:#006687;--ink:#10242a;--muted:#5b6b70;--line:#e2e8ea;--bg:#f4f7f8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,'Be Vietnam Pro',sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 16px;margin:12px 0;box-shadow:0 1px 2px rgba(16,36,42,.04)}
+.head{background:linear-gradient(135deg,var(--teal),#0a3d4c);color:#fff;border-radius:16px;padding:20px 16px}
+.head h1{margin:.1em 0;font-size:1.25rem}
+.head p{margin:.2em 0 0;opacity:.92;font-size:.92rem}
+.badge{display:inline-block;background:rgba(255,255,255,.16);border-radius:999px;padding:2px 10px;font-size:.78rem;margin-right:6px}
+h2{font-size:1rem;margin:.2em 0 .6em}
+.info{font-size:.9rem;color:var(--muted)}
+.info b{color:var(--ink)}
+label.q{display:block;font-weight:600;margin:14px 0 6px}
+.req{color:#c0392b}
+select,input[type=text],textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff}
+textarea{min-height:80px;resize:vertical}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;border:1px solid var(--line);border-radius:10px;margin:7px 0;cursor:pointer}
+.opt input{margin-top:3px}
+.opt span{flex:1}
+button{width:100%;margin-top:18px;background:var(--teal);color:#fff;border:0;border-radius:12px;padding:14px;font-weight:700;font-size:1.02rem;cursor:pointer}
+button:disabled{opacity:.6}
+.err{color:#c0392b;font-size:.88rem;margin-top:8px;min-height:1.1em}
+.hp{position:absolute;left:-9999px;top:-9999px}
+.done{text-align:center;padding:26px 8px}
+.done .tick{width:64px;height:64px;border-radius:50%;background:#e6f4ea;color:#1e7a43;display:grid;place-items:center;margin:0 auto 12px;font-size:34px}
+.foot{font-size:.8rem;color:var(--muted);text-align:center;margin:14px 0 26px}
+</style></head><body>
+<div class="wrap">
+  <div class="head">
+    <span class="badge">BizOn</span><span class="badge">EnQuiz</span>
+    <h1>Khảo sát &amp; Đồng thuận tham gia</h1>
+    <p>Đợt thử nghiệm ứng dụng học tập trên lớp</p>
+  </div>
+
+  <div id="form">
+  <div class="card info">
+    <b>Mục đích:</b> Ngoài việc học, dữ liệu học tập (đã ẩn danh) có thể được dùng để đánh giá &amp; cải thiện hoạt động với ứng dụng mô phỏng, và phục vụ nghiên cứu về dạy–học khởi sự doanh nghiệp.<br><br>
+    <b>Dữ liệu thu:</b> mã lớp, bí danh, kết quả &amp; quyết định trong mô phỏng, phần tự phản tư. <b>KHÔNG</b> thu họ tên, email, số điện thoại.<br><br>
+    <b>Tự nguyện:</b> Tham gia hoàn toàn tự nguyện; có thể rút bất cứ lúc nào; <b>KHÔNG ảnh hưởng điểm số</b>. Việc chấm điểm tách biệt với việc nộp dữ liệu.<br><br>
+    <b>Lưu trữ &amp; liên hệ:</b> lưu trong thời gian học phần và tối đa 12 tháng sau đó, rồi xóa/ẩn danh. Người chịu trách nhiệm: PGS.TS. Phan Anh Tú &amp; PhD Candidate Đỗ Thùy Hương. Liên hệ: patu@ctu.edu.vn &middot; thuyhuongctu@gmail.com
+  </div>
+
+  <div class="card">
+    <label class="q">1. Bạn học lớp nào? <span class="req">*</span></label>
+    <select id="lop">
+      <option value="">— Chọn lớp —</option>
+      <option value="KT330H-M01">KT330H · M01 (CTU, Thầy Tú)</option>
+      <option value="KT330H-M02">KT330H · M02 (CTU, Thầy Tú)</option>
+      <option value="KT338">KT338 (CTU, Thầy Tú)</option>
+      <option value="EC1606">EC1606 · Khởi sự doanh nghiệp (VLUTE)</option>
+      <option value="Khac">Khác</option>
+    </select>
+
+    <label class="q">2. Sau khi đọc thông tin trên, ý kiến của bạn: <span class="req">*</span></label>
+    <label class="opt"><input type="radio" name="dy" value="dong_y"><span>Tôi <b>ĐỒNG Ý</b> tham gia và cho phép thu thập dữ liệu học tập (ẩn danh) như mô tả.</span></label>
+    <label class="opt"><input type="radio" name="dy" value="khong"><span>Tôi <b>KHÔNG</b> tham gia nghiên cứu (vẫn dùng app để học bình thường).</span></label>
+
+    <label class="q">3. Xác nhận <span class="req">*</span></label>
+    <label class="opt"><input type="checkbox" id="hieu"><span>Tôi hiểu rằng tham gia là tự nguyện và không ảnh hưởng đến điểm số.</span></label>
+
+    <label class="q">4. Bí danh bạn tự đặt <span class="req">*</span></label>
+    <input type="text" id="bidanh" maxlength="80" placeholder="KHÔNG dùng họ tên thật hay mã số sinh viên">
+
+    <label class="q">5. Bạn đã cài ứng dụng nào?</label>
+    <label class="opt"><input type="checkbox" class="cai" value="BizOn"><span>Đã cài BizOn</span></label>
+    <label class="opt"><input type="checkbox" class="cai" value="EnQuiz"><span>Đã cài EnQuiz</span></label>
+    <label class="opt"><input type="checkbox" class="cai" value="Chua"><span>Chưa cài được</span></label>
+
+    <label class="q">6. Thiết bị bạn dùng</label>
+    <label class="opt"><input type="radio" name="tb" value="Android"><span>Điện thoại Android</span></label>
+    <label class="opt"><input type="radio" name="tb" value="iPhone/iPad"><span>iPhone / iPad</span></label>
+    <label class="opt"><input type="radio" name="tb" value="May tinh"><span>Máy tính</span></label>
+
+    <label class="q">7. Góp ý hoặc khó khăn khi cài/dùng app</label>
+    <textarea id="gopy" maxlength="2000" placeholder="(không bắt buộc)"></textarea>
+
+    <input class="hp" type="text" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="err" id="err"></div>
+    <button id="send">Gửi khảo sát</button>
+  </div>
+  </div>
+
+  <div id="thanks" class="card done" style="display:none">
+    <div class="tick">&#10003;</div>
+    <h2>Cảm ơn bạn đã trả lời!</h2>
+    <p class="info">Bạn có thể đóng trang này. Nếu chưa cài app, hãy làm theo hướng dẫn của giảng viên.</p>
+  </div>
+
+  <div class="foot">Ẩn danh &middot; Không thu họ tên / email / MSSV &middot; consent v1</div>
+</div>
+
+<script>
+(function(){
+  var ENDPOINT='https://kdpjlbqvdlntsfhrmchm.supabase.co/functions/v1/khaosat';
+  var btn=document.getElementById('send'), err=document.getElementById('err');
+  function val(sel){var el=document.querySelector(sel);return el?el.value:'';}
+  function radio(name){var el=document.querySelector('input[name="'+name+'"]:checked');return el?el.value:'';}
+  btn.addEventListener('click', async function(){
+    err.textContent='';
+    var lop=val('#lop'), dy=radio('dy'), hieu=document.getElementById('hieu').checked, bidanh=val('#bidanh').trim();
+    if(!lop){err.textContent='Vui lòng chọn lớp.';return;}
+    if(!dy){err.textContent='Vui lòng chọn ý kiến đồng thuận.';return;}
+    if(!hieu){err.textContent='Vui lòng tích xác nhận ở mục 3.';return;}
+    if(!bidanh){err.textContent='Vui lòng nhập bí danh.';return;}
+    var cai=[].slice.call(document.querySelectorAll('.cai:checked')).map(function(x){return x.value;});
+    var payload={lop:lop,dong_y:dy,hieu_tu_nguyen:hieu,bi_danh:bidanh,da_cai:cai,thiet_bi:radio('tb'),gop_y:val('#gopy').trim(),website:val('#website'),client_ts:new Date().toISOString()};
+    btn.disabled=true; btn.textContent='Đang gửi...';
+    try{
+      var r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      var d=await r.json();
+      if(d && d.ok){document.getElementById('form').style.display='none';document.getElementById('thanks').style.display='block';window.scrollTo(0,0);}
+      else{err.textContent=(d&&d.error)?('Lỗi: '+d.error):'Gửi thất bại, thử lại.';btn.disabled=false;btn.textContent='Gửi khảo sát';}
+    }catch(e){err.textContent='Lỗi mạng, thử lại.';btn.disabled=false;btn.textContent='Gửi khảo sát';}
+  });
+})();
+</script>
+</body></html>
