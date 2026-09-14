@@ -432,6 +432,13 @@
 
   /* Khối nội dung RIÊNG (ngoài 5 chương học phần) — ví dụ bộ đề của giảng viên.
      KHÔNG tính vào "300 câu / 5 chương" và KHÔNG vào đề thi thử; bấm để luyện riêng. */
+  /* Link truy cập tài liệu case study gốc (Google Drive), theo yêu cầu Cô/Chị —
+     hiện ngay dưới mỗi case trong "Nội dung riêng". */
+  var CASE_DOCS = {
+    ch06: 'https://drive.google.com/drive/folders/14occOGp5FsRT2q0xN5lX-ywaFzEx2Yv_',
+    ch07: 'https://drive.google.com/drive/folders/1i3kCxwnnEZyFsdofU7bG3PhnACXrj3S-'
+  };
+
   function renderSpecialSets() {
     var wrap = $('#specialList');
     var panel = $('#panelSpecial');
@@ -453,7 +460,7 @@
         if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
       });
       var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
-      return '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
+      var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
         '<span class="chapter-item__no">' +
           '<svg class="ico" aria-hidden="true"><use href="#i-book"/></svg>' +
         '</span>' +
@@ -465,6 +472,11 @@
         '</span>' +
         '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
       '</button>';
+      var doc = CASE_DOCS[c.id]
+        ? '<a class="case-doclink" href="' + esc(CASE_DOCS[c.id]) + '" target="_blank" rel="noopener">' +
+            '📄 ' + esc(t('advisor.docsTitle')) + ' ↗</a>'
+        : '';
+      return item + doc;
     }).join('');
   }
 

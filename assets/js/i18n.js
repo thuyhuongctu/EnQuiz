@@ -83,6 +83,7 @@
       'advisor.detailLink': 'Chi tiết Cố vấn Thầy Tú →',
       'advisor.viewProfile': 'Xem hồ sơ',
       'advisor.kicker': '★ Cố vấn chiến lược học thuật',
+      'advisor.docsTitle': 'Tài liệu case study gốc',
 
       'history.eyebrow': 'Nhật ký luyện tập',
       'history.heading': 'Lịch sử làm bài',
@@ -399,6 +400,7 @@
       'advisor.detailLink': 'Advisor details →',
       'advisor.viewProfile': 'View profile',
       'advisor.kicker': '★ Academic strategy advisor',
+      'advisor.docsTitle': 'Original case study materials',
 
       'history.eyebrow': 'Practice log',
       'history.heading': 'Attempt history',

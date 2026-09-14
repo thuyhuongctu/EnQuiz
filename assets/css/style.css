@@ -1538,6 +1538,16 @@ select,
 .chapter-item__title { display: block; font-weight: 600; font-size: .93rem; }
 .chapter-item__meta { display: block; color: var(--muted); font-size: .78rem; }
 .chapter-item__go { color: var(--muted); font-size: 1.1rem; }
+.case-doclink {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  margin: -.3rem 0 .2rem .8rem;
+  font-size: .76rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.case-doclink:hover { color: var(--primary); text-decoration: underline; }
 
 /* ---------------- History ---------------- */
 .history { display: flex; flex-direction: column; gap: .45rem; }
