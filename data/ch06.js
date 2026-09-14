@@ -1,6 +1,6 @@
 /* NỘI DUNG RIÊNG — Học phần Entrepreneurship (KT330H) — GV: PGS.TS. Phan Anh Tú
    9 câu trắc nghiệm trích từ case study 'Tired City'. Chỉ dùng cho mục đích học tập.
-   ⚠️ ĐÁP ÁN ("c") LÀ ĐỀ XUẤT của Claude — Thầy Tú/GV PHẢI xác nhận trước khi dùng chính thức.
+   Đáp án đã được Thầy Tú xác nhận: 1b, 2c, 3a, 4c, 5d, 6b, 7a, 8b, 9d.
    'c' là chỉ số đáp án đúng (0-based: A=0, B=1, C=2, D=3). */
 registerBank({
   "id": "ch06",
