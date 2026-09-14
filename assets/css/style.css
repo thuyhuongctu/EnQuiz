@@ -812,7 +812,113 @@ code {
   margin-bottom: .7rem;
 }
 .panel__head h2 { margin: 0; }
+.panel__head-actions { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
 .back-link { margin-bottom: .8rem; }
+
+/* ---------------- Mục "Nội dung riêng" — Cố vấn Thầy Tú ---------------- */
+.panel--advisor {
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, var(--glass-stroke));
+  background: color-mix(in srgb, var(--gold) 4%, var(--surface));
+}
+.tag--gold {
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+  color: var(--gold);
+}
+.advisor-intro {
+  margin: 0 0 .8rem;
+  padding: .7rem .9rem;
+  border-radius: var(--radius-sm);
+  font-size: .85rem;
+  line-height: 1.55;
+  background: color-mix(in srgb, var(--gold) 8%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.advisor-showcase { display: flex; flex-direction: column; gap: 1rem; }
+.advisor-showcase__col { display: flex; flex-direction: column; min-width: 0; }
+.advisor-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .8rem;
+  font-size: .78rem;
+}
+.advisor-foot__standard { display: inline-flex; align-items: center; gap: .45rem; color: var(--muted); }
+.advisor-foot__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px color-mix(in srgb, var(--gold) 60%, transparent); }
+.advisor-foot__link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.advisor-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent);
+  box-shadow: var(--shadow-sm), 0 14px 30px color-mix(in srgb, var(--gold) 18%, transparent);
+  background: #0A1130;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.advisor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow), 0 18px 38px color-mix(in srgb, var(--gold) 28%, transparent);
+}
+.advisor-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.advisor-card__hint {
+  position: absolute;
+  top: .6rem;
+  right: .6rem;
+  padding: .28rem .6rem;
+  border-radius: 999px;
+  font-size: .66rem;
+  font-weight: 700;
+  color: #fff;
+  background: color-mix(in srgb, #06091E 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+}
+.advisor-card__info {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: .8rem .9rem .7rem;
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+  text-align: left;
+  color: #fff;
+  background: linear-gradient(to top, rgba(6,10,26,.92), rgba(6,10,26,.55) 65%, transparent);
+}
+.advisor-card__kicker { font-size: .62rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--gold); }
+.advisor-card__name { font-weight: 800; font-size: .95rem; }
+.advisor-card__role { font-size: .74rem; color: rgba(255,255,255,.8); }
+
+@media (min-width: 760px) {
+  .advisor-showcase { flex-direction: row; align-items: stretch; }
+  .advisor-showcase__col { flex: 1 1 auto; }
+  .advisor-card { flex: 0 0 240px; width: 240px; aspect-ratio: auto; min-height: 300px; }
+}
 
 /* ---------------- Mách nước cho sinh viên ---------------- */
 .hint {
@@ -2391,7 +2497,7 @@ html[data-theme="dark"] .footer__lockup { filter: brightness(1.18) saturate(1.05
   html { background: #fff; }
   body::before, #vnmark, #globemark, .hero__map, .hero__huong,
   .quiz-huong, .result-hero__huong, .tour-panel__huong,
-  .chapters-stage__figure { display: none !important; }
+  .chapters-stage__figure, .advisor-card { display: none !important; }
   .topbar, .quiz-nav, .actions, .modal, .footer, .toast-wrap, .tour-fab,
   .sidenav, .botnav { display: none !important; }
   .container { margin-left: 0; padding-bottom: 0; }
