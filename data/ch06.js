@@ -1,6 +1,12 @@
 /* NỘI DUNG RIÊNG — Học phần Entrepreneurship (KT330H) — GV: PGS.TS. Phan Anh Tú
-   9 câu trắc nghiệm trích từ case study 'Tired City'. Chỉ dùng cho mục đích học tập.
-   Đáp án đã được Thầy Tú xác nhận: 1b, 2c, 3a, 4c, 5d, 6b, 7a, 8b, 9d.
+   19 câu trắc nghiệm trích từ case study 'Tired City'. Chỉ dùng cho mục đích học tập.
+   Câu 1-9: đáp án đã được Thầy Tú xác nhận (1b, 2c, 3a, 4c, 5d, 6b, 7a, 8b, 9d).
+   Câu 10-19: mới thêm, khai thác phần chưa hỏi tới của case (nhà sáng lập,
+   mốc 09/2022, quy mô VLAG, mở rộng danh mục sản phẩm, vòng lặp cộng đồng-
+   thương mại, công cụ AI nêu tên, số liệu McKinsey, ba hướng dùng AI, khác
+   biệt AI với công nghệ trước đó, và người ra quyết định trong case).
+   ⚠️ ĐÁP ÁN ("c") của câu 10-19 LÀ ĐỀ XUẤT của Claude — Thầy Tú PHẢI xác
+   nhận trước khi dùng chính thức.
    'c' là chỉ số đáp án đúng (0-based: A=0, B=1, C=2, D=3). */
 registerBank({
   "id": "ch06",
@@ -98,6 +104,106 @@ registerBank({
         "Balancing gains in operational efficiency and launch speeds against the erosion of creative control and brand authenticity"
       ],
       "c": 3
+    },
+    {
+      "q": "Who founded Tired City, and in what year?",
+      "a": [
+        "A collective of Hanoi art students, in 2018",
+        "Nguyễn Việt Nam, an architect, in 2016",
+        "A subsidiary launched by a state-owned retailer, in 2016",
+        "Nguyễn Việt Nam, a fashion designer, in 2020"
+      ],
+      "c": 1
+    },
+    {
+      "q": "By September 2022, roughly how many artists had Tired City collaborated with, and how many original artworks had it introduced?",
+      "a": [
+        "More than 300 artists and nearly 1,000 original artworks",
+        "More than 1,000 artists and nearly 300 original artworks",
+        "About 50 artists and 100 original artworks",
+        "More than 300 artists and over 10,000 original artworks"
+      ],
+      "c": 0
+    },
+    {
+      "q": "Approximately how large had the Vietnam Local Artist Group (VLAG) grown to by the time described in the case?",
+      "a": [
+        "Around 1,000 members",
+        "More than 100,000 members",
+        "Exactly 300 members, matching the number of licensed artists",
+        "VLAG had not yet launched at that point"
+      ],
+      "c": 1
+    },
+    {
+      "q": "Beyond its original T-shirts, which of the following best describes how Tired City expanded its product portfolio?",
+      "a": [
+        "It exited apparel entirely to focus on fine-art gallery sales",
+        "It added tote bags, stationery, home décor, art prints, accessories, and souvenirs, all carrying licensed artwork",
+        "It licensed its designs exclusively to a single multinational retailer",
+        "It restricted its catalog to a single flagship product to protect exclusivity"
+      ],
+      "c": 1
+    },
+    {
+      "q": "How does the case describe the relationship between Tired City's community activities (competitions, exhibitions) and its commercial success?",
+      "a": [
+        "They are separate activities that do not affect each other",
+        "Community activities are a marketing expense with no link to new artist discovery",
+        "They form a mutually reinforcing ecosystem: community activities surface new talent, which is commercialized, generating opportunities for further engagement",
+        "Commercial success made community activities unnecessary over time"
+      ],
+      "c": 2
+    },
+    {
+      "q": "Which of the following tools does the case cite as examples of mainstream generative AI creative tools reshaping the wider creative industry?",
+      "a": [
+        "Salesforce, SAP, and Oracle",
+        "ChatGPT, Midjourney, Adobe Firefly, and Stable Diffusion",
+        "Shopify, WooCommerce, and Magento",
+        "Zoom, Slack, and Microsoft Teams"
+      ],
+      "c": 1
+    },
+    {
+      "q": "According to the McKinsey statistic cited in the case, what share of organizations had adopted generative AI in at least one business function by 2024?",
+      "a": [
+        "15%",
+        "35%",
+        "65%",
+        "90%"
+      ],
+      "c": 2
+    },
+    {
+      "q": "The case identifies three distinct ways AI could be used at Tired City. Which of the following is NOT one of them?",
+      "a": [
+        "As an internal productivity tool to assist artists",
+        "To support non-creative business functions such as marketing and customer service",
+        "As part of the design process itself",
+        "As a replacement for the Vietnam Local Artist Group's curatorial role"
+      ],
+      "c": 3
+    },
+    {
+      "q": "According to the case's concluding section, how does generative AI differ from earlier technologies Tired City had already adopted (e.g., e-commerce and social media)?",
+      "a": [
+        "Earlier technology changed how products were marketed and sold; generative AI could also influence how creativity itself is generated",
+        "Earlier technology was more expensive to implement than generative AI",
+        "Generative AI only affects marketing, while earlier technology affected the actual design process",
+        "There is no meaningful difference; both are described as equivalent tools"
+      ],
+      "c": 0
+    },
+    {
+      "q": "Who is the case's central decision-maker weighing Tired City's AI strategy?",
+      "a": [
+        "Founder Nguyễn Việt Nam",
+        "The company's Creative Director",
+        "A member of the Vietnam Local Artist Group",
+        "An external management consultant hired for the case"
+      ],
+      "c": 1
     }
   ]
 });
