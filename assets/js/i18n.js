@@ -349,7 +349,7 @@
 
       'home.title': 'Practice for',
       'home.subject': 'Entrepreneurship',
-      'home.author': 'Written by Do Thuy Huong, PhD Candidate · Phan Anh Tu',
+      'home.author': 'Written by PhD Candidate Do Thuy Huong · Assoc. Prof. Dr. Phan Anh Tu',
       'home.stat.total': 'questions',
       'home.stat.chapters': 'chapters',
       'home.stat.done': 'attempts',
