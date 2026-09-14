@@ -70,6 +70,14 @@
       'chapters.empty': 'Chưa có câu hỏi nào. Hãy dùng công cụ “Ghép đề & đáp án” để nhập bộ đề của bạn.',
       'chapters.meta': '{n} câu · đã làm {seen} · thuộc {pct}%',
 
+      'advisor.button': 'Hồ sơ Cố vấn',
+      'advisor.title': 'Cố vấn chiến lược học thuật',
+      'advisor.name': 'PGS.TS. Phan Anh Tú',
+      'advisor.role': 'Phó Hiệu trưởng Trường Kinh tế, Đại học Cần Thơ',
+      'advisor.bio': 'Định hướng phương pháp khoa học, thiết kế mô hình logic cho ứng dụng, và trực tiếp biên soạn các case study nâng cao dành riêng cho khối KT330H.',
+      'advisor.listen': 'Nghe giới thiệu',
+      'advisor.stop': 'Dừng đọc',
+
       'history.eyebrow': 'Nhật ký luyện tập',
       'history.heading': 'Lịch sử làm bài',
       'history.clear': 'Xoá lịch sử',
@@ -371,6 +379,14 @@
       'chapters.all': 'Practice all',
       'chapters.empty': 'No questions yet. Use the “Merge questions & answer key” tool to import your own set.',
       'chapters.meta': '{n} questions · {seen} attempted · {pct}% mastered',
+
+      'advisor.button': 'Advisor profile',
+      'advisor.title': 'Academic Strategy Advisor',
+      'advisor.name': 'Assoc. Prof. Dr. Phan Anh Tu',
+      'advisor.role': 'Vice Dean, School of Economics, Can Tho University',
+      'advisor.bio': 'Guides the scientific methodology, designs the app’s logic model, and personally writes the advanced case studies for the KT330H track.',
+      'advisor.listen': 'Listen to intro',
+      'advisor.stop': 'Stop',
 
       'history.eyebrow': 'Practice log',
       'history.heading': 'Attempt history',

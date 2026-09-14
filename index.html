@@ -315,6 +315,7 @@
           <p class="eyebrow" id="specialEyebrow">Ngoài 5 chương học phần</p>
           <h2 id="specialHeading">Nội dung riêng — Thầy Phan Anh Tú</h2>
         </div>
+        <button class="btn btn--ghost btn--sm" data-open="advisor" type="button" data-i18n="advisor.button">Hồ sơ Cố vấn</button>
       </div>
       <div class="chapter-list" id="specialList"></div>
     </div>
@@ -782,6 +783,30 @@
     </div>
     <div class="modal__body policy">
       <p data-i18n="privacy.body"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: HỒ SƠ CỐ VẤN (PGS.TS. PHAN ANH TÚ) ============ -->
+<div class="modal hidden" id="modalAdvisor">
+  <div class="modal__box">
+    <div class="modal__head">
+      <h3 data-i18n="advisor.title">Cố vấn chiến lược học thuật</h3>
+      <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
+    </div>
+    <div class="modal__body policy">
+      <div class="advisor__head">
+        <span class="advisor__avatar" aria-hidden="true">🎓</span>
+        <div>
+          <p class="advisor__name" data-i18n="advisor.name">PGS.TS. Phan Anh Tú</p>
+          <p class="muted" data-i18n="advisor.role">Phó Hiệu trưởng Trường Kinh tế, Đại học Cần Thơ</p>
+        </div>
+      </div>
+      <p data-i18n="advisor.bio"></p>
+      <button class="btn btn--ghost btn--sm" id="btnAdvisorVoice" type="button">
+        🔊 <span data-i18n="advisor.listen">Nghe giới thiệu</span>
+      </button>
+      <p class="muted hidden" id="advisorVoiceNote"></p>
     </div>
   </div>
 </div>
