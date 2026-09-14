@@ -1,6 +1,12 @@
 /* NỘI DUNG RIÊNG — Học phần Entrepreneurship (KT330H) — GV: PGS.TS. Phan Anh Tú
    Case study 2: 'Cross-Border Expansion in Asia — How Betterteem Scaled Beyond the Philippines' (Nikkei BizRuptors).
-   9 câu trắc nghiệm trích từ case. ⚠️ ĐÁP ÁN ("c") LÀ ĐỀ XUẤT của Claude — Thầy Tú PHẢI xác nhận trước khi dùng chính thức.
+   19 câu trắc nghiệm trích từ case (câu 1-9 và 10-19 đều LÀ ĐỀ XUẤT của Claude,
+   CHƯA được Thầy Tú xác nhận — PHẢI xác nhận trước khi dùng chính thức).
+   Câu 10-19: khai thác phần chưa hỏi tới của case (xuất thân sáng lập viên tại
+   JPMorgan Chase, thay đổi mức giá, số liệu xác thực thị trường ~90%, mạng lưới
+   IBPAP, mốc thời gian 2023, gói hỗ trợ K-Startup, tiêu chí chọn thị trường,
+   cạnh tranh nhân tài lương USD, kế hoạch thị trường Nhật Bản 2025, và cách
+   tiếp cận theo mạng lưới đối với quốc tế hóa).
    'c' là chỉ số đáp án đúng (0-based: A=0, B=1, C=2, D=3). */
 registerBank(
 {
@@ -99,6 +105,106 @@ registerBank(
         "Reliance on government referrals for vendor selection"
       ],
       "c": 0
+    },
+    {
+      "q": "What was the professional background of Betterteem's founder before starting the company?",
+      "a": [
+        "A university HR researcher with no corporate experience",
+        "A former investment banker at JPMorgan Chase",
+        "A career software engineer at a Silicon Valley startup",
+        "A government labor-policy official in the Philippines"
+      ],
+      "c": 1
+    },
+    {
+      "q": "How did Betterteem's pricing evolve as the product matured from prototype to enterprise-ready platform?",
+      "a": [
+        "It remained free permanently to maximize user adoption",
+        "It moved from a nominal per-user fee of under $1 to enterprise pricing above $3 per user",
+        "It switched from subscription pricing to a one-time perpetual license",
+        "It dropped from a premium enterprise price to a near-free consumer price"
+      ],
+      "c": 1
+    },
+    {
+      "q": "What proportion of surveyed HR professionals validated the core problem Betterteem set out to solve?",
+      "a": [
+        "Around 25%",
+        "Around 50%",
+        "Around 90%",
+        "100%, with no dissenting responses"
+      ],
+      "c": 2
+    },
+    {
+      "q": "Which Philippine industry network did Betterteem leverage to gain early credibility and client access?",
+      "a": [
+        "The IT and Business Process Association of the Philippines (IBPAP)",
+        "The national teachers' union",
+        "A regional manufacturing trade group",
+        "A government tourism board"
+      ],
+      "c": 0
+    },
+    {
+      "q": "Around what year did Betterteem's cross-border expansion into Northeast Asia begin to take concrete shape, according to the case's timeline?",
+      "a": [
+        "2018",
+        "2020",
+        "2023",
+        "2026"
+      ],
+      "c": 2
+    },
+    {
+      "q": "The K-Startup Grand Challenge offered Betterteem a package of support. Which of the following was NOT part of that support package?",
+      "a": [
+        "Office space and a soft-landing environment in Korea",
+        "Introductions to local investors and potential clients",
+        "Guidance on regulatory and cultural localization",
+        "A guaranteed multi-year government procurement contract"
+      ],
+      "c": 3
+    },
+    {
+      "q": "When evaluating which country to enter next, which factor did Betterteem weigh most heavily alongside market size?",
+      "a": [
+        "The availability of low-cost outsourced labor",
+        "The country's readiness for enterprise-grade, localized AI-HR solutions",
+        "Proximity to the Philippines by flight time only",
+        "Whether the country had no existing HR-tech competitors at all"
+      ],
+      "c": 1
+    },
+    {
+      "q": "What talent-related challenge did Betterteem face as it expanded internationally?",
+      "a": [
+        "An oversupply of qualified AI engineers in every target market",
+        "Competing for skilled talent against firms offering higher, USD-denominated salaries",
+        "A complete absence of any local competitors for hiring",
+        "Government restrictions preventing the company from hiring locally at all"
+      ],
+      "c": 1
+    },
+    {
+      "q": "According to the case, which market did Betterteem identify as a key target for future expansion around 2025?",
+      "a": [
+        "Japan",
+        "Brazil",
+        "Germany",
+        "United Arab Emirates"
+      ],
+      "c": 0
+    },
+    {
+      "q": "How does the case characterize Betterteem's overall approach to internationalization?",
+      "a": [
+        "A purely opportunistic strategy with no underlying pattern",
+        "A network-based approach that builds on relationships, ecosystems, and referrals rather than mass advertising alone",
+        "An approach that relies exclusively on paid digital marketing in each new country",
+        "A strategy of acquiring local competitors in every market before entering"
+      ],
+      "c": 1
     }
   ]
 }

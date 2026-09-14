@@ -1896,14 +1896,10 @@ input[type="number"]:focus, input[type="file"]:focus {
 .advisor__head { display: flex; align-items: center; gap: .8rem; margin-bottom: .8rem; }
 .advisor__avatar {
   flex: 0 0 auto;
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  object-fit: cover;
   border: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
 }
 .advisor__name { font-weight: 700; margin: 0; }
