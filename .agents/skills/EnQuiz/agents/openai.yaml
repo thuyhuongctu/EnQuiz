@@ -1,0 +1,6 @@
+interface:
+  display_name: "EnQuiz"
+  short_description: "Repo-specific patterns and workflows for EnQuiz"
+  default_prompt: "Use the EnQuiz repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
