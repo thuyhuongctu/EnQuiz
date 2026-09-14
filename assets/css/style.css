@@ -1538,6 +1538,21 @@ select,
 .chapter-item__title { display: block; font-weight: 600; font-size: .93rem; }
 .chapter-item__meta { display: block; color: var(--muted); font-size: .78rem; }
 .chapter-item__go { color: var(--muted); font-size: 1.1rem; }
+.case-doclink {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  margin: -.3rem .7rem .2rem .8rem;
+  font-size: .76rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+.case-doclink:hover { color: var(--primary); text-decoration: underline; }
 
 /* ---------------- History ---------------- */
 .history { display: flex; flex-direction: column; gap: .45rem; }
@@ -2011,6 +2026,38 @@ input[type="number"]:focus, input[type="file"]:focus {
 .advisor__name { font-weight: 700; margin: 0; }
 #btnAdvisorVoice.is-on { color: var(--primary); border-color: var(--primary); }
 .modal__foot .btn { width: 100%; }
+.modal__box--wide { width: min(920px, 100%); }
+
+/* Nút trông như link — dùng cho hành động mở link cần chặn trước (mở khoá),
+   không thể là thẻ <a> thật vì còn phải kiểm tra trạng thái trước khi điều hướng. */
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.err {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-radius: var(--radius-sm);
+  padding: 0;
+  font-size: .84rem;
+  min-height: 0;
+}
+.err:empty { display: none; }
+.err:not(:empty) { padding: .5rem .7rem; margin: .6rem 0 0; }
+.case-infographic__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-stroke);
+}
 
 .legend { display: flex; gap: 1rem; flex-wrap: wrap; padding: .7rem 1rem 0; font-size: .78rem; color: var(--muted); }
 .legend span { display: flex; align-items: center; gap: .35rem; }

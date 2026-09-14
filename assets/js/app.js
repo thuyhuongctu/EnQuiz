@@ -432,6 +432,81 @@
 
   /* Khối nội dung RIÊNG (ngoài 5 chương học phần) — ví dụ bộ đề của giảng viên.
      KHÔNG tính vào "300 câu / 5 chương" và KHÔNG vào đề thi thử; bấm để luyện riêng. */
+  /* Link truy cập tài liệu case study gốc (Google Drive), theo yêu cầu Cô/Chị —
+     hiện ngay dưới mỗi case trong "Nội dung riêng". */
+  var CASE_DOCS = {
+    ch06: 'https://drive.google.com/drive/folders/14occOGp5FsRT2q0xN5lX-ywaFzEx2Yv_',
+    ch07: 'https://drive.google.com/drive/folders/1i3kCxwnnEZyFsdofU7bG3PhnACXrj3S-'
+  };
+
+  /* Ảnh tóm tắt (infographic) từng case, để SV xem trước khi làm bài. */
+  var CASE_INFOGRAPHICS = {
+    ch06: 'assets/img/case-tiredcity-infographic.webp',
+    ch07: 'assets/img/case-betterteem-infographic.webp'
+  };
+
+  /* ---------------- Mở khoá tài liệu case study (email trường) ----------------
+     Theo yêu cầu Cô/Chị: link Drive chỉ mở được sau khi SV nhập email trường
+     một lần trên máy — ghi nhận qua Edge Function (Supabase) để Thầy/Cô biết
+     ai đã xem, KHÔNG cần xác minh email thật (không phải hệ thống bảo mật). */
+  var UNLOCK_ENDPOINT = 'https://kdpjlbqvdlntsfhrmchm.supabase.co/functions/v1/case-doc-unlock';
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var pendingUnlockUrl = null;
+  var pendingUnlockCase = '';
+
+  function openCaseDoc(caseId) {
+    var url = CASE_DOCS[caseId];
+    if (!url) return;
+    if (Store.get('docUnlockEmail')) { window.open(url, '_blank', 'noopener'); return; }
+    pendingUnlockUrl = url;
+    pendingUnlockCase = caseId;
+    var input = $('#unlockEmail'), err = $('#unlockErr');
+    if (input) input.value = '';
+    if (err) err.textContent = '';
+    var modal = $('#modalUnlock');
+    if (modal) modal.classList.remove('hidden');
+    if (input) input.focus();
+  }
+
+  function submitUnlock() {
+    var input = $('#unlockEmail'), err = $('#unlockErr'), btn = $('#btnUnlockSubmit');
+    var email = input ? input.value.trim() : '';
+    if (!EMAIL_RE.test(email)) {
+      if (err) err.textContent = t('unlock.invalid');
+      return;
+    }
+    if (err) err.textContent = '';
+    if (btn) { btn.disabled = true; }
+    fetch(UNLOCK_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, case_id: pendingUnlockCase, client_ts: new Date().toISOString() })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (btn) btn.disabled = false;
+      if (d && d.ok) {
+        Store.set('docUnlockEmail', email);
+        var modal = $('#modalUnlock');
+        if (modal) modal.classList.add('hidden');
+        if (pendingUnlockUrl) window.open(pendingUnlockUrl, '_blank', 'noopener');
+        pendingUnlockUrl = null;
+      } else if (err) {
+        err.textContent = t('unlock.failed');
+      }
+    }).catch(function () {
+      if (btn) btn.disabled = false;
+      if (err) err.textContent = t('unlock.networkErr');
+    });
+  }
+
+  function openCaseInfographic(caseId) {
+    var src = CASE_INFOGRAPHICS[caseId];
+    if (!src) return;
+    var img = $('#caseInfographicImg');
+    if (img) img.src = src;
+    var modal = $('#modalCaseInfographic');
+    if (modal) modal.classList.remove('hidden');
+  }
+
   function renderSpecialSets() {
     var wrap = $('#specialList');
     var panel = $('#panelSpecial');
@@ -453,7 +528,7 @@
         if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
       });
       var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
-      return '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
+      var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
         '<span class="chapter-item__no">' +
           '<svg class="ico" aria-hidden="true"><use href="#i-book"/></svg>' +
         '</span>' +
@@ -465,6 +540,15 @@
         '</span>' +
         '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
       '</button>';
+      var doc = CASE_DOCS[c.id]
+        ? '<button class="case-doclink" data-unlock="' + esc(c.id) + '" type="button">' +
+            '📄 ' + esc(t('advisor.docsTitle')) + ' ↗</button>'
+        : '';
+      var info = CASE_INFOGRAPHICS[c.id]
+        ? '<button class="case-doclink" data-infographic="' + esc(c.id) + '" type="button">' +
+            '🖼️ ' + esc(t('caseInfo.viewLabel')) + '</button>'
+        : '';
+      return item + doc + info;
     }).join('');
   }
 
@@ -1376,6 +1460,11 @@
 
     $('#btnAdvisorVoice').addEventListener('click', speakAdvisorBio);
 
+    $('#btnUnlockSubmit').addEventListener('click', submitUnlock);
+    $('#unlockEmail').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); submitUnlock(); }
+    });
+
     $('#btnRefreshApp').addEventListener('click', function () {
       var btn = this;
       btn.disabled = true;
@@ -1435,6 +1524,12 @@
 
       var chap = target.closest('[data-chapter]');
       if (chap) { openSetup('practice', chap.getAttribute('data-chapter')); return; }
+
+      var unlockBtn = target.closest('[data-unlock]');
+      if (unlockBtn) { openCaseDoc(unlockBtn.getAttribute('data-unlock')); return; }
+
+      var infoBtn = target.closest('[data-infographic]');
+      if (infoBtn) { openCaseInfographic(infoBtn.getAttribute('data-infographic')); return; }
 
       var countChip = target.closest('[data-count]');
       if (countChip) {
