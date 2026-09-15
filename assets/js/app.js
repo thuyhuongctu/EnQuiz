@@ -86,6 +86,13 @@
     return (I18n.lang === 'en' && q.chapterTitleEn) ? q.chapterTitleEn : q.chapterTitle;
   }
 
+  /* Case study Thầy Tú (nhóm 'kt330h') dùng ảnh Thầy Tú đồng hành thay vì
+     Hương AI, vì đây là nội dung riêng của Thầy chứ không phải của Hương. */
+  function isSpecialChapterId(id) {
+    var c = QuestionBank.chapter(id);
+    return !!(c && (c.group || 'course') !== 'course');
+  }
+
   /* =======================================================
      Giao diện sáng / tối
      ======================================================= */
@@ -819,6 +826,11 @@
     $('#qChapter').textContent = questionChapter(q);
     $('#qText').textContent = q.text;
 
+    var quizHuong = $('#quizHuong');
+    if (quizHuong) {
+      quizHuong.src = isSpecialChapterId(q.chapterId) ? 'assets/img/tu-portrait.webp' : 'assets/img/huong-quiz.webp';
+    }
+
     updateMarkButton(Store.isMarked(q.uid));
 
     var reveal = it.revealed || session.submitted;
@@ -974,8 +986,15 @@
     // đạt, cầm giấy dò lại bài khi chưa đạt.
     var huong = $('#resultHuong');
     if (huong) {
-      var shot = r.score >= 8 ? 'cheer' : (pass ? 'welcome' : 'quiz');
-      huong.setAttribute('src', 'assets/img/huong-' + shot + '.webp');
+      var isSpecial = session.items.length > 0 && session.items.every(function (it) {
+        return isSpecialChapterId(it.q.chapterId);
+      });
+      if (isSpecial) {
+        huong.setAttribute('src', 'assets/img/tu-portrait.webp');
+      } else {
+        var shot = r.score >= 8 ? 'cheer' : (pass ? 'welcome' : 'quiz');
+        huong.setAttribute('src', 'assets/img/huong-' + shot + '.webp');
+      }
     }
     $('#resultSummary').textContent = t('result.summary', {
       label: t(session.labelKey), correct: r.correct, total: r.total, pct: pct
