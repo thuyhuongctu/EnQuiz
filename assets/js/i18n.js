@@ -274,6 +274,7 @@
 
       'footer.sig': "Je m'appelle Hương · Giảng viên & Nhà nghiên cứu",
       'footer.academic': 'Trang học thuật',
+      'footer.doi': 'Trích dẫn (DOI)',
       'footer.policy': 'Bản quyền',
       'footer.privacy': 'Quyền riêng tư',
       'footer.place': 'Cần Thơ, Việt Nam',
@@ -290,6 +291,8 @@
       'policy.forbidden3': 'Sử dụng cho mục đích thương mại, đào tạo thu phí hoặc bán lại.',
       'policy.forbidden4': 'Chỉnh sửa, dịch, tạo tác phẩm phái sinh hoặc gỡ bỏ thông tin bản quyền.',
       'policy.contact': 'Mọi nhu cầu sử dụng ngoài phạm vi trên xin liên hệ tác giả qua thuyhuongctu@gmail.com để được cấp phép bằng văn bản.',
+      'policy.citation': 'Trích dẫn',
+      'policy.citationText': 'Khi trích dẫn EnQuiz trong công trình học thuật, vui lòng dùng mã định danh DOI: <a href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">doi.org/10.5281/zenodo.21850735</a>.',
       'policy.mark': 'Ứng dụng đã khoá thao tác sao chép và menu chuột phải nhằm nhắc nhở về bản quyền. Đây là biện pháp nhắc nhở, không phải rào chắn kỹ thuật tuyệt đối; việc sao chép trái phép vẫn là hành vi vi phạm dù thực hiện bằng cách nào.',
       'policy.copyBlocked': '⛔ Nội dung có bản quyền — không sao chép.',
 
@@ -603,6 +606,7 @@
 
       'footer.sig': "Je m'appelle Hương · Lecturer & Researcher",
       'footer.academic': 'Academic page',
+      'footer.doi': 'Cite (DOI)',
       'footer.policy': 'Copyright',
       'footer.privacy': 'Privacy',
       'footer.place': 'Can Tho, Vietnam',
@@ -619,6 +623,8 @@
       'policy.forbidden3': 'Use it commercially, in paid training, or resell it.',
       'policy.forbidden4': 'Modify, translate, create derivative works, or remove copyright notices.',
       'policy.contact': 'For any use beyond the above, please contact the author at thuyhuongctu@gmail.com for written permission.',
+      'policy.citation': 'Citation',
+      'policy.citationText': 'When citing EnQuiz in academic work, please use its DOI: <a href="https://doi.org/10.5281/zenodo.21850735" target="_blank" rel="noopener">doi.org/10.5281/zenodo.21850735</a>.',
       'policy.mark': 'Copying and the right-click menu are disabled as a copyright reminder. This is a reminder, not an absolute technical barrier — unauthorised copying remains an infringement however it is carried out.',
       'policy.copyBlocked': '⛔ Copyrighted content — copying is not permitted.',
 
