@@ -2163,11 +2163,16 @@ input[type="number"]:focus, input[type="file"]:focus {
   gap: .3rem;
   margin-bottom: .9rem;
 }
+.footer__lockup-link {
+  align-self: flex-start;
+  display: inline-block;
+}
+.footer__lockup-link:hover { text-decoration: none; }
 .footer__lockup {
   width: auto;
   height: 64px;                  /* đủ để đọc được dòng chữ trong dấu hiệu */
   max-width: 100%;
-  align-self: flex-start;
+  display: block;
   /* Dấu hiệu vẽ bằng màu đất trên nền trong suốt; trên nền tối cần sáng lên
      một chút mới đọc được, nên nâng độ sáng thay vì đổi màu gốc. */
   filter: none;

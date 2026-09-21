@@ -273,6 +273,7 @@
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
 
       'footer.sig': "Je m'appelle Hương · Giảng viên & Nhà nghiên cứu",
+      'footer.academic': 'Trang học thuật',
       'footer.policy': 'Bản quyền',
       'footer.privacy': 'Quyền riêng tư',
       'footer.place': 'Cần Thơ, Việt Nam',
@@ -601,6 +602,7 @@
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',
 
       'footer.sig': "Je m'appelle Hương · Lecturer & Researcher",
+      'footer.academic': 'Academic page',
       'footer.policy': 'Copyright',
       'footer.privacy': 'Privacy',
       'footer.place': 'Can Tho, Vietnam',
