@@ -828,7 +828,7 @@
 
     var quizHuong = $('#quizHuong');
     if (quizHuong) {
-      quizHuong.src = isSpecialChapterId(q.chapterId) ? 'assets/img/tu-portrait.webp' : 'assets/img/huong-quiz.webp';
+      quizHuong.src = isSpecialChapterId(q.chapterId) ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-quiz.webp';
     }
 
     updateMarkButton(Store.isMarked(q.uid));
@@ -990,7 +990,7 @@
         return isSpecialChapterId(it.q.chapterId);
       });
       if (isSpecial) {
-        huong.setAttribute('src', 'assets/img/tu-portrait.webp');
+        huong.setAttribute('src', 'assets/img/tu-cheer.webp');
       } else {
         var shot = r.score >= 8 ? 'cheer' : (pass ? 'welcome' : 'quiz');
         huong.setAttribute('src', 'assets/img/huong-' + shot + '.webp');
