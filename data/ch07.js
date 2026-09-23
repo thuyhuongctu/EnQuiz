@@ -1,9 +1,12 @@
 /* NỘI DUNG RIÊNG — Học phần Entrepreneurship (KT330H) — GV: PGS.TS. Phan Anh Tú
    Case study 2: 'Cross-Border Expansion in Asia — How Betterteem Scaled Beyond the Philippines' (Nikkei BizRuptors).
-   19 câu trắc nghiệm trích từ case (câu 1-9 và 10-19 đều LÀ ĐỀ XUẤT của Claude,
-   chưa được Thầy Tú xác nhận — theo yêu cầu của Thầy, vẫn dùng ngay nhưng có
-   ghi chú "Đáp án gợi ý" (field "e") hiện ngay dưới mỗi câu khi lộ đáp án).
-   Câu 10-19: khai thác phần chưa hỏi tới của case (xuất thân sáng lập viên tại
+   19 câu trắc nghiệm trích từ case.
+   Câu 1-9: đáp án đã được Thầy Tú xác nhận qua Zalo (1B, 2B, 3A, 4C, 5D, 6A,
+   7C, 8D, 9A) — câu 6 trước đó để sai (C), đã sửa lại đúng theo Thầy (A).
+   Câu 10-19: vẫn LÀ ĐỀ XUẤT của Claude, chưa được Thầy Tú xác nhận — theo
+   yêu cầu của Thầy, vẫn dùng ngay nhưng có ghi chú "Đáp án gợi ý" (field
+   "e") hiện ngay dưới mỗi câu khi lộ đáp án, khai thác phần chưa hỏi tới
+   của case (xuất thân sáng lập viên tại
    JPMorgan Chase, thay đổi mức giá, số liệu xác thực thị trường ~90%, mạng lưới
    IBPAP, mốc thời gian 2023, gói hỗ trợ K-Startup, tiêu chí chọn thị trường,
    cạnh tranh nhân tài lương USD, kế hoạch thị trường Nhật Bản 2025, và cách
@@ -25,8 +28,7 @@ registerBank(
         "Its integration with government labor databases",
         "Its reliance on manual HR interpretation rather than automation"
       ],
-      "c": 1,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 1
     },
     {
       "q": "Why did Betterteem shift its primary sales focus from HR managers to C-suite executives?",
@@ -36,8 +38,7 @@ registerBank(
         "HR departments resisted adopting AI-based tools",
         "C-suite executives demanded compliance-focused dashboards"
       ],
-      "c": 1,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 1
     },
     {
       "q": "Which activity most strongly contributed to Betterteem's early product–market fit validation?",
@@ -47,8 +48,7 @@ registerBank(
         "Conducting paid pilot projects with multinational firms",
         "Launching a marketing campaign targeting ASEAN enterprises"
       ],
-      "c": 0,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 0
     },
     {
       "q": "What initially triggered Betterteem's move toward international expansion?",
@@ -58,8 +58,7 @@ registerBank(
         "Unsolicited interest from existing clients' overseas offices",
         "A formal internal strategy to enter Northeast Asia"
       ],
-      "c": 2,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 2
     },
     {
       "q": "Which difference between Southeast Asia and Northeast Asia is most relevant to Betterteem's expansion strategy?",
@@ -69,8 +68,7 @@ registerBank(
         "Southeast Asia has slower HR-tech market growth",
         "Northeast Asia expects higher levels of localization and enterprise readiness"
       ],
-      "c": 3,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 3
     },
     {
       "q": "How did Betterteem manage expansion risk during its early cross-border moves?",
@@ -80,8 +78,7 @@ registerBank(
         "By standardizing the product across all markets",
         "By outsourcing localization to third-party consultants"
       ],
-      "c": 2,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 0
     },
     {
       "q": "Why was the K-Startup Grand Challenge particularly valuable for Betterteem's entry into Korea?",
@@ -91,8 +88,7 @@ registerBank(
         "It functioned as a comprehensive soft-landing platform",
         "It enabled full product localization at no cost"
       ],
-      "c": 2,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 2
     },
     {
       "q": "What strategic benefit did Betterteem gain from building a multinational investor base?",
@@ -102,8 +98,7 @@ registerBank(
         "Automatic regulatory approval in foreign markets",
         "Access to localized market knowledge and networks"
       ],
-      "c": 3,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 3
     },
     {
       "q": "Which cultural insight most directly shaped Betterteem's market entry approach in Korea?",
@@ -113,8 +108,7 @@ registerBank(
         "Importance of formal written proposals over meetings",
         "Reliance on government referrals for vendor selection"
       ],
-      "c": 0,
-      "e": "⚠️ Đáp án gợi ý — Thầy Tú chưa xác nhận chính thức. (Suggested answer, not yet confirmed by the instructor.)"
+      "c": 0
     },
     {
       "q": "What was the professional background of Betterteem's founder before starting the company?",
