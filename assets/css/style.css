@@ -2024,6 +2024,15 @@ input[type="number"]:focus, input[type="file"]:focus {
   border: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
 }
 .advisor__name { font-weight: 700; margin: 0; }
+.advisor__website {
+  display: inline-block;
+  margin-top: .25rem;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+.advisor__website:hover { text-decoration: underline; }
 #btnAdvisorVoice.is-on { color: var(--primary); border-color: var(--primary); }
 .modal__foot .btn { width: 100%; }
 .modal__box--wide { width: min(920px, 100%); }
