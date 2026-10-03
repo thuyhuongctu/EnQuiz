@@ -36,11 +36,12 @@ class in front of a start-up dashboard](docs/img/gioi-thieu.webp)
 Three commitments distinguish EnQuiz from a general-purpose quiz platform, and
 each one is a constraint the code is held to:
 
-**No server.** There is no backend, no account, no database. Every result, every
+**Learning data stays on the device.** There is no account and no learning database. Every result, every
 missed question and every imported set lives in the learner's own browser. This is
-not a deployment convenience — it is what makes the privacy claim below verifiable
-by reading the source rather than trusting an operator. The one external request
-the app makes is an anonymous, cookieless visit counter, described under *Privacy*.
+what makes the privacy claim below verifiable by reading the source rather than
+trusting an operator. The app makes two external requests, both described under
+*Privacy*: an anonymous, cookieless visit counter, and, only when a learner unlocks
+the case study materials, a record of the school email entered.
 
 **No build step.** The published site is the repository. There is no bundler, no
 transpiler and no dependency tree, so the archived Zenodo snapshot is directly
@@ -194,10 +195,16 @@ file.
 
 ## Privacy
 
-**Learning data never leaves the device.** There is no server and no account.
+**Learning data never leaves the device.** There is no account.
 Results, missed questions, flags and imported sets stay in the learner's own
 browser; *Erase all data* in Settings clears everything. No answer, score or
 progress figure is transmitted anywhere.
+
+**Case study unlock records a school email.** Opening the original case study
+materials asks for a school email once per device. The email, the case ID and the
+time are sent over HTTPS to a Supabase function so the instructors know who viewed
+the materials. They are not shared, are kept for at most 12 months, and are deleted
+on request (thuyhuongctu@gmail.com, subject “Delete EnQuiz data”).
 
 **Visits are counted, anonymously.** The app loads
 [GoatCounter](https://www.goatcounter.com/), a cookieless analytics script that
@@ -206,7 +213,7 @@ It reports how many times the app was opened, on which day, and from which count
 — nothing that identifies a person, and nothing about what a learner answered. This
 is disclosed in the app's own *Privacy* panel, in both languages.
 
-The counter is the single external request the app makes. It is served from a
+Apart from the case study unlock above, the counter is the only external request the app makes. It is served from a
 different origin, so the service worker does not touch it; with no network it fails
 silently and the app carries on.
 
