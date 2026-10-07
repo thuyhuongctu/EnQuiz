@@ -211,7 +211,9 @@ on request (thuyhuongctu@gmail.com, subject “Delete EnQuiz data”).
 stores no IP address, sets no identifier and does not follow visitors across sites.
 It reports how many times the app was opened, on which day, and from which country
 — nothing that identifies a person, and nothing about what a learner answered. This
-is disclosed in the app's own *Privacy* panel, in both languages.
+is disclosed in the app's own *Privacy* panel, in both languages, and in the full
+bilingual policy published at [chinh-sach.html](https://thuyhuongctu.github.io/EnQuiz/chinh-sach.html),
+which is also the policy linked from the Google Play listing.
 
 Apart from the case study unlock above, the counter is the only external request the app makes. It is served from a
 different origin, so the service worker does not touch it; with no network it fails
