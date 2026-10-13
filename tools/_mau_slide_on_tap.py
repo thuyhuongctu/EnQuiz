@@ -148,7 +148,7 @@ def trang_bia(so_chuong, ten_chuong, mo_ta, tong_so):
   <div class="cover-num">{so_chuong:02d}</div>
   <h1>{ten_chuong}</h1>
   <p class="desc">{mo_ta}</p>
-  <div class="footer"><span>EnQuiz &middot; Khởi sự doanh nghiệp</span><span>1/{tong_so}</span></div>
+  <div class="footer"><span>ĐH Công nghệ Kỹ thuật Vĩnh Long &middot; Khởi sự doanh nghiệp (EC1606)</span><span>1/{tong_so}</span></div>
 </div>"""
 
 
@@ -162,7 +162,7 @@ def trang_noi_dung(kicker, tieu_de, gach_dau_dong, so_trang, tong_so):
   {kicker_html}
   <h1>{tieu_de}</h1>
   <div class="bullets">{bullets_html}</div>
-  <div class="footer"><span>EnQuiz &middot; Khởi sự doanh nghiệp</span><span>{so_trang}/{tong_so}</span></div>
+  <div class="footer"><span>ĐH Công nghệ Kỹ thuật Vĩnh Long &middot; Khởi sự doanh nghiệp (EC1606)</span><span>{so_trang}/{tong_so}</span></div>
 </div>"""
 
 
@@ -173,7 +173,7 @@ def trang_ket(so_chuong, mo_ta, chu_tiep_theo, so_trang, tong_so):
   <h1>Ôn tập Chương {so_chuong}</h1>
   <p class="desc">{mo_ta}</p>
   {next_html}
-  <div class="footer"><span>EnQuiz &middot; Khởi sự doanh nghiệp</span><span>{so_trang}/{tong_so}</span></div>
+  <div class="footer"><span>ĐH Công nghệ Kỹ thuật Vĩnh Long &middot; Khởi sự doanh nghiệp (EC1606)</span><span>{so_trang}/{tong_so}</span></div>
 </div>"""
 
 

@@ -1,5 +1,5 @@
 {
-  "_ghi_chu": "Kịch bản đọc cho video ôn tập 5 chương, viết theo đúng format videos/kich_ban_video.json của ComDraft (cùng tác giả). Nội dung lấy từ chính 300 câu hỏi trong data/ch01..ch05.js và đề cương chi tiết EC1606 (2025), không thêm nội dung mới ngoài phạm vi đó — trừ các tình huống minh họa (ví dụ 'chị Hoa' chế biến khoai lang, dự án gốm đỏ) được ghi rõ là minh họa, không phải số liệu thật, dùng để đáp ứng yêu cầu 'tạo tình huống học tập' của Điều 22 Quy định đào tạo trực tuyến và xây dựng học liệu số (QĐ 55/QĐ-ĐHSPKTVL-ĐT_ĐBCL, 07/7/2025). Mỗi video dài 12-17 phút (ước tính theo 206 từ/phút, đo thật từ bản thu của tác giả ở ec6035tx-chuong-5/ComDraft — EnQuiz chưa có bản thu thật để đo lại), đạt chuẩn thời lượng video tự sản xuất theo Phụ lục Mẫu HLS-VLU-08 mục 4 của quy định trên (12-17 phút/video, không dưới 12 phút). EnQuiz chưa có bộ slide ôn tập riêng theo nghĩa .pptx (khác ComDraft, nơi mỗi video ôn tập đã có slide dựng sẵn) nên trường \"slide\" ở đây là số thứ tự điểm đọc trong video (1, 2, 3…), ánh xạ sang ảnh slide thật trong assets/slides/ch0N/ theo bảng ở on-tap-video/README.md — không phải số trang một slide deck .pptx có sẵn. Mỗi chương: lời chào mở đầu (từ Video 2 trở đi có nhắc lại ý chính chương trước) + các điểm nội dung chính, mở rộng sâu hơn và có tình huống minh họa xuyên suốt + một đoạn hệ thống hóa kiến thức bằng 5 câu hỏi tự kiểm tra trước khi chuyển sang trắc nghiệm + lời chốt kèm nhắc làm 60 câu trắc nghiệm.",
+  "_ghi_chu": "Kịch bản đọc cho video ôn tập 5 chương, viết theo đúng format videos/kich_ban_video.json của ComDraft (cùng tác giả). Nội dung lấy từ chính 300 câu hỏi trong data/ch01..ch05.js và đề cương chi tiết EC1606 (2025), không thêm nội dung mới ngoài phạm vi đó — trừ các tình huống minh họa (ví dụ 'chị Hoa' chế biến khoai lang, dự án gốm đỏ) được ghi rõ là minh họa, không phải số liệu thật, dùng để đáp ứng yêu cầu 'tạo tình huống học tập' của Điều 22 Quy định đào tạo trực tuyến và xây dựng học liệu số (QĐ 55/QĐ-ĐHSPKTVL-ĐT_ĐBCL, 07/7/2025). Mỗi video dài 12-17 phút (ước tính theo 206 từ/phút, đo thật từ bản thu của tác giả ở ec6035tx-chuong-5/ComDraft — bộ kịch bản này chưa có bản thu thật để đo lại), đạt chuẩn thời lượng video tự sản xuất theo Phụ lục Mẫu HLS-VLU-08 mục 4 của quy định trên (12-17 phút/video, không dưới 12 phút). Bộ này chưa có bộ slide ôn tập riêng theo nghĩa .pptx (khác ComDraft, nơi mỗi video ôn tập đã có slide dựng sẵn) nên trường \"slide\" ở đây là số thứ tự điểm đọc trong video (1, 2, 3…), ánh xạ sang ảnh slide thật trong assets/slides/ch0N/ theo bảng ở on-tap-video/README.md — không phải số trang một slide deck .pptx có sẵn. Mỗi chương: lời chào mở đầu (từ Video 2 trở đi có nhắc lại ý chính chương trước) + các điểm nội dung chính, mở rộng sâu hơn và có tình huống minh họa xuyên suốt + một đoạn hệ thống hóa kiến thức bằng 5 câu hỏi tự kiểm tra trước khi chuyển sang trắc nghiệm + lời chốt kèm nhắc làm 60 câu trắc nghiệm.",
   "ON TAP CHUONG 1 - TONG QUAN VE KHOI SU DOANH NGHIEP": [
     {
       "slide": 1,
@@ -93,8 +93,8 @@
     },
     {
       "slide": 19,
-      "loi_doc": "Các bạn hãy làm 60 câu trắc nghiệm của Chương một trong EnQuiz để tự kiểm tra lại kiến thức nhé. Hẹn gặp lại các bạn ở video ôn tập Chương hai.",
-      "loi_doc_en": "Go ahead and try the 60 multiple-choice questions for Chapter One in EnQuiz to test yourself. See you in the Chapter Two revision video."
+      "loi_doc": "Các bạn hãy làm 60 câu trắc nghiệm của Chương một trong ứng dụng ôn tập để tự kiểm tra lại kiến thức nhé. Hẹn gặp lại các bạn ở video ôn tập Chương hai.",
+      "loi_doc_en": "Go ahead and try the 60 multiple-choice questions for Chapter One in the revision app to test yourself. See you in the Chapter Two revision video."
     }
   ],
   "ON TAP CHUONG 2 - DANH GIA CO HOI, Y TUONG PHAT TRIEN KE HOACH KINH DOANH": [
@@ -185,8 +185,8 @@
     },
     {
       "slide": 18,
-      "loi_doc": "Các bạn hãy làm 60 câu trắc nghiệm Chương hai trong EnQuiz để tự đánh giá nhé, và khi làm bài, cố gắng nhớ lại ví dụ chị Hoa hoặc ví dụ gốm đỏ mà chúng ta vừa phân tích — việc gắn kiến thức với một tình huống cụ thể thường giúp nhớ lâu hơn là học thuộc định nghĩa suông. Hẹn gặp lại ở video ôn tập Chương ba.",
-      "loi_doc_en": "Go ahead and try the 60 multiple-choice questions for Chapter Two in EnQuiz to test yourself. See you in the Chapter Three revision video."
+      "loi_doc": "Các bạn hãy làm 60 câu trắc nghiệm Chương hai trong ứng dụng ôn tập để tự đánh giá nhé, và khi làm bài, cố gắng nhớ lại ví dụ chị Hoa hoặc ví dụ gốm đỏ mà chúng ta vừa phân tích — việc gắn kiến thức với một tình huống cụ thể thường giúp nhớ lâu hơn là học thuộc định nghĩa suông. Hẹn gặp lại ở video ôn tập Chương ba.",
+      "loi_doc_en": "Go ahead and try the 60 multiple-choice questions for Chapter Two in the revision app to test yourself. See you in the Chapter Three revision video."
     }
   ],
   "ON TAP CHUONG 3 - HUY DONG VON VA CAC CHI SO TAI CHINH COT YEU": [
@@ -344,8 +344,8 @@
     },
     {
       "slide": 15,
-      "loi_doc": "Các bạn hãy làm 60 câu trắc nghiệm Chương bốn trong EnQuiz nhé, đặc biệt chú ý phân biệt trách nhiệm hữu hạn và vô hạn giữa các loại hình — đây là điểm hay bị nhầm lẫn nhất trong các đề thi. Hẹn gặp lại ở Chương năm — Marketing cho doanh nghiệp mới.",
-      "loi_doc_en": "Go ahead and try the 60 multiple-choice questions for Chapter Four in EnQuiz, paying special attention to distinguishing limited from unlimited liability across the different legal forms — this is the point most often mixed up on exams. See you in Chapter Five — Marketing for a new business."
+      "loi_doc": "Các bạn hãy làm 60 câu trắc nghiệm Chương bốn trong ứng dụng ôn tập nhé, đặc biệt chú ý phân biệt trách nhiệm hữu hạn và vô hạn giữa các loại hình — đây là điểm hay bị nhầm lẫn nhất trong các đề thi. Hẹn gặp lại ở Chương năm — Marketing cho doanh nghiệp mới.",
+      "loi_doc_en": "Go ahead and try the 60 multiple-choice questions for Chapter Four in the revision app, paying special attention to distinguishing limited from unlimited liability across the different legal forms — this is the point most often mixed up on exams. See you in Chapter Five — Marketing for a new business."
     }
   ],
   "ON TAP CHUONG 5 - MARKETING CHO DOANH NGHIEP MOI": [

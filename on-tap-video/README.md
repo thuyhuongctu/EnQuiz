@@ -45,7 +45,7 @@ chuyển sang trắc nghiệm) để mỗi video đạt 12–13 phút:
 
 Thời lượng ước tính theo tốc độ 206 từ/phút — **đo thật từ bản thu của tác
 giả ở `ec6035tx-chuong-5`** (ComDraft), không phải đo trên giọng đọc thật của
-kịch bản này (EnQuiz chưa có bản thu thật). Cần đối chiếu lại tốc độ đọc thật
+kịch bản này (bộ kịch bản này chưa có bản thu thật). Cần đối chiếu lại tốc độ đọc thật
 sau khi có bản thu đầu tiên của loạt video này — nếu tốc độ đọc thật chậm hơn
 hay nhanh hơn 206 từ/phút đáng kể, thời lượng thật có thể lệch khỏi khoảng
 12–17 phút, lúc đó cần thêm/bớt nội dung ở `docs/kich_ban_on_tap.json`.
@@ -82,7 +82,8 @@ gradient xanh–hồng nhạt, badge kicker, số chương/tiêu đề bằng Br
 Grotesque, bullet chấm gradient — các token màu lấy trực tiếp từ
 `assets/css/style.css`. Mỗi slide tối đa 3–5 gạch đầu dòng, không viết toàn
 văn, theo đúng Điều 18 của quy định trên (≤10 dòng/slide, ≤20 từ/dòng, slide
-cuối chốt lại nội dung, có dấu ấn đơn vị — chân trang "EnQuiz").
+cuối chốt lại nội dung, có dấu ấn đơn vị đào tạo — chân trang "ĐH Công nghệ Kỹ
+thuật Vĩnh Long · Khởi sự doanh nghiệp (EC1606)", không ghi tên ứng dụng).
 
 `slides/ON_TAP_5_CHUONG_EC1606.pdf` ghép nguyên 83 ảnh slide này (chỉ chữ,
 chưa có ảnh minh họa riêng) thành một tệp, theo đúng thứ tự 5 chương. Đây là
