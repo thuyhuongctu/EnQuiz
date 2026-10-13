@@ -1,0 +1,213 @@
+{
+  "_ghi_chu": "Kịch bản đọc cho video ôn tập 5 chương, viết theo đúng format videos/kich_ban_video.json của ComDraft (cùng tác giả). Nội dung lấy từ chính 300 câu hỏi trong data/ch01..ch05.js và đề cương chi tiết EC1606 (2025), không thêm nội dung mới. EnQuiz chưa có bộ slide ôn tập riêng (khác ComDraft, nơi mỗi video ôn tập đã có slide dựng sẵn) nên trường \"slide\" ở đây là số thứ tự điểm đọc (1, 2, 3…), không phải số trang một slide deck đã tồn tại — khi dựng video/slide thật thì đánh số lại theo đúng slide thật. Mỗi chương: lời chào mở đầu + các điểm nội dung chính + lời chốt kèm nhắc làm 60 câu trắc nghiệm.",
+  "ON TAP CHUONG 1 - TONG QUAN VE KHOI SU DOANH NGHIEP": [
+    {
+      "slide": 1,
+      "loi_doc": "Chào các bạn, đây là video ôn tập Chương một: Tổng quan về khởi sự doanh nghiệp. Mục tiêu của chương này là giúp các bạn nắm được kiến thức cơ bản về khởi nghiệp, đặc biệt là những cơ hội cho phụ nữ và người dân tộc thiểu số trong bối cảnh chuyển đổi số.",
+      "loi_doc_en": "Hello everyone, this is the revision video for Chapter One: An overview of starting a business. This chapter's goal is to give you the basic knowledge of entrepreneurship, with special attention to opportunities for women and ethnic-minority entrepreneurs in the digital-transformation era."
+    },
+    {
+      "slide": 2,
+      "loi_doc": "Trước hết, khởi nghiệp — Start-up — là quá trình bắt đầu một doanh nghiệp dựa trên một ý tưởng mới, có tiềm năng tăng trưởng, khác với kinh doanh thông thường ở tinh thần dám chấp nhận rủi ro và khát vọng tạo ra giá trị đột phá. Đổi mới sáng tạo trong khởi nghiệp có thể đến từ sản phẩm, công nghệ, quy trình sản xuất, Marketing, hoặc cả mô hình kinh doanh.",
+      "loi_doc_en": "First, a start-up means beginning a business built on a new idea with growth potential — what sets it apart from ordinary business is the willingness to take risks and the drive to create breakthrough value. Innovation in a start-up can come from the product, the technology, the production process, marketing, or even the business model itself."
+    },
+    {
+      "slide": 3,
+      "loi_doc": "Một ý tưởng kinh doanh tốt nên bắt nguồn từ việc quan sát và giải quyết nhu cầu chưa được đáp ứng của thị trường, chứ không phải chỉ từ sở thích cá nhân hay sao chép đối thủ. Ý tưởng đó cần có tính khả thi, có khách hàng sẵn sàng chi trả, và mang lại lợi ích thực tế.",
+      "loi_doc_en": "A good business idea should start from observing and solving a need the market hasn't met yet — not just personal preference, and not copying a competitor. That idea needs to be feasible, have customers willing to pay for it, and deliver real benefit."
+    },
+    {
+      "slide": 4,
+      "loi_doc": "Với phụ nữ và người dân tộc thiểu số, nguồn ý tưởng tốt nhất thường nằm ngay ở thế mạnh và sản vật độc đáo của địa phương. Ví dụ ở Vĩnh Long, đó có thể là chế biến sâu khoai lang Bình Tân, gốm đỏ, hay du lịch sinh thái miệt vườn và văn hóa sông nước — những thứ gắn với bản sắc văn hóa mà nơi khác không dễ sao chép.",
+      "loi_doc_en": "For women and ethnic-minority entrepreneurs, the best ideas often come straight from a locality's own strengths and distinctive produce. In Vĩnh Long, for instance, that could mean deeper processing of Bình Tân sweet potatoes, red pottery, or eco-tourism built around the orchards and river culture — things tied to a cultural identity that's hard for anywhere else to copy."
+    },
+    {
+      "slide": 5,
+      "loi_doc": "Kế hoạch kinh doanh chính là 'bản lộ trình' để hiện thực hóa ý tưởng: nó cần có tóm tắt dự án, mô tả sản phẩm, phân tích thị trường và kế hoạch tài chính. Vai trò quan trọng nhất của nó là giúp định hướng kinh doanh và là căn cứ để gọi vốn từ nhà đầu tư — đặc biệt với người khởi nghiệp ít vốn, nó còn giúp giảm thiểu rủi ro khi nguồn lực hạn chế.",
+      "loi_doc_en": "A business plan is the 'roadmap' for turning an idea into reality: it needs a project summary, a description of the product, a market analysis and a financial plan. Its most important role is guiding the business and giving investors a basis to fund it — and for an entrepreneur with little capital, it also helps reduce risk when resources are limited."
+    },
+    {
+      "slide": 6,
+      "loi_doc": "Khởi sự doanh nghiệp không chỉ nhằm tạo ra lợi nhuận. Một dự án khởi nghiệp bền vững phải không vi phạm đạo đức kinh doanh và luôn hướng đến sự cân bằng giữa lợi nhuận kinh tế, lợi ích con người và bảo vệ môi trường — đó cũng là cách dự án thể hiện trách nhiệm với cộng đồng.",
+      "loi_doc_en": "Starting a business isn't only about making a profit. A sustainable start-up must not violate business ethics, and should always aim for a balance between economic profit, human benefit and environmental protection — that's also how a project shows responsibility to its community."
+    },
+    {
+      "slide": 7,
+      "loi_doc": "Cuối cùng, hãy nhớ: 'hệ sinh thái khởi nghiệp' là toàn bộ môi trường nguồn lực, tổ chức và chính sách hỗ trợ xung quanh bạn, và 'tư duy khởi nghiệp' cần sự chủ động, sáng tạo, khả năng thích nghi và giải quyết vấn đề. Rủi ro — về vốn, về thị trường, về đội ngũ — là điều bình thường; quan trọng là biết lường trước và rút kinh nghiệm từ thất bại để hoàn thiện dự án tốt hơn.",
+      "loi_doc_en": "Finally, remember: the 'entrepreneurial ecosystem' is the whole environment of resources, organisations and policies supporting you, and an 'entrepreneurial mindset' needs initiative, creativity, adaptability and problem-solving. Risk — in funding, in the market, in the team — is normal; what matters is anticipating it and learning from failure to make the project better."
+    },
+    {
+      "slide": 8,
+      "loi_doc": "Các bạn hãy làm 60 câu trắc nghiệm của Chương một trong EnQuiz để tự kiểm tra lại kiến thức nhé. Hẹn gặp lại các bạn ở video ôn tập Chương hai.",
+      "loi_doc_en": "Go ahead and try the 60 multiple-choice questions for Chapter One in EnQuiz to test yourself. See you in the Chapter Two revision video."
+    }
+  ],
+  "ON TAP CHUONG 2 - DANH GIA CO HOI, Y TUONG PHAT TRIEN KE HOACH KINH DOANH": [
+    {
+      "slide": 1,
+      "loi_doc": "Chào các bạn, video ôn tập Chương hai: Đánh giá cơ hội, ý tưởng phát triển kế hoạch kinh doanh. Kỹ năng cốt lõi của chương này là đánh giá được cơ hội phát triển một dự án kinh doanh — bước đệm để sang chương sau xây dựng một kế hoạch kinh doanh hoàn chỉnh.",
+      "loi_doc_en": "Hello everyone, this is the Chapter Two revision video: Assessing opportunities and developing a business plan. This chapter's core skill is evaluating whether a project has a real opportunity to grow — the stepping stone to building a complete business plan in the next chapter."
+    },
+    {
+      "slide": 2,
+      "loi_doc": "Phân biệt rõ hai khái niệm: ý tưởng kinh doanh là sự sáng tạo sơ khai, còn cơ hội kinh doanh là ý tưởng đã qua sàng lọc, chứng minh được tính khả thi thực tế. Một cơ hội chỉ xuất hiện khi có sự giao thoa giữa nhu cầu thực tế của thị trường và năng lực thực thi của nhóm khởi nghiệp.",
+      "loi_doc_en": "Let's be clear about two concepts: a business idea is raw creativity, while a business opportunity is an idea that's been screened and shown to be realistically feasible. An opportunity only exists where the market's real needs intersect with the team's ability to execute."
+    },
+    {
+      "slide": 3,
+      "loi_doc": "Bước đầu tiên là xác định và mô tả rõ ràng ý tưởng, sản phẩm hoặc giải pháp, cùng với đối tượng khách hàng. Ở đây chúng ta cần hiểu 'nỗi đau khách hàng' — những vấn đề thực tế khách hàng đang gặp — và xây dựng 'chân dung khách hàng' dựa trên nhân khẩu học như tuổi, giới tính, thu nhập, nghề nghiệp, cùng với hành vi và vị trí địa lý.",
+      "loi_doc_en": "The first step is clearly identifying and describing the idea, product or solution, along with the target customer. Here we need to understand the customer's 'pain points' — the real problems they face — and build a customer persona based on demographics such as age, gender, income and occupation, together with behaviour and location."
+    },
+    {
+      "slide": 4,
+      "loi_doc": "Tiếp theo là đánh giá tính khả thi trên ba mặt: kinh tế — dự án có tạo ra lợi nhuận và duy trì được dòng tiền không; kỹ thuật — có đủ công nghệ và nguồn lực để thực hiện không; và việc phân tích đối thủ cạnh tranh để tìm ra 'khoảng trống' hay thị trường ngách mà đối thủ lớn bỏ sót.",
+      "loi_doc_en": "Next, assess feasibility on three fronts: economic — can the project turn a profit and sustain cash flow; technical — is there enough technology and resources to carry it out; and competitor analysis, to find the market 'gap' or niche that bigger players have overlooked."
+    },
+    {
+      "slide": 5,
+      "loi_doc": "Cũng cần lưu ý 'rào cản gia nhập thị trường' — có thể là quy định pháp lý khắt khe, chi phí đầu tư lớn, hay sự trung thành của khách hàng với đối thủ cũ. Một lợi thế cạnh tranh bền vững là lợi thế khó bị sao chép và giúp doanh nghiệp giữ vị thế lâu dài — đó cũng chính là điểm bán hàng độc nhất, USP, của dự án.",
+      "loi_doc_en": "Also watch for 'barriers to entry' — strict regulations, large upfront costs, or customer loyalty to an existing competitor. A sustainable competitive advantage is one that's hard to copy and lets a business hold its position over time — that's exactly what a project's unique selling point, or USP, is."
+    },
+    {
+      "slide": 6,
+      "loi_doc": "Đánh giá cơ hội cũng phải gắn với đạo đức kinh doanh và phát triển bền vững: cung cấp thông tin trung thực, đối xử công bằng với các bên liên quan, và cân bằng giữa mục tiêu kinh tế với lợi ích cộng đồng, môi trường. Ví dụ, một dự án ở Vĩnh Long dùng gốm đỏ làm vật liệu trang trí hiện đại chính là đổi mới dựa trên tài nguyên và nét đặc thù địa phương.",
+      "loi_doc_en": "Assessing an opportunity must also tie back to business ethics and sustainability: giving honest information, treating stakeholders fairly, and balancing economic goals against community and environmental benefit. For example, a Vĩnh Long project using red pottery as a modern decorative material is innovation rooted in the resources and character of its own locality."
+    },
+    {
+      "slide": 7,
+      "loi_doc": "Khi một ý tưởng bị đánh giá là không khả thi về kinh tế, đừng cố làm tiếp để 'chứng minh mọi người sai' — hãy điều chỉnh mô hình kinh doanh hoặc tìm ý tưởng mới. Việc khảo sát thực tế ngay từ sớm giúp nhận ra khiếm khuyết của ý tưởng trước khi đầu tư lớn.",
+      "loi_doc_en": "When an idea is judged not economically feasible, don't keep pushing just to 'prove everyone wrong' — adjust the business model or find a new idea instead. Testing the idea against reality early on helps you spot its flaws before you commit serious investment."
+    },
+    {
+      "slide": 8,
+      "loi_doc": "Các bạn hãy làm 60 câu trắc nghiệm Chương hai trong EnQuiz để tự đánh giá nhé. Hẹn gặp lại ở video ôn tập Chương ba.",
+      "loi_doc_en": "Go ahead and try the 60 multiple-choice questions for Chapter Two in EnQuiz to check yourself. See you in the Chapter Three revision video."
+    }
+  ],
+  "ON TAP CHUONG 3 - HUY DONG VON VA CAC CHI SO TAI CHINH COT YEU": [
+    {
+      "slide": 1,
+      "loi_doc": "Chào các bạn, video ôn tập Chương ba: Huy động vốn và các chỉ số tài chính cốt yếu. Đây là chương trang bị cho các bạn kỹ thuật huy động vốn then chốt để thu hút nhà đầu tư, cùng các chỉ số tài chính mà nhà đầu tư quan tâm nhất: doanh thu, lợi nhuận, điểm hòa vốn và khả năng thu hồi vốn.",
+      "loi_doc_en": "Hello everyone, this is the Chapter Three revision video: Raising capital and key financial indicators. This chapter equips you with the fundraising techniques that attract investors, along with the financial indicators investors care about most: revenue, profit, the break-even point, and payback potential."
+    },
+    {
+      "slide": 2,
+      "loi_doc": "Nguồn vốn thường đi theo từng giai đoạn của startup. Giai đoạn thai nghén ban đầu, ít vốn, thường dựa vào vốn tự có, gia đình và bạn bè, hoặc hình thức 'bootstrapping' để giữ quyền kiểm soát dự án. Khi dự án đã có sản phẩm mẫu, các nhà đầu tư thiên thần — thường là cá nhân — có thể tham gia; khi đã tăng trưởng rõ ràng, mới đến quỹ đầu tư mạo hiểm, là các tổ chức chuyên nghiệp rót vốn lớn. Ngoài ra còn có gọi vốn cộng đồng — crowdfunding — huy động nhiều khoản nhỏ qua internet.",
+      "loi_doc_en": "Funding sources typically follow a start-up's stage. In the very early, low-capital stage, founders usually rely on their own savings plus family and friends, or 'bootstrapping' to keep control of the project. Once there's a working prototype, angel investors — usually individuals — may step in; once growth is clear, venture capital funds, professional organisations that invest larger amounts, come next. There's also crowdfunding — raising many small amounts over the internet."
+    },
+    {
+      "slide": 3,
+      "loi_doc": "Về chỉ số tài chính: định phí là chi phí cố định phải trả dù có bán được hàng hay không; biến phí thay đổi theo số lượng sản phẩm. Điểm hòa vốn là nơi doanh thu vừa đủ bù chi phí — ví dụ, định phí 10 triệu, giá bán 100 nghìn, biến phí 50 nghìn mỗi sản phẩm, thì điểm hòa vốn là 200 sản phẩm. Trên biểu đồ, đó chính là giao điểm giữa đường tổng doanh thu và đường tổng chi phí.",
+      "loi_doc_en": "On the financial indicators: fixed costs are what you must pay regardless of sales; variable costs change with the number of units. The break-even point is where revenue just covers costs — for example, with fixed costs of 10 million, a selling price of 100 thousand and a variable cost of 50 thousand per unit, break-even is 200 units. On a chart, that's simply where the total-revenue line crosses the total-cost line."
+    },
+    {
+      "slide": 4,
+      "loi_doc": "Hai chỉ số khác cần nhớ: 'tốc độ tiêu tiền' — burn rate — cho biết số tiền chi tiêu mỗi tháng, và 'thời gian tồn tại' — runway — bằng số tiền mặt hiện có chia cho tốc độ tiêu tiền đó, tức là còn bao lâu nữa thì hết vốn nếu không gọi được thêm. Lợi nhuận ròng là tổng doanh thu trừ đi toàn bộ chi phí và thuế.",
+      "loi_doc_en": "Two more indicators to remember: 'burn rate' tells you how much cash goes out each month, and 'runway' is current cash on hand divided by that burn rate — in other words, how long until the money runs out if no new funding comes in. Net profit is total revenue minus all costs and taxes."
+    },
+    {
+      "slide": 5,
+      "loi_doc": "Excel hay Google Sheets giúp các bạn mô phỏng và quản lý các kịch bản tài chính khác nhau — một kế hoạch tài chính tốt nên có ít nhất ba kịch bản: lạc quan, trung bình và xấu nhất. Google Sheets còn cho phép nhiều thành viên cùng chỉnh sửa một lúc, còn Canva giúp trực quan hóa dữ liệu tài chính để hồ sơ gọi vốn — pitch deck — trông chuyên nghiệp và dễ hiểu hơn.",
+      "loi_doc_en": "Excel or Google Sheets let you simulate and manage different financial scenarios — a good financial plan should have at least three: optimistic, average, and worst-case. Google Sheets also lets several team members edit together at once, and Canva helps visualise financial data so your pitch deck looks more professional and easier to follow."
+    },
+    {
+      "slide": 6,
+      "loi_doc": "Khi gặp nhà đầu tư, 'Pitching' là thuyết trình ngắn gọn, thuyết phục; trang tài chính trong hồ sơ gọi vốn nên tập trung vào dự báo doanh thu, nhu cầu vốn và lộ trình sinh lời — không phải những con số không có căn cứ. Đàm phán sau đó sẽ xoay quanh định giá doanh nghiệp và quyền lợi các bên.",
+      "loi_doc_en": "When meeting investors, 'pitching' means a short, persuasive presentation; the financial slide in your pitch deck should focus on revenue forecasts, funding needs and the path to profit — not unsupported numbers. Negotiation afterwards centres on the company's valuation and each side's rights."
+    },
+    {
+      "slide": 7,
+      "loi_doc": "Và đừng quên: minh bạch tài chính, báo cáo trung thực số liệu cho nhà đầu tư chính là đạo đức kinh doanh và trách nhiệm xã hội. Một dự án 'đốt tiền' — chi nhiều hơn thu trong giai đoạn đầu — không phải là thất bại, miễn là có kế hoạch dự phòng rõ ràng.",
+      "loi_doc_en": "And don't forget: financial transparency and honest reporting to investors is itself business ethics and social responsibility. A project that is 'burning money' — spending more than it earns in the early stage — isn't a failure, as long as it has a clear contingency plan."
+    },
+    {
+      "slide": 8,
+      "loi_doc": "Hoạt động quan trọng nhất để duy trì một startup là quản trị dòng tiền hiệu quả, minh bạch tài chính và liên tục đổi mới. Các bạn hãy làm 60 câu trắc nghiệm Chương ba để ôn lại nhé. Hẹn gặp lại ở Chương bốn.",
+      "loi_doc_en": "The single most important activity for keeping a start-up alive is managing cash flow effectively, staying financially transparent, and continuously innovating. Go ahead and try the 60 multiple-choice questions for Chapter Three. See you in Chapter Four."
+    }
+  ],
+  "ON TAP CHUONG 4 - LUA CHON MO HINH KINH DOANH": [
+    {
+      "slide": 1,
+      "loi_doc": "Chào các bạn, video ôn tập Chương bốn: Lựa chọn mô hình kinh doanh. Việc chọn đúng loại hình doanh nghiệp giúp giảm thiểu rủi ro pháp lý và đặt nền móng vững chắc để dự án phát triển bền vững.",
+      "loi_doc_en": "Hello everyone, this is the Chapter Four revision video: Choosing a business model. Picking the right legal form reduces legal risk and lays a solid foundation for the project to grow sustainably."
+    },
+    {
+      "slide": 2,
+      "loi_doc": "Theo Luật Doanh nghiệp, có bốn loại hình chính. Doanh nghiệp tư nhân: chủ sở hữu chịu trách nhiệm vô hạn — phải dùng toàn bộ tài sản cá nhân trả nợ nếu thua lỗ — và không có tư cách pháp nhân; mỗi cá nhân chỉ được lập một doanh nghiệp tư nhân duy nhất. Công ty TNHH một thành viên và hai thành viên trở lên, tối đa 50 thành viên: chủ sở hữu hoặc thành viên chỉ chịu trách nhiệm hữu hạn trong phạm vi vốn đã góp. Công ty Cổ phần: có cổ đông, được phát hành cổ phiếu huy động vốn đại chúng, và cơ quan quyết định cao nhất là Đại hội đồng cổ đông.",
+      "loi_doc_en": "Under the Enterprise Law, there are four main forms. A private enterprise: the owner bears unlimited liability — must use all personal assets to repay debts if the business loses money — and it has no legal-entity status; one individual may only set up one private enterprise. A single-member or multi-member limited liability company, up to 50 members: the owner or members are liable only up to the capital they contributed. A joint-stock company: it has shareholders, can issue shares to raise public capital, and its highest decision-making body is the General Meeting of Shareholders."
+    },
+    {
+      "slide": 3,
+      "loi_doc": "'Trách nhiệm hữu hạn' nghĩa là thành viên chỉ chịu trách nhiệm về nợ trong phạm vi vốn đã cam kết góp — nó bảo vệ tài sản cá nhân tách biệt khỏi rủi ro của doanh nghiệp, khác hẳn với 'trách nhiệm vô hạn' của doanh nghiệp tư nhân.",
+      "loi_doc_en": "'Limited liability' means a member is only responsible for debts up to the capital they committed — it keeps personal assets separate from the business's risk, quite unlike the 'unlimited liability' of a private enterprise."
+    },
+    {
+      "slide": 4,
+      "loi_doc": "Với phụ nữ và người dân tộc thiểu số khởi nghiệp quy mô nhỏ, mô hình hộ kinh doanh hoặc tổ hợp tác thường được ưu tiên: thủ tục thành lập và giải thể đơn giản, chế độ kế toán không cần kế toán trưởng chuyên trách. Hợp tác xã kiểu mới thì có tư cách pháp nhân và quản lý dân chủ — mỗi thành viên một phiếu biểu quyết ngang nhau, bất kể vốn góp — rất phù hợp để liên kết sản xuất nông nghiệp ở Vĩnh Long.",
+      "loi_doc_en": "For women and ethnic-minority entrepreneurs starting small, a household business or a cooperative group is usually the priority: setting up and winding down is simple, and the accounting rules don't require a dedicated chief accountant. A modern-style cooperative, by contrast, does have legal-entity status and is run democratically — one member, one equal vote regardless of capital contributed — which works well for linking agricultural production in Vĩnh Long."
+    },
+    {
+      "slide": 5,
+      "loi_doc": "Nhượng quyền kinh doanh — franchising — cho phép bạn sử dụng thương hiệu và quy trình vận hành chuẩn có sẵn, nên thường có tỷ lệ thành công cao hơn tự khởi nghiệp độc lập. Nhưng đổi lại, bạn mất tính độc lập, phải trả phí nhượng quyền định kỳ — thường tính theo phần trăm doanh thu — và chi phí đầu tư ban đầu có thể vượt quá khả năng tài chính của một startup ít vốn.",
+      "loi_doc_en": "Franchising lets you use an existing brand and standard operating procedures, so it usually has a higher success rate than starting out entirely on your own. In exchange, though, you lose independence, you pay a recurring royalty fee — usually a percentage of revenue — and the upfront investment can exceed what a low-capital start-up can afford."
+    },
+    {
+      "slide": 6,
+      "loi_doc": "Thời đại số còn mở ra những mô hình mới: thương mại điện tử giúp tiếp cận khách hàng không giới hạn địa lý với chi phí mặt bằng thấp; 'trực tiếp đến người tiêu dùng' — D2C — loại bỏ khâu trung gian để tăng lợi nhuận và hiểu khách hàng hơn; và kinh tế chia sẻ, như mô hình Grab hay Airbnb, kết nối người dùng với người cung cấp dịch vụ.",
+      "loi_doc_en": "The digital era also opens up new models: e-commerce lets you reach customers without geographic limits at low overhead; 'direct to consumer', or D2C, cuts out the middleman to boost margins and understand customers better; and the sharing economy — like Grab or Airbnb — connects users directly with service providers."
+    },
+    {
+      "slide": 7,
+      "loi_doc": "Khi đăng ký kinh doanh, nên thực hiện trực tuyến qua Cổng thông tin quốc gia về đăng ký doanh nghiệp để tiết kiệm thời gian, và nên đăng ký bảo hộ nhãn hiệu càng sớm càng tốt — ngay khi dự án bắt đầu — để tránh bị xâm phạm bản quyền về sau.",
+      "loi_doc_en": "When registering a business, it's best to do it online through the National Business Registration Portal to save time, and to register trademark protection as early as possible — right when the project starts — to avoid having it infringed later."
+    },
+    {
+      "slide": 8,
+      "loi_doc": "Việc lựa chọn mô hình kinh doanh đúng giúp thiết lập nền móng pháp lý và tổ chức vững chắc cho dự án. Các bạn hãy làm 60 câu trắc nghiệm Chương bốn trong EnQuiz nhé. Hẹn gặp lại ở Chương năm — Marketing cho doanh nghiệp mới.",
+      "loi_doc_en": "Choosing the right business model sets a solid legal and organisational foundation for a project. Go ahead and try the 60 multiple-choice questions for Chapter Four in EnQuiz. See you in Chapter Five — Marketing for a new business."
+    }
+  ],
+  "ON TAP CHUONG 5 - MARKETING CHO DOANH NGHIEP MOI": [
+    {
+      "slide": 1,
+      "loi_doc": "Chào các bạn, video ôn tập Chương năm — cũng là chương cuối: Marketing cho doanh nghiệp mới. Bước đầu tiên và quan trọng nhất trong Marketing không phải là thiết kế logo hay quyết định giá bán, mà là chọn thị trường mục tiêu và xác định vị thế của doanh nghiệp.",
+      "loi_doc_en": "Hello everyone, this is the revision video for Chapter Five — also the final chapter: Marketing for a new business. The first and most important step in marketing isn't designing a logo or setting a price — it's choosing your target market and defining your business's position."
+    },
+    {
+      "slide": 2,
+      "loi_doc": "Đó chính là ba bước STP. Segmentation — phân khúc thị trường theo địa lý, nhân khẩu học hoặc hành vi. Targeting — chọn ra nhóm khách hàng cụ thể mình muốn phục vụ: ví dụ, một startup bán khoai lang Bình Tân nhắm đến 'nhân viên văn phòng tại TP.HCM yêu thích thực phẩm sạch' — đó là bước Targeting. Và Positioning — định vị, tức là tạo ra hình ảnh và giá trị khác biệt trong tâm trí khách hàng mục tiêu.",
+      "loi_doc_en": "That's the STP framework. Segmentation — dividing the market by geography, demographics or behaviour. Targeting — picking the specific group you want to serve: for example, a start-up selling Bình Tân sweet potatoes aiming at 'office workers in Ho Chi Minh City who like clean food' is doing Targeting. And Positioning — creating a distinct image and value in that target customer's mind."
+    },
+    {
+      "slide": 3,
+      "loi_doc": "Sau STP là 4P. Product — sản phẩm, là giá trị và trải nghiệm mang lại cho khách hàng, không chỉ là tính năng kỹ thuật. Price — giá, có thể là chiến lược giá xâm nhập để chiếm thị phần nhanh với giá thấp, hoặc giá hớt váng cho sản phẩm độc đáo, mới lạ. Place — phân phối, là kênh đưa sản phẩm đến tay người tiêu dùng, trực tiếp hoặc qua trung gian. Và Promotion — chiêu thị: ví dụ, dùng Facebook hay TikTok để quảng bá sản phẩm chính là đang thực hiện Promotion.",
+      "loi_doc_en": "After STP comes the 4Ps. Product — the value and experience delivered to the customer, not just technical features. Price — which could be a penetration strategy, pricing low to grab market share fast, or a skimming strategy for a unique, novel product. Place — the channel that gets the product to the customer, direct or through intermediaries. And Promotion: for example, using Facebook or TikTok to promote a product is exactly Promotion in action."
+    },
+    {
+      "slide": 4,
+      "loi_doc": "Xây dựng thương hiệu cần một bộ nhận diện đồng bộ: logo, slogan ngắn gọn dễ nhớ, màu sắc chủ đạo, font chữ và các ấn phẩm truyền thông nhất quán. Với sản phẩm của người dân tộc thiểu số, 'câu chuyện thương hiệu' chân thực gắn với bản sắc văn hóa chính là vũ khí tạo khác biệt mà sản phẩm công nghiệp không có được.",
+      "loi_doc_en": "Building a brand needs a consistent identity: a logo, a short memorable slogan, signature colours, a typeface, and consistent communication materials. For products made by ethnic-minority entrepreneurs, an authentic 'brand story' tied to cultural identity is exactly the differentiator that mass-produced goods can't match."
+    },
+    {
+      "slide": 5,
+      "loi_doc": "Khi nguồn lực hạn hẹp, 'Marketing 0 đồng' vẫn làm được: ưu tiên truyền miệng và mạng xã hội, tận dụng nội dung sáng tạo để được chia sẻ tự nhiên. Công cụ số như Canva giúp thiết kế logo, bộ nhận diện; Google Trends và Facebook Insights hay Google Analytics giúp nghiên cứu xu hướng tìm kiếm và hiểu hành vi khách hàng — tất cả đều có thể làm mà không cần nhiều chi phí.",
+      "loi_doc_en": "Even with tight resources, 'zero-cost marketing' still works: lean on word of mouth and social media, and use creative content that spreads on its own. Digital tools like Canva help design a logo and brand identity; Google Trends, Facebook Insights or Google Analytics help you study search trends and understand customer behaviour — all of this can be done without much expense."
+    },
+    {
+      "slide": 6,
+      "loi_doc": "Marketing cũng phải đi cùng đạo đức kinh doanh: quảng cáo trung thực về tính năng sản phẩm, tôn trọng người tiêu dùng. Một startup 'xanh' định vị qua quy trình sản xuất thân thiện môi trường và bao bì tái chế — đó vừa là trách nhiệm cộng đồng, vừa là xu hướng tiêu dùng bền vững đang được khách hàng đánh giá cao.",
+      "loi_doc_en": "Marketing must also go hand in hand with business ethics: advertising a product's features honestly, and respecting the consumer. A 'green' start-up that positions itself through environmentally friendly production and recyclable packaging is both a community responsibility and a sustainable-consumption trend that customers increasingly value."
+    },
+    {
+      "slide": 7,
+      "loi_doc": "Đừng quên xây dựng mối quan hệ với cộng đồng khách hàng để tạo ra những người ủng hộ trung thành — 'brand loyalty' giúp duy trì khách hàng ổn định và giảm chi phí tìm khách mới. Và luôn lắng nghe phản hồi khách hàng: đó là dữ liệu quý để điều chỉnh sản phẩm và chiến lược tiếp cận.",
+      "loi_doc_en": "Don't forget to build a relationship with your customer community to create loyal advocates — 'brand loyalty' keeps your customer base stable and lowers the cost of finding new ones. And always listen to customer feedback: it's valuable data for adjusting your product and your approach."
+    },
+    {
+      "slide": 8,
+      "loi_doc": "Marketing cho doanh nghiệp mới cần sự linh hoạt, sáng tạo và tối ưu hóa nguồn lực trên nền tảng số. Các bạn hãy làm 60 câu trắc nghiệm Chương năm để tổng ôn lại toàn bộ năm chương nhé. Chúc các bạn ôn tập hiệu quả và chúc dự án khởi nghiệp của các bạn thật nhiều may mắn!",
+      "loi_doc_en": "Marketing for a new business needs flexibility, creativity, and making the most of your resources on digital platforms. Go ahead and try the 60 multiple-choice questions for Chapter Five to review all five chapters together. Good luck with your revision, and every success with your own start-up project!"
+    }
+  ]
+}
