@@ -15,8 +15,7 @@ network connection.
 
 - Do Thuy Huong ([ORCID 0000-0002-7711-2487](https://orcid.org/0000-0002-7711-2487)),
   lecturer at the Faculty of Business and Law, Vinh Long University of
-  Technology Education, and PhD Candidate, School of Economics, Can Tho
-  University.
+  Technology, and PhD Candidate, School of Economics, Can Tho University.
 - Phan Anh Tu ([ORCID 0000-0003-0667-3137](https://orcid.org/0000-0003-0667-3137)),
   School of Economics, Can Tho University.
 
@@ -352,8 +351,9 @@ interface text, the character artwork, the recorded narration, the introduction
 video and both songs are likewise her own work. Phan Anh Tu contributed as
 academic supervisor and co-author.
 
-**Institutional position.** The first author is a lecturer at Vinh Long University
-of Technology Education and a PhD candidate at Can Tho University; the second author
+**Institutional position.** The first author is a lecturer at the Faculty of
+Business and Law, Vinh Long University of Technology, and a PhD candidate at
+Can Tho University; the second author
 is at the School of Economics, Can Tho University. The work was created outside any
 assigned task, research project or funded programme of either institution and
 without using their funds or facilities. Because a Can Tho University staff member
