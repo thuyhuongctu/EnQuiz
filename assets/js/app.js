@@ -384,6 +384,7 @@
     renderHud();
 
     renderChapterList();
+    renderLectures();
     renderSpecialSets();
     renderHistory();
     renderBadges();
@@ -512,6 +513,131 @@
     if (img) img.src = src;
     var modal = $('#modalCaseInfographic');
     if (modal) modal.classList.remove('hidden');
+  }
+
+  /* ---------------- Bài giảng theo chương (slide lật ảnh + video) ----------------
+     Kết cấu theo ComDraft (cùng tác giả): data/lectures.js khai báo tiêu đề/tóm
+     tắt từng chương qua registerLectures(), rồi khi đã có ảnh slide thì khai
+     thêm registerSlides()/registerSlidesEn() — xem assets/js/lectures.js.
+     Chương chưa có slide/video (slide/video không nằm trong Lectures.byId())
+     chỉ hiện tiêu đề và tóm tắt, không có gì khác để lộ ra là thiếu. */
+  var lectureViewerCleanup = null; // gọi trước khi đóng khung xem, nếu đang mở video
+
+  function closeLectureViewer() {
+    var modal = $('#modalLectureViewer');
+    if (!modal) return;
+    if (lectureViewerCleanup) { lectureViewerCleanup(); lectureViewerCleanup = null; }
+    modal.classList.add('hidden');
+  }
+
+  function renderLectureSlidePage(state) {
+    var img = $('#lectureViewerImg'), counter = $('#lectureViewerCount');
+    var prev = $('#lectureViewerPrev'), next = $('#lectureViewerNext'), range = $('#lectureViewerRange');
+    if (!img) return;
+    img.src = 'assets/slides/' + state.bo + '/' + ('00' + state.page).slice(-3) + '.jpg';
+    counter.textContent = t('lecture.viewer.page', { page: state.page, count: state.count });
+    range.min = 1; range.max = state.count; range.value = state.page;
+    prev.disabled = state.page === 1;
+    next.disabled = state.page === state.count;
+    // nạp sẵn trang kế để lật không phải chờ
+    if (state.page < state.count) {
+      new Image().src = 'assets/slides/' + state.bo + '/' + ('00' + (state.page + 1)).slice(-3) + '.jpg';
+    }
+  }
+
+  function openLectureSlideViewer(title, bo) {
+    var slides = Lectures.slideSet(bo, I18n.lang);
+    if (!slides.count) return; // chưa có ảnh slide — không có gì để mở
+    var modal = $('#modalLectureViewer');
+    $('#lectureViewerTitle').textContent = title;
+    lectureViewerCleanup = null;
+    modal.querySelector('.modal__body').innerHTML =
+      '<div class="lecture-viewer lecture-viewer--slide">' +
+        '<img id="lectureViewerImg" class="lecture-viewer__img" alt="" draggable="false">' +
+        '<div class="lecture-viewer__nav">' +
+          '<button class="btn btn--ghost btn--sm" id="lectureViewerPrev" type="button" aria-label="' + esc(t('lecture.viewer.prev')) + '">‹</button>' +
+          '<span id="lectureViewerCount" class="lecture-viewer__count"></span>' +
+          '<button class="btn btn--ghost btn--sm" id="lectureViewerNext" type="button" aria-label="' + esc(t('lecture.viewer.next')) + '">›</button>' +
+        '</div>' +
+        '<input id="lectureViewerRange" class="lecture-viewer__range" type="range" aria-label="' + esc(t('lecture.viewer.pageAria')) + '">' +
+      '</div>';
+    var state = { bo: slides.bo, count: slides.count, page: 1 };
+    function goTo(n) { state.page = Math.min(state.count, Math.max(1, n)); renderLectureSlidePage(state); }
+    $('#lectureViewerPrev').addEventListener('click', function () { goTo(state.page - 1); });
+    $('#lectureViewerNext').addEventListener('click', function () { goTo(state.page + 1); });
+    $('#lectureViewerImg').addEventListener('click', function () { goTo(state.page + 1); });
+    $('#lectureViewerRange').addEventListener('input', function (e) { goTo(+e.target.value); });
+    renderLectureSlidePage(state);
+    modal.classList.remove('hidden');
+  }
+
+  /* Video phát ngay tại chỗ, phụ đề song ngữ cạnh tệp (<tep>.vi.vtt /
+     <tep>.en.vtt) — giống xem_video() của ComDraft. Giọng đọc trong video
+     luôn là tiếng Việt; bản .en.vtt chỉ là phụ đề dịch. */
+  function openLectureVideoViewer(title, src) {
+    var modal = $('#modalLectureViewer');
+    $('#lectureViewerTitle').textContent = title;
+    modal.querySelector('.modal__body').innerHTML = '<div class="lecture-viewer lecture-viewer--video"></div>';
+    var box = modal.querySelector('.lecture-viewer--video');
+    var v = document.createElement('video');
+    v.controls = true;
+    v.preload = 'metadata';
+    v.setAttribute('playsinline', '');
+    v.setAttribute('controlsList', 'nodownload noremoteplayback');
+    v.disablePictureInPicture = true;
+    v.src = src;
+    var subVi = document.createElement('track');
+    subVi.kind = 'subtitles'; subVi.srclang = 'vi'; subVi.label = 'Tiếng Việt';
+    subVi.src = src.replace(/\.mp4$/, '.vi.vtt');
+    var subEn = document.createElement('track');
+    subEn.kind = 'subtitles'; subEn.srclang = 'en'; subEn.label = 'English';
+    subEn.src = src.replace(/\.mp4$/, '.en.vtt');
+    v.appendChild(subVi); v.appendChild(subEn);
+    box.appendChild(v);
+    v.addEventListener('loadedmetadata', function () {
+      (I18n.lang === 'en' ? subEn : subVi).track.mode = 'showing';
+      (I18n.lang === 'en' ? subVi : subEn).track.mode = 'hidden';
+    });
+    v.addEventListener('error', function () {
+      box.innerHTML = '<p class="lecture-viewer__error">' + esc(t('lecture.viewer.videoError')) + '</p>';
+    });
+    lectureViewerCleanup = function () { v.pause(); v.removeAttribute('src'); v.load(); };
+    modal.classList.remove('hidden');
+    v.play().catch(function () {}); // trình duyệt chặn tự phát thì thôi
+  }
+
+  function renderLectures() {
+    var wrap = $('#lectureList');
+    var panel = $('#panelLectures');
+    if (!wrap || !panel) return;
+    var list = Lectures.all();
+    if (!list.length) { panel.classList.add('hidden'); return; }
+    panel.classList.remove('hidden');
+    var en = I18n.lang === 'en';
+    wrap.innerHTML = list.map(function (lec) {
+      var title = en ? lec.en : lec.vi;
+      var summary = en ? lec.tomTatEn : lec.tomTatVi;
+      var slides = lec.slide ? Lectures.slideSet(lec.slide.bo, I18n.lang) : null;
+      var actions = '';
+      if (slides && slides.count) {
+        actions += '<button class="btn btn--ghost btn--sm" data-lecture-slide="' + esc(lec.id) + '" type="button">' +
+          '<svg class="ico" aria-hidden="true"><use href="#i-book"/></svg> ' + esc(t('lecture.viewSlide')) + '</button>';
+      }
+      if (lec.video) {
+        actions += '<button class="btn btn--ghost btn--sm" data-lecture-video="' + esc(lec.id) + '" type="button">' +
+          '<svg class="ico" aria-hidden="true"><use href="#i-exam"/></svg> ' + esc(t('lecture.viewVideo')) + '</button>';
+      }
+      actions += '<button class="btn btn--sm" data-lecture-practice="' + esc(lec.id) + '" type="button">' +
+        esc(t('lecture.practice')) + '</button>';
+      return '<div class="lecture-item">' +
+        '<div class="lecture-item__head">' +
+          '<span class="lecture-item__no">' + lec.so + '</span>' +
+          '<span class="lecture-item__title">' + esc(title) + '</span>' +
+        '</div>' +
+        '<p class="lecture-item__summary muted">' + esc(summary) + '</p>' +
+        '<div class="lecture-item__actions">' + actions + '</div>' +
+      '</div>';
+    }).join('');
   }
 
   function renderSpecialSets() {
@@ -1599,10 +1725,31 @@
       }
 
       if (target.closest('[data-close]')) {
-        target.closest('.modal').classList.add('hidden');
+        var closing = target.closest('.modal');
+        if (closing && closing.id === 'modalLectureViewer') closeLectureViewer();
+        else closing.classList.add('hidden');
         stopAdvisorVoice();
         return;
       }
+
+      var lecSlide = target.closest('[data-lecture-slide]');
+      if (lecSlide) {
+        var lsId = lecSlide.getAttribute('data-lecture-slide');
+        var ls = Lectures.byId(lsId);
+        if (ls && ls.slide) openLectureSlideViewer(I18n.lang === 'en' ? ls.en : ls.vi, ls.slide.bo);
+        return;
+      }
+
+      var lecVideo = target.closest('[data-lecture-video]');
+      if (lecVideo) {
+        var lvId = lecVideo.getAttribute('data-lecture-video');
+        var lv = Lectures.byId(lvId);
+        if (lv && lv.video) openLectureVideoViewer(I18n.lang === 'en' ? lv.en : lv.vi, lv.video.tep);
+        return;
+      }
+
+      var lecPractice = target.closest('[data-lecture-practice]');
+      if (lecPractice) { openSetup('practice', lecPractice.getAttribute('data-lecture-practice')); return; }
       if (target.classList.contains('modal')) { target.classList.add('hidden'); stopAdvisorVoice(); }
     });
 
