@@ -14,8 +14,9 @@ network connection.
 **Authors**
 
 - Do Thuy Huong ([ORCID 0000-0002-7711-2487](https://orcid.org/0000-0002-7711-2487)),
-  lecturer at Vinh Long University of Technology Education and PhD Candidate,
-  School of Economics, Can Tho University.
+  lecturer at the Faculty of Business and Law, Vinh Long University of
+  Technology Education, and PhD Candidate, School of Economics, Can Tho
+  University.
 - Phan Anh Tu ([ORCID 0000-0003-0667-3137](https://orcid.org/0000-0003-0667-3137)),
   School of Economics, Can Tho University.
 
