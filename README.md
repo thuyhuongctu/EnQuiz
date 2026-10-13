@@ -352,8 +352,8 @@ video and both songs are likewise her own work. Phan Anh Tu contributed as
 academic supervisor and co-author.
 
 **Institutional position.** The first author is a lecturer at the Faculty of
-Business and Law, Vinh Long University of Technology, and a PhD candidate at
-Can Tho University; the second author
+Business and Law, Vinh Long University of Technology and Engineering, and a
+PhD candidate at Can Tho University; the second author
 is at the School of Economics, Can Tho University. The work was created outside any
 assigned task, research project or funded programme of either institution and
 without using their funds or facilities. Because a Can Tho University staff member
