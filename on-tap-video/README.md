@@ -10,7 +10,8 @@ sửa lời đọc thì sửa ở đó rồi dựng lại, đừng sửa tay tro
 
 | Thư mục | Nội dung |
 |---|---|
-| `kich-ban/` | Kịch bản thuyết minh `.docx`, chia theo 5 video (một video/chương), có tiêu đề từng slide và thời lượng ước tính |
+| `kich-ban/` | Kịch bản thuyết minh `.docx` + `.pdf` (cùng nội dung), chia theo 5 video (một video/chương), có tiêu đề từng slide và thời lượng ước tính |
+| `slides/` | `ON_TAP_5_CHUONG_EC1606.pdf` — 41 ảnh slide thật ghép thành một PDF, để làm bản gốc dựng lại ảnh minh họa dạng 3D đất sét (không phải tệp dùng cho trình xem trong ứng dụng — ảnh gốc ở `assets/slides/` giữ nguyên) |
 | `videos/` | Năm video **câm** (chỉ ảnh slide thật trong `assets/slides/ch01..ch05/`, chưa có giọng đọc) |
 
 ## Trạng thái: chưa có giọng thật
@@ -34,6 +35,16 @@ bài giảng trong ứng dụng (`lectureViewerCleanup`/`openLectureVideoViewer`
 `.vi.vtt`/`.en.vtt` — năm video câm ở đây chỉ là bản nháp để chuẩn bị, không
 tự động hiện trong ứng dụng.
 
+## Bản PDF slide gốc — để dựng lại minh họa 3D đất sét
+
+`slides/ON_TAP_5_CHUONG_EC1606.pdf` ghép nguyên 41 ảnh slide hiện có (chỉ chữ,
+chưa có ảnh minh họa riêng) thành một tệp, theo đúng thứ tự 5 chương. Đây là
+bản tham khảo nội dung để tác giả dựng lại bộ slide với ảnh minh họa phong
+cách 3D đất sét (cùng tông với giao diện "đất sét" của ComDraft) — việc dựng
+ảnh minh họa mới làm ở ngoài (Canva hoặc công cụ khác), tệp PDF này không tự
+cập nhật theo. Khi có bộ ảnh mới, thay trực tiếp vào `assets/slides/ch01..05/`
+(giữ đúng số trang `NNN.jpg`) rồi dựng lại video/kịch bản ở đây cho khớp.
+
 ## Ánh xạ điểm đọc → ảnh slide thật
 
 `docs/kich_ban_on_tap.json` được viết trước khi có bộ ảnh slide thật
@@ -50,17 +61,20 @@ của tệp đó. Khi dựng video ở đây, đã soát bằng mắt từng ả
 ## Dựng lại
 
 ```
-pip install python-docx   # nếu chưa có
+pip install python-docx reportlab   # nếu chưa có
 python3 tools/dung_video_on_tap.py
 ```
 
 Trình sinh là `tools/dung_video_on_tap.py` — đọc `docs/kich_ban_on_tap.json`
-và ảnh trong `assets/slides/ch0N/`, ghép bằng `ffmpeg` (concat demuxer, giữ
-mỗi ảnh theo thời lượng ước tính) và sinh `kich-ban/*.docx` bằng
-`python-docx`. Sửa lời đọc trong `docs/kich_ban_on_tap.json` thì dựng lại cả
-`kich-ban/` lẫn `videos/` cho khớp — đừng sửa tay `.docx` hay video kết quả.
-Cần `ffmpeg` có sẵn trong môi trường (không cần LibreOffice/soffice — không
-đụng tới đường dựng slide pptx→PDF vốn đang hỏng trong môi trường làm việc).
+và ảnh trong `assets/slides/ch0N/`, ghép video bằng `ffmpeg` (concat demuxer,
+giữ mỗi ảnh theo thời lượng ước tính), sinh `kich-ban/*.docx` bằng
+`python-docx`, `kich-ban/*.pdf` bằng `reportlab` (dùng phông DejaVu Sans có
+sẵn trong hệ thống, đọc đủ dấu tiếng Việt) và `slides/*.pdf` bằng `Pillow`
+(ghép ảnh, không xuất chữ). Sửa lời đọc trong `docs/kich_ban_on_tap.json` thì
+dựng lại toàn bộ `kich-ban/`, `slides/` và `videos/` cho khớp — đừng sửa tay
+tệp kết quả. Không cần LibreOffice/soffice — bản `.pdf` của kịch bản dựng
+thẳng bằng `reportlab`, không đụng tới đường pptx→PDF vốn đang hỏng trong môi
+trường làm việc (xem CLAUDE.md-style ghi chú ở ComDraft).
 
 ## Tác giả
 
