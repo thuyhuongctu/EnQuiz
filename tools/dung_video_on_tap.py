@@ -243,8 +243,8 @@ def dung_pdf_kich_ban(cac_dong_tong_hop, noi_dung_chuong):
     viet('• Nghỉ ngắn khoảng nửa giây sau mỗi ý; nghỉ 1 giây trước khi chuyển slide.')
     viet('• Thời lượng ước tính ở mỗi slide tính theo tốc độ %d từ/phút — con số này ĐO '
          'THẬT từ bản thu của chính tác giả ở ec6035tx-chuong-5 (ComDraft), KHÔNG PHẢI đo '
-         'trên giọng đọc thật của bộ kịch bản này (EnQuiz chưa có bản thu thật). Dùng để '
-         'tham khảo khi quay, cần đối chiếu lại tốc độ đọc thật sau khi có bản thu đầu tiên.'
+         'trên giọng đọc thật của bộ kịch bản này (bộ kịch bản này chưa có bản thu thật). '
+         'Dùng để tham khảo khi quay, cần đối chiếu lại tốc độ đọc thật sau khi có bản thu đầu tiên.'
          % TOC_DO_DOC)
     viet('• Mỗi video dài 12-17 phút, đạt chuẩn thời lượng video tự sản xuất theo Phụ lục '
          'Mẫu HLS-VLU-08 mục 4, Quy định đào tạo trực tuyến và xây dựng học liệu số '
@@ -253,7 +253,7 @@ def dung_pdf_kich_ban(cac_dong_tong_hop, noi_dung_chuong):
          'sẵn trong videos/ — dùng để tập đọc theo nhịp hoặc để ghi giọng chồng lên (voice-over).')
     viet('• Mỗi video từ Video 2 trở đi mở bằng một câu nhắc lại ý chính chương trước, rồi mới '
          'vào nội dung chương mới; mỗi video khép bằng một đoạn hệ thống hóa 5 câu hỏi tự kiểm '
-         'tra và lời nhắc làm 60 câu trắc nghiệm của chương đó trong EnQuiz.', cach_sau=10)
+         'tra và lời nhắc ôn lại bằng ngân hàng 60 câu hỏi trắc nghiệm của chương đó.', cach_sau=10)
 
     viet('PHÂN CHIA VIDEO', dam=True, co_chu=13, cach_sau=2)
     for so, ten_chuong, so_slide, tong_thoi_luong, _ in cac_dong_tong_hop:
@@ -307,7 +307,7 @@ def main():
     them_doan(doc_word,
               '• Thời lượng ước tính ở mỗi slide tính theo tốc độ %d từ/phút — con số này ĐO '
               'THẬT từ bản thu của chính tác giả ở ec6035tx-chuong-5 (ComDraft), KHÔNG PHẢI đo '
-              'trên giọng đọc thật của bộ kịch bản này (EnQuiz chưa có bản thu thật). Dùng để '
+              'trên giọng đọc thật của bộ kịch bản này (bộ kịch bản này chưa có bản thu thật). Dùng để '
               'tham khảo khi quay, cần đối chiếu lại tốc độ đọc thật sau khi có bản thu đầu tiên.'
               % TOC_DO_DOC)
     them_doan(doc_word, '• Mỗi video dài 12-17 phút, đạt chuẩn thời lượng video tự sản xuất theo '
@@ -318,8 +318,8 @@ def main():
                          'chồng lên (voice-over).')
     them_doan(doc_word, '• Mỗi video từ Video 2 trở đi mở bằng một câu nhắc lại ý chính chương '
                          'trước, rồi mới vào nội dung chương mới; mỗi video khép bằng một đoạn hệ '
-                         'thống hóa 5 câu hỏi tự kiểm tra và lời nhắc làm 60 câu trắc nghiệm của '
-                         'chương đó trong EnQuiz.')
+                         'thống hóa 5 câu hỏi tự kiểm tra và lời nhắc ôn lại bằng ngân hàng 60 câu '
+                         'hỏi trắc nghiệm của chương đó.')
 
     them_doan(doc_word, 'PHÂN CHIA VIDEO', dam=True, co_chu=13, cach_truoc=12)
     them_doan(doc_word, '')
