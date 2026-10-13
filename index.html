@@ -309,6 +309,16 @@
       </div>
     </div>
 
+    <div class="panel hidden" id="panelLectures">
+      <div class="panel__head">
+        <div>
+          <p class="eyebrow" data-i18n="lecture.eyebrow">Bài giảng</p>
+          <h2 data-i18n="lecture.heading">Bài giảng theo chương</h2>
+        </div>
+      </div>
+      <div class="lecture-list" id="lectureList"></div>
+    </div>
+
     <div class="panel hidden panel--advisor" id="panelSpecial">
       <div class="panel__head">
         <div>
@@ -866,6 +876,20 @@
   </div>
 </div>
 
+<!-- ============ MODAL: XEM SLIDE/VIDEO BÀI GIẢNG ============ -->
+<div class="modal hidden" id="modalLectureViewer">
+  <div class="modal__box modal__box--wide">
+    <div class="modal__head">
+      <h3 id="lectureViewerTitle"></h3>
+      <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
+    </div>
+    <div class="modal__body"></div>
+    <div class="modal__foot">
+      <small class="muted" data-i18n="lecture.viewer.protectNote">Đã tắt chuột phải trong khung xem — trình duyệt không có cách nào chặn chụp màn hình thật, đây chỉ là lời nhắc.</small>
+    </div>
+  </div>
+</div>
+
 <!-- ============ MODAL: TÓM TẮT CASE (INFOGRAPHIC) ============ -->
 <div class="modal hidden" id="modalCaseInfographic">
   <div class="modal__box modal__box--wide">
@@ -885,7 +909,9 @@
 <script src="assets/js/storage.js"></script>
 <script src="assets/js/bank.js"></script>
 <script src="assets/js/parser.js"></script>
+<script src="assets/js/lectures.js"></script>
 <script src="data/manifest.js"></script>
+<script src="data/lectures.js"></script>
 <script src="assets/js/tour.js"></script>
 <script src="assets/js/app.js"></script>
 
