@@ -402,7 +402,7 @@ code {
 
 /* Thẻ kính mờ — nền của hầu hết khối nội dung */
 .glass, .panel, .mode-card, .question-card, .result-hero,
-.kpi, .chapter-item, .history-item, .review-item, .preview-item {
+.kpi, .chapter-item, .history-item, .review-item, .preview-item, .lecture-item {
   background: var(--glass);
   -webkit-backdrop-filter: blur(var(--blur));
   backdrop-filter: blur(var(--blur));
@@ -1569,6 +1569,32 @@ select,
 .history-item__score.pass { color: var(--success); }
 .history-item__score.fail { color: var(--danger); }
 
+/* ---------------- Bài giảng theo chương ---------------- */
+.lecture-list { display: flex; flex-direction: column; gap: .6rem; }
+.lecture-item { padding: .85rem .9rem; border-radius: var(--radius-sm); }
+.lecture-item__head { display: flex; align-items: center; gap: .6rem; margin-bottom: .3rem; }
+.lecture-item__no {
+  flex: 0 0 28px; height: 28px; border-radius: 9px;
+  background: var(--holo); color: #0A1130;
+  display: grid; place-items: center; font-weight: 800; font-size: .82rem;
+}
+.lecture-item__title { font-weight: 600; font-size: .93rem; }
+.lecture-item__summary { margin: 0 0 .6rem; font-size: .85rem; line-height: 1.45; }
+.lecture-item__actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+/* Khung xem slide/video — nằm trong #modalLectureViewer, .modal__box--wide */
+.lecture-viewer { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+.lecture-viewer__img {
+  width: 100%; max-height: 60vh; object-fit: contain;
+  border-radius: var(--radius-sm); background: var(--bg-soft); cursor: pointer;
+}
+.lecture-viewer__nav { display: flex; align-items: center; gap: .75rem; }
+.lecture-viewer__count { font-size: .85rem; color: var(--muted); min-width: 7ch; text-align: center; }
+.lecture-viewer__range { width: 100%; }
+.lecture-viewer--video { width: 100%; }
+.lecture-viewer--video video { width: 100%; max-height: 70vh; border-radius: var(--radius-sm); background: #000; }
+.lecture-viewer__error { text-align: center; padding: 2rem 1rem; color: var(--muted); }
+
 /* ---------------- Form fields ---------------- */
 .field { margin-bottom: 1.1rem; }
 .field > label {
@@ -2546,7 +2572,7 @@ html[data-theme="dark"] .footer__lockup { filter: brightness(1.18) saturate(1.05
 /* Máy yếu / người dùng tắt hiệu ứng: bỏ kính mờ cho đỡ giật */
 @media (prefers-reduced-transparency: reduce) {
   .glass, .panel, .mode-card, .question-card, .result-hero,
-  .kpi, .chapter-item, .history-item, .review-item, .preview-item,
+  .kpi, .chapter-item, .history-item, .review-item, .preview-item, .lecture-item,
   .topbar, .tour-panel {
     background: var(--surface);
     -webkit-backdrop-filter: none;
