@@ -82,7 +82,7 @@ gradient xanh–hồng nhạt, badge kicker, số chương/tiêu đề bằng Br
 Grotesque, bullet chấm gradient — các token màu lấy trực tiếp từ
 `assets/css/style.css`. Mỗi slide tối đa 3–5 gạch đầu dòng, không viết toàn
 văn, theo đúng Điều 18 của quy định trên (≤10 dòng/slide, ≤20 từ/dòng, slide
-cuối chốt lại nội dung, có dấu ấn đơn vị đào tạo — chân trang "ĐH Công nghệ Kỹ
+cuối chốt lại nội dung, có dấu ấn đơn vị đào tạo — chân trang "ĐH Sư phạm Kỹ
 thuật Vĩnh Long · Khởi sự doanh nghiệp (EC1606)", không ghi tên ứng dụng).
 
 `slides/ON_TAP_5_CHUONG_EC1606.pdf` ghép nguyên 83 ảnh slide này (chỉ chữ,

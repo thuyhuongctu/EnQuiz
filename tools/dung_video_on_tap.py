@@ -231,7 +231,7 @@ def dung_pdf_kich_ban(cac_dong_tong_hop, noi_dung_chuong):
     viet('NĂM VIDEO ÔN TẬP — KHỞI SỰ DOANH NGHIỆP (EC1606)', dam=True, co_chu=13, cach_sau=4)
     viet('Học phần: Khởi sự doanh nghiệp (EC1606) — đề cương chi tiết 2025', co_chu=10)
     viet('Giảng viên thuyết minh: Đỗ Thùy Hương – Khoa Kinh doanh và Luật, '
-         'Trường Đại học Công nghệ Kỹ thuật Vĩnh Long', co_chu=10)
+         'Trường Đại học Sư phạm Kỹ thuật Vĩnh Long', co_chu=10)
     viet('Kịch bản cho năm video ôn tập, mỗi video tương ứng một chương, '
          'mỗi video 12-17 phút, dựng theo đúng cấu trúc kịch bản '
          'ec6035tx-chuong-5 của ComDraft (cùng tác giả).', co_chu=10, cach_sau=10)
@@ -293,7 +293,7 @@ def main():
     them_doan(doc_word, 'Học phần: Khởi sự doanh nghiệp (EC1606) — đề cương chi tiết 2025', nghieng=True)
     them_doan(doc_word,
               'Giảng viên thuyết minh: Đỗ Thùy Hương – Khoa Kinh doanh và Luật, '
-              'Trường Đại học Công nghệ Kỹ thuật Vĩnh Long', nghieng=True)
+              'Trường Đại học Sư phạm Kỹ thuật Vĩnh Long', nghieng=True)
     them_doan(doc_word,
               'Kịch bản cho năm video ôn tập, mỗi video tương ứng một chương, mỗi video '
               '12-17 phút, dựng theo đúng cấu trúc kịch bản ec6035tx-chuong-5 của ComDraft '
