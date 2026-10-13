@@ -1,11 +1,19 @@
 """Dựng gói video ôn tập 5 chương (on-tap-video/) từ kịch bản
 docs/kich_ban_on_tap.json và ảnh slide thật trong assets/slides/ch01..ch05/.
 
-Sinh ra hai thứ, theo đúng cấu trúc ec6035tx-chuong-5/ bên repo ComDraft
+Sinh ra bốn thứ, theo đúng cấu trúc ec6035tx-chuong-5/ bên repo ComDraft
 (cùng tác giả):
-  - on-tap-video/kich-ban/KICH_BAN_THUYET_MINH__ON_TAP_EC1606.docx
+  - on-tap-video/kich-ban/KICH_BAN_THUYET_MINH__ON_TAP_EC1606.docx + .pdf
+  - on-tap-video/slides/ON_TAP_5_CHUONG_EC1606.pdf (ghép 41 ảnh slide thật
+    thành một PDF — để Huong dùng làm bản gốc dựng lại ảnh minh họa 3D đất
+    sét, không phải để trình xem trong ứng dụng dùng)
   - on-tap-video/videos/CHUONG_N__ON_TAP.mp4 (năm video CÂM — chỉ ảnh
     slide, chưa có giọng đọc; xem on-tap-video/README.md)
+
+Bản .pdf của kịch bản dựng thẳng bằng reportlab (không qua LibreOffice/soffice
+— soffice trong môi trường làm việc không chuyển được bất kỳ tệp nào sang PDF,
+xem CLAUDE.md-style ghi chú ở ComDraft), dùng phông DejaVu Sans có sẵn trong
+hệ thống vì phông này đọc đủ dấu tiếng Việt.
 
 Tốc độ đọc dùng để ước tính thời lượng (206 từ/phút) không đo trên giọng đọc
 thật của bộ kịch bản này — EnQuiz chưa có bản thu thật. Con số này lấy từ
@@ -23,6 +31,7 @@ Sửa lời đọc thì sửa docs/kich_ban_on_tap.json rồi chạy lại tập
 Chạy:  pip install python-docx   # nếu chưa có
        python3 tools/dung_video_on_tap.py
 """
+import glob
 import json
 import os
 import subprocess
@@ -30,12 +39,22 @@ import sys
 
 import docx
 from docx.shared import Pt
+from PIL import Image
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.units import mm
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfgen import canvas
 
 GOC = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KICH_BAN_JSON = os.path.join(GOC, 'docs', 'kich_ban_on_tap.json')
 THU_MUC_RA = os.path.join(GOC, 'on-tap-video')
 THU_MUC_VIDEO = os.path.join(THU_MUC_RA, 'videos')
 THU_MUC_KICH_BAN = os.path.join(THU_MUC_RA, 'kich-ban')
+THU_MUC_SLIDES = os.path.join(THU_MUC_RA, 'slides')
+
+PHONG_THUONG = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+PHONG_DAM = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 
 TOC_DO_DOC = 206.0  # từ/phút — đo thật ở ec6035tx-chuong-5 (ComDraft)
 NGHI_CHUYEN_SLIDE = 1.0  # giây, theo quy ước ComDraft
@@ -150,10 +169,114 @@ def them_doan(doc_word, chu, dam=False, nghieng=False, co_chu=11,
     return p
 
 
+def dung_pdf_slide():
+    """Ghép toàn bộ ảnh slide thật (5 chương, đúng thứ tự) thành một PDF —
+    bản gốc để Huong dựng lại ảnh minh họa 3D đất sét, không phải tệp
+    assets/slides/ dùng cho trình xem trong ứng dụng (ảnh gốc giữ nguyên)."""
+    anh_list = []
+    for ma_chuong, *_ in CAC_CHUONG:
+        thu_muc = os.path.join(GOC, 'assets', 'slides', ma_chuong)
+        for duong_dan in sorted(glob.glob(os.path.join(thu_muc, '*.jpg'))):
+            anh_list.append(Image.open(duong_dan).convert('RGB'))
+    duong_dan_ra = os.path.join(THU_MUC_SLIDES, 'ON_TAP_5_CHUONG_EC1606.pdf')
+    anh_list[0].save(duong_dan_ra, save_all=True, append_images=anh_list[1:])
+    return duong_dan_ra, len(anh_list)
+
+
+def dung_pdf_kich_ban(cac_dong_tong_hop, noi_dung_chuong):
+    """Bản PDF của kịch bản, dựng thẳng bằng reportlab (không qua soffice —
+    xem ghi chú đầu tệp), cùng nội dung với bản .docx."""
+    pdfmetrics.registerFont(TTFont('VN', PHONG_THUONG))
+    pdfmetrics.registerFont(TTFont('VN-Dam', PHONG_DAM))
+
+    duong_dan_ra = os.path.join(THU_MUC_KICH_BAN, 'KICH_BAN_THUYET_MINH__ON_TAP_EC1606.pdf')
+    trang_rong, trang_cao = A4
+    le = 20 * mm
+    rong_chu = trang_rong - 2 * le
+    c = canvas.Canvas(duong_dan_ra, pagesize=A4)
+    y = [trang_cao - le]
+
+    def xuong_dong(so_dong=1, co_chu=11):
+        y[0] -= so_dong * (co_chu + 3)
+        if y[0] < le:
+            c.showPage()
+            y[0] = trang_cao - le
+
+    def viet(chu, dam=False, co_chu=11, cach_sau=4):
+        c.setFont('VN-Dam' if dam else 'VN', co_chu)
+        for dong in boc_dong(chu, 'VN-Dam' if dam else 'VN', co_chu, rong_chu):
+            if y[0] < le:
+                c.showPage()
+                y[0] = trang_cao - le
+                c.setFont('VN-Dam' if dam else 'VN', co_chu)
+            c.drawString(le, y[0], dong)
+            y[0] -= co_chu + 3
+        y[0] -= cach_sau
+
+    def boc_dong(chu, ten_phong, co_chu, rong_toi_da):
+        if not chu:
+            return ['']
+        tu = chu.split(' ')
+        dong, dong_hien_tai = [], tu[0]
+        for t in tu[1:]:
+            thu = dong_hien_tai + ' ' + t
+            if pdfmetrics.stringWidth(thu, ten_phong, co_chu) <= rong_toi_da:
+                dong_hien_tai = thu
+            else:
+                dong.append(dong_hien_tai)
+                dong_hien_tai = t
+        dong.append(dong_hien_tai)
+        return dong
+
+    viet('KỊCH BẢN THUYẾT MINH VIDEO ÔN TẬP', dam=True, co_chu=16, cach_sau=4)
+    viet('NĂM VIDEO ÔN TẬP — KHỞI SỰ DOANH NGHIỆP (EC1606)', dam=True, co_chu=13, cach_sau=4)
+    viet('Học phần: Khởi sự doanh nghiệp (EC1606) — đề cương chi tiết 2025', co_chu=10)
+    viet('Giảng viên thuyết minh: Đỗ Thùy Hương – Khoa Kinh doanh và Luật, '
+         'Trường Đại học Công nghệ Kỹ thuật Vĩnh Long', co_chu=10)
+    viet('Kịch bản cho năm video ôn tập, mỗi video tương ứng một chương '
+         '(8–9 slide/video), dựng theo đúng cấu trúc kịch bản '
+         'ec6035tx-chuong-5 của ComDraft (cùng tác giả).', co_chu=10, cach_sau=10)
+
+    viet('HƯỚNG DẪN SỬ DỤNG KỊCH BẢN', dam=True, co_chu=13, cach_sau=4)
+    viet('• Nội dung lời đọc lấy nguyên văn từ docs/kich_ban_on_tap.json — '
+         'không thêm nội dung mới ngoài đề cương chi tiết và ngân hàng 300 câu hỏi.')
+    viet('• Nghỉ ngắn khoảng nửa giây sau mỗi ý; nghỉ 1 giây trước khi chuyển slide.')
+    viet('• Thời lượng ước tính ở mỗi slide tính theo tốc độ %d từ/phút — con số này ĐO '
+         'THẬT từ bản thu của chính tác giả ở ec6035tx-chuong-5 (ComDraft), KHÔNG PHẢI đo '
+         'trên giọng đọc thật của bộ kịch bản này (EnQuiz chưa có bản thu thật). Dùng để '
+         'tham khảo khi quay, cần đối chiếu lại tốc độ đọc thật sau khi có bản thu đầu tiên.'
+         % TOC_DO_DOC)
+    viet('• Năm video câm (chỉ ảnh slide, theo đúng thời lượng ước tính ở trên) đã dựng '
+         'sẵn trong videos/ — dùng để tập đọc theo nhịp hoặc để ghi giọng chồng lên (voice-over).')
+    viet('• Mỗi video mở bằng lời chào + mục tiêu chương, khép bằng lời nhắc làm 60 câu '
+         'trắc nghiệm của chương đó trong EnQuiz.', cach_sau=10)
+
+    viet('PHÂN CHIA VIDEO', dam=True, co_chu=13, cach_sau=2)
+    for so, ten_chuong, so_slide, tong_thoi_luong, _ in cac_dong_tong_hop:
+        viet('VIDEO %d — Chương %d: %s (slide 1–%d, ước tính %s)'
+             % (so, so, ten_chuong, so_slide, dinh_dang_thoi_luong(tong_thoi_luong)), co_chu=10)
+    y[0] -= 8
+
+    for so, ten_chuong, tong_thoi_luong, so_slide, cac_slide in noi_dung_chuong:
+        c.showPage()
+        y[0] = trang_cao - le
+        viet('VIDEO %d — CHƯƠNG %d: %s' % (so, so, ten_chuong.upper()), dam=True, co_chu=14, cach_sau=2)
+        viet('(%d slide, ước tính %s)' % (so_slide, dinh_dang_thoi_luong(tong_thoi_luong)), co_chu=10, cach_sau=8)
+        for so_anh, dur, loi_doc, tieu_de_anh in cac_slide:
+            viet('SLIDE %d – %s   (~%s)' % (so_anh, tieu_de_anh.upper(), dinh_dang_thoi_luong(dur)),
+                 dam=True, co_chu=11, cach_sau=2)
+            viet(loi_doc, co_chu=11, cach_sau=8)
+
+    c.save()
+    return duong_dan_ra
+
+
 def main():
     os.makedirs(THU_MUC_VIDEO, exist_ok=True)
     os.makedirs(THU_MUC_KICH_BAN, exist_ok=True)
+    os.makedirs(THU_MUC_SLIDES, exist_ok=True)
     kich_ban = json.load(open(KICH_BAN_JSON, encoding='utf-8'))
+    noi_dung_chuong = []  # cho dung_pdf_kich_ban(): (so, ten_chuong, tong_thoi_luong, so_slide, cac_slide)
 
     doc_word = docx.Document()
     kieu = doc_word.styles['Normal']
@@ -211,10 +334,13 @@ def main():
         them_doan(doc_word, '(%d slide, ước tính %s)' % (len(anh_xa), dinh_dang_thoi_luong(tong_thoi_luong)),
                   nghieng=True, cach_sau=10)
 
+        cac_slide_pdf = []
         for (so_anh, dur, loi_doc), tieu_de_anh in zip(anh_xa, tieu_de_slide):
             them_doan(doc_word, 'SLIDE %d – %s   (~%s)' % (so_anh, tieu_de_anh.upper(), dinh_dang_thoi_luong(dur)),
                       dam=True, cach_truoc=8)
             them_doan(doc_word, loi_doc)
+            cac_slide_pdf.append((so_anh, dur, loi_doc, tieu_de_anh))
+        noi_dung_chuong.append((so, ten_chuong, tong_thoi_luong, len(anh_xa), cac_slide_pdf))
 
     doc_word.add_page_break()
     them_doan(doc_word, 'TỔNG HỢP', dam=True, co_chu=13)
@@ -227,8 +353,12 @@ def main():
 
     duong_dan_docx = os.path.join(THU_MUC_KICH_BAN, 'KICH_BAN_THUYET_MINH__ON_TAP_EC1606.docx')
     doc_word.save(duong_dan_docx)
+    duong_dan_pdf_kich_ban = dung_pdf_kich_ban(cac_dong_tong_hop, noi_dung_chuong)
+    duong_dan_pdf_slide, so_anh_slide = dung_pdf_slide()
 
     print('Đã lưu:', duong_dan_docx)
+    print('Đã lưu:', duong_dan_pdf_kich_ban)
+    print('Đã lưu:', duong_dan_pdf_slide, '(%d ảnh)' % so_anh_slide)
     for so, ten_chuong, so_slide, tong_thoi_luong, ten_tep in cac_dong_tong_hop:
         print('  Video %d: %s — %d slide, ~%s' % (so, ten_tep, so_slide, dinh_dang_thoi_luong(tong_thoi_luong)))
 
