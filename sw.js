@@ -4,7 +4,7 @@
    Đổi CACHE_VERSION mỗi lần phát hành bản mới để trình duyệt
    tải lại toàn bộ tài nguyên thay vì dùng bản đã lưu.
    ========================================================= */
-const CACHE_VERSION = 'enquiz-v82';
+const CACHE_VERSION = 'enquiz-v83';
 
 const SHELL = [
   './',
@@ -35,6 +35,7 @@ const SHELL = [
   './assets/js/app.js',
   './data/manifest.js',
   './data/lectures.js',
+  './data/slides-bai-giang.js',
   './data/ch01.js',
   './data/ch02.js',
   './data/ch03.js',
