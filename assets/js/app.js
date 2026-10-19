@@ -19,6 +19,8 @@
   var lastParse = null;
   var importMode = 'append';
   var tickHandle = null;
+  /** Số lần rời màn hình/thoát toàn màn hình trong lúc thi — chỉ dùng ở mode 'exam'. */
+  var integrity = null;
   /** Sự kiện cài đặt PWA do trình duyệt cung cấp. */
   var installEvent = null;
 
@@ -913,8 +915,87 @@
     };
 
     startTimer();
+    if (mode === 'exam') startIntegrity();
     renderQuestion();
     show('screenQuiz');
+  }
+
+  /* =======================================================
+     Giám sát làm bài thi — chỉ áp dụng cho mode 'exam' (thi thử
+     có bấm giờ). Đây là biện pháp nhắc nhở (cảnh báo + ghi nhận
+     số lần vi phạm hiện trên màn kết quả), không khoá bài làm —
+     ứng dụng chạy hoàn toàn trên máy người học, không có gì để
+     gửi lên máy chủ nào cả.
+     ======================================================= */
+  function startIntegrity() {
+    integrity = { violations: 0 };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    document.addEventListener('copy', blockClipboard);
+    document.addEventListener('cut', blockClipboard);
+    document.addEventListener('paste', blockClipboard);
+    document.addEventListener('contextmenu', blockContextMenu);
+    requestExamFullscreen();
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+  }
+
+  function stopIntegrity() {
+    document.removeEventListener('visibilitychange', onVisibilityChange);
+    document.removeEventListener('copy', blockClipboard);
+    document.removeEventListener('cut', blockClipboard);
+    document.removeEventListener('paste', blockClipboard);
+    document.removeEventListener('contextmenu', blockContextMenu);
+    document.removeEventListener('fullscreenchange', onFullscreenChange);
+    exitExamFullscreen();
+  }
+
+  function inExamScreen() {
+    return session && session.mode === 'exam' && !session.submitted &&
+           !$('#screenQuiz').classList.contains('hidden');
+  }
+
+  function onVisibilityChange() {
+    if (!inExamScreen() || !document.hidden) return;
+    integrity.violations++;
+    toast(t('exam.warnSwitch'));
+  }
+
+  function blockClipboard(e) {
+    if (!inExamScreen()) return;
+    e.preventDefault();
+    toast(t('exam.warnClipboard'));
+  }
+
+  function blockContextMenu(e) {
+    if (!inExamScreen()) return;
+    e.preventDefault();
+  }
+
+  function requestExamFullscreen() {
+    var el = document.documentElement;
+    var req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+    if (!req) return;
+    try {
+      var p = req.call(el);
+      if (p && p.catch) p.catch(function () { /* trình duyệt từ chối toàn màn hình — bỏ qua */ });
+    } catch (err) { /* bỏ qua */ }
+  }
+
+  function exitExamFullscreen() {
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    var exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+    if (!fsEl || !exit) return;
+    try {
+      var p = exit.call(document);
+      if (p && p.catch) p.catch(function () { /* bỏ qua */ });
+    } catch (err) { /* bỏ qua */ }
+  }
+
+  function onFullscreenChange() {
+    if (!inExamScreen()) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    if (fsEl) return;
+    integrity.violations++;
+    toast(t('exam.warnFullscreen'));
   }
 
   function startTimer() {
@@ -1046,6 +1127,10 @@
     session.elapsed = (Date.now() - session.startedAt) / 1000;
     if (session.limit > 0) session.elapsed = Math.min(session.elapsed, session.limit);
     stopTimer();
+    if (session.mode === 'exam') {
+      session.integrityViolations = integrity ? integrity.violations : 0;
+      stopIntegrity();
+    }
 
     // ghi nhận những câu chưa được chấm trong lúc làm
     session.items.forEach(function (it) {
@@ -1125,6 +1210,15 @@
     $('#resultSummary').textContent = t('result.summary', {
       label: t(session.labelKey), correct: r.correct, total: r.total, pct: pct
     });
+
+    var integrityEl = $('#resultIntegrity');
+    var violations = session.integrityViolations || 0;
+    if (session.mode === 'exam' && violations > 0) {
+      integrityEl.textContent = t('result.integrityNotice', { n: violations });
+      integrityEl.classList.remove('hidden');
+    } else {
+      integrityEl.classList.add('hidden');
+    }
 
     $('#resCorrect').textContent = r.correct;
     $('#resWrong').textContent = r.wrong;
@@ -1874,6 +1968,7 @@
 
   function leaveQuiz() {
     stopTimer();
+    if (session && session.mode === 'exam' && !session.submitted) stopIntegrity();
     if (session && !session.submitted) session = null;
   }
 
