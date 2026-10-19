@@ -1,0 +1,1431 @@
+{
+  "_ghi_chu": "Tiêu đề và gạch đầu dòng hiển thị trên từng ảnh slide — tóm tắt cô đọng từ lời đọc tương ứng trong docs/kich_ban_on_tap.json (điểm đọc thứ N của một chương ↔ phần tử thứ N trong mảng ch0N ở đây, ánh xạ 1-1 theo thứ tự), KHÔNG chép nguyên văn — đúng yêu cầu 'không viết toàn văn trên slide' của Điều 18 Quy định đào tạo trực tuyến và xây dựng học liệu số (QĐ 55/QĐ-ĐHSPKTVL-ĐT_ĐBCL, 07/7/2025). Trường 'method' (SLIDE_5CAUHOI, SLIDE_KET) chỉ để đánh dấu hai slide áp chót/cuối mỗi chương, tools/dung_video_on_tap.py không đọc trường này (slide đầu và slide cuối mỗi mảng tự động render theo kiểu trang bìa/trang kết). Dựng ảnh slide từ tệp này bằng tools/dung_video_on_tap.py (+ tools/_mau_slide_on_tap.py) — xem on-tap-video/README.md. Sửa nội dung slide thì sửa ở đây rồi dựng lại, đừng sửa tay ảnh kết quả trong assets/slides/.",
+  "ch01": [
+    {
+      "slide": 1,
+      "kicker": "",
+      "title": "Tổng quan về khởi sự doanh nghiệp",
+      "title_en": "Overview of Starting a Business",
+      "bullets": [
+        "Khái niệm khởi nghiệp, cách tìm và sàng lọc ý tưởng kinh doanh, vai trò kế hoạch kinh doanh.",
+        "Chú trọng cơ hội khởi nghiệp cho phụ nữ và người dân tộc thiểu số trong chuyển đổi số."
+      ],
+      "bullets_en": [
+        "The concept of entrepreneurship, finding and screening a business idea, and the role of a business plan.",
+        "With a focus on opportunities for women and ethnic-minority entrepreneurs in digital transformation."
+      ]
+    },
+    {
+      "slide": 2,
+      "kicker": "1.1 — Khái niệm khởi nghiệp (Start-up)",
+      "title": "Khởi nghiệp là gì",
+      "title_en": "What Is a Start-up",
+      "bullets": [
+        "Start-up: bắt đầu doanh nghiệp dựa trên ý tưởng mới, có tiềm năng tăng trưởng.",
+        "Khác biệt với kinh doanh thông thường: dám chấp nhận rủi ro, khát vọng tạo giá trị đột phá.",
+        "Không chỉ lặp lại mô hình có sẵn — cần xác định mình đang theo hướng nào.",
+        "Từ đó chọn cách chuẩn bị nguồn lực và kỹ năng phù hợp."
+      ],
+      "bullets_en": [
+        "Start-up: beginning a business built on a new idea with growth potential.",
+        "Differs from an ordinary business owner: willing to take risks, seeking breakthrough value.",
+        "Not just repeating an existing model — know which path you are actually on.",
+        "This shapes how you prepare your resources and skills."
+      ]
+    },
+    {
+      "slide": 3,
+      "kicker": "1.2 — Đổi mới sáng tạo & khởi nghiệp tinh gọn",
+      "title": "Đổi mới sáng tạo và Lean Start-up",
+      "title_en": "Innovation and the Lean Start-up",
+      "bullets": [
+        "Đổi mới đến từ 4 hướng: sản phẩm/công nghệ, quy trình, Marketing, mô hình kinh doanh.",
+        "'Sáng tạo' là nghĩ ra ý tưởng mới; 'Đổi mới' là biến ý tưởng thành giá trị thực tế.",
+        "Khởi nghiệp đổi mới sáng tạo tăng trưởng nhanh hơn vì giải quyết vấn đề theo cách mới.",
+        "'Khởi nghiệp tinh gọn': thử nghiệm nhanh, chi phí thấp, sai thì sửa ngay."
+      ],
+      "bullets_en": [
+        "Innovation comes from 4 directions: product/technology, process, marketing, business model.",
+        "'Creativity' is coming up with a new idea; 'innovation' turns it into real value.",
+        "An innovative start-up grows faster because it solves problems in a new way.",
+        "The 'lean start-up' idea: test fast and cheap, fix mistakes immediately."
+      ]
+    },
+    {
+      "slide": 4,
+      "kicker": "1.3 — Tiêu chí chọn ý tưởng kinh doanh tốt",
+      "title": "Tiêu chí một ý tưởng kinh doanh tốt",
+      "title_en": "Criteria for a Good Business Idea",
+      "bullets": [
+        "Bắt nguồn từ quan sát nhu cầu chưa được đáp ứng, không chỉ sở thích cá nhân.",
+        "Cần có tính khả thi, có khách hàng sẵn sàng chi trả, mang lợi ích thực tế.",
+        "Ưu tiên ý tưởng phù hợp năng lực thực tế, hơn ý tưởng 'hoành tráng' quá sức.",
+        "Tìm hiểu sơ bộ đối thủ và xác định thị trường mục tiêu rõ ràng ngay từ đầu."
+      ],
+      "bullets_en": [
+        "Starts from observing an unmet market need, not just personal preference.",
+        "Needs to be feasible, have customers willing to pay, and deliver real benefit.",
+        "Prioritise an idea that fits your real capability over one that sounds impressive but isn't.",
+        "Take a first look at competitors and define a clear target market from the start."
+      ]
+    },
+    {
+      "slide": 5,
+      "kicker": "1.4 — Ý tưởng từ bản sắc địa phương",
+      "title": "Nguồn ý tưởng cho phụ nữ, dân tộc thiểu số",
+      "title_en": "Idea Sources for Women and Ethnic-Minority Entrepreneurs",
+      "bullets": [
+        "Thế mạnh và sản vật địa phương là nguồn ý tưởng tốt — bản sắc khó sao chép.",
+        "Ví dụ Vĩnh Long: khoai lang Bình Tân, gốm đỏ, du lịch sinh thái miệt vườn.",
+        "Du lịch cộng đồng dựa bản sắc văn hóa: vừa tạo thu nhập, vừa bảo tồn văn hóa.",
+        "Thiếu vốn: ưu tiên khai thác thế mạnh bản thân và chính sách hỗ trợ đặc thù."
+      ],
+      "bullets_en": [
+        "A locality's own strengths and produce are good idea sources — hard for others to copy.",
+        "In Vĩnh Long: Bình Tân sweet potatoes, red pottery, orchard eco-tourism.",
+        "Community tourism built on cultural identity: creates income while preserving culture.",
+        "When funding is tight: draw on your own strengths and dedicated support policies first."
+      ]
+    },
+    {
+      "slide": 6,
+      "kicker": "1.5 — Tình huống minh họa",
+      "title": "Tình huống: chị Hoa và khoai lang Bình Tân",
+      "title_en": "Case Study: Ms. Hoa and Bình Tân Sweet Potatoes",
+      "bullets": [
+        "Khoai lang sau thu hoạch bị thương lái ép giá vì chỉ bán thô.",
+        "Đây là bước 'quan sát nhu cầu chưa được đáp ứng' — một khoảng trống trong chuỗi giá trị.",
+        "Ý tưởng: chế biến thành bánh, mứt đóng gói, bán trực tiếp qua mạng xã hội.",
+        "Ví dụ minh họa để dễ hình dung, không phải số liệu thật."
+      ],
+      "bullets_en": [
+        "After harvest, traders push the price down since she only sells the raw crop.",
+        "This is the 'observing an unmet need' step — a gap in the value chain.",
+        "Idea: process it into packaged cakes or jam, sold directly via social media.",
+        "An illustrative example to make the idea concrete, not real data."
+      ]
+    },
+    {
+      "slide": 7,
+      "kicker": "1.6 — Áp dụng tiêu chí cho chị Hoa",
+      "title": "Kiểm chứng ý tưởng bằng khởi nghiệp tinh gọn",
+      "title_en": "Validating the Idea with the Lean Start-up Approach",
+      "bullets": [
+        "Tính khả thi: có nguyên liệu sẵn, kỹ năng học thêm được, thị trường quan tâm thực phẩm sạch.",
+        "Áp dụng tinh gọn: làm mẻ nhỏ, bán thử trên nhóm Facebook, xem phản hồi thật.",
+        "Chưa vội đầu tư máy móc lớn trước khi có kết quả thử nghiệm.",
+        "Kế hoạch kinh doanh sơ khai hình thành dần từ quan sát thực tế."
+      ],
+      "bullets_en": [
+        "Feasibility: has raw material, can learn the processing skill, market wants clean food.",
+        "Applying lean thinking: small batch, test-sell in a local Facebook group, see real response.",
+        "Hold off on big equipment investment until the test gives real results.",
+        "A rough business plan takes shape gradually from observation, not pure theory."
+      ]
+    },
+    {
+      "slide": 8,
+      "kicker": "1.7 — Khởi nghiệp xanh & khởi nghiệp xã hội",
+      "title": "Khởi nghiệp xanh và khởi nghiệp xã hội",
+      "title_en": "Green and Social Entrepreneurship",
+      "bullets": [
+        "Khởi nghiệp xanh: tạo sản phẩm/quy trình thân thiện môi trường.",
+        "Khởi nghiệp xã hội: mục tiêu không chỉ lợi nhuận, còn giải quyết vấn đề xã hội/môi trường.",
+        "Phù hợp với khởi nghiệp gắn cộng đồng và bản sắc địa phương.",
+        "Dự án vừa có bản sắc văn hóa, vừa thân thiện môi trường thường được đánh giá cao hơn."
+      ],
+      "bullets_en": [
+        "Green entrepreneurship: creating environmentally friendly products or processes.",
+        "Social entrepreneurship: aims not only at profit but at a social/environmental problem.",
+        "Both fit well with community- and identity-rooted entrepreneurship.",
+        "A project with both cultural identity and eco-friendliness is usually valued more highly."
+      ]
+    },
+    {
+      "slide": 9,
+      "kicker": "1.8 — Công cụ hỗ trợ giai đoạn ý tưởng",
+      "title": "Tư duy phân tích và công cụ hỗ trợ ý tưởng",
+      "title_en": "Analytical Thinking and Idea-Stage Tools",
+      "bullets": [
+        "Tư duy phân tích kết hợp công cụ xu hướng thị trường (Google Trends) để kiểm chứng nhu cầu.",
+        "Sơ đồ tư duy (mind map) hệ thống hóa ý tưởng: sản phẩm, khách hàng, kênh bán, chi phí.",
+        "Xác định khách hàng mục tiêu nên bắt đầu sớm, ngay từ khi ý tưởng còn sơ khai."
+      ],
+      "bullets_en": [
+        "Analytical thinking plus market-trend tools (Google Trends) to verify the need exists.",
+        "Mind-mapping organises an early idea into branches: product, customer, channel, cost.",
+        "Identifying the target customer should start early, while the idea is still rough."
+      ]
+    },
+    {
+      "slide": 10,
+      "kicker": "1.9 — Kế hoạch kinh doanh",
+      "title": "Kế hoạch kinh doanh là 'bản lộ trình'",
+      "title_en": "A Business Plan as the 'Roadmap'",
+      "bullets": [
+        "Gồm tóm tắt dự án, mô tả sản phẩm, phân tích thị trường, kế hoạch tài chính.",
+        "Tóm tắt dự án viết sau cùng nhưng đặt ở đầu, cô đọng toàn bộ kế hoạch.",
+        "Vai trò: định hướng kinh doanh và là căn cứ gọi vốn từ nhà đầu tư.",
+        "Với người ít vốn, còn giúp giảm rủi ro vì buộc suy nghĩ thấu đáo trước khi làm thật."
+      ],
+      "bullets_en": [
+        "Includes a project summary, product description, market analysis, financial plan.",
+        "The project summary is written last but placed first, condensing the whole plan.",
+        "Role: guides the business and gives investors a basis for funding it.",
+        "For low-capital entrepreneurs, it reduces risk by forcing careful thinking before spending."
+      ]
+    },
+    {
+      "slide": 11,
+      "kicker": "1.10 — Nội dung cốt lõi kế hoạch kinh doanh",
+      "title": "Câu hỏi cốt lõi và tính linh hoạt của kế hoạch",
+      "title_en": "The Core Question and Flexibility of a Plan",
+      "bullets": [
+        "Trả lời rõ: bán gì, cho ai, vì sao khách chọn mình thay vì đối thủ.",
+        "Kế hoạch cần linh hoạt điều chỉnh khi thị trường thay đổi, không đóng khung mãi.",
+        "Giá trị xã hội (tạo việc làm, bảo tồn nghề truyền thống) nên thể hiện rõ trong kế hoạch."
+      ],
+      "bullets_en": [
+        "Clearly answer: what am I selling, to whom, why would they choose me.",
+        "A plan must stay flexible as the market changes, not be locked in forever.",
+        "A project's social value (local jobs, preserving a craft) should show up in the plan."
+      ]
+    },
+    {
+      "slide": 12,
+      "kicker": "1.11 — Sở hữu trí tuệ & rủi ro thường gặp",
+      "title": "Bảo vệ ý tưởng và rủi ro của người mới khởi nghiệp",
+      "title_en": "Protecting Ideas and Common New-Entrepreneur Risks",
+      "bullets": [
+        "Đăng ký nhãn hiệu sớm để bảo vệ sở hữu trí tuệ, tránh bị sao chép.",
+        "Rủi ro phổ biến: thiếu vốn lưu động, đánh giá sai nhu cầu, phụ thuộc một khách/kênh duy nhất.",
+        "Nhận diện sớm để chuẩn bị phương án ứng phó, không phải để nản lòng.",
+        "Nội dung này sẽ được đi sâu hơn ở Chương 2 (đánh giá tính khả thi)."
+      ],
+      "bullets_en": [
+        "Register a trademark early to protect intellectual property from copying.",
+        "Common risks: insufficient working capital, misjudged demand, one customer/channel only.",
+        "Spotting these early is to prepare a response, not to discourage you.",
+        "This will be explored more deeply in Chapter Two (assessing feasibility)."
+      ]
+    },
+    {
+      "slide": 13,
+      "kicker": "1.12 — Đạo đức kinh doanh & khởi nghiệp bền vững",
+      "title": "Đạo đức kinh doanh và sự bền vững",
+      "title_en": "Business Ethics and Sustainability",
+      "bullets": [
+        "Khởi nghiệp không chỉ nhằm lợi nhuận — phải cân bằng kinh tế, con người, môi trường.",
+        "Không vi phạm đạo đức kinh doanh; thể hiện trách nhiệm với cộng đồng.",
+        "Trung thực với khách hàng về chất lượng, trung thực với chính mình về năng lực.",
+        "Thành công thật sự cần cân bằng giữa khát vọng lớn và khả năng thực thi."
+      ],
+      "bullets_en": [
+        "Starting a business isn't only about profit — must balance economy, people, environment.",
+        "Must not violate business ethics; shows responsibility to the community.",
+        "Honest with customers about quality, honest with yourself about real capability.",
+        "True success needs a balance between big ambition and realistic execution."
+      ]
+    },
+    {
+      "slide": 14,
+      "kicker": "1.13 — Hệ sinh thái & tư duy khởi nghiệp",
+      "title": "Hệ sinh thái khởi nghiệp và tư duy khởi nghiệp",
+      "title_en": "The Entrepreneurial Ecosystem and Mindset",
+      "bullets": [
+        "Hệ sinh thái: trường đại học, quỹ hỗ trợ, cộng đồng người khởi nghiệp khác.",
+        "Tư duy khởi nghiệp cần chủ động, sáng tạo, thích nghi, giải quyết vấn đề.",
+        "Thích nghi đặc biệt quan trọng ở vùng nông thôn; cần đam mê, kiên trì, phối hợp nhóm.",
+        "Ngay cả ý tưởng một người cũng được lợi từ hệ sinh thái (hội phụ nữ, chương trình hỗ trợ, người đi trước)."
+      ],
+      "bullets_en": [
+        "Ecosystem: universities, support funds, the community of other entrepreneurs.",
+        "Entrepreneurial mindset needs initiative, creativity, adaptability, problem-solving.",
+        "Adaptability matters especially in rural areas; also needs passion, persistence, teamwork.",
+        "Even a one-person idea benefits from the ecosystem (women's union, support programme, a mentor)."
+      ]
+    },
+    {
+      "slide": 15,
+      "kicker": "1.14 — Ý nghĩa với kinh tế địa phương",
+      "title": "Khởi nghiệp và phát triển kinh tế địa phương",
+      "title_en": "Entrepreneurship and Local Economic Development",
+      "bullets": [
+        "Mỗi dự án nhỏ thành công tạo thêm việc làm, giữ lao động trẻ ở lại quê hương.",
+        "Lan tỏa thu nhập cho người xung quanh (chị Hoa có thể thu mua khoai cho nhiều hộ khác).",
+        "Vì vậy chính sách hỗ trợ khởi nghiệp cho phụ nữ, dân tộc thiểu số được địa phương quan tâm."
+      ],
+      "bullets_en": [
+        "Every small successful project creates jobs and keeps young workers in their hometown.",
+        "Spreads income to others nearby (Ms. Hoa could buy from many other households).",
+        "That's why support policies for women and ethnic-minority entrepreneurs get local attention."
+      ]
+    },
+    {
+      "slide": 16,
+      "kicker": "1.15 — Quản trị rủi ro & chuyển đổi số",
+      "title": "Tư duy về rủi ro và vai trò công cụ số",
+      "title_en": "Mindset on Risk and the Role of Digital Tools",
+      "bullets": [
+        "Rủi ro (vốn, thị trường, đội ngũ) là bình thường — xem thất bại là dữ liệu để rút kinh nghiệm.",
+        "Thời 4.0: cần ứng dụng công cụ số để bù đắp nguồn lực hạn chế ở giai đoạn đầu.",
+        "Yếu tố khởi đầu quan trọng nhất: ý tưởng từ nhu cầu thật + tư duy học hỏi, thích nghi."
+      ],
+      "bullets_en": [
+        "Risk (funding, market, team) is normal — treat failure as data to learn from.",
+        "In the 4.0 era, use digital tools to make up for limited early-stage resources.",
+        "The most important starting point: an idea from a real need plus a learning mindset."
+      ]
+    },
+    {
+      "slide": 17,
+      "kicker": "1.16 — Công cụ số cho giai đoạn ý tưởng",
+      "title": "Công cụ số thiết thực cho người mới khởi nghiệp",
+      "title_en": "Practical Digital Tools for New Entrepreneurs",
+      "bullets": [
+        "Mạng xã hội: thử phản ứng thị trường với chi phí gần như bằng không.",
+        "Thương mại điện tử: bán hàng không cần mặt bằng.",
+        "Canva: làm bao bì, hình ảnh quảng bá chuyên nghiệp dù không có kỹ năng thiết kế.",
+        "Công cụ lưu trữ/làm việc nhóm trên đám mây: phối hợp dù không cùng địa điểm.",
+        "Với chị Hoa: chỉ cần biết đăng bài và nhận phản hồi trên mạng xã hội đã là chuyển đổi số."
+      ],
+      "bullets_en": [
+        "Social media: test the market's reaction at almost no cost.",
+        "E-commerce: sell without needing physical premises.",
+        "Canva: professional packaging and promo images without deep design skill.",
+        "Cloud storage/collaboration tools: team members can work together remotely.",
+        "For Ms. Hoa: just posting and reading feedback on social media is already a digital step."
+      ]
+    },
+    {
+      "slide": 18,
+      "kicker": "",
+      "title": "Hệ thống hóa Chương 1 — 5 câu hỏi tự kiểm tra",
+      "title_en": "Chapter 1 Recap — 5 Self-Check Questions",
+      "bullets": [
+        "1. Ý tưởng của mình giải quyết nhu cầu thật nào của thị trường?",
+        "2. Đổi mới sáng tạo nằm ở sản phẩm, quy trình, Marketing hay mô hình kinh doanh?",
+        "3. Thế mạnh địa phương/bản sắc văn hóa nào mình có thể khai thác?",
+        "4. Kế hoạch sơ bộ đã trả lời 'bán gì — cho ai — vì sao chọn mình' chưa?",
+        "5. Mình đã tính đến rủi ro nào và cách bảo vệ ý tưởng chưa?"
+      ],
+      "bullets_en": [
+        "1. What real market need does my idea solve?",
+        "2. Is the innovation in the product, process, marketing, or business model?",
+        "3. What local strength or cultural identity can I draw on?",
+        "4. Does my rough plan answer 'what — to whom — why choose me'?",
+        "5. What risks have I considered, and how will I protect my idea?"
+      ],
+      "method": "SLIDE_5CAUHOI"
+    },
+    {
+      "slide": 19,
+      "kicker": "",
+      "title": "Làm 60 câu trắc nghiệm Chương 1",
+      "title_en": "Take the 60 Chapter 1 Quiz Questions",
+      "bullets": [
+        "Tự kiểm tra lại kiến thức Chương 1 với 60 câu trắc nghiệm trong ứng dụng ôn tập.",
+        "Hẹn gặp lại ở video ôn tập Chương 2."
+      ],
+      "bullets_en": [
+        "Test yourself with the 60 multiple-choice questions for Chapter 1 in the revision app.",
+        "See you in the Chapter 2 revision video."
+      ],
+      "method": "SLIDE_KET"
+    }
+  ],
+  "ch02": [
+    {
+      "slide": 1,
+      "kicker": "",
+      "title": "Đánh giá cơ hội, ý tưởng phát triển kế hoạch kinh doanh",
+      "title_en": "Assessing Opportunities and Developing a Business Plan",
+      "bullets": [
+        "Ôn lại Chương 1, học quy trình đánh giá cơ hội kinh doanh từng bước.",
+        "Bước đệm quan trọng trước khi xây dựng kế hoạch kinh doanh hoàn chỉnh."
+      ],
+      "bullets_en": [
+        "Reviews Chapter 1, then teaches the step-by-step opportunity-assessment process.",
+        "An important stepping stone before building a complete business plan."
+      ]
+    },
+    {
+      "slide": 2,
+      "kicker": "2.1 — Ý tưởng và cơ hội kinh doanh",
+      "title": "Phân biệt ý tưởng và cơ hội kinh doanh",
+      "title_en": "Business Idea vs. Business Opportunity",
+      "bullets": [
+        "Ý tưởng: sáng tạo sơ khai; Cơ hội: ý tưởng đã sàng lọc, chứng minh khả thi.",
+        "Cơ hội xuất hiện ở giao điểm giữa nhu cầu thị trường và năng lực của nhóm.",
+        "Nhu cầu nhóm không làm được, hoặc năng lực thị trường không cần, đều chưa là cơ hội.",
+        "Đánh giá cơ hội là cả quá trình: thu thập dữ liệu — phân tích — quyết định."
+      ],
+      "bullets_en": [
+        "An idea is raw creativity; an opportunity is an idea screened and shown feasible.",
+        "An opportunity exists where market need meets the team's ability to execute.",
+        "A need the team can't fulfil, or a skill the market doesn't need, isn't an opportunity.",
+        "Assessing an opportunity is a process: gather data — analyse — decide."
+      ]
+    },
+    {
+      "slide": 3,
+      "kicker": "2.2 — Nỗi đau khách hàng & giải pháp",
+      "title": "Customer Pain Points và giải pháp dự án",
+      "title_en": "Customer Pain Points and the Project Solution",
+      "bullets": [
+        "Bước đầu: xác định rõ ý tưởng/sản phẩm/giải pháp và đối tượng khách hàng.",
+        "'Nỗi đau khách hàng': vấn đề thực tế họ gặp, không phải điều mình tưởng tượng.",
+        "'Giải pháp dự án': cách cụ thể sản phẩm giải quyết nỗi đau đó.",
+        "Sai lầm phổ biến: xây giải pháp trước rồi mới tìm vấn đề để gán vào."
+      ],
+      "bullets_en": [
+        "First step: clearly identify the idea/product/solution and the target customer.",
+        "'Pain points': the real problems customers face, not what we imagine they need.",
+        "The 'solution' is the specific way the product solves that pain point.",
+        "Common mistake: build the solution first, then look for a problem to attach it to."
+      ]
+    },
+    {
+      "slide": 4,
+      "kicker": "2.3 — Chân dung khách hàng",
+      "title": "Xây dựng Customer Persona",
+      "title_en": "Building a Customer Persona",
+      "bullets": [
+        "Dựa trên nhân khẩu học (tuổi, giới tính, thu nhập, nghề nghiệp), hành vi, vị trí địa lý.",
+        "Nhân khẩu học: ai mua; Hành vi: mua ở đâu, khi nào, bị ảnh hưởng bởi gì.",
+        "Vị trí địa lý quan trọng với đặc sản vùng miền (khách tại chỗ vs. người xa quê).",
+        "Hiểu nhu cầu tiềm ẩn giúp sản phẩm tạo bất ngờ tích cực, không chỉ đáp ứng đúng yêu cầu."
+      ],
+      "bullets_en": [
+        "Based on demographics (age, gender, income, occupation), behaviour, location.",
+        "Demographics: who buys; behaviour: where/when they buy, what influences them.",
+        "Location matters for regional specialties (local tourists vs. people from the province).",
+        "Understanding latent needs creates a pleasant surprise, not just meeting what was asked."
+      ]
+    },
+    {
+      "slide": 5,
+      "kicker": "2.4 — Tính khả thi & đối thủ",
+      "title": "Tính khả thi kinh tế, kỹ thuật và đối thủ cạnh tranh",
+      "title_en": "Economic and Technical Feasibility, and Competitors",
+      "bullets": [
+        "Khả thi kinh tế: có lợi nhuận và dòng tiền bền vững theo thời gian, không chỉ có lãi một lần.",
+        "Khả thi kỹ thuật: đủ công nghệ, nguyên liệu, nguồn lực để thực hiện.",
+        "Phân tích đối thủ: ai đang phục vụ nhu cầu này, mạnh/yếu ở đâu, khoảng trống nào mình chen vào."
+      ],
+      "bullets_en": [
+        "Economic feasibility: profit and cash flow sustained over time, not just a one-off.",
+        "Technical feasibility: enough technology, material and resources to deliver.",
+        "Competitor analysis: who already serves this need, their strengths/weaknesses, the gap to fill."
+      ]
+    },
+    {
+      "slide": 6,
+      "kicker": "2.5 — Rào cản gia nhập & lợi thế bền vững",
+      "title": "Rào cản gia nhập thị trường và lợi thế cạnh tranh bền vững",
+      "title_en": "Entry Barriers and Sustainable Competitive Advantage",
+      "bullets": [
+        "Rào cản gia nhập: quy định pháp lý, chi phí đầu tư lớn, lòng trung thành với đối thủ cũ.",
+        "Lợi thế bền vững: khó sao chép trong ngắn hạn (bản sắc, công thức gia truyền, quan hệ lâu năm).",
+        "Giá rẻ không phải lợi thế bền vững vì luôn có thể bị hạ thấp hơn.",
+        "Khi phân tích đối thủ: tập trung vào điều họ chưa làm tốt, không chỉ sao chép."
+      ],
+      "bullets_en": [
+        "Entry barriers: legal requirements, large upfront investment, loyalty to existing rivals.",
+        "Sustainable advantage: hard to copy quickly (identity, family recipe, long-term relationships).",
+        "A low price isn't a sustainable advantage since it can always be undercut further.",
+        "When analysing competitors: focus on what they're not doing well, not just copying them."
+      ]
+    },
+    {
+      "slide": 7,
+      "kicker": "2.6 — Áp dụng quy trình cho chị Hoa",
+      "title": "Chị Hoa dưới lăng kính đánh giá cơ hội",
+      "title_en": "Ms. Hoa Through the Opportunity-Assessment Lens",
+      "bullets": [
+        "Nỗi đau: khách thành thị muốn ăn vặt lành mạnh, nguồn gốc rõ ràng, khó tìm sản phẩm tin cậy.",
+        "Chân dung: phụ nữ văn phòng 25-40 tuổi, thu nhập trung bình khá, mua qua mạng xã hội.",
+        "Khả thi kinh tế: nguyên liệu rẻ (mua trực tiếp từ nông dân), biên lợi nhuận tốt.",
+        "Đối thủ: chưa ai làm bao bì hiện đại nhắm riêng dân văn phòng — đó là khoảng trống."
+      ],
+      "bullets_en": [
+        "Pain point: urban consumers want a healthy, traceable snack they can trust.",
+        "Persona: office women aged 25-40, middle income, buying through social media.",
+        "Economic feasibility: cheap raw material (bought direct from farmers), healthy margin.",
+        "Competitors: none yet use modern packaging aimed at office workers — that's the gap."
+      ]
+    },
+    {
+      "slide": 8,
+      "kicker": "2.7 — Tầm nhìn, sứ mệnh & nguồn lực bản thân",
+      "title": "Tầm nhìn, sứ mệnh và nguồn lực của nhóm khởi nghiệp",
+      "title_en": "Vision, Mission, and the Team's Own Resources",
+      "bullets": [
+        "Xác định tầm nhìn/sứ mệnh dự án ngay từ giai đoạn đánh giá cơ hội, không chỉ vì lợi nhuận.",
+        "Phân tích nguồn lực bản thân: thời gian, vốn tự có, kỹ năng, mạng lưới quan hệ sẵn có.",
+        "Bỏ qua nguồn lực bản thân dễ dẫn đến kế hoạch đẹp trên giấy nhưng không ai thực hiện được."
+      ],
+      "bullets_en": [
+        "Define the project's vision/mission right at the assessment stage, not just for profit.",
+        "Analyse your own resources: time, capital, skills, an existing network of relationships.",
+        "Ignoring your own resources easily leads to a plan nobody on the team can carry out."
+      ]
+    },
+    {
+      "slide": 9,
+      "kicker": "2.8 — Tình huống minh họa: gốm đỏ",
+      "title": "Cơ hội mới từ gốm đỏ Vĩnh Long",
+      "title_en": "A New Opportunity from Vĩnh Long Red Pottery",
+      "bullets": [
+        "Dùng vật liệu thủ công truyền thống (gốm đỏ) làm đồ trang trí nội thất hiện đại.",
+        "Đổi mới sáng tạo ở khâu sản phẩm, soi qua lăng kính đánh giá cơ hội.",
+        "Có khách thành thị thích phong cách mộc mạc, nguyên liệu và tay nghề sẵn tại địa phương.",
+        "Đối thủ hầu như chưa khai thác hướng hiện đại hóa này."
+      ],
+      "bullets_en": [
+        "Using a traditional handicraft material (red pottery) for modern interior decor.",
+        "Product-level innovation, now viewed through the opportunity-assessment lens.",
+        "Urban customers like the rustic style; material and craft skill already exist locally.",
+        "Competitors have barely explored this modernising direction."
+      ]
+    },
+    {
+      "slide": 10,
+      "kicker": "2.9 — Đạo đức kinh doanh & bền vững",
+      "title": "Đánh giá cơ hội gắn với đạo đức và bền vững",
+      "title_en": "Opportunity Assessment Tied to Ethics and Sustainability",
+      "bullets": [
+        "Cung cấp thông tin trung thực, đối xử công bằng với các bên liên quan.",
+        "Không đánh đổi lợi ích ngắn hạn lấy thiệt hại lâu dài (ví dụ khai thác nguyên liệu quá mức).",
+        "Giá trị bền vững rõ nhất khi dự án có lợi cho nhiều bên: khách hàng, nông dân, địa phương."
+      ],
+      "bullets_en": [
+        "Provide honest information, treat all stakeholders fairly.",
+        "Don't trade short-term gain for long-term harm (e.g. over-harvesting raw material).",
+        "Sustainable value shows clearest when a project benefits customers, farmers and the locality."
+      ]
+    },
+    {
+      "slide": 11,
+      "kicker": "2.10 — Khi ý tưởng không khả thi",
+      "title": "Điều chỉnh mô hình hoặc tìm thị trường ngách",
+      "title_en": "Adjusting the Model or Finding a Niche Market",
+      "bullets": [
+        "Ý tưởng không khả thi kinh tế: điều chỉnh mô hình hoặc tìm ý tưởng mới, không cố làm tiếp.",
+        "Khảo sát thực tế sớm (hỏi khách tiềm năng, bán thử mẻ nhỏ) giúp phát hiện vấn đề kịp thời.",
+        "Thị trường bão hòa: cân nhắc thị trường ngách (Niche market) ít cạnh tranh hơn."
+      ],
+      "bullets_en": [
+        "If an idea isn't economically feasible, adjust the model or find a new idea.",
+        "Testing reality early (asking customers, a small trial sale) catches problems in time.",
+        "If the market is saturated, consider a narrower niche market with less competition."
+      ]
+    },
+    {
+      "slide": 12,
+      "kicker": "2.11 — Cơ hội từ chuyển đổi số",
+      "title": "Kể chuyện thương hiệu trên nền tảng số",
+      "title_en": "Telling a Brand Story on Digital Platforms",
+      "bullets": [
+        "Cách bán hàng cũ khó cạnh tranh với đối thủ đã mạnh trên nền tảng số.",
+        "Cơ hội: kết hợp bản sắc văn hóa với nền tảng số (mạng xã hội, nội dung quy trình thủ công).",
+        "Khách thành thị ngày càng quan tâm 'câu chuyện' đằng sau sản phẩm, không chỉ sản phẩm."
+      ],
+      "bullets_en": [
+        "Old-style selling struggles against rivals already strong on digital platforms.",
+        "Opportunity: combine cultural identity with digital platforms (social media, craft content).",
+        "Urban customers increasingly care about the story behind a product, not just the product."
+      ]
+    },
+    {
+      "slide": 13,
+      "kicker": "2.12 — Hạ tầng vùng sâu & chính sách hỗ trợ",
+      "title": "Logistics, internet và chính sách hỗ trợ khởi nghiệp",
+      "title_en": "Logistics, Internet, and Government Support Policies",
+      "bullets": [
+        "Hạ tầng logistics, internet ảnh hưởng trực tiếp đến khả thi kỹ thuật và kinh tế.",
+        "Giao hàng khó, chi phí cao vẫn có thể khiến dự án không khả thi dù sản phẩm tốt.",
+        "Chính sách hỗ trợ (vay ưu đãi, OCOP) làm tăng khả thi kinh tế, giảm rủi ro ban đầu."
+      ],
+      "bullets_en": [
+        "Logistics and internet infrastructure directly affect technical and economic feasibility.",
+        "Hard, costly delivery can still make a good project economically unfeasible.",
+        "Policy support (preferential loans, OCOP) raises feasibility, lowers early-stage risk."
+      ]
+    },
+    {
+      "slide": 14,
+      "kicker": "2.13 — Tư duy dữ liệu trong đánh giá cơ hội",
+      "title": "Ra quyết định dựa trên dữ liệu thực tế",
+      "title_en": "Data-Driven Decision-Making",
+      "bullets": [
+        "Chủ động tìm dữ liệu kiểm chứng giả định, không chỉ ngồi suy đoán.",
+        "Thực sự hỏi khách hàng, bán thử, ghi nhận phản hồi có hệ thống.",
+        "Tìm hiểu thu nhập khách hàng giúp định giá hợp lý từ đầu, tránh điều chỉnh nhiều lần."
+      ],
+      "bullets_en": [
+        "Actively gather data to test assumptions, instead of just guessing.",
+        "Really ask customers, run a trial sale, record feedback systematically.",
+        "Knowing customer income helps set a sensible price early, avoiding repeated adjustments."
+      ]
+    },
+    {
+      "slide": 15,
+      "kicker": "2.14 — Tổng kết quy trình đánh giá cơ hội",
+      "title": "Quy trình đánh giá cơ hội theo thứ tự rõ ràng",
+      "title_en": "The Ordered Opportunity-Assessment Process",
+      "bullets": [
+        "Xác định ý tưởng/khách hàng → nỗi đau & chân dung khách hàng → khả thi kinh tế/kỹ thuật.",
+        "→ phân tích đối thủ & rào cản gia nhập → đối chiếu nguồn lực bản thân, đạo đức, bền vững.",
+        "Làm đúng thứ tự giúp loại sớm dự án không khả thi, tiết kiệm thời gian và tiền bạc."
+      ],
+      "bullets_en": [
+        "Identify idea/customer → pain points & persona → economic/technical feasibility.",
+        "→ competitor and entry-barrier analysis → weigh against own resources, ethics, sustainability.",
+        "Following this order rules out unfeasible projects early, saving time and money."
+      ]
+    },
+    {
+      "slide": 16,
+      "kicker": "2.15 — Cầu nối sang Chương 3",
+      "title": "Từ 'có đáng làm không' đến 'cần bao nhiêu tiền'",
+      "title_en": "From 'Is It Worth Doing' to 'How Much Money'",
+      "bullets": [
+        "Đánh giá cơ hội là bước đệm để Chương 3 học huy động vốn và chỉ số tài chính.",
+        "Chương 2 trả lời 'dự án có đáng làm không'; Chương 3 trả lời 'cần bao nhiêu tiền, từ đâu'."
+      ],
+      "bullets_en": [
+        "Opportunity assessment is the stepping stone to Chapter 3's fundraising and finance.",
+        "Chapter 2 answers 'is this worth doing'; Chapter 3 answers 'how much, from where'."
+      ]
+    },
+    {
+      "slide": 17,
+      "kicker": "",
+      "title": "Hệ thống hóa Chương 2 — 5 câu hỏi tự kiểm tra",
+      "title_en": "Chapter 2 Recap — 5 Self-Check Questions",
+      "bullets": [
+        "1. Nỗi đau khách hàng mình giải quyết là gì — đã hỏi khách hay chỉ đoán?",
+        "2. Chân dung khách hàng mục tiêu gồm yếu tố nhân khẩu học, hành vi, vị trí nào?",
+        "3. Dự án khả thi kinh tế và kỹ thuật không, dựa trên dữ liệu gì?",
+        "4. Đối thủ mạnh/yếu ở đâu, và lợi thế bền vững của mình là gì?",
+        "5. Mình đã cân nhắc đạo đức kinh doanh và bền vững trong đánh giá chưa?"
+      ],
+      "bullets_en": [
+        "1. What pain point am I solving — have I actually asked customers, or guessed?",
+        "2. What demographic, behavioural and location traits define my target persona?",
+        "3. Is the project economically/technically feasible, based on what data?",
+        "4. Where are competitors strong/weak, and what's my sustainable advantage?",
+        "5. Have I considered business ethics and sustainability in this assessment?"
+      ],
+      "method": "SLIDE_5CAUHOI"
+    },
+    {
+      "slide": 18,
+      "kicker": "",
+      "title": "Làm 60 câu trắc nghiệm Chương 2",
+      "title_en": "Take the 60 Chapter 2 Quiz Questions",
+      "bullets": [
+        "Tự đánh giá lại kiến thức Chương 2 với 60 câu trắc nghiệm trong ứng dụng ôn tập.",
+        "Gợi nhớ ví dụ chị Hoa hoặc gốm đỏ khi làm bài — gắn kiến thức với tình huống cụ thể.",
+        "Hẹn gặp lại ở video ôn tập Chương 3."
+      ],
+      "bullets_en": [
+        "Test yourself with the 60 multiple-choice questions for Chapter 2 in the revision app.",
+        "Recall the Ms. Hoa or red-pottery example while answering — it helps you remember.",
+        "See you in the Chapter 3 revision video."
+      ],
+      "method": "SLIDE_KET"
+    }
+  ],
+  "ch03": [
+    {
+      "slide": 1,
+      "kicker": "",
+      "title": "Huy động vốn và các chỉ số tài chính cốt yếu",
+      "title_en": "Raising Capital and Key Financial Indicators",
+      "bullets": [
+        "Kỹ thuật huy động vốn then chốt và các chỉ số tài chính nhà đầu tư quan tâm nhất.",
+        "Trả lời câu hỏi: dự án cần bao nhiêu tiền, và tiền đó đi về đâu."
+      ],
+      "bullets_en": [
+        "Key fundraising techniques and the financial indicators investors care about most.",
+        "Answers the question: how much money does the project need, and where does it go."
+      ]
+    },
+    {
+      "slide": 2,
+      "kicker": "3.1 — Nguồn vốn theo giai đoạn",
+      "title": "Nguồn vốn theo từng giai đoạn startup",
+      "title_en": "Funding Sources by Start-up Stage",
+      "bullets": [
+        "Giai đoạn đầu: vốn tự có, gia đình/bạn bè, hoặc 'bootstrapping' để giữ quyền kiểm soát.",
+        "Có sản phẩm và khách hàng: 'thiên thần kinh doanh' đầu tư nhỏ, kèm kinh nghiệm/mạng lưới.",
+        "Đã chứng minh mô hình, cần mở rộng lớn: Quỹ đầu tư mạo hiểm (Venture Capital).",
+        "VC đầu tư số tiền lớn hơn nhưng yêu cầu tỷ lệ sở hữu, tăng trưởng cao, báo cáo định kỳ."
+      ],
+      "bullets_en": [
+        "Early stage: own capital, family/friends, or 'bootstrapping' to keep control.",
+        "With a product and customers: 'business angels' invest small amounts plus experience/network.",
+        "Once the model is proven and scaling is needed: venture capital funds.",
+        "VC invests larger sums but demands more ownership, high growth, regular reporting."
+      ]
+    },
+    {
+      "slide": 3,
+      "kicker": "3.2 — Định phí, biến phí & điểm hòa vốn",
+      "title": "Định phí, biến phí và điểm hòa vốn",
+      "title_en": "Fixed Costs, Variable Costs, and the Break-Even Point",
+      "bullets": [
+        "Định phí: chi phí cố định dù có bán hàng hay không (ví dụ thuê mặt bằng).",
+        "Biến phí: thay đổi theo số lượng sản phẩm (ví dụ nguyên liệu).",
+        "Điểm hòa vốn: doanh thu vừa đủ bù chi phí.",
+        "Ví dụ: định phí 10 triệu, biên lãi gộp 50 nghìn/sp → hòa vốn ở 200 sản phẩm."
+      ],
+      "bullets_en": [
+        "Fixed costs: paid regardless of sales (e.g. rent).",
+        "Variable costs: change with volume produced (e.g. raw material).",
+        "Break-even point: where revenue just covers costs.",
+        "Example: 10 million fixed cost, 50,000 margin per unit → break-even at 200 units."
+      ]
+    },
+    {
+      "slide": 4,
+      "kicker": "3.3 — Biên lãi gộp, burn rate & runway",
+      "title": "Burn Rate và Runway",
+      "title_en": "Burn Rate and Runway",
+      "bullets": [
+        "Biến phí giảm → biên lãi gộp tăng → điểm hòa vốn giảm.",
+        "Burn rate: số tiền chi tiêu mỗi tháng.",
+        "Runway: tiền mặt hiện có ÷ burn rate = còn bao lâu trước khi hết tiền.",
+        "Biết rõ runway giúp xác định đúng thời điểm cần gọi vốn vòng tiếp theo."
+      ],
+      "bullets_en": [
+        "Lower variable cost → higher margin → lower break-even point.",
+        "Burn rate: how much money is spent per month.",
+        "Runway: current cash ÷ burn rate = how long until the money runs out.",
+        "Knowing your runway tells you exactly when to start the next funding round."
+      ]
+    },
+    {
+      "slide": 5,
+      "kicker": "3.4 — Công cụ bảng tính",
+      "title": "Excel, Google Sheets và mô phỏng kịch bản tài chính",
+      "title_en": "Excel, Google Sheets, and Financial Scenario Planning",
+      "bullets": [
+        "Nên có ít nhất 3 kịch bản: lạc quan, trung bình, xấu nhất.",
+        "Google Sheets: nhiều người cùng sửa, chỉ số tự cập nhật khi đổi số liệu đầu vào.",
+        "Canva: biến số liệu tài chính khô khan thành biểu đồ dễ hiểu cho nhà đầu tư."
+      ],
+      "bullets_en": [
+        "Should have at least 3 scenarios: optimistic, average, worst-case.",
+        "Google Sheets: several people can edit at once; indicators auto-update with new inputs.",
+        "Canva: turns dry financial numbers into charts that are easy for investors to grasp."
+      ]
+    },
+    {
+      "slide": 6,
+      "kicker": "3.5 — Pitching & Pitch Deck",
+      "title": "Kỹ thuật Pitching và trang tài chính trong Pitch Deck",
+      "title_en": "Pitching and the Pitch Deck's Financial Page",
+      "bullets": [
+        "Pitching: thuyết trình ngắn gọn, thuyết phục về dự án trong thời gian hạn chế.",
+        "Trang tài chính Pitch Deck: tập trung dự báo doanh thu, nhu cầu vốn, lộ trình sinh lời.",
+        "Biểu đồ cột tăng trưởng doanh thu thuyết phục hơn bảng số liệu dày đặc.",
+        "Sau trình bày: 'thẩm định và đàm phán' khi nhà đầu tư cân nhắc rót vốn."
+      ],
+      "bullets_en": [
+        "Pitching: presenting the project briefly and persuasively within limited time.",
+        "The Pitch Deck's financial page: revenue forecasts, capital needs, path to profit.",
+        "A revenue-growth bar chart persuades better than a dense table of numbers.",
+        "After the pitch: 'due diligence and negotiation' once an investor seriously considers it."
+      ]
+    },
+    {
+      "slide": 7,
+      "kicker": "3.6 — Vốn cổ phần, định giá & gọi vốn cộng đồng",
+      "title": "Equity, Valuation và Crowdfunding",
+      "title_en": "Equity, Valuation, and Crowdfunding",
+      "bullets": [
+        "Vốn cổ phần (Equity): bán quyền sở hữu đổi lấy đầu tư, không trả lãi như vay.",
+        "Định giá (Valuation): ước tính giá trị hiện tại/tiềm năng, dựa doanh thu, tăng trưởng, quy mô.",
+        "Gọi vốn cộng đồng (Crowdfunding): huy động số tiền nhỏ từ nhiều người, phù hợp dự án có câu chuyện cảm xúc."
+      ],
+      "bullets_en": [
+        "Equity: selling ownership for investment, instead of paying interest like a loan.",
+        "Valuation: estimating current/potential worth, based on revenue, growth, market size.",
+        "Crowdfunding: raising small amounts from many supporters, fits a strong emotional story."
+      ]
+    },
+    {
+      "slide": 8,
+      "kicker": "3.7 — Lợi thế startup & chọn nhà đầu tư",
+      "title": "Lợi thế khi gọi vốn và chọn nhà đầu tư phù hợp",
+      "title_en": "Fundraising Advantages and Choosing the Right Investor",
+      "bullets": [
+        "Lợi thế: linh hoạt, ra quyết định nhanh, câu chuyện tăng trưởng hấp dẫn.",
+        "LinkedIn giúp kết nối nhà đầu tư, tìm cố vấn, xây uy tín cá nhân.",
+        "Nhà đầu tư phù hợp: hiểu lĩnh vực, có mạng lưới hỗ trợ, cùng tầm nhìn dài hạn.",
+        "Chọn sai nhà đầu tư có thể rủi ro hơn thiếu vốn."
+      ],
+      "bullets_en": [
+        "Advantage: flexibility, fast decisions, an appealing growth story.",
+        "LinkedIn helps connect with investors, find mentors, build personal credibility.",
+        "A suitable investor: understands the field, offers a network, shares the long-term vision.",
+        "Picking the wrong investor can be riskier than lacking capital."
+      ]
+    },
+    {
+      "slide": 9,
+      "kicker": "3.8 — Tình huống minh họa",
+      "title": "Tính điểm hòa vốn cho sản phẩm khoai lang chị Hoa",
+      "title_en": "Calculating Ms. Hoa's Break-Even Point",
+      "bullets": [
+        "Định phí 10 triệu (máy sấy); giá bán 50 nghìn/gói; chi phí 20 nghìn/gói.",
+        "Biên lãi gộp 30 nghìn/gói → điểm hòa vốn khoảng 334 gói.",
+        "Bán 50 gói/tuần → cần khoảng 7 tuần để hòa vốn — con số cụ thể để quyết định vay hay không.",
+        "Có thể gọi vốn cộng đồng từ khách hàng cũ thay vì vay ngân hàng."
+      ],
+      "bullets_en": [
+        "Fixed cost 10 million (dryer); price 50,000/pack; cost 20,000/pack.",
+        "Margin 30,000/pack → break-even around 334 packs.",
+        "Selling 50 packs/week → about 7 weeks to break even — a concrete number to decide on.",
+        "Could crowdfund from existing customers instead of taking a bank loan."
+      ]
+    },
+    {
+      "slide": 10,
+      "kicker": "3.9 — Kỹ năng bảng tính",
+      "title": "Nhập liệu, hàm SUM, lợi nhuận gộp và ròng",
+      "title_en": "Data Entry, the SUM Function, Gross vs. Net Profit",
+      "bullets": [
+        "Nhập dữ liệu đầu vào: giá bán, định phí, biến phí, số lượng dự kiến bán.",
+        "Hàm SUM: tính tổng doanh thu hoặc chi phí trong một khoảng thời gian.",
+        "Lợi nhuận gộp = doanh thu − giá vốn hàng bán.",
+        "Lợi nhuận ròng = lợi nhuận gộp − các chi phí vận hành khác (thuê, lương, Marketing)."
+      ],
+      "bullets_en": [
+        "Input data: selling price, fixed costs, variable costs, expected sales volume.",
+        "The SUM function totals revenue or costs over a period.",
+        "Gross profit = revenue − cost of goods sold.",
+        "Net profit = gross profit − other operating costs (rent, salaries, marketing)."
+      ]
+    },
+    {
+      "slide": 11,
+      "kicker": "3.10 — Minh bạch tài chính & đạo đức",
+      "title": "Minh bạch tài chính và 'đốt tiền' có kiểm soát",
+      "title_en": "Financial Transparency and Controlled 'Cash Burn'",
+      "bullets": [
+        "Báo cáo trung thực với nhà đầu tư là đạo đức kinh doanh và trách nhiệm xã hội.",
+        "Che giấu số liệu xấu để gọi vốn dễ hơn là sai lầm nghiêm trọng, phá hủy lòng tin.",
+        "'Đốt tiền' không xấu nếu có kế hoạch rõ ràng đến điểm hòa vốn.",
+        "Lợi nhuận ròng âm kéo dài không cải thiện → nguy cơ cạn vốn thật sự."
+      ],
+      "bullets_en": [
+        "Honest reporting to investors reflects business ethics and social responsibility.",
+        "Hiding bad numbers to ease fundraising is a serious mistake that destroys trust.",
+        "'Burning money' isn't bad if there's a clear plan to reach break-even.",
+        "Net profit staying negative with no improvement risks truly running out of cash."
+      ]
+    },
+    {
+      "slide": 12,
+      "kicker": "3.11 — Phối hợp nhóm trong gọi vốn",
+      "title": "Làm việc nhóm để kể câu chuyện tài chính nhất quán",
+      "title_en": "Teamwork for a Consistent Financial Story",
+      "bullets": [
+        "Mỗi thành viên không chỉ tính đúng số, mà phối hợp để câu chuyện tài chính nhất quán.",
+        "Người phụ trách sản phẩm hiểu số liệu; người phụ trách tài chính hiểu câu chuyện sản phẩm.",
+        "Hồ sơ gọi vốn tốt luôn là sản phẩm của cả đội, không phải một người làm riêng."
+      ],
+      "bullets_en": [
+        "Each member not only gets numbers right, but keeps the financial story consistent.",
+        "The product lead understands the numbers; the finance lead understands the product.",
+        "A strong fundraising deck is always a team product, not one person's work alone."
+      ]
+    },
+    {
+      "slide": 13,
+      "kicker": "3.12 — Lợi nhuận vs. dòng tiền",
+      "title": "Phân biệt lợi nhuận và dòng tiền (Cash Flow)",
+      "title_en": "Profit vs. Cash Flow",
+      "bullets": [
+        "Có thể báo lãi trên sổ sách nhưng vẫn hết tiền mặt (nợ chưa thu, tồn kho nhiều).",
+        "Kế hoạch dòng tiền giúp tránh mất khả năng thanh toán dù đang có lãi trên giấy.",
+        "Để gọi vốn thành công: chuẩn bị số liệu kỹ, chọn đúng nhà đầu tư, thành thạo công cụ số."
+      ],
+      "bullets_en": [
+        "A project can show a paper profit yet run out of cash (unpaid debts, excess inventory).",
+        "A cash-flow plan avoids being unable to pay bills even while showing a paper profit.",
+        "To raise capital well: prepare figures carefully, pick the right investor, use digital tools."
+      ]
+    },
+    {
+      "slide": 14,
+      "kicker": "3.13 — Duy trì startup",
+      "title": "Quản trị dòng tiền và đổi mới liên tục",
+      "title_en": "Cash-Flow Management and Continuous Innovation",
+      "bullets": [
+        "Hoạt động quan trọng nhất: quản trị dòng tiền hiệu quả, minh bạch, đổi mới liên tục.",
+        "Theo dõi chỉ số tài chính thường xuyên qua dashboard trên công cụ số, không tính một lần rồi bỏ.",
+        "Startup có thể sống sót qua sản phẩm chưa hoàn hảo, hiếm khi sống sót qua tài chính cẩu thả."
+      ],
+      "bullets_en": [
+        "Most important: effective, transparent cash-flow management and continuous innovation.",
+        "Monitor financial indicators regularly via a digital dashboard, not just once.",
+        "A start-up can survive an imperfect product, rarely careless financial management."
+      ]
+    },
+    {
+      "slide": 15,
+      "kicker": "",
+      "title": "Hệ thống hóa Chương 3 — 5 câu hỏi tự kiểm tra",
+      "title_en": "Chapter 3 Recap — 5 Self-Check Questions",
+      "bullets": [
+        "1. Dự án đang ở giai đoạn nào, và nguồn vốn phù hợp là gì?",
+        "2. Định phí, biến phí là bao nhiêu, và điểm hòa vốn là mấy sản phẩm?",
+        "3. Burn rate và runway hiện tại của mình là bao lâu?",
+        "4. Đã chuẩn bị Pitch Deck tập trung dự báo doanh thu và nhu cầu vốn chưa?",
+        "5. Mình có đang minh bạch tài chính, hay vô tình che giấu điều gì?"
+      ],
+      "bullets_en": [
+        "1. What stage is my project at, and what funding source fits it?",
+        "2. What are my fixed/variable costs, and my break-even point?",
+        "3. What is my current burn rate and runway?",
+        "4. Have I prepared a Pitch Deck focused on revenue forecasts and capital needs?",
+        "5. Am I being financially transparent, or hiding something even from myself?"
+      ],
+      "method": "SLIDE_5CAUHOI"
+    },
+    {
+      "slide": 16,
+      "kicker": "",
+      "title": "Làm 60 câu trắc nghiệm Chương 3",
+      "title_en": "Take the 60 Chapter 3 Quiz Questions",
+      "bullets": [
+        "Ôn lại Chương 3 với 60 câu trắc nghiệm, chú ý câu tính điểm hòa vốn và phân biệt nguồn vốn.",
+        "Hẹn gặp lại ở Chương 4."
+      ],
+      "bullets_en": [
+        "Review Chapter 3 with 60 quiz questions, watch out for break-even and funding-source questions.",
+        "See you in Chapter 4."
+      ],
+      "method": "SLIDE_KET"
+    }
+  ],
+  "ch04": [
+    {
+      "slide": 1,
+      "kicker": "",
+      "title": "Lựa chọn mô hình kinh doanh",
+      "title_en": "Choosing a Business Model",
+      "bullets": [
+        "Chọn đúng loại hình doanh nghiệp giúp giảm rủi ro pháp lý, đặt nền móng vững chắc.",
+        "Từ 4 loại hình theo luật đến hộ kinh doanh, hợp tác xã, nhượng quyền và mô hình số."
+      ],
+      "bullets_en": [
+        "Choosing the right legal form reduces legal risk and lays a solid foundation.",
+        "From the 4 legal forms to household businesses, cooperatives, franchising and digital models."
+      ]
+    },
+    {
+      "slide": 2,
+      "kicker": "4.1 — Bốn loại hình doanh nghiệp",
+      "title": "Bốn loại hình doanh nghiệp theo Luật Doanh nghiệp",
+      "title_en": "The Four Legal Business Forms",
+      "bullets": [
+        "Doanh nghiệp tư nhân: trách nhiệm vô hạn, không có tư cách pháp nhân.",
+        "Công ty TNHH (1 hoặc 2-50 thành viên): trách nhiệm hữu hạn trong phạm vi vốn góp.",
+        "Công ty Cổ phần: phát hành cổ phiếu, cơ quan cao nhất là Đại hội đồng cổ đông.",
+        "Công ty Hợp danh: thành viên hợp danh chịu trách nhiệm vô hạn, phù hợp ngành uy tín cá nhân cao."
+      ],
+      "bullets_en": [
+        "Sole proprietorship: unlimited liability, no legal-entity status.",
+        "LLC (1 or 2-50 members): members liable only up to their contribution.",
+        "Joint-stock company: issues shares, highest body is the General Meeting of Shareholders.",
+        "Partnership: a general partner has unlimited liability, fits fields needing personal credibility."
+      ]
+    },
+    {
+      "slide": 3,
+      "kicker": "4.2 — Trách nhiệm hữu hạn & tư cách pháp nhân",
+      "title": "Trách nhiệm hữu hạn, vô hạn và tư cách pháp nhân",
+      "title_en": "Limited/Unlimited Liability and Legal-Entity Status",
+      "bullets": [
+        "Trách nhiệm hữu hạn: chỉ chịu nợ trong phạm vi vốn cam kết góp, bảo vệ tài sản cá nhân.",
+        "Trách nhiệm vô hạn: gần như không có ranh giới giữa tài sản cá nhân và kinh doanh.",
+        "Tư cách pháp nhân (TNHH, Cổ phần có — DN tư nhân không có): tự ký hợp đồng, sở hữu tài sản riêng."
+      ],
+      "bullets_en": [
+        "Limited liability: liable only up to committed capital, protecting personal assets.",
+        "Unlimited liability: almost no boundary between personal and business assets.",
+        "Legal-entity status (LLC, joint-stock yes — sole proprietorship no): can sign contracts, own assets."
+      ]
+    },
+    {
+      "slide": 4,
+      "kicker": "4.3 — Hộ kinh doanh, Tổ hợp tác, Hợp tác xã",
+      "title": "Mô hình nhỏ: Hộ kinh doanh, Tổ hợp tác, Hợp tác xã kiểu mới",
+      "title_en": "Small-Scale Models: Household Business, Cooperative Group, Cooperative",
+      "bullets": [
+        "Hộ kinh doanh/Tổ hợp tác: thủ tục đơn giản, không cần kế toán trưởng chuyên trách.",
+        "Tổ hợp tác: liên kết đơn giản nhóm nhỏ; Hợp tác xã kiểu mới: tổ chức có tư cách pháp nhân.",
+        "Hợp tác xã: biểu quyết dân chủ — mỗi thành viên một phiếu bất kể vốn góp.",
+        "Phù hợp mô hình liên kết sản xuất nông nghiệp của nông dân Vĩnh Long."
+      ],
+      "bullets_en": [
+        "Household business/cooperative group: simple procedures, no dedicated chief accountant.",
+        "Cooperative group: a simple link; new-style cooperative: has legal-entity status.",
+        "Cooperative: democratic voting — one member, one vote regardless of contribution.",
+        "Suits the agricultural-production linkage model among Vĩnh Long farmers."
+      ]
+    },
+    {
+      "slide": 5,
+      "kicker": "4.4 — Nhượng quyền kinh doanh",
+      "title": "Franchising: Quy trình chuẩn (SOP) và phí nhượng quyền",
+      "title_en": "Franchising: Standard Operating Procedure and Royalty Fee",
+      "bullets": [
+        "Bên nhận quyền dùng quy trình vận hành chuẩn (SOP) đã kiểm chứng — tỷ lệ thành công cao hơn.",
+        "Hợp đồng nhượng quyền quy định rõ quyền, nghĩa vụ; phí nhượng quyền (Royalty fee) theo % doanh thu.",
+        "Nhược điểm: mất tính độc lập vận hành; thương hiệu cao cấp có thể vượt khả năng tài chính.",
+        "'Nhượng quyền từng phần' linh hoạt hơn, phù hợp nguồn lực hạn chế."
+      ],
+      "bullets_en": [
+        "The franchisee uses a proven standard operating procedure — a higher success rate.",
+        "The franchise agreement sets rights/obligations; royalty fee as a % of revenue.",
+        "Drawback: loses operational independence; a premium brand may exceed your budget.",
+        "'Partial franchising' is more flexible, suited to limited resources."
+      ]
+    },
+    {
+      "slide": 6,
+      "kicker": "4.5 — Quyền biểu quyết & liên kết chuỗi giá trị",
+      "title": "Quyền biểu quyết, người đại diện pháp luật và chuỗi giá trị",
+      "title_en": "Voting Rights, Legal Representative, and Value-Chain Linkage",
+      "bullets": [
+        "Công ty TNHH ≥2 thành viên: biểu quyết theo tỷ lệ vốn góp (khác Hợp tác xã mỗi người 1 phiếu).",
+        "Người đại diện theo pháp luật: chịu trách nhiệm trước pháp luật về hoạt động công ty.",
+        "Liên kết chuỗi giá trị nông nghiệp giúp tăng khả năng thương lượng giá, giảm phụ thuộc trung gian."
+      ],
+      "bullets_en": [
+        "LLC with 2+ members: voting by capital-contribution ratio (unlike one-vote cooperatives).",
+        "The legal representative is legally accountable for the company's activities.",
+        "Agricultural value-chain linkage boosts bargaining power, reduces reliance on a middleman."
+      ]
+    },
+    {
+      "slide": 7,
+      "kicker": "4.6 — Nhóm nghiên cứu & nhượng quyền Việt",
+      "title": "Nhóm nghiên cứu khởi nghiệp và nhượng quyền thương hiệu Việt",
+      "title_en": "Start-up Research Groups and Vietnamese Brand Franchising",
+      "bullets": [
+        "Startup đại học: 'nhóm nghiên cứu khởi nghiệp' là bước đệm trước khi thành lập doanh nghiệp.",
+        "Thử nghiệm ý tưởng với hỗ trợ giảng viên, nhà trường trước khi gánh nghĩa vụ pháp lý đầy đủ.",
+        "Nhượng quyền thương hiệu Việt (cà phê, trà sữa...) đang phát triển mạnh — không chỉ thương hiệu ngoại."
+      ],
+      "bullets_en": [
+        "University start-ups: a 'research group' model is a stepping stone before registering.",
+        "Test the idea with school support before taking on full legal obligations.",
+        "Vietnamese brand franchising (coffee, milk tea...) is growing — not only foreign brands."
+      ]
+    },
+    {
+      "slide": 8,
+      "kicker": "4.7 — Mô hình kinh doanh thời số",
+      "title": "E-commerce, D2C và Sharing Economy",
+      "title_en": "E-commerce, D2C, and the Sharing Economy",
+      "bullets": [
+        "E-commerce: tiếp cận khách không giới hạn địa lý, chi phí mặt bằng thấp.",
+        "D2C (trực tiếp đến người tiêu dùng): loại bỏ trung gian, biên lợi nhuận cao hơn, chủ động thương hiệu.",
+        "Sharing Economy: chia sẻ tài nguyên nhàn rỗi (cho thuê không gian, phương tiện).",
+        "Các mô hình số là lớp vận hành trên nền pháp lý — hộ kinh doanh vẫn áp dụng D2C được."
+      ],
+      "bullets_en": [
+        "E-commerce: reach customers with no geographic limit, low overhead.",
+        "D2C: cuts out the middleman, higher margin, more control over branding.",
+        "Sharing economy: sharing idle resources (renting out space, a vehicle).",
+        "Digital models are an operating layer on top — a household business can still run D2C."
+      ]
+    },
+    {
+      "slide": 9,
+      "kicker": "4.8 — Tình huống minh họa",
+      "title": "Chọn mô hình pháp lý cho chị Hoa",
+      "title_en": "Choosing a Legal Model for Ms. Hoa",
+      "bullets": [
+        "Quy mô nhỏ, mới bắt đầu: Hộ kinh doanh là lựa chọn hợp lý nhất.",
+        "Mở rộng hợp tác nhiều hộ nông dân: có thể chuyển sang Hợp tác xã kiểu mới.",
+        "Dù chọn mô hình nào vẫn có thể vận hành D2C qua Facebook ngay từ đầu."
+      ],
+      "bullets_en": [
+        "Small, early scale: a household business is the most sensible choice.",
+        "Expanding with other farming households: could shift to a new-style cooperative.",
+        "Whatever the legal form, she can still run D2C through Facebook from day one."
+      ]
+    },
+    {
+      "slide": 10,
+      "kicker": "4.9 — Đăng ký kinh doanh",
+      "title": "Đăng ký kinh doanh, vốn điều lệ và con dấu doanh nghiệp",
+      "title_en": "Business Registration, Charter Capital, and the Company Seal",
+      "bullets": [
+        "Đăng ký trực tuyến qua Cổng thông tin quốc gia; đăng ký đủ ngành nghề dự kiến mở rộng sau.",
+        "Vốn điều lệ: cam kết góp đủ trong thời hạn luật định, không cần có ngay toàn bộ.",
+        "Con dấu (Luật DN 2020): doanh nghiệp tự quyết hình thức, số lượng, nội dung, không cần đăng ký công an."
+      ],
+      "bullets_en": [
+        "Register online via the National Business Registration Portal; register future lines too.",
+        "Charter capital: commit to contribute in full within the legal period, not all at once.",
+        "Seal (2020 Enterprise Law): the business decides its form/number/content, no police registration."
+      ]
+    },
+    {
+      "slide": 11,
+      "kicker": "4.10 — Tự đánh giá năng lực & đạo đức",
+      "title": "Tư vấn năng lực bản thân và đạo đức khi chọn mô hình",
+      "title_en": "Self-Capability Assessment and Ethics in Model Choice",
+      "bullets": [
+        "Nhìn rõ thời gian, vốn, kỹ năng thực có để chọn mô hình ít vốn phù hợp.",
+        "Dù chọn mô hình nào vẫn cần minh bạch đăng ký, trung thực vận hành.",
+        "Mô hình đúng pháp lý nhưng vận hành thiếu đạo đức vẫn có thể sụp đổ vì mất lòng tin."
+      ],
+      "bullets_en": [
+        "See clearly how much time, capital and skill you really have to pick a fitting model.",
+        "Whatever the model, registration must be transparent and operation honest.",
+        "A legally correct but unethically run model can still collapse through lost trust."
+      ]
+    },
+    {
+      "slide": 12,
+      "kicker": "4.11 — Rào cản thị trường & cập nhật pháp lý",
+      "title": "Chọn mô hình theo rào cản thị trường, cập nhật pháp lý thường xuyên",
+      "title_en": "Model Choice by Market Barriers, Keeping Up with Legal Changes",
+      "bullets": [
+        "Rào cản pháp lý cao: nên chọn mô hình có tư cách pháp nhân để dễ ký hợp đồng lớn.",
+        "Cạnh tranh bằng tốc độ, linh hoạt: hộ kinh doanh gọn nhẹ có lợi thế hơn.",
+        "Dùng công cụ số theo dõi thay đổi pháp lý — học một lần rồi thôi là chưa đủ."
+      ],
+      "bullets_en": [
+        "High legal barriers: a company with legal-entity status is easier for large contracts.",
+        "Competing on speed and flexibility: a light household business has the edge.",
+        "Use digital tools to track legal changes — learning it once isn't enough."
+      ]
+    },
+    {
+      "slide": 13,
+      "kicker": "4.12 — Tổng kết chương",
+      "title": "Không có mô hình 'tốt nhất' cho mọi trường hợp",
+      "title_en": "No 'Best' Model for Every Case",
+      "bullets": [
+        "Lựa chọn đúng mô hình tạo nền móng pháp lý vững và sự linh hoạt khi quy mô thay đổi.",
+        "Mô hình phù hợp năm đầu chưa chắc còn phù hợp khi dự án lớn mạnh — cần xem lại định kỳ.",
+        "Chỉ có mô hình phù hợp nhất với quy mô, nguồn lực, mục tiêu ở từng thời điểm."
+      ],
+      "bullets_en": [
+        "The right model lays a solid foundation and gives flexibility as scale changes.",
+        "A model that fits year one may not fit later — review it periodically.",
+        "There's only the model that best fits a project's scale, resources and goals at a given time."
+      ]
+    },
+    {
+      "slide": 14,
+      "kicker": "",
+      "title": "Hệ thống hóa Chương 4 — 5 câu hỏi tự kiểm tra",
+      "title_en": "Chapter 4 Recap — 5 Self-Check Questions",
+      "bullets": [
+        "1. Đang cân nhắc loại hình nào, trách nhiệm pháp lý mỗi loại ra sao?",
+        "2. Với quy mô, nguồn vốn hiện tại: hộ kinh doanh, tổ hợp tác hay TNHH phù hợp hơn?",
+        "3. Nếu nhượng quyền, đã hiểu rõ phí và ràng buộc hợp đồng chưa?",
+        "4. Mô hình số nào (E-commerce, D2C, Sharing Economy) có thể áp dụng thêm?",
+        "5. Đã đăng ký đúng, đủ ngành nghề kinh doanh dự kiến chưa?"
+      ],
+      "bullets_en": [
+        "1. Which legal forms am I weighing, and what's the liability for each?",
+        "2. Given my scale and capital, does a household business, group, or LLC fit better?",
+        "3. If franchising, do I understand the royalty fee and contract constraints?",
+        "4. Which digital model (e-commerce, D2C, sharing economy) could I add on top?",
+        "5. Have I registered the right, complete set of business lines?"
+      ],
+      "method": "SLIDE_5CAUHOI"
+    },
+    {
+      "slide": 15,
+      "kicker": "",
+      "title": "Làm 60 câu trắc nghiệm Chương 4",
+      "title_en": "Take the 60 Chapter 4 Quiz Questions",
+      "bullets": [
+        "Chú ý phân biệt trách nhiệm hữu hạn và vô hạn giữa các loại hình — điểm dễ nhầm nhất.",
+        "Hẹn gặp lại ở Chương 5 — Marketing cho doanh nghiệp mới."
+      ],
+      "bullets_en": [
+        "Watch for the limited vs. unlimited liability distinction — the most commonly confused point.",
+        "See you in Chapter 5 — Marketing for a new business."
+      ],
+      "method": "SLIDE_KET"
+    }
+  ],
+  "ch05": [
+    {
+      "slide": 1,
+      "kicker": "",
+      "title": "Marketing cho doanh nghiệp mới",
+      "title_en": "Marketing for a New Business",
+      "bullets": [
+        "Chương cuối: bước đưa sản phẩm từ ý tưởng, cơ hội, vốn, mô hình đến tay khách hàng thật.",
+        "Đi qua STP, 4P, xây dựng thương hiệu và đạo đức trong Marketing."
+      ],
+      "bullets_en": [
+        "The final chapter: the step that puts idea, opportunity, capital and model into customers' hands.",
+        "Covers STP, the 4P's, building a brand, and ethics in marketing."
+      ]
+    },
+    {
+      "slide": 2,
+      "kicker": "5.1 — STP",
+      "title": "Ba bước STP: Segmentation — Targeting — Positioning",
+      "title_en": "The Three STP Steps",
+      "bullets": [
+        "Segmentation: chia thị trường theo địa lý, nhân khẩu học, hành vi.",
+        "Targeting: chọn nhóm khách hàng cụ thể muốn phục vụ.",
+        "Positioning: tạo hình ảnh, giá trị khác biệt trong tâm trí khách hàng mục tiêu.",
+        "Phải làm đúng thứ tự — định vị mà không biết nhắm ai sẽ mơ hồ, không hiệu quả."
+      ],
+      "bullets_en": [
+        "Segmentation: dividing the market by geography, demographics, behaviour.",
+        "Targeting: choosing the specific customer group to serve.",
+        "Positioning: creating a distinct image and value in the target customer's mind.",
+        "Must follow this order — positioning without a target ends up vague and ineffective."
+      ]
+    },
+    {
+      "slide": 3,
+      "kicker": "5.2 — 4P",
+      "title": "Bốn chữ P: Product, Price, Place, Promotion",
+      "title_en": "The Four P's: Product, Price, Place, Promotion",
+      "bullets": [
+        "Product: giá trị và trải nghiệm mang lại, không chỉ tính năng kỹ thuật.",
+        "Price: giá xâm nhập (thấp, chiếm thị phần nhanh) hoặc giá hớt váng (cao, sản phẩm độc đáo).",
+        "Place: kênh phân phối, trực tiếp hoặc qua trung gian.",
+        "Promotion: chiêu thị — ví dụ quảng bá qua Facebook, TikTok."
+      ],
+      "bullets_en": [
+        "Product: the value and experience delivered, not just technical features.",
+        "Price: penetration pricing (low, fast share) or skimming (high, for a unique product).",
+        "Place: the distribution channel, direct or through an intermediary.",
+        "Promotion: for example, promoting through Facebook or TikTok."
+      ]
+    },
+    {
+      "slide": 4,
+      "kicker": "5.3 — Thương hiệu & Brand Story",
+      "title": "Bộ nhận diện thương hiệu và câu chuyện thương hiệu",
+      "title_en": "Brand Identity and Brand Story",
+      "bullets": [
+        "Bộ nhận diện đồng bộ: logo, slogan, màu sắc, font chữ, ấn phẩm nhất quán.",
+        "Màu thương hiệu mang ý nghĩa tâm lý, giúp khách nhớ và liên tưởng cảm xúc.",
+        "Với sản phẩm dân tộc thiểu số: Brand Story chân thực gắn bản sắc văn hóa là vũ khí sắc bén.",
+        "Câu chuyện thương hiệu hiệu quả phải là chuyện thật, có cảm xúc — không phải quảng cáo sáo rỗng."
+      ],
+      "bullets_en": [
+        "A consistent identity: logo, slogan, colours, typography, consistent materials.",
+        "Brand colour carries psychological meaning, helping customers recall a feeling.",
+        "For ethnic-minority products: an authentic brand story tied to identity is a sharp weapon.",
+        "An effective brand story is true and emotional, not hollow advertising copy."
+      ]
+    },
+    {
+      "slide": 5,
+      "kicker": "5.4 — Marketing 0 đồng",
+      "title": "Marketing 0 đồng và công cụ số hỗ trợ",
+      "title_en": "Zero-Đồng Marketing and Digital Tools",
+      "bullets": [
+        "Vốn ít: ưu tiên truyền miệng, mạng xã hội, nội dung sáng tạo được chia sẻ tự nhiên.",
+        "'Định vị 0 đồng': kể câu chuyện thật, đều đặn, nhất quán trên mạng xã hội.",
+        "Canva: thiết kế bộ nhận diện; Google Trends, Facebook Insights, Analytics: hiểu hành vi khách hàng.",
+        "Theo dõi công cụ phân tích thường xuyên để điều chỉnh chiến lược kịp thời."
+      ],
+      "bullets_en": [
+        "Low budget: prioritise word of mouth and naturally shared creative content.",
+        "'Zero-đồng positioning': tell the real story regularly and consistently on social media.",
+        "Canva for identity design; Google Trends, Facebook Insights, Analytics for customer behaviour.",
+        "Check these analytics tools regularly to adjust strategy in time."
+      ]
+    },
+    {
+      "slide": 6,
+      "kicker": "5.5 — USP & thị trường ngách",
+      "title": "Unique Selling Point và chiến lược thị trường ngách",
+      "title_en": "Unique Selling Point and the Niche-Market Strategy",
+      "bullets": [
+        "USP: điều khiến sản phẩm khác biệt mà đối thủ không có.",
+        "Phân tích đối thủ để tìm góc độ khác biệt họ chưa khai thác.",
+        "Thị trường ngách (Niche Market): tập trung phục vụ tốt nhóm nhỏ, cụ thể.",
+        "Vị thế cạnh tranh của startup: vị trí riêng trong ngách, không so quy mô trực diện với đối thủ lớn."
+      ],
+      "bullets_en": [
+        "USP: what makes a product different in a way competitors don't have.",
+        "Analyse competitors to find an angle they haven't explored.",
+        "Niche market: focus on serving a small, specific group really well.",
+        "A start-up's competitive position: its own spot in a niche, not head-to-head size comparison."
+      ]
+    },
+    {
+      "slide": 7,
+      "kicker": "5.6 — Slogan, bộ nhận diện & kênh số",
+      "title": "Slogan, bộ nhận diện chuyên nghiệp và chọn kênh số đúng",
+      "title_en": "Slogan, Professional Identity, and Choosing the Right Digital Channel",
+      "bullets": [
+        "Slogan: ngắn gọn, dễ nhớ, truyền tải đúng giá trị cốt lõi đã định vị.",
+        "Bộ nhận diện chuyên nghiệp: logo, slogan, bảng màu, font chữ, ấn phẩm thống nhất.",
+        "TikTok phù hợp sản phẩm trẻ trung; hội nhóm Facebook phù hợp sản phẩm cần lòng tin cộng đồng.",
+        "Chọn sai kênh thì nội dung hay đến đâu cũng khó tiếp cận đúng khách hàng."
+      ],
+      "bullets_en": [
+        "Slogan: short, memorable, conveying the core value already positioned.",
+        "Professional identity: logo, slogan, colour palette, typography, consistent materials.",
+        "TikTok suits a youthful product; Facebook groups suit one needing community trust.",
+        "The wrong channel means even great content struggles to reach the right customer."
+      ]
+    },
+    {
+      "slide": 8,
+      "kicker": "5.7 — Áp dụng STP & 4P",
+      "title": "STP và 4P cho sản phẩm khoai lang chị Hoa",
+      "title_en": "STP and the 4P's for Ms. Hoa's Sweet-Potato Product",
+      "bullets": [
+        "Segmentation: thực phẩm chế biến nông sản, thành thị/nông thôn.",
+        "Targeting: nữ văn phòng 25-40 tuổi quan tâm thực phẩm sạch.",
+        "Positioning: 'ăn vặt lành mạnh, nguồn gốc rõ ràng từ nông dân Vĩnh Long'.",
+        "4P: bánh khoai đóng gói nhỏ, giá xâm nhập, bán qua Facebook, chiêu thị bằng câu chuyện trồng/chế biến."
+      ],
+      "bullets_en": [
+        "Segmentation: processed-agricultural food, urban/rural.",
+        "Targeting: office women aged 25-40 who care about clean food.",
+        "Positioning: 'a healthy snack, clearly traced to Vĩnh Long farmers'.",
+        "4P: a small packaged cake, penetration price, sold via Facebook, promoted via the growing story."
+      ]
+    },
+    {
+      "slide": 9,
+      "kicker": "5.8 — Đạo đức Marketing",
+      "title": "Đạo đức kinh doanh trong Marketing và tránh Greenwashing",
+      "title_en": "Business Ethics in Marketing and Avoiding Greenwashing",
+      "bullets": [
+        "Quảng cáo trung thực về tính năng, tôn trọng người tiêu dùng, không phóng đại công dụng.",
+        "Định vị 'xanh' phải là sự thật — tránh Greenwashing (quảng cáo xanh giả, không có hành động thực).",
+        "Bị phát hiện greenwashing: thiệt hại uy tín lớn hơn nhiều lợi ích ngắn hạn.",
+        "Phản hồi khách hàng là dữ liệu quý để điều chỉnh, không phải điều cần né tránh."
+      ],
+      "bullets_en": [
+        "Advertise honestly, respect consumers, don't exaggerate benefits.",
+        "'Green' positioning must be true — avoid greenwashing (fake claims, no real action).",
+        "Getting caught greenwashing costs far more reputation than the short-term gain.",
+        "Customer feedback is valuable data for adjusting, not something to avoid."
+      ]
+    },
+    {
+      "slide": 10,
+      "kicker": "5.9 — Brand Loyalty & phản hồi",
+      "title": "Xây dựng Brand Loyalty và lắng nghe phản hồi khách hàng",
+      "title_en": "Building Brand Loyalty and Listening to Customer Feedback",
+      "bullets": [
+        "Brand Loyalty giúp duy trì khách hàng ổn định, giảm chi phí tìm khách mới.",
+        "Giữ khách cũ luôn rẻ hơn tìm khách mới.",
+        "Lắng nghe phản hồi để điều chỉnh sản phẩm, chiến lược tiếp cận phù hợp hơn.",
+        "Tương tác diễn đàn, livestream bán hàng tạo kết nối hai chiều với khách."
+      ],
+      "bullets_en": [
+        "Brand loyalty keeps customers stable and lowers the cost of finding new ones.",
+        "Keeping an existing customer is always cheaper than acquiring a new one.",
+        "Listen to feedback to adjust the product and market approach better.",
+        "Forum engagement and livestream selling build a two-way connection with customers."
+      ]
+    },
+    {
+      "slide": 11,
+      "kicker": "5.10 — Digital Marketing & IMC",
+      "title": "Digital Marketing và Integrated Marketing Communication",
+      "title_en": "Digital Marketing and Integrated Marketing Communication",
+      "bullets": [
+        "Kinh tế số: chuyển từ quảng cáo một chiều sang tương tác hai chiều, cá nhân hóa, đo lường bằng dữ liệu.",
+        "Livestream bán hàng: tiết kiệm mặt bằng, tạo gần gũi, tin tưởng trực tiếp với khách.",
+        "IMC: phối hợp đồng bộ nhiều kênh để thông điệp thương hiệu nhất quán mọi nơi."
+      ],
+      "bullets_en": [
+        "Digital economy: shift from one-way ads to two-way, personalised, data-measured marketing.",
+        "Livestream selling: saves on space, builds closeness and direct trust with customers.",
+        "IMC: coordinating several channels so the brand message stays consistent everywhere."
+      ]
+    },
+    {
+      "slide": 12,
+      "kicker": "5.11 — Mở rộng 7P",
+      "title": "Marketing Mix 7P cho lĩnh vực dịch vụ",
+      "title_en": "The 7P Marketing Mix for Services",
+      "bullets": [
+        "Thêm 3P vào 4P cơ bản: People (con người phục vụ), Process (quy trình), Physical Evidence (bằng chứng vật lý).",
+        "Phù hợp dịch vụ như du lịch cộng đồng dân tộc thiểu số, nơi trải nghiệm phụ thuộc con người và không gian thực tế."
+      ],
+      "bullets_en": [
+        "Adds 3 P's to the basic 4: People, Process, and Physical Evidence.",
+        "Fits services like ethnic-minority community tourism, where experience depends on people and space."
+      ]
+    },
+    {
+      "slide": 13,
+      "kicker": "5.12 — Tổng kết toàn khóa",
+      "title": "Luôn quay lại STP trước khi áp dụng 4P hay 7P",
+      "title_en": "Always Return to STP Before Applying the 4P's or 7P's",
+      "bullets": [
+        "Mọi quyết định sản phẩm, giá, phân phối, chiêu thị chỉ đúng khi thiết kế cho đúng nhóm khách mục tiêu.",
+        "Chương 1: ý tưởng → Chương 2: cơ hội → Chương 3: vốn/tài chính → Chương 4: mô hình pháp lý → Chương 5: Marketing.",
+        "Marketing là mắt xích cuối đưa mọi nỗ lực đến tay khách hàng thật — không phải việc 'làm sau cùng khi rảnh'."
+      ],
+      "bullets_en": [
+        "Every product/price/place/promotion decision is only right for the defined target group.",
+        "Ch1: idea → Ch2: opportunity → Ch3: funding/finance → Ch4: legal model → Ch5: marketing.",
+        "Marketing is the final link putting all that effort into customers' hands — never an afterthought."
+      ]
+    },
+    {
+      "slide": 14,
+      "kicker": "",
+      "title": "Hệ thống hóa toàn học phần — 5 câu hỏi tự kiểm tra",
+      "title_en": "Whole-Course Recap — 5 Self-Check Questions",
+      "bullets": [
+        "1. Ý tưởng xuất phát từ nhu cầu thật nào, và đổi mới sáng tạo nằm ở đâu?",
+        "2. Đã đánh giá cơ hội dựa trên dữ liệu thực tế hay vẫn đang suy đoán?",
+        "3. Các chỉ số tài chính cốt yếu — điểm hòa vốn, burn rate, runway — là bao nhiêu?",
+        "4. Mô hình kinh doanh và mô hình pháp lý có phù hợp quy mô, nguồn lực hiện tại không?",
+        "5. Chiến lược STP và 4P đã rõ ràng, nhất quán chưa?"
+      ],
+      "bullets_en": [
+        "1. What real need does my idea come from, and where is the innovation?",
+        "2. Have I assessed the opportunity with real data, or am I still guessing?",
+        "3. What are my key financial indicators — break-even, burn rate, runway?",
+        "4. Do my business model and legal form fit my current scale and resources?",
+        "5. Are my STP and 4P strategies clear and consistent?"
+      ],
+      "method": "SLIDE_5CAUHOI"
+    },
+    {
+      "slide": 15,
+      "kicker": "",
+      "title": "Làm 60 câu trắc nghiệm Chương 5 — Tổng ôn cả học phần",
+      "title_en": "Take the 60 Chapter 5 Quiz Questions — Full-Course Review",
+      "bullets": [
+        "Tổng ôn lại kiến thức cả 5 chương qua 60 câu trắc nghiệm Chương 5.",
+        "Có thể xem lại bất kỳ video ôn tập nào — mỗi video đứng độc lập.",
+        "Chúc ôn tập hiệu quả và chúc dự án khởi nghiệp nhiều may mắn!"
+      ],
+      "bullets_en": [
+        "Review all 5 chapters through the 60 Chapter 5 quiz questions.",
+        "Feel free to rewatch any revision video — each one stands on its own.",
+        "Good luck with your revision, and best wishes for your start-up project!"
+      ],
+      "method": "SLIDE_KET"
+    }
+  ]
+}
