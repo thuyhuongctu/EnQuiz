@@ -149,6 +149,10 @@
       'quiz.marked.on': 'Đã đánh dấu câu hỏi.',
       'quiz.marked.off': 'Đã bỏ đánh dấu.',
 
+      'exam.warnSwitch': '⚠️ Đã rời khỏi màn hình làm bài — hệ thống đã ghi nhận.',
+      'exam.warnClipboard': '📋 Sao chép/dán bị tắt trong lúc thi.',
+      'exam.warnFullscreen': '🖥️ Bạn đã thoát chế độ toàn màn hình — hệ thống đã ghi nhận.',
+
       'grid.heading': 'Danh sách câu hỏi',
       'grid.answered': 'Đã làm',
       'grid.markedDot': 'Đánh dấu',
@@ -158,6 +162,7 @@
       'result.pass': 'Đạt yêu cầu',
       'result.fail': 'Cần ôn thêm',
       'result.summary': '{label} · đúng {correct}/{total} câu ({pct}%)',
+      'result.integrityNotice': '⚠️ Ghi nhận {n} lần rời màn hình hoặc thoát toàn màn hình trong lúc thi.',
       'result.correct': 'Câu đúng',
       'result.wrong': 'Câu sai',
       'result.skip': 'Bỏ trống',
@@ -494,6 +499,10 @@
       'quiz.marked.on': 'Question flagged.',
       'quiz.marked.off': 'Flag removed.',
 
+      'exam.warnSwitch': '⚠️ You left the exam screen — this has been logged.',
+      'exam.warnClipboard': '📋 Copy/paste is disabled during the exam.',
+      'exam.warnFullscreen': '🖥️ You exited full-screen mode — this has been logged.',
+
       'grid.heading': 'All questions',
       'grid.answered': 'Answered',
       'grid.markedDot': 'Flagged',
@@ -503,6 +512,7 @@
       'result.pass': 'Passed',
       'result.fail': 'Keep practising',
       'result.summary': '{label} · {correct}/{total} correct ({pct}%)',
+      'result.integrityNotice': '⚠️ Logged {n} time(s) leaving the screen or exiting full-screen during the exam.',
       'result.correct': 'Correct',
       'result.wrong': 'Wrong',
       'result.skip': 'Skipped',
