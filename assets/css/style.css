@@ -2049,6 +2049,12 @@ input[type="number"]:focus, input[type="file"]:focus {
   object-fit: cover;
   border: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
 }
+.integrity-notice {
+  margin: .4rem 0 0;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--warn);
+}
 .advisor__name { font-weight: 700; margin: 0; }
 .advisor__website {
   display: inline-block;
