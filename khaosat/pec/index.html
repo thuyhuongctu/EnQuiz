@@ -1,0 +1,485 @@
+<!doctype html><html lang="vi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="Phiếu tự đánh giá 55 câu PEC (phương pháp CEFE) tự tính điểm 10 tố chất doanh nhân, dùng cho lớp KSDN.">
+<title>Phiếu Đánh Giá Tố Chất Doanh Nhân (PEC) · BizOn / EnQuiz</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+  :root {
+    --page-bg: #d9d9d6;
+    --paper: #ffffff;
+    --ink: #111111;
+    --ink-soft: #444444;
+    --ink-faint: #6b6b6b;
+    --line: #000000;
+    --line-soft: #bcbcbc;
+    --select-fill: #111111;
+    --select-text: #ffffff;
+    --hairline: #999999;
+    --note-bg: #f2f2ef;
+    --shadow: 0 1px 3px rgba(0,0,0,.25), 0 10px 26px -14px rgba(0,0,0,.35);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #0b0b0a;
+      --paper: #1b1b19;
+      --ink: #ededea;
+      --ink-soft: #c7c7c2;
+      --ink-faint: #93938d;
+      --line: #d8d8d4;
+      --line-soft: #3a3a37;
+      --select-fill: #ededea;
+      --select-text: #111111;
+      --hairline: #55554f;
+      --note-bg: #232320;
+      --shadow: 0 1px 3px rgba(0,0,0,.5), 0 10px 26px -14px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #0b0b0a;
+    --paper: #1b1b19;
+    --ink: #ededea;
+    --ink-soft: #c7c7c2;
+    --ink-faint: #93938d;
+    --line: #d8d8d4;
+    --line-soft: #3a3a37;
+    --select-fill: #ededea;
+    --select-text: #111111;
+    --hairline: #55554f;
+    --note-bg: #232320;
+    --shadow: 0 1px 3px rgba(0,0,0,.5), 0 10px 26px -14px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: 'Tinos', 'Times New Roman', Times, serif;
+    margin: 0;
+    padding-inline: 16px;
+    padding-block: 28px 70px;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  .sheet { max-width: 760px; margin: 0 auto; background: var(--paper); box-shadow: var(--shadow); border: 1px solid var(--hairline); }
+  .pad { padding: 30px 34px; }
+  @media (max-width: 640px) { .pad { padding: 20px 16px; } }
+
+  h1 { font-size: 1.28rem; font-weight: 700; text-align: center; margin: 0 0 4px; text-wrap: balance; }
+  h2.section { font-size: 1.05rem; font-weight: 700; text-align: center; letter-spacing: .01em; margin: 30px 0 14px; text-transform: uppercase; }
+  .subtitle { text-align: center; font-style: italic; color: var(--ink-soft); font-size: .92rem; margin-bottom: 18px; }
+  .credit { text-align: right; font-size: .78rem; color: var(--ink-faint); }
+  p { margin: 0 0 10px; }
+  .lead { color: var(--ink); font-size: .95rem; }
+
+  .instructions { font-size: .95rem; }
+  .instructions .head { font-weight: 700; text-decoration: underline; margin-bottom: 8px; }
+  .instructions ul { margin: 0 0 10px; padding-left: 22px; }
+  .instructions li { margin-bottom: 8px; }
+  .scale-list { margin: 6px 0 10px 22px; padding: 0; list-style: none; font-weight: 700; }
+  .scale-list li { margin-bottom: 2px; }
+
+  .lock-note {
+    font-size: .82rem; font-style: italic; color: var(--ink-faint);
+    border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+    padding-block: 8px; margin: 14px 0;
+  }
+
+  /* ---- sticky progress ---- */
+  .stickybar {
+    position: sticky; top: 0; z-index: 20; background: var(--paper);
+    border-bottom: 1px solid var(--line); padding: 8px 34px;
+  }
+  @media (max-width: 640px) { .stickybar { padding-inline: 16px; } }
+  .stickybar-row { display: flex; align-items: center; gap: 12px; font-size: .8rem; }
+  .progress-track { flex: 1; height: 4px; background: var(--line-soft); }
+  .progress-fill { height: 100%; background: var(--ink); width: 0%; }
+  .progress-count { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .mini-legend { font-size: .74rem; color: var(--ink-faint); margin-top: 3px; }
+  .mini-legend b { color: var(--ink); }
+
+  /* ---- table ---- */
+  table.pec-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  table.pec-table caption { caption-side: top; text-align: left; font-weight: 700; padding: 4px 0; }
+  table.pec-table th, table.pec-table td { border: 1px solid var(--line); padding: 7px 10px; vertical-align: top; }
+  table.pec-table thead th {
+    text-align: center; font-weight: 700; background: var(--note-bg);
+    position: sticky; top: 45px; z-index: 10;
+  }
+  table.pec-table td.stt { width: 42px; text-align: center; }
+  table.pec-table tbody tr { scroll-margin-top: 106px; }
+  table.pec-table td.score-cell { width: 190px; }
+  .q.missing td { animation: flash .7s ease; }
+  @keyframes flash { 0%,100% { background: transparent; } 35% { background: var(--note-bg); } }
+
+  .bubbles { display: flex; gap: 5px; justify-content: flex-end; flex-wrap: nowrap; }
+  .bubble { position: relative; width: 27px; height: 27px; flex: none; }
+  .bubble input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+  .bubble label {
+    display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;
+    border: 1px solid var(--ink); border-radius: 50%; font-size: .82rem; font-weight: 700;
+    color: var(--ink); cursor: pointer; user-select: none;
+  }
+  .bubble input:checked + label { background: var(--select-fill); color: var(--select-text); }
+  .bubble input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  /* ---- submit ---- */
+  .submit-row { padding: 22px 34px 30px; text-align: center; }
+  @media (max-width: 640px) { .submit-row { padding-inline: 16px; } }
+  button.primary, button.ghost {
+    font-family: 'Tinos', serif; font-size: .95rem; font-weight: 700; padding: 10px 22px;
+    cursor: pointer; border: 1px solid var(--ink);
+  }
+  button.primary { background: var(--ink); color: var(--paper); }
+  button.primary:hover { opacity: .85; }
+  button.ghost { background: transparent; color: var(--ink); }
+  button.ghost:hover { background: var(--note-bg); }
+  button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .submit-status { font-size: .85rem; font-style: italic; margin-top: 10px; min-height: 1.2em; }
+
+  /* ---- results ---- */
+  .corr-table, .score-table2 { width: 100%; border-collapse: collapse; font-size: .92rem; margin-bottom: 6px; }
+  .corr-table th, .corr-table td, .score-table2 th, .score-table2 td { border: 1px solid var(--line); padding: 6px 10px; }
+  .corr-table th, .score-table2 th { background: var(--note-bg); font-weight: 700; text-align: left; }
+  .corr-table td:last-child, .score-table2 td.num, .score-table2 th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .score-table2 tr.total td { font-weight: 700; }
+  .cf-line { font-weight: 700; margin: 10px 0; }
+  .total-line { font-weight: 700; text-align: right; margin-top: 8px; }
+
+  .chart-box { margin: 16px 0 6px; overflow-x: auto; }
+  .chart-box svg { display: block; min-width: 560px; width: 100%; height: auto; }
+  .chart-box text { font-family: 'Tinos', serif; }
+
+  .worked { background: var(--note-bg); border: 1px solid var(--line-soft); padding: 12px 14px; font-size: .9rem; margin-top: 10px; }
+  .worked div { margin-bottom: 3px; }
+  .worked .concl { font-weight: 700; margin-top: 6px; }
+
+  .result-actions { text-align: center; padding: 20px 34px 30px; display: flex; gap: 10px; justify-content: center; }
+  @media (max-width: 640px) { .result-actions { padding-inline: 16px; } }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; border: none; max-width: 100%; }
+    .stickybar, .submit-row, .result-actions, .lock-note { display: none !important; }
+    table.pec-table thead th { position: static; }
+  }
+
+  [hidden] { display: none !important; }
+</style>
+</head><body>
+
+<div class="sheet">
+  <div class="pad" style="padding-bottom:0">
+    <h1>PHIẾU ĐÁNH GIÁ TỐ CHẤT DOANH NHÂN</h1>
+    <p class="subtitle">PEC – PERSONAL ENTREPRENEURIAL COMPETENCIES</p>
+    <p class="lead">PECs là một phần nội dung cơ bản trong phương pháp CEFE (Competency-based Economies through the Formation of Enterprises), một phương pháp dùng huấn luyện cho các doanh nhân, doanh nghiệp siêu nhỏ và nhỏ được phát triển bởi McClelland và Henry Murray năm 1938.</p>
+
+    <div class="instructions">
+      <p class="head">Hướng dẫn:</p>
+      <ul>
+        <li>Phiếu điều tra này bao gồm 55 câu ngắn. Hãy đọc kỹ các câu đó và cho biết chúng phản ánh đúng những đặc điểm của bạn đến mức nào. Yêu cầu trả lời trung thực. Nhớ là không ai có thể làm tốt tất cả mọi việc và thậm chí nếu mọi việc được thực hiện tốt cũng chưa chắc đã là điều tốt. Ngoài ra việc bạn tự cho điểm về các phẩm chất của bạn sẽ được bảo đảm bí mật và bạn có thể mang phiếu này về nhà bạn khi chúng ta kết thúc buổi trao đổi.</li>
+        <li>Hãy chọn một trong những con số sau đây để chỉ rõ các câu phản ánh các đặc điểm của bạn đúng đến mức độ nào:
+          <ul class="scale-list">
+            <li>5- Luôn luôn</li>
+            <li>4- Thường xuyên</li>
+            <li>3- Đôi khi</li>
+            <li>2- Hiếm khi</li>
+            <li>1- Không bao giờ</li>
+          </ul>
+        </li>
+        <li>Điền số mà bạn chọn vào cuối dòng bên phải của mỗi câu. Ví dụ: "Tôi vẫn giữ được bình tĩnh trong những tình huống căng thẳng" – chọn 2. Người điền con số 2 ở ví dụ này cho ta thấy phần miêu tả trên liên quan đến bản thân anh ta rất ít.</li>
+        <li>Có một số câu có vẻ gần giống nhau nhưng không có phần nào giống hệt nhau.</li>
+        <li>Xin hãy trả lời tất cả các câu hỏi dưới đây và cho điểm đánh giá.</li>
+      </ul>
+    </div>
+
+    <p class="lock-note">🔒 Bản điện tử này tự tính điểm ngay trên trình duyệt của bạn theo đúng công thức của phiếu gốc, không gửi câu trả lời đi đâu cả.</p>
+  </div>
+
+  <div class="stickybar">
+    <div class="stickybar-row">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-count" id="progressCount">0 / 55</div>
+    </div>
+    <div class="mini-legend"><b>5</b> Luôn luôn · <b>4</b> Thường xuyên · <b>3</b> Đôi khi · <b>2</b> Hiếm khi · <b>1</b> Không bao giờ</div>
+  </div>
+
+  <form id="pecForm">
+    <div class="pad" style="padding-block:14px">
+      <table class="pec-table">
+        <thead><tr><th style="width:42px">STT</th><th>Đặc điểm tố chất doanh nhân</th><th style="width:190px">Điểm đánh giá</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="submit-row">
+      <button type="submit" class="primary">Tính điểm đánh giá</button>
+      <div class="submit-status" id="submitStatus"></div>
+    </div>
+  </form>
+
+  <section id="results" hidden>
+    <div class="pad" style="padding-bottom:0">
+      <h2 class="section">Bảng ghi điểm hiệu chỉnh</h2>
+      <p class="cf-line" id="cfLine"></p>
+      <table class="corr-table">
+        <thead><tr><th>Hiệu chỉnh đó là</th><th>Thì trừ đi con số sau đây từ mỗi điểm PEC</th></tr></thead>
+        <tbody>
+          <tr><td>24 hoặc 25</td><td>7 điểm</td></tr>
+          <tr><td>22 hoặc 23</td><td>5 điểm</td></tr>
+          <tr><td>20 hoặc 21</td><td>3 điểm</td></tr>
+          <tr><td>19 hoặc nhỏ hơn</td><td>0 điểm</td></tr>
+        </tbody>
+      </table>
+
+      <table class="score-table2" style="margin-top:16px">
+        <thead><tr><th>PEC</th><th class="num">Điểm ban đầu</th><th class="num">Điểm phải trừ</th><th class="num">Điểm đã hiệu chỉnh</th></tr></thead>
+        <tbody id="scoreBody"></tbody>
+      </table>
+      <p class="total-line" id="totalLine"></p>
+
+      <h2 class="section">Sơ đồ đặc trưng tố chất doanh nhân</h2>
+      <div class="chart-box" id="chartWrap"></div>
+
+      <p style="font-size:.88rem"><b>Ghi chú:</b> tính trung bình điểm số cho nhóm đặc điểm doanh nhân từ 1→5; tố chất kỹ thuật 6→8; tố chất lãnh đạo 9→10. So sánh điểm trung bình cho 10 tiêu chí với điểm TB của từng nhóm tố chất. Cuối cùng đưa ra tiên lượng về cá tính dựa trên nhận xét của từng cá nhân.</p>
+      <div class="worked" id="worked"></div>
+    </div>
+    <div class="result-actions">
+      <button type="button" class="ghost" id="printBtn">In kết quả</button>
+      <button type="button" class="ghost" id="retakeBtn">Làm lại từ đầu</button>
+    </div>
+  </section>
+
+  <div class="pad" style="padding-top:0"><p class="credit">Tài liệu gốc phục vụ giảng dạy lớp KSDN – Phan Anh Tú.</p></div>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  const QUESTIONS = [
+    "Tôi tìm những công việc cần làm",
+    "Khi đối mặt với một vấn đề khó khăn, tôi dành rất nhiều thời gian để tìm ra giải pháp",
+    "Tôi hoàn thành công việc đúng thời gian đã định",
+    "Tôi cảm thấy buồn phiền khi công việc không được hoàn thành tốt",
+    "Tôi thích các tình huống mà tôi có thể kiểm soát được càng nhiều càng tốt",
+    "Tôi thích suy ngẫm về tương lai",
+    "Mỗi khi bắt đầu một nhiệm vụ hay một dự án mới, tôi luôn thu thập rất nhiều thông tin trước khi thực sự bắt tay vào làm",
+    "Tôi lập kế hoạch cho một dự án cỡ lớn bằng cách phân nhỏ nó thành các mục tiêu có quy mô nhỏ hơn",
+    "Tôi được người khác ủng hộ các đề xuất của tôi",
+    "Tôi cảm thấy tin tưởng rằng tôi sẽ thành công trong mọi việc tôi làm",
+    "Dù tôi nói chuyện với bất kỳ ai, tôi luôn tỏ ra mình biết nghe người khác nói",
+    "Tôi chủ động làm các công việc trước khi tôi được người khác yêu cầu làm việc đó",
+    "Tôi cố gắng nhiều lần để yêu cầu người khác làm những điều tôi muốn họ làm",
+    "Tôi giữ vững lời tôi đã hứa",
+    "Công việc của tôi tốt hơn công việc của những người cùng làm với tôi",
+    "Tôi không thử làm một điều gì mới nếu như không chắc chắn rằng tôi sẽ thành công",
+    "Tôi cảm thấy thật phí thời giờ nếu phải lo lắng về cuộc đời của mình sẽ ra sao",
+    "Tôi tìm kiếm lời khuyên ở những người hiểu biết nhiều về những việc mà tôi đang phải làm",
+    "Tôi suy nghĩ về ưu điểm, nhược điểm hoặc các cách khác nhau để thực hiện công việc",
+    "Tôi không bỏ nhiều thời gian suy nghĩ về việc làm thế nào để có ảnh hưởng nhiều đến những người khác",
+    "Tôi thay đổi ý kiến nếu những người khác hoàn toàn bất đồng với tôi",
+    "Tôi cảm thấy rất bực bội nếu tôi không thể làm theo cách của tôi",
+    "Tôi thích những thử thách và các cơ hội mới",
+    "Khi có điều gì cản trở công việc mà tôi đang cố gắng làm, tôi vẫn tiếp tục cố gắng để hoàn thành việc đó bằng được",
+    "Tôi sẵn sàng làm công việc của người khác trong trường hợp cần phải hoàn thành công việc đó cho đúng hạn",
+    "Tôi buồn bực nếu như thời gian của tôi bị bỏ phí",
+    "Tôi cân nhắc khả năng thành công hoặc là thất bại trước khi quyết định làm một việc nào đó",
+    "Tôi càng biết cụ thể về những gì tôi muốn trong cuộc đời bao nhiêu, tôi càng có cơ hội thành công nhiều bấy nhiêu",
+    "Tôi hành động mà chẳng cần phí thời gian cho việc thu thập thông tin",
+    "Tôi cố gắng suy nghĩ về tất cả các vấn đề tôi có thể sẽ gặp phải và lên kế hoạch phải làm gì nếu quả thực các vấn đề đó xảy ra",
+    "Tôi nhờ những người quan trọng giúp đỡ để hoàn thành các mục tiêu của tôi",
+    "Trong khi thử làm một việc gì đó khó khăn, tôi tin tưởng rằng tôi sẽ thành công",
+    "Trong quá khứ tôi đã từng thất bại",
+    "Tôi thích những công việc mà tôi biết rõ và cảm thấy thoải mái",
+    "Khi đối mặt với những khó khăn chủ yếu tôi nhanh chóng chuyển sang làm các công việc khác",
+    "Khi tôi làm việc cho một ai đó, tôi đặc biệt cố gắng để người đó hài lòng về công việc của tôi",
+    "Tôi không khi nào hoàn toàn bằng lòng với những cách làm việc đã có, tôi luôn nghĩ rằng còn có thể có cách khác tốt hơn",
+    "Tôi làm những việc phiêu lưu mạo hiểm",
+    "Tôi có kế hoạch rõ ràng cho cuộc đời của tôi",
+    "Khi tôi thực hiện một dự án cho ai đó, tôi đặt ra rất nhiều câu hỏi để có thể chắc chắn rằng tôi đã hiểu đúng những gì người đó muốn",
+    "Tôi giải quyết các vấn đề khi chúng đã nảy sinh, chứ không chịu mất thời gian để dự đoán những vấn đề này",
+    "Để đạt được mục đích của tôi, tôi suy nghĩ về các giải pháp mang lại lợi ích cho tất cả những ai tham gia vào công việc này",
+    "Tôi làm công việc rất tốt",
+    "Đã từng có trường hợp tôi lừa dối ai đó",
+    "Tôi thử làm những việc hoàn toàn mới và khác lạ đối với những gì tôi đã làm trước đây",
+    "Tôi thử rất nhiều cách để khắc phục những cản trở việc đạt được mục đích của tôi",
+    "Gia đình và cuộc sống riêng tư có tầm quan trọng đối với tôi hơn là các thời hạn mà tôi đã đặt ra cho mình",
+    "Tôi không tìm được cách thức để có thể hoàn thành nhiệm vụ nhanh hơn cả ở cơ quan lẫn ở nhà",
+    "Tôi làm những công việc mà người khác cho là mạo hiểm",
+    "Tôi lo lắng cho việc hoàn thành các mục tiêu trong tuần chẳng kém gì lo lắng cho các mục tiêu trong cả năm",
+    "Tôi tìm kiếm thông tin từ nhiều nguồn khác nhau để giải quyết các nhiệm vụ hay thực hiện các dự án của mình",
+    "Nếu cách tiếp cận vấn đề này không thành công thì tôi suy nghĩ tìm cách tiếp cận khác",
+    "Tôi có khả năng làm cho những người có quan điểm hoặc ý tưởng vững chắc phải thay đổi ý kiến",
+    "Tôi giữ vững các quyết định của mình kể cả trong trường hợp những người khác bất đồng với tôi",
+    "Khi tôi không biết điều gì đó, tôi công nhận là tôi không biết"
+  ];
+
+  const PECS = [
+    { name: "Tìm kiếm cơ hội",                        group: "A", terms: [[1,1],[12,1],[23,1],[34,-1],[45,1]] },
+    { name: "Kiên định",                               group: "A", terms: [[2,1],[13,1],[24,1],[35,-1],[46,1]] },
+    { name: "Gắn bó với công việc",                    group: "A", terms: [[3,1],[14,1],[25,1],[36,1],[47,-1]] },
+    { name: "Đòi hỏi cao về chất lượng, hiệu quả",     group: "A", terms: [[4,1],[15,1],[26,1],[37,1],[48,-1]] },
+    { name: "Chịu mạo hiểm",                           group: "A", terms: [[5,1],[16,-1],[27,1],[38,1],[49,1]] },
+    { name: "Có mục đích rõ ràng",                     group: "B", terms: [[6,1],[17,-1],[28,1],[39,1],[50,1]] },
+    { name: "Chịu thu thập thông tin",                 group: "B", terms: [[7,1],[18,1],[29,-1],[40,1],[51,1]] },
+    { name: "Có tính hệ thống trong lập KH và quản lý",group: "B", terms: [[8,1],[19,1],[30,1],[41,-1],[52,1]] },
+    { name: "Có sức thuyết phục và biết tạo quan hệ",  group: "C", terms: [[9,1],[20,-1],[31,1],[42,1],[53,1]] },
+    { name: "Tự tin",                                  group: "C", terms: [[10,1],[21,-1],[32,1],[43,1],[54,1]] }
+  ];
+  const OFFSET = 6;
+  const CORR_TERMS = [[11,1],[22,-1],[33,-1],[44,-1],[55,1]];
+  const CORR_OFFSET = 18;
+  const GROUP_LABEL = { A: "nhóm đặc điểm doanh nhân", B: "nhóm tố chất kỹ thuật", C: "nhóm tố chất lãnh đạo" };
+  const SESSION_KEY = "pec-survey-answers";
+
+  const $ = (id) => document.getElementById(id);
+  const tbody = $("tbody");
+  const answers = {};
+
+  function buildForm() {
+    QUESTIONS.forEach((text, i) => {
+      const n = i + 1;
+      const tr = document.createElement("tr");
+      tr.className = "q";
+      tr.id = `q-row-${n}`;
+      const bubbles = [1, 2, 3, 4, 5].map(v =>
+        `<div class="bubble"><input type="radio" id="q${n}-${v}" name="q${n}" value="${v}"><label for="q${n}-${v}">${v}</label></div>`
+      ).join("");
+      tr.innerHTML = `<td class="stt">${n}.</td><td>${text}</td><td class="score-cell"><div class="bubbles">${bubbles}</div></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function updateProgress() {
+    const n = Object.keys(answers).length;
+    $("progressFill").style.width = `${(n / QUESTIONS.length) * 100}%`;
+    $("progressCount").textContent = `${n} / ${QUESTIONS.length}`;
+  }
+
+  function saveSession() {
+    try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(answers)); } catch (_) {}
+  }
+  function restoreSession() {
+    try {
+      const raw = sessionStorage.getItem(SESSION_KEY);
+      if (!raw) return;
+      const saved = JSON.parse(raw);
+      Object.entries(saved).forEach(([q, v]) => {
+        const el = document.getElementById(`${q}-${v}`);
+        if (el) { el.checked = true; answers[q] = Number(v); }
+      });
+      updateProgress();
+    } catch (_) {}
+  }
+
+  function score(items, terms, offset) {
+    return terms.reduce((sum, [q, sign]) => sum + sign * items[`q${q}`], 0) + offset;
+  }
+
+  function deduction(cf) {
+    if (cf >= 24) return 7;
+    if (cf >= 22) return 5;
+    if (cf >= 20) return 3;
+    return 0;
+  }
+
+  function renderChart(rows) {
+    const w = 620, h = 40 + rows.length * 32 + 16, padL = 220, padR = 24, padT = 26;
+    const x = (v) => padL + ((v - 5) / 20) * (w - padL - padR);
+    const ticks = [5, 10, 15, 20, 25];
+    let svg = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Sơ đồ đặc trưng 10 tố chất doanh nhân">`;
+    ticks.forEach(t => {
+      svg += `<line x1="${x(t)}" y1="${padT - 4}" x2="${x(t)}" y2="${h - 8}" stroke="var(--line-soft)" stroke-width="1"/>`;
+      svg += `<text x="${x(t)}" y="${padT - 10}" font-size="11" fill="var(--ink)" text-anchor="middle" font-weight="700">${t}</text>`;
+    });
+    svg += `<rect x="${padL}" y="${padT-4}" width="${w-padL-padR}" height="${h-8-(padT-4)}" fill="none" stroke="var(--line)" stroke-width="1"/>`;
+    const pts = rows.map((r, i) => ({ x: x(r.score), y: padT + 14 + i * 32, ...r }));
+    svg += `<polyline points="${pts.map(p => `${p.x},${p.y}`).join(" ")}" fill="none" stroke="var(--ink)" stroke-width="1.5"/>`;
+    pts.forEach((p, i) => {
+      svg += `<text x="0" y="${p.y + 4}" font-size="12" fill="var(--ink)">${i + 1}.${p.name}</text>`;
+      svg += `<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="var(--ink)" stroke="var(--paper)" stroke-width="1"><title>${p.name}: ${p.score}</title></circle>`;
+      svg += `<text x="${p.x}" y="${p.y - 9}" font-size="10.5" fill="var(--ink)" text-anchor="middle" font-weight="700">${p.score}</text>`;
+    });
+    svg += `</svg>`;
+    $("chartWrap").innerHTML = svg;
+  }
+
+  function showResults() {
+    const raw = PECS.map(p => score(answers, p.terms, OFFSET));
+    const cf = score(answers, CORR_TERMS, CORR_OFFSET);
+    const ded = deduction(cf);
+    const adj = raw.map(v => v - ded);
+    const total = adj.reduce((a, b) => a + b, 0);
+
+    const avg = (idxs) => idxs.reduce((s, i) => s + adj[i], 0) / idxs.length;
+    const gA = avg([0, 1, 2, 3, 4]), gB = avg([5, 6, 7]), gC = avg([8, 9]);
+    const overall = total / 10;
+    const entries = { A: gA, B: gB, C: gC };
+    const lead = Object.entries(entries).sort((a, b) => b[1] - a[1])[0][0];
+
+    $("cfLine").textContent = `Yếu tố hiệu chỉnh (tổng của các câu 11, 22, 33, 44, và 55) = ${cf}. ` +
+      (ded > 0 ? `Từ mức 20 trở lên → trừ ${ded} điểm khỏi mỗi điểm PEC.` : `Dưới 20 → không cần hiệu chỉnh.`);
+
+    $("scoreBody").innerHTML = PECS.map((p, i) => `
+      <tr><td>${i + 1}. ${p.name}</td><td class="num">${raw[i]}</td><td class="num">${ded}</td><td class="num">${adj[i]}</td></tr>
+    `).join("");
+    $("totalLine").textContent = `Tổng số điểm đã hiệu chỉnh: ${total}`;
+
+    renderChart(PECS.map((p, i) => ({ name: p.name, score: adj[i] })));
+
+    $("worked").innerHTML = `
+      <div>1→5: ${[0,1,2,3,4].map(i=>adj[i]).join("+")} = ${[0,1,2,3,4].reduce((s,i)=>s+adj[i],0)}/5 = ${gA.toFixed(1)}</div>
+      <div>6→8: ${[5,6,7].map(i=>adj[i]).join("+")} = ${[5,6,7].reduce((s,i)=>s+adj[i],0)}/3 = ${gB.toFixed(1)}</div>
+      <div>9→10: ${[8,9].map(i=>adj[i]).join("+")} = ${[8,9].reduce((s,i)=>s+adj[i],0)}/2 = ${gC.toFixed(1)}</div>
+      <div>Average: ${total}/10 = ${overall.toFixed(1)}</div>
+      <div class="concl">==&gt; Nổi trội: ${GROUP_LABEL[lead]} (${entries[lead].toFixed(1)}/25)</div>
+    `;
+
+    $("results").hidden = false;
+    $("pecForm").hidden = true;
+    $("results").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+
+  buildForm();
+  restoreSession();
+
+  tbody.addEventListener("change", (e) => {
+    if (e.target.matches('input[type="radio"]')) {
+      answers[e.target.name] = Number(e.target.value);
+      updateProgress();
+      saveSession();
+    }
+  });
+
+  $("pecForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const missing = QUESTIONS.findIndex((_, i) => answers[`q${i + 1}`] === undefined);
+    if (missing !== -1) {
+      const n = missing + 1;
+      const row = $(`q-row-${n}`);
+      row.classList.remove("missing");
+      void row.offsetWidth;
+      row.classList.add("missing");
+      row.scrollIntoView({ behavior: "smooth", block: "center" });
+      $("submitStatus").textContent = `Còn thiếu câu ${n}. Vui lòng trả lời tất cả 55 câu trước khi tính điểm.`;
+      return;
+    }
+    $("submitStatus").textContent = "";
+    showResults();
+  });
+
+  $("retakeBtn").addEventListener("click", () => {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    try { sessionStorage.removeItem(SESSION_KEY); } catch (_) {}
+    tbody.querySelectorAll('input[type="radio"]').forEach(i => { i.checked = false; });
+    updateProgress();
+    $("results").hidden = true;
+    $("pecForm").hidden = false;
+    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  });
+
+  $("printBtn").addEventListener("click", () => window.print());
+})();
+</script>
+</body></html>
