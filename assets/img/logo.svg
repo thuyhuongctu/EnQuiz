@@ -1,52 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="EnQuiz">
-  <!-- Logo EnQuiz dựng lại theo bản vẽ của tác giả: chữ Q có đuôi là dấu tích,
-       đặt trên nền vũ trụ, kèm ngôi sao vàng và một vòng quỹ đạo mờ.
-       Dùng ảnh vector chứ không dùng ảnh bệt: thanh trên cùng chỉ hiện ở 34px
-       còn biểu tượng cài đặt tới 512px, một tệp vector sắc nét ở cả hai đầu
-       mà vẫn nhẹ hơn mọi bản ảnh bệt. -->
+  <!-- Logo EnQuiz, phong cách claymorphism (đất sét mềm, pastel): chữ Q với
+       đuôi dấu tích, mỗi khối vẽ như đất nặn — gradient chéo sáng/tối mô
+       phỏng độ cong, cộng một vệt sáng bóng ở góc trên-trái và một vệt tối
+       mờ ở góc dưới-phải để lên khối 3D. Vẫn là vector: sắc nét từ favicon
+       16px tới icon cài đặt 512px, nhẹ hơn mọi bản ảnh bệt. -->
   <defs>
-    <linearGradient id="lgSky" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#101A3E"/>
-      <stop offset=".55" stop-color="#0B1030"/>
-      <stop offset="1" stop-color="#2A1B45"/>
+    <linearGradient id="lgBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FDF2E9"/>
+      <stop offset=".55" stop-color="#F7E6F0"/>
+      <stop offset="1" stop-color="#EBDCF5"/>
     </linearGradient>
-    <!-- Chuyển sắc hologram của áo dài: bạc sang hồng sang lam -->
-    <linearGradient id="lgHolo" x1="0.1" y1="0" x2="0.9" y2="1">
-      <stop offset="0" stop-color="#EDF2FA"/>
-      <stop offset=".45" stop-color="#F09DC6"/>
-      <stop offset="1" stop-color="#62D6F5"/>
+    <!-- Khối clay của vòng chữ Q: hồng pastel sáng góc trên-trái, ngả tím
+         hồng đậm hơn ở góc dưới-phải. -->
+    <linearGradient id="lgRing" x1="0.08" y1="0.05" x2="0.92" y2="0.95">
+      <stop offset="0" stop-color="#FFE9F2"/>
+      <stop offset=".5" stop-color="#F6B9D8"/>
+      <stop offset="1" stop-color="#E088B8"/>
     </linearGradient>
-    <linearGradient id="lgTick" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0" stop-color="#F09DC6"/>
-      <stop offset="1" stop-color="#62D6F5"/>
+    <!-- Khối clay của đuôi dấu tích: vàng mơ sáng ngả cam san hô. -->
+    <linearGradient id="lgTick" x1="0.05" y1="0" x2="0.95" y2="1">
+      <stop offset="0" stop-color="#FFF2CE"/>
+      <stop offset=".55" stop-color="#FFCB85"/>
+      <stop offset="1" stop-color="#FF9E6D"/>
     </linearGradient>
-    <radialGradient id="lgGlow" cx=".28" cy=".78" r=".7">
-      <stop offset="0" stop-color="#B85585" stop-opacity=".45"/>
-      <stop offset="1" stop-color="#B85585" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="lgStar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF4D2"/>
+      <stop offset="1" stop-color="#FFC661"/>
+    </linearGradient>
+    <!-- Vệt bóng sáng đắp lên bề mặt clay, mờ dần ra ngoài. -->
+    <linearGradient id="lgHi" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.6"/>
+    </filter>
   </defs>
 
-  <rect width="64" height="64" rx="15" fill="url(#lgSky)"/>
-  <rect width="64" height="64" rx="15" fill="url(#lgGlow)"/>
+  <!-- Nền: tấm đất nặn pastel, bo tròn như mọi icon trong app -->
+  <rect width="64" height="64" rx="15" fill="url(#lgBg)"/>
+  <!-- Vệt sáng mặt nền, góc trên-trái, rất mờ — cho nền có độ nặn thay vì bẹt -->
+  <ellipse cx="18" cy="14" rx="20" ry="12" fill="#FFFFFF" opacity=".25"/>
 
-  <!-- vòng quỹ đạo mờ; ở cỡ nhỏ nó chìm đi, không gây rối -->
-  <circle cx="31" cy="31" r="21.5" fill="none" stroke="#8FB6D9" stroke-opacity=".28" stroke-width="1"/>
+  <!-- Bóng đổ mềm dưới toàn bộ chữ, lệch xuống phải — khối chữ như đang nổi
+       nhẹ trên nền, đúng tinh thần claymorphism. -->
+  <g filter="url(#softShadow)" opacity=".28">
+    <circle cx="31" cy="32.2" r="13" fill="none" stroke="#9B6B96" stroke-width="9"/>
+    <path d="M26.6 33.6 L34.1 43.1 L52.1 23.1" fill="none" stroke="#9B6B96"
+          stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
 
-  <!-- vài chấm sao -->
-  <circle cx="13" cy="14" r="1" fill="#E9EEF7" fill-opacity=".55"/>
-  <circle cx="52" cy="46" r="1" fill="#E9EEF7" fill-opacity=".4"/>
-  <circle cx="17" cy="49" r="1.2" fill="#E9EEF7" fill-opacity=".3"/>
+  <!-- Thân vòng chữ Q, khối clay chính -->
+  <circle cx="30" cy="30" r="13" fill="none" stroke="url(#lgRing)" stroke-width="9"
+          stroke-linecap="round"/>
+  <!-- Vệt tối mặt dưới-phải của ống clay, cho cảm giác tròn khối -->
+  <path d="M40.81 33.93 A 11.5 11.5 0 0 1 32.00 41.32" fill="none"
+        stroke="#C9679F" stroke-width="2.6" stroke-linecap="round" opacity=".55"/>
+  <!-- Vệt sáng bóng mặt trên-trái -->
+  <path d="M18.68 28.00 A 11.5 11.5 0 0 1 28.00 18.68" fill="none"
+        stroke="url(#lgHi)" stroke-width="3.1" stroke-linecap="round"/>
 
-  <!-- Chữ Q: nét mảnh hơn một chút để lòng chữ rộng ra, nếu không thì ở cỡ
-       24px cả chữ bết lại thành một cục tròn. -->
-  <circle cx="28.5" cy="29" r="13.4" fill="none" stroke="url(#lgHolo)" stroke-width="5.6"/>
-
-  <!-- Đuôi chữ Q vẽ thành dấu tích: bắt đầu trong lòng chữ, kết thúc hẳn ra
-       ngoài vòng tròn thì mới đọc ra là dấu tích chứ không phải cái móc. -->
+  <!-- Đuôi chữ Q vẽ thành dấu tích: bắt đầu trong lòng chữ, ra hẳn khỏi
+       vòng tròn thì mới đọc ra là dấu tích chứ không phải cái móc. -->
   <path d="M26 33 L33.5 42.5 L51.5 22.5" fill="none" stroke="url(#lgTick)"
-        stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+        stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Vệt sáng dọc theo nhánh trên của dấu tích -->
+  <path d="M35.3 40.4 L50 23.7" fill="none" stroke="url(#lgHi)"
+        stroke-width="2.6" stroke-linecap="round" opacity=".9"/>
 
-  <!-- ngôi sao vàng, đặt lệch để không chạm đuôi dấu tích -->
-  <path d="M50 7.6l1.75 3.66 4.02.56-2.93 2.81.72 3.98-3.56-1.9-3.56 1.9.72-3.98-2.93-2.81 4.02-.56z"
-        fill="#FFD25A"/>
+  <!-- Ngôi sao clay, đặt lệch để không chạm đuôi dấu tích -->
+  <g filter="url(#softShadow)" opacity=".22">
+    <path d="M50.4 8l1.75 3.66 4.02.56-2.93 2.81.72 3.98-3.56-1.9-3.56 1.9.72-3.98-2.93-2.81 4.02-.56z"
+          fill="#9B6B96" transform="translate(0.8 0.8)"/>
+  </g>
+  <path d="M50.4 8l1.75 3.66 4.02.56-2.93 2.81.72 3.98-3.56-1.9-3.56 1.9.72-3.98-2.93-2.81 4.02-.56z"
+        fill="url(#lgStar)"/>
+  <circle cx="49" cy="9.6" r="1" fill="#FFFFFF" opacity=".75"/>
 </svg>
