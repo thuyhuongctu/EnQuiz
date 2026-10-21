@@ -662,6 +662,39 @@ code {
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; align-items: start; }
 .duo > .panel { margin-bottom: 1.1rem; }
 
+/* ---------------- Nhóm tác giả (trang cá nhân) ---------------- */
+.authors { display: flex; flex-direction: column; gap: .7rem; margin-top: .3rem; }
+.authors__item {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .7rem .8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-stroke);
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .15s, transform .15s;
+}
+.authors__item:hover { border-color: var(--primary); transform: translateY(-1px); }
+.authors__avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+  border: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
+}
+.authors__info { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; }
+.authors__info b { font-size: .92rem; }
+.authors__info small { color: var(--muted); font-size: .76rem; }
+.authors__link {
+  flex: 0 0 auto;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
 /* ---------------- Đồng hồ hai múi giờ ---------------- */
 .clock {
   display: grid;

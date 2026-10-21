@@ -196,6 +196,11 @@
       'music.by': 'Đỗ Thùy Hương',
       'music.toggle': 'Tạm dừng hoặc nghe tiếp',
 
+      'authors.eyebrow': 'Nhóm tác giả',
+      'authors.heading': 'Về nhóm tác giả',
+      'authors.website': 'Trang cá nhân →',
+      'app.author.huong': 'NCS. Đỗ Thùy Hương',
+
       'badge.eyebrow': 'Chặng đường',
       'badge.heading': 'Thành tựu học tập',
       'badge.locked': 'Chưa mở · {now}/{need}',
@@ -544,6 +549,11 @@
       'music.instrumental.title': 'Instrumental — no vocals',
       'music.by': 'Do Thuy Huong',
       'music.toggle': 'Pause or resume',
+
+      'authors.eyebrow': 'The authors',
+      'authors.heading': 'About the authors',
+      'authors.website': 'Personal site →',
+      'app.author.huong': 'PhD Candidate Do Thuy Huong',
 
       'badge.eyebrow': 'Your journey',
       'badge.heading': 'Milestones',
