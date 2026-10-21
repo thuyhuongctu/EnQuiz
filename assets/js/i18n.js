@@ -290,7 +290,6 @@
       'footer.line1': '<b>EnQuiz</b> — ôn tập môn Khởi sự doanh nghiệp · Tác giả: NCS. Đỗ Thùy Hương',
       'footer.line2': 'Tiến độ làm bài được lưu ngay trên máy bạn, không gửi đi đâu cả.',
 
-      'footer.sig': "Je m'appelle Hương · Giảng viên & Nhà nghiên cứu",
       'footer.academic': 'Trang học thuật',
       'footer.doi': 'Trích dẫn (DOI)',
       'footer.policy': 'Bản quyền',
@@ -640,7 +639,6 @@
       'footer.line1': '<b>EnQuiz</b> — Entrepreneurship practice · by Do Thuy Huong, PhD Candidate',
       'footer.line2': 'Your progress stays on this device and is never sent anywhere.',
 
-      'footer.sig': "Je m'appelle Hương · Lecturer & Researcher",
       'footer.academic': 'Academic page',
       'footer.doi': 'Cite (DOI)',
       'footer.policy': 'Copyright',
