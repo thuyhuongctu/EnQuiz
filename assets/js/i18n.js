@@ -199,6 +199,7 @@
       'authors.eyebrow': 'Nhóm tác giả',
       'authors.heading': 'Về nhóm tác giả',
       'authors.website': 'Trang cá nhân →',
+      'authors.tu.role': 'Cố vấn học thuật · Tác giả ngân hàng câu hỏi KT330H',
       'app.author.huong': 'NCS. Đỗ Thùy Hương',
 
       'badge.eyebrow': 'Chặng đường',
@@ -553,6 +554,7 @@
       'authors.eyebrow': 'The authors',
       'authors.heading': 'About the authors',
       'authors.website': 'Personal site →',
+      'authors.tu.role': 'Academic advisor · Author of the KT330H question bank',
       'app.author.huong': 'PhD Candidate Do Thuy Huong',
 
       'badge.eyebrow': 'Your journey',
