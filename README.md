@@ -1,33 +1,48 @@
-# EnQuiz: An Offline-First Bilingual Revision App for Entrepreneurship
+# EnQuiz
+
+**An offline-first, bilingual revision app for Entrepreneurship.**
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21850735.svg)](https://doi.org/10.5281/zenodo.21850735)
-![version](https://img.shields.io/badge/version-v.1.2-blue) ![stack](https://img.shields.io/badge/stack-HTML%20%2B%20CSS%20%2B%20JS-f7df1e) ![build](https://img.shields.io/badge/build-none-lightgrey) ![PWA](https://img.shields.io/badge/PWA-offline--first-5a0fc8) ![license](https://img.shields.io/badge/license-All%20rights%20reserved-red)
+![version](https://img.shields.io/badge/version-v.1.2-blue)
+![stack](https://img.shields.io/badge/stack-HTML%20%2B%20CSS%20%2B%20JS-f7df1e)
+![build](https://img.shields.io/badge/build-none-lightgrey)
+![PWA](https://img.shields.io/badge/PWA-offline--first-5a0fc8)
+![license](https://img.shields.io/badge/license-All%20rights%20reserved-red)
 
-Teaching software for exam revision: a 300-question bank across the five chapters
-of an undergraduate **Entrepreneurship** course, delivered as timed mock exams and
-chapter practice with immediate explanations, with automatic tracking of every
-missed question, a per-chapter diagnosis of each paper, and an importer that
-matches a pasted question paper to a pasted answer key by question number. It runs
-entirely in the browser, installs to the home screen, and keeps working with no
-network connection.
+A 300-question bank across five chapters of an undergraduate **Entrepreneurship**
+course, delivered as timed mock exams and chapter practice with immediate
+explanations — plus automatic tracking of every missed question, a per-chapter
+diagnosis of each paper, and an importer that matches a pasted question paper to
+a pasted answer key by question number. It runs entirely in the browser, installs
+to the home screen, and keeps working with no network connection.
 
-**Authors**
-
-- Do Thuy Huong ([ORCID 0000-0002-7711-2487](https://orcid.org/0000-0002-7711-2487)),
-  lecturer at the Faculty of Business and Law, Vinh Long University of
-  Technology, and PhD Candidate, School of Economics, Can Tho University.
-- Phan Anh Tu ([ORCID 0000-0003-0667-3137](https://orcid.org/0000-0003-0667-3137)),
-  School of Economics, Can Tho University.
-
-Written for the *Khởi sự doanh nghiệp* (Entrepreneurship) course the first author
-teaches. The question bank, the interface, the character artwork, the narration
-and the songs are the first author's own work.
-
-▶️ **Live app: <https://thuyhuongctu.github.io/EnQuiz/>**
-📦 **Archived on Zenodo: [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735)**
+**▶️ Live app:** <https://thuyhuongctu.github.io/EnQuiz/>
+**📦 Archived on Zenodo:** [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735)
 
 ![Do Thuy Huong, PhD Candidate, founder of EnQuiz, teaching an entrepreneurship
 class in front of a start-up dashboard](docs/img/gioi-thieu.webp)
+
+|  |  |  |  |  |
+|---|---|---|---|---|
+| **300** questions | **5** chapters | **2** languages | **0** servers | **~6,700** lines, no framework |
+
+---
+
+## Contents
+
+- [Design position](#design-position)
+- [Question bank](#question-bank)
+- [Functionality](#functionality)
+- [Architecture](#architecture)
+- [Running it](#running-it)
+- [Offline behaviour](#offline-behaviour)
+- [Privacy](#privacy)
+- [Merge questions & answer key](#merge-questions--answer-key)
+- [Extending the source](#extending-the-source)
+- [Media and artwork](#media-and-artwork)
+- [Citation](#citation)
+- [Authorship and ownership](#authorship-and-ownership)
+- [Licence](#licence)
 
 ---
 
@@ -36,21 +51,21 @@ class in front of a start-up dashboard](docs/img/gioi-thieu.webp)
 Three commitments distinguish EnQuiz from a general-purpose quiz platform, and
 each one is a constraint the code is held to:
 
-**Learning data stays on the device.** There is no account and no learning database. Every result, every
-missed question and every imported set lives in the learner's own browser. This is
-what makes the privacy claim below verifiable by reading the source rather than
-trusting an operator. The app makes two external requests, both described under
-*Privacy*: an anonymous, cookieless visit counter, and, only when a learner unlocks
-the case study materials, a record of the school email entered.
-
-**No build step.** The published site is the repository. There is no bundler, no
-transpiler and no dependency tree, so the archived Zenodo snapshot is directly
-readable and directly runnable a decade from now.
-
-**Offline-first, and honest about weight.** The application shell is pre-cached on
-first visit; the media is not. The song, the tour narration and the introduction
-video are fetched only when a learner presses play, so opening the app on a mobile
-data plan costs a few hundred kilobytes rather than several megabytes.
+- **Learning data stays on the device.** There is no account and no learning
+  database. Every result, every missed question and every imported set lives in
+  the learner's own browser — which is what makes the privacy claim below
+  verifiable by reading the source rather than trusting an operator. The app
+  makes two external requests, both described under [Privacy](#privacy): an
+  anonymous, cookieless visit counter, and, only when a learner unlocks the case
+  study materials, a record of the school email entered.
+- **No build step.** The published site is the repository. There is no bundler,
+  no transpiler and no dependency tree, so the archived Zenodo snapshot is
+  directly readable and directly runnable a decade from now.
+- **Offline-first, and honest about weight.** The application shell is
+  pre-cached on first visit; the media is not. The song, the tour narration and
+  the introduction video are fetched only when a learner presses play, so
+  opening the app on a mobile data plan costs a few hundred kilobytes rather
+  than several megabytes.
 
 ---
 
@@ -66,69 +81,77 @@ data plan costs a few hundred kilobytes rather than several megabytes.
 | | **Total** | **300** |
 
 The interface is bilingual English–Vietnamese; the question content stays in
-Vietnamese, as taught in the course.
+Vietnamese, as taught in the course. A separate "KT330H" track adds instructor
+case studies and a comprehensive review set — see
+[Extending the source](#extending-the-source).
 
 ---
 
 ## Functionality
 
-**Practice modes**
+### Practice modes
 
-- **Mock exam** — a random paper with adjustable question count and time limit, a
-  live countdown, automatic submission when time runs out, scored out of 10.
-- **Practice by chapter** — pick a scope; the correct answer and the explanation
-  appear immediately after each choice.
-- **Missed questions** — every question answered wrongly is remembered; answering
-  it correctly later removes it from the list.
+- **Mock exam** — a random paper with adjustable question count and time limit,
+  a live countdown, automatic submission when time runs out, scored out of 10.
+- **Practice by chapter** — pick a scope; the correct answer and the
+  explanation appear immediately after each choice.
+- **Missed questions** — every question answered wrongly is remembered;
+  answering it correctly later removes it from the list.
 - **Flagged questions** — mark anything to return to.
-- **Merge questions & answer key** — paste a paper into one box and an answer key
-  into the other; they are matched by printed question number, not paste order.
+- **Merge questions & answer key** — paste a paper into one box and an answer
+  key into the other; they are matched by printed question number, not paste
+  order.
 - **Answer review** — question by question, with a per-chapter breakdown.
 
-**During a paper**
+### During a paper
 
-- A counter bar in the header shows attempts, best score, and how many questions
-  remain unanswered correctly.
-- A question grid for jumping around the paper, keyboard shortcuts `A/B/C/D` and
-  `←/→`, and a progress bar.
-- On submission, an **advice card** names the chapter costing the most marks and
-  offers a one-tap button to practise exactly that chapter.
+- A counter bar in the header shows attempts, best score, and how many
+  questions remain unanswered correctly.
+- A question grid for jumping around the paper, keyboard shortcuts `A/B/C/D`
+  and `←/→`, and a progress bar.
+- On submission, an **advice card** names the chapter costing the most marks
+  and offers a one-tap button to practise exactly that chapter.
+- **Exam integrity nudges** (mock exam only): a tab-switch warning, clipboard
+  disabled during the paper, and best-effort full-screen — a reminder, not a
+  lock, and nothing leaves the device.
 
-**Home screen**
+### Home screen
 
-- A 22-second introduction video, behind a cover image and a play button.
-- The chapter list with per-chapter progress and mastery, each chapter carrying an
-  icon drawn for its subject.
+- A short introduction video, behind a cover image and a play button.
+- The chapter list with per-chapter progress and mastery, each chapter
+  carrying an icon drawn for its subject.
 - Attempt history, clearable at any time.
 - Milestones: first attempt, a seven-day streak, a perfect 10, fifty attempts.
-- Two clocks, Vietnam and France, each with its flag and UTC offset, and the gap
-  between them. Computed from named time zones, so both the offsets and the gap
-  stay correct across daylight saving.
-- The author's music in two versions — *La lampe brûle encore* with vocals, and an
-  instrumental intended to sit quietly under revision. Both loop.
+- Two clocks, Vietnam and France, each with its flag and UTC offset, and the
+  gap between them — computed from named time zones, so both the offsets and
+  the gap stay correct across daylight saving.
+- The author's music in two versions — *La lampe brûle encore* with vocals,
+  and an instrumental intended to sit quietly under revision. Both loop.
 
-**Appearance**
+### Appearance
 
 Four settings in *Settings → Appearance*: **Follow device**, **Light**, **Clay
 noir** and **Cosmic dark**.
 
-*Clay noir* is the application's dark look: a dark stone ground whose panels appear
-moulded by hand, lit in gold. Its depth is made entirely of layered CSS shadow, so
-it adds no image files and nothing to download; every text–background pair on it
-was measured against WCAG AA, the lowest coming out at 6.05:1. *Cosmic dark* is the
-dark look of earlier releases, kept for anyone who preferred it.
+*Clay noir* is the application's dark look: a dark stone ground whose panels
+appear moulded by hand, lit in gold. Its depth is made entirely of layered CSS
+shadow, so it adds no image files and nothing to download; every
+text–background pair on it was measured against WCAG AA, the lowest coming out
+at 6.05:1. *Cosmic dark* is the dark look of earlier releases, kept for anyone
+who preferred it.
 
-Under **Follow device** — the setting until the learner chooses otherwise — a phone
-set to light gives the light theme and a phone set to dark gives Clay noir, and it
-switches live when the phone does. The choice is stored per browser.
+Under **Follow device** — the setting until the learner chooses otherwise — a
+phone set to light gives the light theme and a phone set to dark gives Clay
+noir, and it switches live when the phone does. The choice is stored per
+browser.
 
-**Guided tour**
+### Guided tour
 
-Ten steps, each highlighting the region of the screen it describes, opening with a
-French greeting — *« Bonjour ! Je m'appelle Hương. »* The narration is **recorded
-audio in the author's own voice**, 24 files across Vietnamese and English, not
-machine speech; the text is always on screen, so the tour works with the sound off.
-Audio is fetched only when the tour runs.
+Ten steps, each highlighting the region of the screen it describes, opening
+with a French greeting — *« Bonjour ! Je m'appelle Hương. »* The narration is
+**recorded audio in the author's own voice**, 24 files across Vietnamese and
+English, not machine speech; the text is always on screen, so the tour works
+with the sound off. Audio is fetched only when the tour runs.
 
 The complete narration script, in both languages, with the screen target, the
 character pose and the audio file for every step, is published in
@@ -141,7 +164,7 @@ character pose and the audio file for every step, is published in
 ```text
 index.html                  every screen, and the inline SVG icon sprite
   └── assets/js/
-        i18n.js             bilingual dictionary (534 keys) and translation engine
+        i18n.js             bilingual dictionary and translation engine
         storage.js          progress, history, streak, imported sets (localStorage)
         bank.js             loads, normalises and merges the question bank
         parser.js           extracts questions and answers from pasted text
@@ -152,8 +175,8 @@ index.html                  every screen, and the inline SVG icon sprite
 ```
 
 About 6,700 lines of HTML, CSS and JavaScript. No framework, no build step, no
-package manager, no runtime dependency. Fonts are self-hosted rather than called
-from a font CDN, so typography survives an offline launch.
+package manager, no runtime dependency. Fonts are self-hosted rather than
+called from a font CDN, so typography survives an offline launch.
 
 ---
 
@@ -168,67 +191,71 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-**Publication:** every push to `main` triggers `.github/workflows/pages.yml`, which
-publishes <https://thuyhuongctu.github.io/EnQuiz/>. No manual step.
+**Publication:** every push to `main` triggers `.github/workflows/pages.yml`,
+which publishes <https://thuyhuongctu.github.io/EnQuiz/>. No manual step.
 
-**Installation:** open the page in Chrome, Edge or Safari and choose *Install app*
-/ *Add to Home Screen*. A ⬇️ button also appears in the header when the browser
-offers installation.
+**Installation:** open the page in Chrome, Edge or Safari and choose *Install
+app* / *Add to Home Screen*. A ⬇️ button also appears in the header when the
+browser offers installation.
 
 ---
 
 ## Offline behaviour
 
 The service worker keeps a copy of the application under a versioned cache
-(`CACHE_VERSION` in `sw.js`). Pages and code are fetched network-first, so a new
-release appears immediately and falls back to the cache when the network is gone;
-images and audio are served cache-first.
+(`CACHE_VERSION` in `sw.js`). Pages and code are fetched network-first, so a
+new release appears immediately and falls back to the cache when the network
+is gone; images and audio are served cache-first.
 
-Large media is deliberately excluded from the pre-cache. The **introduction video**
-goes further still: its `<video>` element carries no `src` at all until the play
-button is pressed, and the service worker skips `assets/video/` entirely — a 24 MB
-file would consume most of the storage a web application is permitted, and a media
-player requests byte ranges to seek, which a cache can only answer with the whole
-file.
+Large media is deliberately excluded from the pre-cache. The **introduction
+video** goes further still: its `<video>` element carries no `src` at all
+until the play button is pressed, and the service worker skips
+`assets/video/` entirely — a 24 MB file would consume most of the storage a
+web application is permitted, and a media player requests byte ranges to
+seek, which a cache can only answer with the whole file.
 
 ---
 
 ## Privacy
 
-**Learning data never leaves the device.** There is no account.
-Results, missed questions, flags and imported sets stay in the learner's own
-browser; *Erase all data* in Settings clears everything. No answer, score or
-progress figure is transmitted anywhere.
+**Learning data never leaves the device.** There is no account. Results,
+missed questions, flags and imported sets stay in the learner's own browser;
+*Erase all data* in Settings clears everything. No answer, score or progress
+figure is transmitted anywhere.
 
 **Case study unlock records a school email.** Opening the original case study
-materials asks for a school email once per device. The email, the case ID and the
-time are sent over HTTPS to a Supabase function so the instructors know who viewed
-the materials. They are not shared, are kept for at most 12 months, and are deleted
-on request (thuyhuongctu@gmail.com, subject “Delete EnQuiz data”).
+materials asks for a school email once per device. The email, the case ID and
+the time are sent over HTTPS to a Supabase function so the instructors know
+who viewed the materials. They are not shared, are kept for at most 12
+months, and are deleted on request (thuyhuongctu@gmail.com, subject "Delete
+EnQuiz data").
 
 **Visits are counted, anonymously.** The app loads
-[GoatCounter](https://www.goatcounter.com/), a cookieless analytics script that
-stores no IP address, sets no identifier and does not follow visitors across sites.
-It reports how many times the app was opened, on which day, and from which country
-— nothing that identifies a person, and nothing about what a learner answered. This
-is disclosed in the app's own *Privacy* panel, in both languages, and in the full
-bilingual policy published at [chinh-sach.html](https://thuyhuongctu.github.io/EnQuiz/chinh-sach.html),
+[GoatCounter](https://www.goatcounter.com/), a cookieless analytics script
+that stores no IP address, sets no identifier and does not follow visitors
+across sites. It reports how many times the app was opened, on which day, and
+from which country — nothing that identifies a person, and nothing about what
+a learner answered. This is disclosed in the app's own *Privacy* panel, in
+both languages, and in the full bilingual policy published at
+[chinh-sach.html](https://thuyhuongctu.github.io/EnQuiz/chinh-sach.html),
 which is also the policy linked from the Google Play listing.
 
-Apart from the case study unlock above, the counter is the only external request the app makes. It is served from a
-different origin, so the service worker does not touch it; with no network it fails
-silently and the app carries on.
+Apart from the case study unlock above, the counter is the only external
+request the app makes. It is served from a different origin, so the service
+worker does not touch it; with no network it fails silently and the app
+carries on.
 
 ---
 
 ## Merge questions & answer key
 
-Used to add or replace question sets without touching the source. Open **Merge
-questions & answer key** from the home screen, paste into the two boxes, then press
-*Analyse* to preview before saving.
+Used to add or replace question sets without touching the source. Open
+**Merge questions & answer key** from the home screen, paste into the two
+boxes, then press *Analyse* to preview before saving.
 
-Questions are matched to answers by the **question number printed in the paper**,
-not by paste order, so any subset can be pasted — for example only questions 31–60.
+Questions are matched to answers by the **question number printed in the
+paper**, not by paste order, so any subset can be pasted — for example only
+questions 31–60.
 
 | Element | Accepted forms |
 |---|---|
@@ -264,17 +291,18 @@ registerBank({
 });
 ```
 
-Add the file name to the array in `data/manifest.js`, add its path to the `SHELL`
-list in `sw.js`, and bump `CACHE_VERSION`. The application loads and merges it
-automatically, dropping questions whose text duplicates an existing one. The `c`
-field also accepts `"B"`, `"2"`, or the exact text of the correct option.
+Add the file name to the array in `data/manifest.js`, add its path to the
+`SHELL` list in `sw.js`, and bump `CACHE_VERSION`. The application loads and
+merges it automatically, dropping questions whose text duplicates an existing
+one. The `c` field also accepts `"B"`, `"2"`, or the exact text of the
+correct option.
 
-**An interface language.** Every display string lives in `assets/js/i18n.js`,
-grouped by key; add a language by appending a block to `DICT` with the same keys as
-the `vi` block. In HTML, static elements are translated through `data-i18n="key"`
-(or `data-i18n-html` when the string contains markup, and
-`data-i18n-attr="title:key"` for attributes). In JavaScript, use
-`t('key', { name: value })`.
+**An interface language.** Every display string lives in
+`assets/js/i18n.js`, grouped by key; add a language by appending a block to
+`DICT` with the same keys as the `vi` block. In HTML, static elements are
+translated through `data-i18n="key"` (or `data-i18n-html` when the string
+contains markup, and `data-i18n-attr="title:key"` for attributes). In
+JavaScript, use `t('key', { name: value })`.
 
 ---
 
@@ -294,32 +322,32 @@ course, and **Huong AI** in the knit vest runs the guided tour.
 | `vest-avatar.webp` | tour button, tour panel, advice card |
 | `logo.svg` · `globe.svg` · `mekong-map.webp` | mark, and faded backgrounds |
 
-The Ms. Huong pictures on the home screen, the chapter list, the answering screen
-and the video cover are **whole frames from the introduction video**, used
-uncropped. Cut-outs were tried and abandoned: the transparency had hard edges and a
-dark residue along the outline, measured at 40–42% of the edge pixels, which showed
-as a jagged fringe around the hair and the dress. The **app icon** is the exception
-— it comes from a cut-out whose outline measured 3.5% dark, clean enough to sit on
-the icon's own ground.
+The Ms. Huong pictures on the home screen, the chapter list, the answering
+screen and the video cover are **whole frames from the introduction video**,
+used uncropped. Cut-outs were tried and abandoned: the transparency had hard
+edges and a dark residue along the outline, measured at 40–42% of the edge
+pixels, which showed as a jagged fringe around the hair and the dress. The
+**app icon** is the exception — it comes from a cut-out whose outline
+measured 3.5% dark, clean enough to sit on the icon's own ground.
 
-To change a picture, replace the file and keep the name. Which picture appears on
-the result screen is decided in `renderResult()` in `assets/js/app.js`; the tour
-poses are in `POSE_SRC` in `assets/js/tour.js`.
+To change a picture, replace the file and keep the name. Which picture
+appears on the result screen is decided in `renderResult()` in
+`assets/js/app.js`; the tour poses are in `POSE_SRC` in `assets/js/tour.js`.
 
 ---
 
 ## Citation
 
-If you use EnQuiz, please cite it. GitHub renders a *Cite this repository* button
-from `CITATION.cff`.
+If you use EnQuiz, please cite it. GitHub renders a *Cite this repository*
+button from `CITATION.cff`.
 
-> Do, T. H. (2026). *EnQuiz: an offline-first bilingual quiz app for
-> entrepreneurship revision* (Version v.1.2) [Computer software]. Can Tho
-> University. https://doi.org/10.5281/zenodo.21850735
+> Do, T. H., & Phan, A. T. (2026). *EnQuiz: an offline-first bilingual quiz
+> app for entrepreneurship revision* (Version v.1.2) [Computer software].
+> Can Tho University. https://doi.org/10.5281/zenodo.21850735
 
 ```bibtex
-@software{do_enquiz_2026,
-  author    = {Do, Thuy Huong},
+@software{do_phan_enquiz_2026,
+  author    = {Do, Thuy Huong and Phan, Anh Tu},
   title     = {{EnQuiz: an offline-first bilingual quiz app for
                entrepreneurship revision}},
   version   = {v.1.2},
@@ -332,60 +360,64 @@ from `CITATION.cff`.
 
 Zenodo mints two kinds of identifier: the **concept DOI**
 `10.5281/zenodo.21850735` always resolves to the latest release, while each
-release also receives its own **version DOI** that pins an exact build. Cite the
-concept DOI for the software in general and the version DOI for a reproducible
-reference. Machine-readable metadata is in `CITATION.cff` and `.zenodo.json`.
+release also receives its own **version DOI** that pins an exact build. Cite
+the concept DOI for the software in general and the version DOI for a
+reproducible reference. Machine-readable metadata is in `CITATION.cff` and
+`.zenodo.json`.
 
 ---
 
-## Authorship, ownership and computational assistance
+## Authorship and ownership
 
-**Authors:** Do Thuy Huong and Phan Anh Tu, School of Economics, Can Tho
-University. Copyright subsists automatically under the Intellectual Property Law of
-Viet Nam and the Berne Convention from the moment of creation; a Copyright Office of
-Viet Nam registration is in preparation.
+**Authors**
 
-**Scope of authorship.** All 300 questions were written by Do Thuy Huong for the
-course she teaches; they are not drawn from a departmental question pool. The
-interface text, the character artwork, the recorded narration, the introduction
-video and both songs are likewise her own work. Phan Anh Tu contributed as
+- **Do Thuy Huong** ([ORCID 0000-0002-7711-2487](https://orcid.org/0000-0002-7711-2487))
+  — lecturer at the Faculty of Business and Law, Vinh Long University of
+  Technology and Engineering, and PhD Candidate, School of Economics, Can Tho
+  University. `thuyhuongctu@gmail.com`
+- **Phan Anh Tu** ([ORCID 0000-0003-0667-3137](https://orcid.org/0000-0003-0667-3137))
+  — School of Economics, Can Tho University. `patu@ctu.edu.vn`
+
+Copyright subsists automatically under the Intellectual Property Law of Viet
+Nam and the Berne Convention from the moment of creation; a Copyright Office
+of Viet Nam registration is in preparation.
+
+**Scope of authorship.** All 300 questions were written by Do Thuy Huong for
+the course she teaches; they are not drawn from a departmental question pool.
+The interface text, the character artwork, the recorded narration, the
+introduction video and both songs are likewise her own work. Phan Anh Tu
+contributed the KT330H case studies and comprehensive review content, and as
 academic supervisor and co-author.
 
 **Institutional position.** The first author is a lecturer at the Faculty of
 Business and Law, Vinh Long University of Technology and Engineering, and a
-PhD candidate at Can Tho University; the second author
-is at the School of Economics, Can Tho University. The work was created outside any
-assigned task, research project or funded programme of either institution and
-without using their funds or facilities. Because a Can Tho University staff member
-is named as co-author, the university's intellectual-property regulations are being
-checked before the registration is filed.
-
-**Role of computational assistance.** Generative tools were used to produce
-character artwork and to assist with implementation. They did not write the
-question content, select what the course covers, or decide any pedagogical matter,
-and they hold no authorship or ownership. Responsibility for the work rests with
-the named human author.
+PhD candidate at Can Tho University; the second author is at the School of
+Economics, Can Tho University. The work was created outside any assigned
+task, research project or funded programme of either institution and
+without using their funds or facilities. Because a Can Tho University staff
+member is named as co-author, the university's intellectual-property
+regulations are being checked before the registration is filed.
 
 ---
 
 ## Licence
 
-EnQuiz is **proprietary software. © 2026 Do Thuy Huong and Phan Anh Tu. All rights
-reserved.** It is not open source and
-it is not under a Creative Commons licence. The full terms, in English and
-Vietnamese, are in [`LICENSE`](LICENSE).
+EnQuiz is **proprietary software. © 2026 Do Thuy Huong and Phan Anh Tu. All
+rights reserved.** It is not open source and it is not under a Creative
+Commons licence. The full terms, in English and Vietnamese, are in
+[`LICENSE`](LICENSE).
 
-**Permitted, free of charge and without asking:** using the app for your own study
-and exam revision; sharing the link; installing it on your own devices; importing
-your own question sets for use on your own device.
+**Permitted, free of charge and without asking:** using the app for your own
+study and exam revision; sharing the link; installing it on your own
+devices; importing your own question sets for use on your own device.
 
-**Requires written permission:** copying, extracting or redistributing the question
-content in any form; re-publishing the app elsewhere, even with attribution;
-commercial use or use in paid teaching or training; modification, translation or
-derivative works; removal of copyright notices.
+**Requires written permission:** copying, extracting or redistributing the
+question content in any form; re-publishing the app elsewhere, even with
+attribution; commercial use or use in paid teaching or training;
+modification, translation or derivative works; removal of copyright notices.
 
-Copying and the right-click menu are disabled in the app as a reminder. That is a
-reminder, not a technical barrier — unauthorised copying is an infringement however
-it is carried out.
+Copying and the right-click menu are disabled in the app as a reminder. That
+is a reminder, not a technical barrier — unauthorised copying is an
+infringement however it is carried out.
 
 For any other use, write to thuyhuongctu@gmail.com for written permission.

@@ -10,7 +10,7 @@
    các file "C1-C5 BÀI GIẢNG.pptx" trong Drive, vì theo tác giả các slide đó
    có thể chưa chuẩn theo đề cương hiện hành. Ảnh slide dựng bằng HTML + ảnh
    chụp màn hình (không qua LibreOffice, vì bản cài trong máy lúc làm không
-   chuyển được tệp nào sang PDF — xem CLAUDE.md-style ghi chú trong PR).
+   chuyển được tệp nào sang PDF — xem ghi chú liên quan trong PR).
 
    Chưa chương nào có video — đợi bản ghi hình thật kèm phụ đề .vi.vtt/
    .en.vtt rồi mới thêm trường "video: { tep: '...' }" cho từng chương, giống
