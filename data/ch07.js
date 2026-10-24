@@ -3,7 +3,7 @@
    19 câu trắc nghiệm trích từ case.
    Câu 1-9: đáp án đã được Thầy Tú xác nhận qua Zalo (1B, 2B, 3A, 4C, 5D, 6A,
    7C, 8D, 9A) — câu 6 trước đó để sai (C), đã sửa lại đúng theo Thầy (A).
-   Câu 10-19: vẫn LÀ ĐỀ XUẤT của Claude, chưa được Thầy Tú xác nhận — theo
+   Câu 10-19: vẫn LÀ ĐỀ XUẤT CHƯA XÁC NHẬN, chưa được Thầy Tú xác nhận — theo
    yêu cầu của Thầy, vẫn dùng ngay nhưng có ghi chú "Đáp án gợi ý" (field
    "e") hiện ngay dưới mỗi câu khi lộ đáp án, khai thác phần chưa hỏi tới
    của case (xuất thân sáng lập viên tại
