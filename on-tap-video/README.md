@@ -116,7 +116,7 @@ phải khớp nhau cho từng chương (script có `assert` kiểm tra). Rồi c
 
 Không cần LibreOffice/soffice — bản `.pdf` của kịch bản dựng thẳng bằng
 `reportlab`, không đụng tới đường pptx→PDF vốn đang hỏng trong môi trường làm
-việc (xem CLAUDE.md-style ghi chú ở ComDraft).
+việc (xem ghi chú liên quan ở ComDraft).
 
 Đổi ảnh slide trong `assets/slides/` (kể cả dựng lại qua trình sinh này) thì
 nhớ nâng `CACHE_VERSION` trong `sw.js`, nếu không máy người học vẫn dùng bản

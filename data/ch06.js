@@ -5,9 +5,9 @@
    mốc 09/2022, quy mô VLAG, mở rộng danh mục sản phẩm, vòng lặp cộng đồng-
    thương mại, công cụ AI nêu tên, số liệu McKinsey, ba hướng dùng AI, khác
    biệt AI với công nghệ trước đó, và người ra quyết định trong case).
-   ⚠️ ĐÁP ÁN ("c") của câu 10-19 LÀ ĐỀ XUẤT của Claude, chưa được Thầy Tú
-   xác nhận — theo yêu cầu của Thầy, vẫn dùng ngay nhưng có ghi chú "Đáp
-   án gợi ý" (field "e") hiện ngay dưới mỗi câu khi lộ đáp án.
+   ⚠️ ĐÁP ÁN ("c") của câu 10-19 LÀ ĐỀ XUẤT CHƯA XÁC NHẬN, chưa được Thầy
+   Tú xác nhận — theo yêu cầu của Thầy, vẫn dùng ngay nhưng có ghi chú
+   "Đáp án gợi ý" (field "e") hiện ngay dưới mỗi câu khi lộ đáp án.
    'c' là chỉ số đáp án đúng (0-based: A=0, B=1, C=2, D=3). */
 registerBank({
   "id": "ch06",

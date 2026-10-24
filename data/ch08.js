@@ -4,7 +4,7 @@
    chung của học phần (business plan, marketing mix, chi phí/giá bán, business
    model canvas, feasibility analysis...) — khác với hai case study Tired
    City/Betterteem vốn xoay quanh một công ty cụ thể.
-   Đáp án lấy trực tiếp từ Answer Key gốc của đề, không phải đề xuất của Claude.
+   Đáp án lấy trực tiếp từ Answer Key gốc của đề, không phải đề xuất chưa xác nhận.
    'c' là chỉ số đáp án đúng (0-based). Field "e" tóm tắt Learning Objective
    trong đáp án gốc, hiện ngay dưới mỗi câu khi lộ đáp án. */
 registerBank({
