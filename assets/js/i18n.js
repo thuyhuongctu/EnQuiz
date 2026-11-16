@@ -33,14 +33,28 @@
       'picker.huong.name': 'Lớp của Cô Hương',
       'picker.huong.desc': '300 câu trắc nghiệm · 5 chương · môn Khởi sự doanh nghiệp',
       'picker.tu.name': 'Lớp của Thầy Tú',
-      'picker.tu.desc': 'KT330H · lớp quốc tế UM Kendari × Đại học Cần Thơ',
+      'picker.tu.desc': 'KT330H · case study chiến lược',
       'picker.enter': 'Vào lớp →',
 
       'hero.tu.title': 'Ôn thi nội dung',
       'hero.tu.subject': 'KT330H — Thầy Phan Anh Tú',
       'hero.tu.author': 'Biên soạn: PGS.TS. Phan Anh Tú',
 
+      'hero.intl.title': 'Lớp hợp tác quốc tế',
+      'hero.intl.subject': 'KT330H — UM Kendari × ĐH Cần Thơ',
+      'hero.intl.author': 'Biên soạn: PGS.TS. Phan Anh Tú',
+
       'special.cross.cta': 'Vào lớp của Thầy Tú →',
+      'special.cross.intl.cta': 'Vào lớp hợp tác quốc tế — UM Kendari →',
+
+      'examLogin.title': 'Đăng nhập lớp hợp tác quốc tế',
+      'examLogin.desc': 'Mục này chỉ dành cho sinh viên lớp hợp tác quốc tế UM Kendari × Đại học Cần Thơ. Nhập đúng email trường bạn dùng để đăng ký lớp.',
+      'examLogin.label': 'Email trường (UM Kendari)',
+      'examLogin.placeholder': 'ten.mssv@student.umkendari.ac.id',
+      'examLogin.submit': 'Vào làm bài',
+      'examLogin.invalid': 'Email không hợp lệ, thử lại.',
+      'examLogin.denied': 'Email này không có trong danh sách lớp. Liên hệ Thầy Tú nếu bạn nghĩ đây là nhầm lẫn.',
+      'examLogin.networkErr': 'Lỗi mạng, thử lại.',
 
       'settings.classLabel': 'Lớp đang học',
       'settings.classHint': 'Đổi lớp bất cứ lúc nào — tiến độ học của bạn vẫn được giữ.',
@@ -377,14 +391,11 @@
       // hướng, ba nút góc trên) vì không liên quan tới lớp nào; chỉ viết lại
       // năm bước có nhắc tới nội dung cụ thể (s1, s2, s5, s7, s8). Chưa có
       // bản thu âm riêng nên đọc bằng giọng máy cho tới khi có người thu.
-      'tour.tu.s1': 'Xin chào, mình là Hương AI. Đây là trang riêng của Thầy Phan Anh Tú — gồm nội dung của hai lớp: lớp trong nước với hai case study, và lớp hợp tác quốc tế UM Kendari với hai bài Quiz giữa kỳ. Bảng tổng quan cho biết tổng số câu hỏi, số chuyên mục, cùng số lượt bạn đã luyện và điểm cao nhất.',
+      'tour.tu.s1': 'Xin chào, mình là Hương AI. Đây là trang riêng của Thầy Phan Anh Tú — hai case study chiến lược dành cho lớp trong nước. Bảng tổng quan cho biết tổng số câu hỏi, số chuyên mục, cùng số lượt bạn đã luyện và điểm cao nhất.',
       'tour.tu.s2': 'Đây là mẹo ôn tập nhỏ mỗi ngày — dùng chung cho cả ứng dụng, không riêng lớp nào.',
-      'tour.tu.s5': 'Bốn chuyên mục chia theo hai lớp: lớp trong nước có hai case study — Tired City và Betterteem — kèm tài liệu gốc và tóm tắt trực quan, mở được sau khi bạn xác thực email trường; lớp hợp tác quốc tế UM Kendari có hai bài Quiz giữa kỳ. Tổng cộng tám mươi tám câu.',
-      'tour.tu.s7': 'Một lưu ý quan trọng: toàn bộ case study và Quiz trong mục này, của cả lớp trong nước lẫn lớp hợp tác quốc tế, đều do PGS.TS. Phan Anh Tú biên soạn. Bạn được dùng miễn phí để tự học, xin đừng sao chép hay phát tán lại.',
+      'tour.tu.s5': 'Hai case study của Thầy Tú — Tired City và Betterteem — kèm tài liệu gốc và tóm tắt trực quan, mở được sau khi bạn xác thực email trường. Muốn vào lớp hợp tác quốc tế UM Kendari thì bấm nút riêng ở cuối trang.',
+      'tour.tu.s7': 'Một lưu ý quan trọng: hai case study trong mục này do PGS.TS. Phan Anh Tú biên soạn. Bạn được dùng miễn phí để tự học, xin đừng sao chép hay phát tán lại.',
       'tour.tu.s8': 'Mình vẫn là Hương AI, trợ lý chung của EnQuiz — nội dung lớp này do Thầy Phan Anh Tú biên soạn, mình chỉ giúp bạn đi đúng đường thôi. Muốn chuyển sang lớp của Cô Hương hay nghe lại tour này, bạn bấm nút Hương AI hướng dẫn ở góc dưới bên phải bất cứ lúc nào nhé.',
-
-      'chapters.group.tuDomestic': 'Lớp trong nước',
-      'chapters.group.tuIntl': 'Lớp hợp tác quốc tế — UM Kendari',
 
       'toast.noWrong': 'Chưa có câu sai nào được ghi nhận.',
       'toast.noMarked': 'Bạn chưa đánh dấu câu hỏi nào.',
@@ -418,14 +429,28 @@
       'picker.huong.name': "Ms. Huong's class",
       'picker.huong.desc': '300 questions · 5 chapters · Entrepreneurship course',
       'picker.tu.name': "Mr. Tu's class",
-      'picker.tu.desc': 'KT330H · UM Kendari × Can Tho University international section',
+      'picker.tu.desc': 'KT330H · strategy case studies',
       'picker.enter': 'Enter →',
 
       'hero.tu.title': 'Practice for',
       'hero.tu.subject': 'KT330H — Mr. Phan Anh Tu',
       'hero.tu.author': 'Written by Assoc. Prof. Dr. Phan Anh Tu',
 
+      'hero.intl.title': 'International cooperation class',
+      'hero.intl.subject': 'KT330H — UM Kendari × Can Tho University',
+      'hero.intl.author': 'Written by Assoc. Prof. Dr. Phan Anh Tu',
+
       'special.cross.cta': "Go to Mr. Tu's class →",
+      'special.cross.intl.cta': 'Go to the international cooperation class — UM Kendari →',
+
+      'examLogin.title': 'International cooperation class sign-in',
+      'examLogin.desc': "This section is only for students of the UM Kendari × Can Tho University international cooperation class. Enter the school email you used to register for the class.",
+      'examLogin.label': 'School email (UM Kendari)',
+      'examLogin.placeholder': 'name.studentid@student.umkendari.ac.id',
+      'examLogin.submit': 'Enter',
+      'examLogin.invalid': "That email doesn't look right — try again.",
+      'examLogin.denied': "This email isn't on the class list. Contact Mr. Tu if you think this is a mistake.",
+      'examLogin.networkErr': 'Network error — try again.',
 
       'settings.classLabel': 'Current class',
       'settings.classHint': 'Switch class anytime — your progress stays saved.',
@@ -757,14 +782,11 @@
       'tour.s7': 'Finally, one important note: all questions and the software are copyright of Ms. Do Thuy Huong. You are welcome to use them free of charge for your own study, but please do not copy or redistribute them. Good luck with your revision!',
       'tour.s8': 'I am Huong AI, your companion through this course. Ms. Do Thuy Huong made me to walk you through the app and point you to whatever still needs revising. Whenever you want to hear this again, tap the Huong AI guided tour button in the bottom-right corner.',
 
-      'tour.tu.s1': "Hello, I am Huong AI. This is Mr. Tu's own page — it brings together two classes: the domestic class with two case studies, and the UM Kendari international cooperation class with two midterm quizzes. The overview shows the total number of questions, how many sections there are, plus how many sessions you have practised and your best score.",
+      'tour.tu.s1': "Hello, I am Huong AI. This is Mr. Tu's own page — two strategy case studies for his domestic class. The overview shows the total number of questions, how many sections there are, plus how many sessions you have practised and your best score.",
       'tour.tu.s2': 'This is a small daily study tip — the same one shown across the whole app, not specific to either class.',
-      'tour.tu.s5': 'Four sections split across two classes: the domestic class has two case studies — Tired City and Betterteem — each with the original document and a visual summary, unlocked once you verify your school email; the UM Kendari international class has two midterm quizzes. Eighty-eight questions in total.',
-      'tour.tu.s7': 'One important note: every case study and quiz in this section, for both the domestic class and the international cooperation class, was written by Assoc. Prof. Dr. Phan Anh Tu. You are welcome to use them for your own study, but please do not copy or redistribute them.',
+      'tour.tu.s5': "Mr. Tu's two case studies — Tired City and Betterteem — each with the original document and a visual summary, unlocked once you verify your school email. There's a separate button at the end of the page for the UM Kendari international cooperation class.",
+      'tour.tu.s7': 'One important note: both case studies in this section were written by Assoc. Prof. Dr. Phan Anh Tu. You are welcome to use them for your own study, but please do not copy or redistribute them.',
       'tour.tu.s8': "I am still Huong AI, EnQuiz's shared assistant — this class's content was written by Mr. Phan Anh Tu, and I am just here to help you find your way around. Whenever you want to switch to Ms. Huong's class or hear this tour again, tap the Huong AI guided tour button in the bottom-right corner.",
-
-      'chapters.group.tuDomestic': 'Domestic class',
-      'chapters.group.tuIntl': 'International cooperation class — UM Kendari',
 
       'toast.noWrong': 'No missed question has been recorded yet.',
       'toast.noMarked': 'You have not flagged any question yet.',

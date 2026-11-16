@@ -926,6 +926,29 @@
   </div>
 </div>
 
+<!-- ============ MODAL: ĐĂNG NHẬP EMAIL TRƯỜNG (lớp hợp tác quốc tế) ============
+     Khác với modalUnlock (chỉ ghi nhận ai xem tài liệu, không phải bảo mật
+     thật): modal này kiểm tra email có đúng trong danh sách lớp UM Kendari
+     hay không (qua Edge Function case-exam-login), để chặn người ngoài lớp
+     vào làm bài. Qua được một lần thì máy đó nhớ luôn, không hỏi lại. -->
+<div class="modal hidden" id="modalExamLogin">
+  <div class="modal__box">
+    <div class="modal__head">
+      <h3 data-i18n="examLogin.title">Đăng nhập lớp hợp tác quốc tế</h3>
+      <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
+    </div>
+    <div class="modal__body policy">
+      <p data-i18n="examLogin.desc">Mục này chỉ dành cho sinh viên lớp hợp tác quốc tế UM Kendari × Đại học Cần Thơ. Nhập đúng email trường bạn dùng để đăng ký lớp.</p>
+      <div class="field">
+        <label for="examLoginEmail" data-i18n="examLogin.label">Email trường (UM Kendari)</label>
+        <input type="email" id="examLoginEmail" data-i18n-attr="placeholder:examLogin.placeholder" placeholder="ten.mssv@student.umkendari.ac.id" autocomplete="email">
+      </div>
+      <p class="err" id="examLoginErr"></p>
+      <button class="btn btn--primary" id="btnExamLoginSubmit" type="button" data-i18n="examLogin.submit">Vào làm bài</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ MODAL: XEM SLIDE/VIDEO BÀI GIẢNG ============ -->
 <div class="modal hidden" id="modalLectureViewer">
   <div class="modal__box modal__box--wide">

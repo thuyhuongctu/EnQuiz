@@ -9,7 +9,7 @@ registerBank({
   "title": "Quiz 2 (giữa kỳ) · Chương 4–7 · KT330H quốc tế",
   "titleEn": "Quiz 2 (midterm) · Chapters 4–7 · KT330H international section",
   "order": 9,
-  "group": "kt330h",
+  "group": "kt330h-intl",
   "questions": [
   {
     "q": "Your best option in market research is generally primary rather than secondary research.",
