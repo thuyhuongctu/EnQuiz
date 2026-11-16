@@ -23,10 +23,13 @@
   var integrity = null;
   /** Sự kiện cài đặt PWA do trình duyệt cung cấp. */
   var installEvent = null;
-  /** Lớp đang xem: 'course' (Cô Hương, mặc định) hay 'kt330h' (Thầy Tú) —
-      quyết định bởi hash #/co-huong hoặc #/thay-tu, xem routeFromHash(). */
+  /** Lớp đang xem: 'course' (Cô Hương, mặc định), 'kt330h' (Thầy Tú, lớp
+      trong nước) hay 'kt330h-intl' (lớp hợp tác quốc tế UM Kendari) — quyết
+      định bởi hash #/co-huong, #/thay-tu hoặc #/lop-thi, xem routeFromHash().
+      Lớp quốc tế chỉ vào được từ một nút trong trang Thầy Tú (không có ở màn
+      chọn lớp ban đầu) vì chỉ sinh viên lớp đó mới cần, xem renderChapterList(). */
   var activeGroup = 'course';
-  var GROUP_ROUTES = { 'co-huong': 'course', 'thay-tu': 'kt330h' };
+  var GROUP_ROUTES = { 'co-huong': 'course', 'thay-tu': 'kt330h', 'lop-thi': 'kt330h-intl' };
 
   /* =======================================================
      Tiện ích
@@ -162,7 +165,11 @@
      Điều hướng theo hash — tách trang Cô Hương / Thầy Tú
      ======================================================= */
 
-  function groupHash(g) { return g === 'kt330h' ? '#/thay-tu' : '#/co-huong'; }
+  function groupHash(g) {
+    if (g === 'kt330h') return '#/thay-tu';
+    if (g === 'kt330h-intl') return '#/lop-thi';
+    return '#/co-huong';
+  }
 
   function syncClassUI() {
     $$('#classChips [data-group]').forEach(function (b) {
@@ -443,7 +450,10 @@
      Chạy lại mỗi lần renderHome() nên không lo bị I18n.apply() ghi đè mất,
      vì apply() luôn chạy trước renderHome() trong mọi đường gọi. */
   function renderHeroForGroup() {
-    var tu = activeGroup === 'kt330h';
+    // 'course' dùng chữ/ảnh tĩnh có sẵn trong HTML (home.*); hai nhóm còn lại
+    // đều là nội dung của Thầy Tú nên dùng chung ảnh và vai trò giảng viên,
+    // chỉ khác tiêu đề/mô tả (hero.tu.* hay hero.intl.*).
+    var prefix = activeGroup === 'kt330h' ? 'tu' : activeGroup === 'kt330h-intl' ? 'intl' : null;
     var titleSm = $('.hero__title-sm');
     var subject = titleSm ? titleSm.nextElementSibling : null;
     var sub = $('.hero__sub');
@@ -452,13 +462,13 @@
     var img = $('.hero__huong');
     var banner = $('#chaptersBanner');
 
-    if (titleSm) titleSm.textContent = t(tu ? 'hero.tu.title' : 'home.title');
-    if (subject) subject.textContent = t(tu ? 'hero.tu.subject' : 'home.subject');
-    if (sub) sub.textContent = t(tu ? 'hero.tu.author' : 'home.author');
-    if (role) role.textContent = t(tu ? 'authors.tu.role' : 'teacher.role');
-    if (fr) fr.classList.toggle('hidden', tu);
-    if (img) img.setAttribute('src', tu ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-welcome.webp');
-    if (banner) banner.setAttribute('src', tu ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-quiz.webp');
+    if (titleSm) titleSm.textContent = t(prefix ? 'hero.' + prefix + '.title' : 'home.title');
+    if (subject) subject.textContent = t(prefix ? 'hero.' + prefix + '.subject' : 'home.subject');
+    if (sub) sub.textContent = t(prefix ? 'hero.' + prefix + '.author' : 'home.author');
+    if (role) role.textContent = t(prefix ? 'authors.tu.role' : 'teacher.role');
+    if (fr) fr.classList.toggle('hidden', !!prefix);
+    if (img) img.setAttribute('src', prefix ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-welcome.webp');
+    if (banner) banner.setAttribute('src', prefix ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-quiz.webp');
   }
 
   /* Mách nước đổi ngôn ngữ và nền sáng/tối. Hiện cho tới khi người dùng tự
@@ -473,11 +483,39 @@
      phần. Bộ đề nhập thêm nằm ngoài năm chương ấy nên rơi về hình quyển sách. */
   var CHAPTER_ICONS = ['i-bulb', 'i-target', 'i-coins', 'i-blocks', 'i-megaphone'];
 
-  /* Trang Thầy Tú gộp chung nội dung của HAI lớp khác nhau: lớp trong nước
-     (hai case study, ch06/ch07) và lớp hợp tác quốc tế UM Kendari (Quiz 1/2,
-     ch08/ch09) — không phải một lớp quốc tế duy nhất. Chèn nhãn nhóm trước
-     mục đầu tiên của mỗi lớp để người học không hiểu lầm cả trang là quốc tế. */
-  var TU_GROUP_LABEL = { ch06: 'chapters.group.tuDomestic', ch08: 'chapters.group.tuIntl' };
+  /* Vẽ một thẻ chương — dùng chung cho danh sách chương chính và cho hai
+     case study "thảo luận" được chèn thêm vào trang Lớp thi (xem bên dưới). */
+  function renderChapterItem(c, icon, stats) {
+    var seen = 0, correct = 0;
+    c.questions.forEach(function (q) {
+      var s = stats[q.uid];
+      if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
+    });
+    var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
+    var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
+      '<span class="chapter-item__no">' +
+        '<svg class="ico" aria-hidden="true"><use href="#' + icon + '"/></svg>' +
+      '</span>' +
+      '<span class="chapter-item__main">' +
+        '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
+        '<span class="chapter-item__meta">' +
+          esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
+        '</span>' +
+      '</span>' +
+      '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
+    '</button>';
+    // Link tài liệu/infographic gốc — chỉ ch06/ch07 có trong hai bảng này,
+    // nên với mọi chương khác hai biến dưới đều rỗng.
+    var doc = CASE_DOCS[c.id]
+      ? '<button class="case-doclink" data-unlock="' + esc(c.id) + '" type="button">' +
+          '📄 ' + esc(t('advisor.docsTitle')) + ' ↗</button>'
+      : '';
+    var info = CASE_INFOGRAPHICS[c.id]
+      ? '<button class="case-doclink" data-infographic="' + esc(c.id) + '" type="button">' +
+          '🖼️ ' + esc(t('caseInfo.viewLabel')) + '</button>'
+      : '';
+    return item + doc + info;
+  }
 
   function renderChapterList() {
     var wrap = $('#chapterList');
@@ -489,45 +527,39 @@
     }
 
     var stats = Store.get('stats');
-    wrap.innerHTML = chapters.map(function (c, i) {
-      var seen = 0, correct = 0;
-      c.questions.forEach(function (q) {
-        var s = stats[q.uid];
-        if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
-      });
-      var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
+    var html = chapters.map(function (c, i) {
       // Năm biểu tượng theo đề tài chỉ khớp đúng thứ tự 5 chương học phần
       // của Cô Hương; chương ngoài nhóm đó (vd. case study/quiz Thầy Tú)
       // luôn dùng hình quyển sách, giống cách renderSpecialSets() cũ làm.
       var icon = activeGroup === 'course' ? (CHAPTER_ICONS[i] || 'i-book') : 'i-book';
-      var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
-        '<span class="chapter-item__no">' +
-          '<svg class="ico" aria-hidden="true"><use href="#' + icon + '"/></svg>' +
-        '</span>' +
-        '<span class="chapter-item__main">' +
-          '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
-          '<span class="chapter-item__meta">' +
-            esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
-          '</span>' +
-        '</span>' +
-        '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
-      '</button>';
-      // Link tài liệu/infographic gốc — chỉ ch06/ch07 có trong hai bảng này,
-      // nên với mọi chương khác (cả hai nhóm) hai biến dưới đều rỗng.
-      var doc = CASE_DOCS[c.id]
-        ? '<button class="case-doclink" data-unlock="' + esc(c.id) + '" type="button">' +
-            '📄 ' + esc(t('advisor.docsTitle')) + ' ↗</button>'
-        : '';
-      var info = CASE_INFOGRAPHICS[c.id]
-        ? '<button class="case-doclink" data-infographic="' + esc(c.id) + '" type="button">' +
-            '🖼️ ' + esc(t('caseInfo.viewLabel')) + '</button>'
-        : '';
-      var groupKey = activeGroup === 'kt330h' ? TU_GROUP_LABEL[c.id] : null;
-      var groupLabel = groupKey
-        ? '<p class="eyebrow chapter-group-label">' + esc(t(groupKey)) + '</p>'
-        : '';
-      return groupLabel + item + doc + info;
+      return renderChapterItem(c, icon, stats);
     }).join('');
+
+    // Trang Lớp thi (hợp tác quốc tế) gom cả hai case study "thảo luận trong
+    // lớp, không tính điểm" vào cùng trang cho sinh viên dễ tìm (gộp từ hai
+    // trang, theo yêu cầu Thầy Tú), dù case study vẫn thuộc nhóm 'kt330h'
+    // (lớp trong nước) và vẫn hiện trên trang Thầy Tú như cũ — nên đây chỉ
+    // là thêm vào phần HIỂN THỊ, không đổi group dữ liệu. Không đăng nhập
+    // email vẫn luyện được hai case study này, xem openSetupGated().
+    if (activeGroup === 'kt330h-intl') {
+      var discussion = QuestionBank.chapters('kt330h');
+      if (discussion.length) {
+        html += '<p class="eyebrow chapter-section-label">' + esc(t('chapters.group.discussion')) + '</p>' +
+          discussion.map(function (c) { return renderChapterItem(c, 'i-book', stats); }).join('');
+      }
+    }
+
+    wrap.innerHTML = html + crossLinkCard();
+  }
+
+  /* Trang Thầy Tú (lớp trong nước) có thêm một thẻ ở cuối dẫn sang trang
+     riêng của lớp hợp tác quốc tế UM Kendari — lớp đó tách hẳn trang vì vào
+     làm bài phải xác thực email trường (xem openExamLogin()), không phải
+     chỉ là một chương nữa trong danh sách này. */
+  function crossLinkCard() {
+    if (activeGroup !== 'kt330h') return '';
+    return '<button class="btn btn--primary chapter-crosslink" data-goto-hash="#/lop-thi" type="button">' +
+      esc(t('special.cross.intl.cta')) + '</button>';
   }
 
   /* Khối nội dung RIÊNG (ngoài 5 chương học phần) — ví dụ bộ đề của giảng viên.
@@ -595,6 +627,64 @@
     }).catch(function () {
       if (btn) btn.disabled = false;
       if (err) err.textContent = t('unlock.networkErr');
+    });
+  }
+
+  /* ---------------- Đăng nhập lớp hợp tác quốc tế (email trường, có xác thực thật) ----------------
+     Khác với mở khoá tài liệu case study ở trên: đây LÀ hàng rào thật — Edge
+     Function kiểm tra email có trong danh sách lớp UM Kendari hay không
+     (bảng kt330h_intl_students), không phải chỉ ghi nhận ai nhập. Qua được
+     một lần thì máy đó nhớ luôn (Store 'intlVerifiedEmail'), không hỏi lại. */
+  var EXAM_LOGIN_ENDPOINT = 'https://zkjgtvmwgrejmwapirwe.supabase.co/functions/v1/exam-login';
+  var pendingExamArgs = null;
+
+  /** Chặn trước khi mở màn thiết lập đề: đang ở trang Lớp thi (activeGroup
+      'kt330h-intl') thì phải đăng nhập mới làm được bất kỳ mục nào trong 4
+      mục hiện trên trang đó — kể cả 2 case study hiện kèm (dữ liệu của
+      chúng vẫn thuộc nhóm 'kt330h' như cũ, nhưng bấm từ trang Lớp thi vẫn
+      bị chặn vì activeGroup lúc đó là 'kt330h-intl'; bấm từ trang Thầy Tú
+      thì activeGroup là 'kt330h' nên không bị chặn). Nhóm khác thì gọi ngay. */
+  function openSetupGated(mode, presetChapter) {
+    if (activeGroup === 'kt330h-intl' && !Store.get('intlVerifiedEmail')) {
+      pendingExamArgs = { mode: mode, presetChapter: presetChapter };
+      var input = $('#examLoginEmail'), err = $('#examLoginErr');
+      if (input) input.value = '';
+      if (err) err.textContent = '';
+      var modal = $('#modalExamLogin');
+      if (modal) modal.classList.remove('hidden');
+      if (input) input.focus();
+      return;
+    }
+    openSetup(mode, presetChapter);
+  }
+
+  function submitExamLogin() {
+    var input = $('#examLoginEmail'), err = $('#examLoginErr'), btn = $('#btnExamLoginSubmit');
+    var email = input ? input.value.trim().toLowerCase() : '';
+    if (!EMAIL_RE.test(email)) {
+      if (err) err.textContent = t('examLogin.invalid');
+      return;
+    }
+    if (err) err.textContent = '';
+    if (btn) { btn.disabled = true; }
+    fetch(EXAM_LOGIN_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (btn) btn.disabled = false;
+      if (d && d.ok) {
+        Store.set('intlVerifiedEmail', email);
+        var modal = $('#modalExamLogin');
+        if (modal) modal.classList.add('hidden');
+        if (pendingExamArgs) openSetup(pendingExamArgs.mode, pendingExamArgs.presetChapter);
+        pendingExamArgs = null;
+      } else if (err) {
+        err.textContent = t('examLogin.denied');
+      }
+    }).catch(function () {
+      if (btn) btn.disabled = false;
+      if (err) err.textContent = t('examLogin.networkErr');
     });
   }
 
@@ -1344,7 +1434,7 @@
       .replace('{pct}', Math.round(weak.ratio * 100));
     cta.textContent = t('insight.cta');
     cta.classList.remove('hidden');
-    cta.onclick = function () { openSetup('practice', weak.id); };
+    cta.onclick = function () { openSetupGated('practice', weak.id); };
   }
 
   function renderReview() {
@@ -1779,6 +1869,11 @@
       if (e.key === 'Enter') { e.preventDefault(); submitUnlock(); }
     });
 
+    $('#btnExamLoginSubmit').addEventListener('click', submitExamLogin);
+    $('#examLoginEmail').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); submitExamLogin(); }
+    });
+
     $('#btnRefreshApp').addEventListener('click', function () {
       var btn = this;
       btn.disabled = true;
@@ -1818,7 +1913,7 @@
         var m = mode.getAttribute('data-mode');
         if (mode.classList.contains('sidenav__item') ||
             mode.classList.contains('botnav__item')) markNav(mode);
-        if (m === 'import') openImport(); else openSetup(m);
+        if (m === 'import') openImport(); else openSetupGated(m);
         return;
       }
 
@@ -1837,13 +1932,16 @@
       if (langBtn) { I18n.set(langBtn.getAttribute('data-lang')); return; }
 
       var chap = target.closest('[data-chapter]');
-      if (chap) { openSetup('practice', chap.getAttribute('data-chapter')); return; }
+      if (chap) { openSetupGated('practice', chap.getAttribute('data-chapter')); return; }
 
       var unlockBtn = target.closest('[data-unlock]');
       if (unlockBtn) { openCaseDoc(unlockBtn.getAttribute('data-unlock')); return; }
 
       var infoBtn = target.closest('[data-infographic]');
       if (infoBtn) { openCaseInfographic(infoBtn.getAttribute('data-infographic')); return; }
+
+      var gotoBtn = target.closest('[data-goto-hash]');
+      if (gotoBtn) { location.hash = gotoBtn.getAttribute('data-goto-hash'); return; }
 
       var countChip = target.closest('[data-count]');
       if (countChip) {
@@ -1918,13 +2016,13 @@
       }
 
       var lecPractice = target.closest('[data-lecture-practice]');
-      if (lecPractice) { openSetup('practice', lecPractice.getAttribute('data-lecture-practice')); return; }
+      if (lecPractice) { openSetupGated('practice', lecPractice.getAttribute('data-lecture-practice')); return; }
       if (target.classList.contains('modal')) { target.classList.add('hidden'); stopAdvisorVoice(); }
     });
 
     // ----- Thiết lập đề -----
     $('#setupChapters').addEventListener('change', refreshSetupMax);
-    $('#btnAllChapters').addEventListener('click', function () { openSetup('practice'); });
+    $('#btnAllChapters').addEventListener('click', function () { openSetupGated('practice'); });
     $('#btnStart').addEventListener('click', startQuiz);
 
     // ----- Làm bài -----
@@ -1975,7 +2073,7 @@
       }
     });
     $('#btnRedo').addEventListener('click', function () {
-      openSetup(session && MODES.indexOf(session.mode) !== -1 ? session.mode : 'exam');
+      openSetupGated(session && MODES.indexOf(session.mode) !== -1 ? session.mode : 'exam');
     });
     $('#btnRetryWrong').addEventListener('click', function () {
       var missed = session.items

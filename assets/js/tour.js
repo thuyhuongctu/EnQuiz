@@ -56,11 +56,18 @@
     { key: 'tour.tu.s8', target: '.hero__bubble', pose: 'cheer' }
   ];
 
-  /* Lớp đang xem quyết định bởi hash #/co-huong hay #/thay-tu (xem
-     groupHash() trong app.js) — đọc thẳng location.hash ở đây cho đơn giản,
-     khỏi phải lộ biến activeGroup riêng của app.js ra ngoài. */
+  /* Lớp đang xem quyết định bởi hash #/co-huong, #/thay-tu hay #/lop-thi
+     (xem groupHash() trong app.js) — đọc thẳng location.hash ở đây cho đơn
+     giản, khỏi phải lộ biến activeGroup riêng của app.js ra ngoài. Trang
+     "Lớp thi" (hợp tác quốc tế UM Kendari) chưa có kịch bản tour riêng nên
+     tạm ẩn hẳn nút gọi Hương AI ở đó, xem toggleFabForRoute(). */
   function currentSteps() {
     return location.hash === '#/thay-tu' ? STEPS_TU : STEPS_HUONG;
+  }
+
+  function toggleFabForRoute() {
+    var fab = $('#tourFab');
+    if (fab && !running) fab.classList.toggle('hidden', location.hash === '#/lop-thi');
   }
 
   /* Người dẫn tour mặc áo len, khác với ảnh áo dài dùng ở thẻ giảng viên và
@@ -95,11 +102,12 @@
     'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
     'tour.nav': 'nav.mp3', 'tour.navm': 'navm.mp3', 'tour.s6': 's6.mp3',
     'tour.s7': 's7.mp3', 'tour.s8': 's8.mp3', 'tour.done': 'done.mp3',
-    // Bản thu riêng cho trang Thầy Tú — đủ cả 5 bước, khớp kịch bản đã sửa
-    // lại cho đúng hai lớp (trong nước / hợp tác quốc tế UM Kendari).
-    'tour.tu.s1': 'tu-s1.mp3', 'tour.tu.s2': 'tu-s2.mp3',
-    'tour.tu.s5': 'tu-s5.mp3', 'tour.tu.s7': 'tu-s7.mp3',
-    'tour.tu.s8': 'tu-s8.mp3'
+    // Bản thu riêng cho trang Thầy Tú. Lớp hợp tác quốc tế UM Kendari sau đó
+    // được tách hẳn sang trang riêng (#/lop-thi), nên lời thoại s1/s5/s7 đổi
+    // lại thành chỉ nói về lớp trong nước — bản thu cũ (tu-s1/s5/s7.mp3) nói
+    // "hai lớp" không còn khớp chữ mới, tạm bỏ khỏi bảng này để rơi về giọng
+    // máy cho tới khi có bản thu lại. s2/s8 nội dung không đổi nên vẫn dùng.
+    'tour.tu.s2': 'tu-s2.mp3', 'tour.tu.s8': 'tu-s8.mp3'
   };
   var audio = null;
 
@@ -330,6 +338,8 @@
 
     init: function () {
       $('#tourFabLabel').textContent = t('tour.start');
+      toggleFabForRoute();
+      global.addEventListener('hashchange', toggleFabForRoute);
       $('#tourFab').addEventListener('click', start);
       $('#tourClose').addEventListener('click', stop);
       $('#tourPrev').addEventListener('click', function () { go(index - 1); });

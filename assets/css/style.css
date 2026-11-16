@@ -1420,11 +1420,13 @@ select,
 
 /* ---------------- Chapter list ---------------- */
 .chapter-list { display: flex; flex-direction: column; gap: .5rem; }
-/* Nhãn nhóm trên trang Thầy Tú (lớp trong nước / lớp hợp tác quốc tế) —
-   thêm khoảng cách phía trên để tách rõ khỏi nhóm liền trước, trừ nhãn
-   đầu tiên vì đã có khoảng cách của .chapter-list rồi. */
-.chapter-group-label { margin: 0; }
-.chapter-group-label:not(:first-child) { margin-top: .5rem; }
+/* Thẻ dẫn sang trang "Lớp thi" (hợp tác quốc tế UM Kendari), chỉ xuất hiện
+   ở cuối danh sách chương của trang Thầy Tú — thêm khoảng cách phía trên để
+   tách rõ khỏi các chương liền trước. */
+.chapter-crosslink { margin-top: .4rem; width: 100%; }
+/* Nhãn tách hai case study "thảo luận" khỏi hai Quiz "lấy điểm" trên cùng
+   trang Lớp thi — thêm khoảng cách phía trên để tách rõ khỏi phần trước. */
+.chapter-section-label { margin: .4rem 0 0; }
 .chapter-item {
   display: flex;
   align-items: center;
