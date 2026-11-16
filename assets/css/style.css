@@ -1424,6 +1424,9 @@ select,
    ở cuối danh sách chương của trang Thầy Tú — thêm khoảng cách phía trên để
    tách rõ khỏi các chương liền trước. */
 .chapter-crosslink { margin-top: .4rem; width: 100%; }
+/* Nhãn tách hai case study "thảo luận" khỏi hai Quiz "lấy điểm" trên cùng
+   trang Lớp thi — thêm khoảng cách phía trên để tách rõ khỏi phần trước. */
+.chapter-section-label { margin: .4rem 0 0; }
 .chapter-item {
   display: flex;
   align-items: center;

@@ -483,6 +483,40 @@
      phần. Bộ đề nhập thêm nằm ngoài năm chương ấy nên rơi về hình quyển sách. */
   var CHAPTER_ICONS = ['i-bulb', 'i-target', 'i-coins', 'i-blocks', 'i-megaphone'];
 
+  /* Vẽ một thẻ chương — dùng chung cho danh sách chương chính và cho hai
+     case study "thảo luận" được chèn thêm vào trang Lớp thi (xem bên dưới). */
+  function renderChapterItem(c, icon, stats) {
+    var seen = 0, correct = 0;
+    c.questions.forEach(function (q) {
+      var s = stats[q.uid];
+      if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
+    });
+    var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
+    var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
+      '<span class="chapter-item__no">' +
+        '<svg class="ico" aria-hidden="true"><use href="#' + icon + '"/></svg>' +
+      '</span>' +
+      '<span class="chapter-item__main">' +
+        '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
+        '<span class="chapter-item__meta">' +
+          esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
+        '</span>' +
+      '</span>' +
+      '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
+    '</button>';
+    // Link tài liệu/infographic gốc — chỉ ch06/ch07 có trong hai bảng này,
+    // nên với mọi chương khác hai biến dưới đều rỗng.
+    var doc = CASE_DOCS[c.id]
+      ? '<button class="case-doclink" data-unlock="' + esc(c.id) + '" type="button">' +
+          '📄 ' + esc(t('advisor.docsTitle')) + ' ↗</button>'
+      : '';
+    var info = CASE_INFOGRAPHICS[c.id]
+      ? '<button class="case-doclink" data-infographic="' + esc(c.id) + '" type="button">' +
+          '🖼️ ' + esc(t('caseInfo.viewLabel')) + '</button>'
+      : '';
+    return item + doc + info;
+  }
+
   function renderChapterList() {
     var wrap = $('#chapterList');
     var chapters = QuestionBank.chapters(activeGroup);
@@ -493,41 +527,29 @@
     }
 
     var stats = Store.get('stats');
-    wrap.innerHTML = chapters.map(function (c, i) {
-      var seen = 0, correct = 0;
-      c.questions.forEach(function (q) {
-        var s = stats[q.uid];
-        if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
-      });
-      var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
+    var html = chapters.map(function (c, i) {
       // Năm biểu tượng theo đề tài chỉ khớp đúng thứ tự 5 chương học phần
       // của Cô Hương; chương ngoài nhóm đó (vd. case study/quiz Thầy Tú)
       // luôn dùng hình quyển sách, giống cách renderSpecialSets() cũ làm.
       var icon = activeGroup === 'course' ? (CHAPTER_ICONS[i] || 'i-book') : 'i-book';
-      var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
-        '<span class="chapter-item__no">' +
-          '<svg class="ico" aria-hidden="true"><use href="#' + icon + '"/></svg>' +
-        '</span>' +
-        '<span class="chapter-item__main">' +
-          '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
-          '<span class="chapter-item__meta">' +
-            esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
-          '</span>' +
-        '</span>' +
-        '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
-      '</button>';
-      // Link tài liệu/infographic gốc — chỉ ch06/ch07 có trong hai bảng này,
-      // nên với mọi chương khác (cả hai nhóm) hai biến dưới đều rỗng.
-      var doc = CASE_DOCS[c.id]
-        ? '<button class="case-doclink" data-unlock="' + esc(c.id) + '" type="button">' +
-            '📄 ' + esc(t('advisor.docsTitle')) + ' ↗</button>'
-        : '';
-      var info = CASE_INFOGRAPHICS[c.id]
-        ? '<button class="case-doclink" data-infographic="' + esc(c.id) + '" type="button">' +
-            '🖼️ ' + esc(t('caseInfo.viewLabel')) + '</button>'
-        : '';
-      return item + doc + info;
-    }).join('') + crossLinkCard();
+      return renderChapterItem(c, icon, stats);
+    }).join('');
+
+    // Trang Lớp thi (hợp tác quốc tế) gom cả hai case study "thảo luận trong
+    // lớp, không tính điểm" vào cùng trang cho sinh viên dễ tìm (gộp từ hai
+    // trang, theo yêu cầu Thầy Tú), dù case study vẫn thuộc nhóm 'kt330h'
+    // (lớp trong nước) và vẫn hiện trên trang Thầy Tú như cũ — nên đây chỉ
+    // là thêm vào phần HIỂN THỊ, không đổi group dữ liệu. Không đăng nhập
+    // email vẫn luyện được hai case study này, xem openSetupGated().
+    if (activeGroup === 'kt330h-intl') {
+      var discussion = QuestionBank.chapters('kt330h');
+      if (discussion.length) {
+        html += '<p class="eyebrow chapter-section-label">' + esc(t('chapters.group.discussion')) + '</p>' +
+          discussion.map(function (c) { return renderChapterItem(c, 'i-book', stats); }).join('');
+      }
+    }
+
+    wrap.innerHTML = html + crossLinkCard();
   }
 
   /* Trang Thầy Tú (lớp trong nước) có thêm một thẻ ở cuối dẫn sang trang
@@ -616,10 +638,20 @@
   var EXAM_LOGIN_ENDPOINT = 'https://zkjgtvmwgrejmwapirwe.supabase.co/functions/v1/exam-login';
   var pendingExamArgs = null;
 
-  /** Chặn trước khi mở màn thiết lập đề: nhóm 'kt330h-intl' phải xác thực
-      email trường xong mới gọi openSetup() thật; nhóm khác thì gọi ngay. */
+  /* Theo Thầy Tú: hai case study (ch06/ch07) chỉ để thảo luận trong lớp,
+     không tính điểm nên không cần đăng nhập — dù hiện chung trang với hai
+     Quiz trên trang Lớp thi. Chỉ hai Quiz (ch08/ch09, lấy điểm giữa kỳ) mới
+     cần xác thực email thật. */
+  function isGradedChapter(id) { return id === 'ch08' || id === 'ch09'; }
+
+  /** Chặn trước khi mở màn thiết lập đề: bấm một chương cụ thể thì xét đúng
+      chương đó có cần đăng nhập hay không; bấm "Thi thử"/"Ôn tập" không chọn
+      chương (chạy trên toàn bộ activeGroup) thì xét theo nhóm — nhóm
+      'kt330h-intl' lúc đó chỉ gồm hai Quiz (xem QuestionBank.chapters()),
+      không lẫn case study, nên chặn đúng ý. */
   function openSetupGated(mode, presetChapter) {
-    if (activeGroup === 'kt330h-intl' && !Store.get('intlVerifiedEmail')) {
+    var needsLogin = presetChapter ? isGradedChapter(presetChapter) : activeGroup === 'kt330h-intl';
+    if (needsLogin && !Store.get('intlVerifiedEmail')) {
       pendingExamArgs = { mode: mode, presetChapter: presetChapter };
       var input = $('#examLoginEmail'), err = $('#examLoginErr');
       if (input) input.value = '';

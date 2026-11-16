@@ -47,6 +47,8 @@
       'special.cross.cta': 'Vào lớp của Thầy Tú →',
       'special.cross.intl.cta': 'Vào lớp hợp tác quốc tế — UM Kendari →',
 
+      'chapters.group.discussion': 'Case study thảo luận trong lớp (không tính điểm)',
+
       'examLogin.title': 'Đăng nhập lớp hợp tác quốc tế',
       'examLogin.desc': 'Mục này chỉ dành cho sinh viên lớp hợp tác quốc tế UM Kendari × Đại học Cần Thơ. Nhập đúng email trường bạn dùng để đăng ký lớp.',
       'examLogin.label': 'Email trường (UM Kendari)',
@@ -442,6 +444,8 @@
 
       'special.cross.cta': "Go to Mr. Tu's class →",
       'special.cross.intl.cta': 'Go to the international cooperation class — UM Kendari →',
+
+      'chapters.group.discussion': 'In-class discussion case studies (not graded)',
 
       'examLogin.title': 'International cooperation class sign-in',
       'examLogin.desc': "This section is only for students of the UM Kendari × Can Tho University international cooperation class. Enter the school email you used to register for the class.",
