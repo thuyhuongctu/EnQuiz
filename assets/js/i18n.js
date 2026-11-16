@@ -37,7 +37,7 @@
       'picker.enter': 'Vào lớp →',
 
       'hero.tu.title': 'Ôn thi nội dung',
-      'hero.tu.subject': 'KT330H — lớp quốc tế',
+      'hero.tu.subject': 'KT330H — Thầy Phan Anh Tú',
       'hero.tu.author': 'Biên soạn: PGS.TS. Phan Anh Tú',
 
       'special.cross.cta': 'Vào lớp của Thầy Tú →',
@@ -377,11 +377,14 @@
       // hướng, ba nút góc trên) vì không liên quan tới lớp nào; chỉ viết lại
       // năm bước có nhắc tới nội dung cụ thể (s1, s2, s5, s7, s8). Chưa có
       // bản thu âm riêng nên đọc bằng giọng máy cho tới khi có người thu.
-      'tour.tu.s1': 'Xin chào, mình là Hương AI. Đây là trang riêng của lớp Thầy Tú — học phần KT330H, lớp quốc tế phối hợp giữa UM Kendari và Đại học Cần Thơ. Bảng tổng quan cho biết tổng số câu hỏi, số chuyên mục, cùng số lượt bạn đã luyện và điểm cao nhất.',
+      'tour.tu.s1': 'Xin chào, mình là Hương AI. Đây là trang riêng của Thầy Phan Anh Tú — gồm nội dung của hai lớp: lớp trong nước với hai case study, và lớp hợp tác quốc tế UM Kendari với hai bài Quiz giữa kỳ. Bảng tổng quan cho biết tổng số câu hỏi, số chuyên mục, cùng số lượt bạn đã luyện và điểm cao nhất.',
       'tour.tu.s2': 'Đây là mẹo ôn tập nhỏ mỗi ngày — dùng chung cho cả ứng dụng, không riêng lớp nào.',
-      'tour.tu.s5': 'Bốn chuyên mục của lớp Thầy Tú: hai case study — Tired City và Betterteem — cùng hai bài Quiz giữa kỳ, tổng cộng tám mươi tám câu. Mỗi case study có kèm tài liệu gốc và tóm tắt trực quan, mở được sau khi bạn xác thực email trường.',
-      'tour.tu.s7': 'Một lưu ý quan trọng: hai case study và hai bài Quiz trong mục này do PGS.TS. Phan Anh Tú biên soạn riêng cho lớp KT330H quốc tế. Bạn được dùng miễn phí để tự học, xin đừng sao chép hay phát tán lại.',
+      'tour.tu.s5': 'Bốn chuyên mục chia theo hai lớp: lớp trong nước có hai case study — Tired City và Betterteem — kèm tài liệu gốc và tóm tắt trực quan, mở được sau khi bạn xác thực email trường; lớp hợp tác quốc tế UM Kendari có hai bài Quiz giữa kỳ. Tổng cộng tám mươi tám câu.',
+      'tour.tu.s7': 'Một lưu ý quan trọng: toàn bộ case study và Quiz trong mục này, của cả lớp trong nước lẫn lớp hợp tác quốc tế, đều do PGS.TS. Phan Anh Tú biên soạn. Bạn được dùng miễn phí để tự học, xin đừng sao chép hay phát tán lại.',
       'tour.tu.s8': 'Mình vẫn là Hương AI, trợ lý chung của EnQuiz — nội dung lớp này do Thầy Phan Anh Tú biên soạn, mình chỉ giúp bạn đi đúng đường thôi. Muốn chuyển sang lớp của Cô Hương hay nghe lại tour này, bạn bấm nút Hương AI hướng dẫn ở góc dưới bên phải bất cứ lúc nào nhé.',
+
+      'chapters.group.tuDomestic': 'Lớp trong nước',
+      'chapters.group.tuIntl': 'Lớp hợp tác quốc tế — UM Kendari',
 
       'toast.noWrong': 'Chưa có câu sai nào được ghi nhận.',
       'toast.noMarked': 'Bạn chưa đánh dấu câu hỏi nào.',
@@ -419,7 +422,7 @@
       'picker.enter': 'Enter →',
 
       'hero.tu.title': 'Practice for',
-      'hero.tu.subject': 'KT330H — international section',
+      'hero.tu.subject': 'KT330H — Mr. Phan Anh Tu',
       'hero.tu.author': 'Written by Assoc. Prof. Dr. Phan Anh Tu',
 
       'special.cross.cta': "Go to Mr. Tu's class →",
@@ -754,11 +757,14 @@
       'tour.s7': 'Finally, one important note: all questions and the software are copyright of Ms. Do Thuy Huong. You are welcome to use them free of charge for your own study, but please do not copy or redistribute them. Good luck with your revision!',
       'tour.s8': 'I am Huong AI, your companion through this course. Ms. Do Thuy Huong made me to walk you through the app and point you to whatever still needs revising. Whenever you want to hear this again, tap the Huong AI guided tour button in the bottom-right corner.',
 
-      'tour.tu.s1': "Hello, I am Huong AI. This is Mr. Tu's own page — content for the KT330H international section, run jointly by UM Kendari and Can Tho University. The overview shows the total number of questions, how many sections there are, plus how many sessions you have practised and your best score.",
+      'tour.tu.s1': "Hello, I am Huong AI. This is Mr. Tu's own page — it brings together two classes: the domestic class with two case studies, and the UM Kendari international cooperation class with two midterm quizzes. The overview shows the total number of questions, how many sections there are, plus how many sessions you have practised and your best score.",
       'tour.tu.s2': 'This is a small daily study tip — the same one shown across the whole app, not specific to either class.',
-      'tour.tu.s5': "Four sections for Mr. Tu's class: two case studies — Tired City and Betterteem — plus two midterm quizzes, eighty-eight questions in total. Each case study comes with the original document and a visual summary, unlocked once you verify your school email.",
-      'tour.tu.s7': 'One important note: the two case studies and two quizzes in this section were written by Assoc. Prof. Dr. Phan Anh Tu specifically for the KT330H international section. You are welcome to use them for your own study, but please do not copy or redistribute them.',
+      'tour.tu.s5': 'Four sections split across two classes: the domestic class has two case studies — Tired City and Betterteem — each with the original document and a visual summary, unlocked once you verify your school email; the UM Kendari international class has two midterm quizzes. Eighty-eight questions in total.',
+      'tour.tu.s7': 'One important note: every case study and quiz in this section, for both the domestic class and the international cooperation class, was written by Assoc. Prof. Dr. Phan Anh Tu. You are welcome to use them for your own study, but please do not copy or redistribute them.',
       'tour.tu.s8': "I am still Huong AI, EnQuiz's shared assistant — this class's content was written by Mr. Phan Anh Tu, and I am just here to help you find your way around. Whenever you want to switch to Ms. Huong's class or hear this tour again, tap the Huong AI guided tour button in the bottom-right corner.",
+
+      'chapters.group.tuDomestic': 'Domestic class',
+      'chapters.group.tuIntl': 'International cooperation class — UM Kendari',
 
       'toast.noWrong': 'No missed question has been recorded yet.',
       'toast.noMarked': 'You have not flagged any question yet.',
