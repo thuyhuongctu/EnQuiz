@@ -1,11 +1,10 @@
 /* =========================================================
    tour.js — "Hương AI": tour hướng dẫn có giọng đọc
    ---------------------------------------------------------
-   Phần lớn các bước dùng giọng thu sẵn (xem TRACKS); bước nào
-   chưa có bản thu (vd. các bước 'tour.tu.*' riêng cho trang
-   Thầy Tú) thì tự rơi về Web Speech API của trình duyệt. Máy
-   nào không có giọng đọc thì phần lời vẫn hiện thành chữ, nên
-   tour luôn dùng được.
+   Mọi bước dùng giọng thu sẵn (xem TRACKS); nếu một bước mới
+   thêm sau này chưa kịp có bản thu thì tự rơi về Web Speech API
+   của trình duyệt. Máy nào không có giọng đọc thì phần lời vẫn
+   hiện thành chữ, nên tour luôn dùng được.
    ========================================================= */
 (function (global) {
   'use strict';
@@ -96,11 +95,11 @@
     'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
     'tour.nav': 'nav.mp3', 'tour.navm': 'navm.mp3', 'tour.s6': 's6.mp3',
     'tour.s7': 's7.mp3', 'tour.s8': 's8.mp3', 'tour.done': 'done.mp3',
-    // Bản thu riêng cho trang Thầy Tú: mới có 2/5 bước (nội dung không đổi
-    // giữa bản kịch bản cũ và bản đã sửa lại cho đúng hai lớp). Ba bước còn
-    // lại (tour.tu.s1/s5/s7) chưa có bản thu khớp kịch bản mới nên vẫn tạm
-    // đọc bằng giọng máy — thêm vào đây khi có bản thu.
-    'tour.tu.s2': 'tu-s2.mp3', 'tour.tu.s8': 'tu-s8.mp3'
+    // Bản thu riêng cho trang Thầy Tú — đủ cả 5 bước, khớp kịch bản đã sửa
+    // lại cho đúng hai lớp (trong nước / hợp tác quốc tế UM Kendari).
+    'tour.tu.s1': 'tu-s1.mp3', 'tour.tu.s2': 'tu-s2.mp3',
+    'tour.tu.s5': 'tu-s5.mp3', 'tour.tu.s7': 'tu-s7.mp3',
+    'tour.tu.s8': 'tu-s8.mp3'
   };
   var audio = null;
 
