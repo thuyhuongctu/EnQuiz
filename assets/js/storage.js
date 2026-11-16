@@ -7,7 +7,7 @@
   var KEY = 'ksdn.progress.v1';
 
   var DEFAULTS = {
-    theme: 'auto',   // theo cài đặt sáng/tối của máy, tới khi người dùng tự chọn
+    theme: 'clay',   // mặc định diện mạo "Đất sét noir"; người dùng tự đổi lại được
     themeMoved: 0,   // đã một lần dời "nền tối" cũ sang Đất sét noir hay chưa
     song: 'vocal',   // bản nhạc đang chọn: 'vocal' có lời hoặc 'instrumental' không lời
     marked: [],      // danh sách uid câu hỏi được đánh dấu
