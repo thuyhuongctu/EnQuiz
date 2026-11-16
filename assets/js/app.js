@@ -638,20 +638,14 @@
   var EXAM_LOGIN_ENDPOINT = 'https://zkjgtvmwgrejmwapirwe.supabase.co/functions/v1/exam-login';
   var pendingExamArgs = null;
 
-  /* Theo Thầy Tú: hai case study (ch06/ch07) chỉ để thảo luận trong lớp,
-     không tính điểm nên không cần đăng nhập — dù hiện chung trang với hai
-     Quiz trên trang Lớp thi. Chỉ hai Quiz (ch08/ch09, lấy điểm giữa kỳ) mới
-     cần xác thực email thật. */
-  function isGradedChapter(id) { return id === 'ch08' || id === 'ch09'; }
-
-  /** Chặn trước khi mở màn thiết lập đề: bấm một chương cụ thể thì xét đúng
-      chương đó có cần đăng nhập hay không; bấm "Thi thử"/"Ôn tập" không chọn
-      chương (chạy trên toàn bộ activeGroup) thì xét theo nhóm — nhóm
-      'kt330h-intl' lúc đó chỉ gồm hai Quiz (xem QuestionBank.chapters()),
-      không lẫn case study, nên chặn đúng ý. */
+  /** Chặn trước khi mở màn thiết lập đề: đang ở trang Lớp thi (activeGroup
+      'kt330h-intl') thì phải đăng nhập mới làm được bất kỳ mục nào trong 4
+      mục hiện trên trang đó — kể cả 2 case study hiện kèm (dữ liệu của
+      chúng vẫn thuộc nhóm 'kt330h' như cũ, nhưng bấm từ trang Lớp thi vẫn
+      bị chặn vì activeGroup lúc đó là 'kt330h-intl'; bấm từ trang Thầy Tú
+      thì activeGroup là 'kt330h' nên không bị chặn). Nhóm khác thì gọi ngay. */
   function openSetupGated(mode, presetChapter) {
-    var needsLogin = presetChapter ? isGradedChapter(presetChapter) : activeGroup === 'kt330h-intl';
-    if (needsLogin && !Store.get('intlVerifiedEmail')) {
+    if (activeGroup === 'kt330h-intl' && !Store.get('intlVerifiedEmail')) {
       pendingExamArgs = { mode: mode, presetChapter: presetChapter };
       var input = $('#examLoginEmail'), err = $('#examLoginErr');
       if (input) input.value = '';
