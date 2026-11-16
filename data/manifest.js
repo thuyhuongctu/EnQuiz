@@ -14,5 +14,6 @@ window.DATA_FILES = [
   'ch05.js',
   'ch06.js',
   'ch07.js',
-  'ch08.js'
+  'ch08.js',
+  'ch09.js'
 ];
