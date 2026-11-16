@@ -613,7 +613,7 @@
      Function kiểm tra email có trong danh sách lớp UM Kendari hay không
      (bảng kt330h_intl_students), không phải chỉ ghi nhận ai nhập. Qua được
      một lần thì máy đó nhớ luôn (Store 'intlVerifiedEmail'), không hỏi lại. */
-  var EXAM_LOGIN_ENDPOINT = 'https://kdpjlbqvdlntsfhrmchm.supabase.co/functions/v1/exam-login';
+  var EXAM_LOGIN_ENDPOINT = 'https://zkjgtvmwgrejmwapirwe.supabase.co/functions/v1/exam-login';
   var pendingExamArgs = null;
 
   /** Chặn trước khi mở màn thiết lập đề: nhóm 'kt330h-intl' phải xác thực
