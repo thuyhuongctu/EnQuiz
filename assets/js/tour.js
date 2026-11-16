@@ -95,7 +95,12 @@
     'tour.s0': 's0.mp3', 'tour.s1': 's1.mp3', 'tour.s2': 's2.mp3',
     'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
     'tour.nav': 'nav.mp3', 'tour.navm': 'navm.mp3', 'tour.s6': 's6.mp3',
-    'tour.s7': 's7.mp3', 'tour.s8': 's8.mp3', 'tour.done': 'done.mp3'
+    'tour.s7': 's7.mp3', 'tour.s8': 's8.mp3', 'tour.done': 'done.mp3',
+    // Bản thu riêng cho trang Thầy Tú: mới có 2/5 bước (nội dung không đổi
+    // giữa bản kịch bản cũ và bản đã sửa lại cho đúng hai lớp). Ba bước còn
+    // lại (tour.tu.s1/s5/s7) chưa có bản thu khớp kịch bản mới nên vẫn tạm
+    // đọc bằng giọng máy — thêm vào đây khi có bản thu.
+    'tour.tu.s2': 'tu-s2.mp3', 'tour.tu.s8': 'tu-s8.mp3'
   };
   var audio = null;
 
