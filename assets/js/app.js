@@ -473,6 +473,12 @@
      phần. Bộ đề nhập thêm nằm ngoài năm chương ấy nên rơi về hình quyển sách. */
   var CHAPTER_ICONS = ['i-bulb', 'i-target', 'i-coins', 'i-blocks', 'i-megaphone'];
 
+  /* Trang Thầy Tú gộp chung nội dung của HAI lớp khác nhau: lớp trong nước
+     (hai case study, ch06/ch07) và lớp hợp tác quốc tế UM Kendari (Quiz 1/2,
+     ch08/ch09) — không phải một lớp quốc tế duy nhất. Chèn nhãn nhóm trước
+     mục đầu tiên của mỗi lớp để người học không hiểu lầm cả trang là quốc tế. */
+  var TU_GROUP_LABEL = { ch06: 'chapters.group.tuDomestic', ch08: 'chapters.group.tuIntl' };
+
   function renderChapterList() {
     var wrap = $('#chapterList');
     var chapters = QuestionBank.chapters(activeGroup);
@@ -516,7 +522,11 @@
         ? '<button class="case-doclink" data-infographic="' + esc(c.id) + '" type="button">' +
             '🖼️ ' + esc(t('caseInfo.viewLabel')) + '</button>'
         : '';
-      return item + doc + info;
+      var groupKey = activeGroup === 'kt330h' ? TU_GROUP_LABEL[c.id] : null;
+      var groupLabel = groupKey
+        ? '<p class="eyebrow chapter-group-label">' + esc(t(groupKey)) + '</p>'
+        : '';
+      return groupLabel + item + doc + info;
     }).join('');
   }
 
