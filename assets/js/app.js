@@ -23,6 +23,10 @@
   var integrity = null;
   /** Sự kiện cài đặt PWA do trình duyệt cung cấp. */
   var installEvent = null;
+  /** Lớp đang xem: 'course' (Cô Hương, mặc định) hay 'kt330h' (Thầy Tú) —
+      quyết định bởi hash #/co-huong hoặc #/thay-tu, xem routeFromHash(). */
+  var activeGroup = 'course';
+  var GROUP_ROUTES = { 'co-huong': 'course', 'thay-tu': 'kt330h' };
 
   /* =======================================================
      Tiện ích
@@ -152,6 +156,43 @@
     darkQuery.addEventListener('change', function (e) {
       if (themePref() === 'auto') applyTheme(e.matches ? DARK_DEFAULT : 'light');
     });
+  }
+
+  /* =======================================================
+     Điều hướng theo hash — tách trang Cô Hương / Thầy Tú
+     ======================================================= */
+
+  function groupHash(g) { return g === 'kt330h' ? '#/thay-tu' : '#/co-huong'; }
+
+  function syncClassUI() {
+    $$('#classChips [data-group]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-group') === activeGroup);
+    });
+  }
+
+  function renderActiveHome() {
+    renderHome();
+    show('screenHome');
+  }
+
+  /** Nút "Trang chủ"/logo: luôn quay về trang của lớp đang xem, không phải
+      luôn về lớp Cô Hương như trước khi chưa tách trang. */
+  function goHome() {
+    leaveQuiz();
+    if (location.hash !== groupHash(activeGroup)) location.hash = groupHash(activeGroup);
+    renderActiveHome();
+  }
+
+  /** Đọc hash hiện tại: #/co-huong hoặc #/thay-tu vào đúng trang của lớp đó;
+      hash khác/rỗng thì về màn chọn lớp. Gọi lại mỗi khi hash đổi (nút back/
+      forward của trình duyệt, gõ tay địa chỉ, hoặc bấm các nút chuyển lớp). */
+  function routeFromHash() {
+    var m = /^#\/(.+)$/.exec(location.hash);
+    var g = m && GROUP_ROUTES[m[1]];
+    if (!g) { leaveQuiz(); show('screenPicker'); return; }
+    activeGroup = g;
+    leaveQuiz();
+    renderActiveHome();
   }
 
   /* =======================================================
@@ -372,9 +413,9 @@
   }
 
   function renderHome() {
-    var total = QuestionBank.total();
+    var total = QuestionBank.total(activeGroup);
     $('#statTotal').textContent = total;
-    $('#statChapters').textContent = QuestionBank.chapters().length;
+    $('#statChapters').textContent = QuestionBank.chapters(activeGroup).length;
     $('#statDone').textContent = Store.get('history').length;
 
     var best = Store.bestScore();
@@ -385,14 +426,39 @@
 
     renderHud();
 
+    renderHeroForGroup();
     renderChapterList();
     renderLectures();
     renderSpecialSets();
     renderHistory();
     renderBadges();
     renderHint();
+    syncClassUI();
     startClocks();
     syncMusic();
+  }
+
+  /* Hero và ảnh bìa danh sách chương đổi theo lớp đang xem: Cô Hương (mặc
+     định, nội dung tĩnh trong HTML) hay Thầy Tú (chữ/ảnh thay bằng JS ở đây).
+     Chạy lại mỗi lần renderHome() nên không lo bị I18n.apply() ghi đè mất,
+     vì apply() luôn chạy trước renderHome() trong mọi đường gọi. */
+  function renderHeroForGroup() {
+    var tu = activeGroup === 'kt330h';
+    var titleSm = $('.hero__title-sm');
+    var subject = titleSm ? titleSm.nextElementSibling : null;
+    var sub = $('.hero__sub');
+    var role = $('.hero__role');
+    var fr = $('.hero__fr');
+    var img = $('.hero__huong');
+    var banner = $('#chaptersBanner');
+
+    if (titleSm) titleSm.textContent = t(tu ? 'hero.tu.title' : 'home.title');
+    if (subject) subject.textContent = t(tu ? 'hero.tu.subject' : 'home.subject');
+    if (sub) sub.textContent = t(tu ? 'hero.tu.author' : 'home.author');
+    if (role) role.textContent = t(tu ? 'authors.tu.role' : 'teacher.role');
+    if (fr) fr.classList.toggle('hidden', tu);
+    if (img) img.setAttribute('src', tu ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-welcome.webp');
+    if (banner) banner.setAttribute('src', tu ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-quiz.webp');
   }
 
   /* Mách nước đổi ngôn ngữ và nền sáng/tối. Hiện cho tới khi người dùng tự
@@ -409,7 +475,7 @@
 
   function renderChapterList() {
     var wrap = $('#chapterList');
-    var chapters = QuestionBank.chapters();
+    var chapters = QuestionBank.chapters(activeGroup);
 
     if (!chapters.length) {
       wrap.innerHTML = '<p class="muted">' + esc(t('chapters.empty')) + '</p>';
@@ -424,10 +490,13 @@
         if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
       });
       var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
-      return '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
+      // Năm biểu tượng theo đề tài chỉ khớp đúng thứ tự 5 chương học phần
+      // của Cô Hương; chương ngoài nhóm đó (vd. case study/quiz Thầy Tú)
+      // luôn dùng hình quyển sách, giống cách renderSpecialSets() cũ làm.
+      var icon = activeGroup === 'course' ? (CHAPTER_ICONS[i] || 'i-book') : 'i-book';
+      var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
         '<span class="chapter-item__no">' +
-          '<svg class="ico" aria-hidden="true"><use href="#' +
-            (CHAPTER_ICONS[i] || 'i-book') + '"/></svg>' +
+          '<svg class="ico" aria-hidden="true"><use href="#' + icon + '"/></svg>' +
         '</span>' +
         '<span class="chapter-item__main">' +
           '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
@@ -437,6 +506,17 @@
         '</span>' +
         '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
       '</button>';
+      // Link tài liệu/infographic gốc — chỉ ch06/ch07 có trong hai bảng này,
+      // nên với mọi chương khác (cả hai nhóm) hai biến dưới đều rỗng.
+      var doc = CASE_DOCS[c.id]
+        ? '<button class="case-doclink" data-unlock="' + esc(c.id) + '" type="button">' +
+            '📄 ' + esc(t('advisor.docsTitle')) + ' ↗</button>'
+        : '';
+      var info = CASE_INFOGRAPHICS[c.id]
+        ? '<button class="case-doclink" data-infographic="' + esc(c.id) + '" type="button">' +
+            '🖼️ ' + esc(t('caseInfo.viewLabel')) + '</button>'
+        : '';
+      return item + doc + info;
     }).join('');
   }
 
@@ -612,6 +692,9 @@
     var wrap = $('#lectureList');
     var panel = $('#panelLectures');
     if (!wrap || !panel) return;
+    // Bài giảng chỉ khai báo cho 5 chương học phần của Cô Hương (data/lectures.js),
+    // nên ẩn hẳn panel này trên trang của Thầy Tú.
+    if (activeGroup !== 'course') { panel.classList.add('hidden'); return; }
     var list = Lectures.all();
     if (!list.length) { panel.classList.add('hidden'); return; }
     panel.classList.remove('hidden');
@@ -642,49 +725,21 @@
     }).join('');
   }
 
+  /* Trước đây panel này liệt kê từng case/quiz của Thầy Tú ngay trên trang
+     của Cô Hương. Giờ lớp của Thầy Tú có trang riêng (#/thay-tu, cùng
+     renderChapterList() ở trên) nên panel này chỉ còn là một thẻ giới
+     thiệu/dẫn sang trang đó — và chỉ hiện trên trang của Cô Hương. */
   function renderSpecialSets() {
-    var wrap = $('#specialList');
     var panel = $('#panelSpecial');
-    if (!wrap || !panel) return;
+    if (!panel) return;
     var special = QuestionBank.chapters('kt330h');
-    if (!special.length) { panel.classList.add('hidden'); return; }
+    if (!special.length || activeGroup !== 'course') { panel.classList.add('hidden'); return; }
     panel.classList.remove('hidden');
 
     var en = (window.I18n && I18n.lang === 'en');
     var head = $('#specialHeading'), eye = $('#specialEyebrow');
     if (head) head.textContent = en ? 'Separate set — Assoc. Prof. Phan Anh Tú' : 'Nội dung riêng — Thầy Phan Anh Tú';
     if (eye) eye.textContent = en ? 'Outside the 5-chapter course' : 'Ngoài 5 chương học phần';
-
-    var stats = Store.get('stats');
-    wrap.innerHTML = special.map(function (c) {
-      var seen = 0, correct = 0;
-      c.questions.forEach(function (q) {
-        var s = stats[q.uid];
-        if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
-      });
-      var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
-      var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
-        '<span class="chapter-item__no">' +
-          '<svg class="ico" aria-hidden="true"><use href="#i-book"/></svg>' +
-        '</span>' +
-        '<span class="chapter-item__main">' +
-          '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
-          '<span class="chapter-item__meta">' +
-            esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
-          '</span>' +
-        '</span>' +
-        '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
-      '</button>';
-      var doc = CASE_DOCS[c.id]
-        ? '<button class="case-doclink" data-unlock="' + esc(c.id) + '" type="button">' +
-            '📄 ' + esc(t('advisor.docsTitle')) + ' ↗</button>'
-        : '';
-      var info = CASE_INFOGRAPHICS[c.id]
-        ? '<button class="case-doclink" data-infographic="' + esc(c.id) + '" type="button">' +
-            '🖼️ ' + esc(t('caseInfo.viewLabel')) + '</button>'
-        : '';
-      return item + doc + info;
-    }).join('');
   }
 
   /* Giọng giới thiệu cho hồ sơ Cố vấn: ưu tiên bản ghi âm thật (hiện có
@@ -798,7 +853,7 @@
     }
 
     setup.mode = mode;
-    setup.chapters = presetChapter ? [presetChapter] : QuestionBank.chapters().map(function (c) { return c.id; });
+    setup.chapters = presetChapter ? [presetChapter] : QuestionBank.chapters(activeGroup).map(function (c) { return c.id; });
 
     /* Chương "Nội dung riêng" (vd. case study Thầy Tú) không nằm trong nhóm
        'course' nên không có mặt trong danh sách chọn chương bên dưới — nếu
@@ -828,7 +883,7 @@
   }
 
   function renderChapterPicker() {
-    $('#setupChapters').innerHTML = QuestionBank.chapters().map(function (c) {
+    $('#setupChapters').innerHTML = QuestionBank.chapters(activeGroup).map(function (c) {
       var on = setup.chapters.indexOf(c.id) !== -1;
       return '<label><input type="checkbox" value="' + esc(c.id) + '"' + (on ? ' checked' : '') + '>' +
         '<span>' + esc(chapterLabel(c)) + ' <small class="muted">(' + c.questions.length + ')</small></span></label>';
@@ -1670,7 +1725,17 @@
      ======================================================= */
 
   function bindEvents() {
-    $('#btnHome').addEventListener('click', function () { leaveQuiz(); show('screenHome'); renderHome(); });
+    $('#btnHome').addEventListener('click', goHome);
+
+    $('#btnPickHuong').addEventListener('click', function () { location.hash = '#/co-huong'; });
+    $('#btnPickTu').addEventListener('click', function () { location.hash = '#/thay-tu'; });
+    $('#btnGotoThayTu').addEventListener('click', function () { location.hash = '#/thay-tu'; });
+    $$('#classChips [data-group]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        location.hash = groupHash(b.getAttribute('data-group'));
+        $('#modalSettings').classList.add('hidden');
+      });
+    });
 
     // Nút ở thanh trên chốt hẳn một nền; muốn quay lại "theo máy" thì vào Cài đặt.
     $('#btnTheme').addEventListener('click', function () {
@@ -1724,12 +1789,12 @@
       var target = e.target;
 
       var nav = target.closest('[data-nav="home"]');
-      if (nav) { leaveQuiz(); show('screenHome'); renderHome(); markNav(nav); return; }
+      if (nav) { goHome(); markNav(nav); return; }
 
       // Thanh điều hướng: về trang chủ rồi cuộn tới danh sách chương
       var chap = target.closest('[data-nav="chapters"]');
       if (chap) {
-        leaveQuiz(); show('screenHome'); renderHome(); markNav(chap);
+        goHome(); markNav(chap);
         var list = $('#chapterList');
         if (list) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
@@ -1865,11 +1930,7 @@
       $('#modalGrid').classList.remove('hidden');
     });
     $('#btnQuit').addEventListener('click', function () {
-      if (confirm(t('quiz.confirmQuit'))) {
-        leaveQuiz();
-        show('screenHome');
-        renderHome();
-      }
+      if (confirm(t('quiz.confirmQuit'))) goHome();
     });
     $('#btnMark').addEventListener('click', function () {
       var q = session.items[session.index].q;
@@ -2005,8 +2066,8 @@
       if (res.failed.length) console.warn('Không nạp được các tệp dữ liệu:', res.failed);
       if (!QuestionBank.total()) toast(t('toast.emptyBankHint'));
 
-      renderHome();
-      show('screenHome');
+      routeFromHash();
+      window.addEventListener('hashchange', routeFromHash);
     }).catch(function (err) {
       console.error(err);
       $('#screenLoading').innerHTML =
