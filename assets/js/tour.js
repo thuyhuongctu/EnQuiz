@@ -102,12 +102,12 @@
     'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
     'tour.nav': 'nav.mp3', 'tour.navm': 'navm.mp3', 'tour.s6': 's6.mp3',
     'tour.s7': 's7.mp3', 'tour.s8': 's8.mp3', 'tour.done': 'done.mp3',
-    // Bản thu riêng cho trang Thầy Tú. Lớp hợp tác quốc tế UM Kendari sau đó
-    // được tách hẳn sang trang riêng (#/lop-thi), nên lời thoại s1/s5/s7 đổi
-    // lại thành chỉ nói về lớp trong nước — bản thu cũ (tu-s1/s5/s7.mp3) nói
-    // "hai lớp" không còn khớp chữ mới, tạm bỏ khỏi bảng này để rơi về giọng
-    // máy cho tới khi có bản thu lại. s2/s8 nội dung không đổi nên vẫn dùng.
-    'tour.tu.s2': 'tu-s2.mp3', 'tour.tu.s8': 'tu-s8.mp3'
+    // Bản thu riêng cho trang Thầy Tú — đủ cả 5 bước, khớp kịch bản mới nhất
+    // (lớp trong nước, sau khi lớp hợp tác quốc tế UM Kendari tách sang
+    // trang riêng #/lop-thi).
+    'tour.tu.s1': 'tu-s1.mp3', 'tour.tu.s2': 'tu-s2.mp3',
+    'tour.tu.s5': 'tu-s5.mp3', 'tour.tu.s7': 'tu-s7.mp3',
+    'tour.tu.s8': 'tu-s8.mp3'
   };
   var audio = null;
 
