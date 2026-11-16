@@ -636,7 +636,15 @@
      (bảng kt330h_intl_students), không phải chỉ ghi nhận ai nhập. Qua được
      một lần thì máy đó nhớ luôn (Store 'intlVerifiedEmail'), không hỏi lại. */
   var EXAM_LOGIN_ENDPOINT = 'https://zkjgtvmwgrejmwapirwe.supabase.co/functions/v1/exam-login';
+  var ATTEMPT_ENDPOINT = 'https://zkjgtvmwgrejmwapirwe.supabase.co/functions/v1/exam-attempt';
   var pendingExamArgs = null;
+
+  /** Phút thi cố định của một chương (0 = chương thường, không khoá thời
+      gian/chế độ) — khai báo ở data/chXX.js qua field "examMinutes". */
+  function timedExamMinutes(chapterId) {
+    var c = chapterId ? QuestionBank.chapter(chapterId) : null;
+    return c && c.examMinutes > 0 ? c.examMinutes : 0;
+  }
 
   /** Chặn trước khi mở màn thiết lập đề: đang ở trang Lớp thi (activeGroup
       'kt330h-intl') thì phải đăng nhập mới làm được bất kỳ mục nào trong 4
@@ -655,7 +663,67 @@
       if (input) input.focus();
       return;
     }
-    openSetup(mode, presetChapter);
+    continueToSetup(mode, presetChapter);
+  }
+
+  /** Sau khi qua được hàng rào email (hoặc không cần, với nhóm khác): hai
+      bài Quiz chính thức (examMinutes > 0) còn phải qua 1 vòng kiểm tra
+      "đã làm chưa" trên máy chủ trước khi mở màn thiết lập — mỗi sinh viên
+      chỉ được làm 1 lần, theo yêu cầu của Thầy Tú. */
+  function continueToSetup(mode, presetChapter) {
+    // "Thi thử" chung (không chọn chương cụ thể) trên trang Lớp thi sẽ gộp
+    // Quiz 1 + Quiz 2 thành một đề tự chọn, không khoá giờ/số câu/1 lần —
+    // chặn lối này, bắt chọn đúng 1 trong 2 bài từ danh sách chương.
+    if (mode === 'exam' && !presetChapter && activeGroup === 'kt330h-intl') {
+      toast(t('examAttempt.pickOne'));
+      return;
+    }
+
+    var minutes = timedExamMinutes(presetChapter);
+    if (minutes <= 0) { openSetup(mode, presetChapter); return; }
+
+    var email = Store.get('intlVerifiedEmail');
+    toast(t('examAttempt.checking'));
+    fetch(ATTEMPT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'check', email: email, chapterId: presetChapter })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d && d.ok && d.attempted) {
+        showAttemptBlocked(d.submittedAt);
+      } else if (d && d.ok) {
+        openSetup('exam', presetChapter);
+      } else {
+        toast(t('examAttempt.networkErr'));
+      }
+    }).catch(function () {
+      toast(t('examAttempt.networkErr'));
+    });
+  }
+
+  function showAttemptBlocked(submittedAt) {
+    var desc = $('#attemptBlockedDesc');
+    if (desc) {
+      var when = submittedAt ? new Date(submittedAt).toLocaleString() : '';
+      desc.textContent = when ? t('examAttempt.blockedAt', { time: when }) : t('examAttempt.blocked');
+    }
+    var modal = $('#modalAttemptBlocked');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  /** Ghi nhận đã làm xong một bài Quiz chính thức lên máy chủ — gọi đúng 1
+      lần, ngay sau khi chấm điểm (xem submitQuiz()). Lỗi mạng ở bước này
+      không chặn sinh viên xem kết quả (họ đã làm xong bài), nhưng bản ghi
+      "đã làm 1 lần" có thể thiếu nếu mất mạng đúng lúc này — chấp nhận được
+      vì hàng rào chính vẫn là kiểm tra lúc MỞ bài (continueToSetup ở trên). */
+  function recordExamAttempt(chapterId, score, total) {
+    var email = Store.get('intlVerifiedEmail');
+    if (!email || timedExamMinutes(chapterId) <= 0) return;
+    fetch(ATTEMPT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'record', email: email, chapterId: chapterId, score: score, total: total })
+    }).catch(function () { /* mất mạng lúc này: bỏ qua, xem ghi chú ở trên */ });
   }
 
   function submitExamLogin() {
@@ -677,7 +745,7 @@
         Store.set('intlVerifiedEmail', email);
         var modal = $('#modalExamLogin');
         if (modal) modal.classList.add('hidden');
-        if (pendingExamArgs) openSetup(pendingExamArgs.mode, pendingExamArgs.presetChapter);
+        if (pendingExamArgs) continueToSetup(pendingExamArgs.mode, pendingExamArgs.presetChapter);
         pendingExamArgs = null;
       } else if (err) {
         err.textContent = t('examLogin.denied');
@@ -962,14 +1030,20 @@
     var isOutsideCourse = !!(presetChap && (presetChap.group || 'course') !== 'course');
     setup.locked = isOutsideCourse;
 
+    // Bài Quiz chính thức (examMinutes > 0): khoá cứng thời gian và lấy đủ
+    // toàn bộ câu — sinh viên không được tự chọn lại, đúng yêu cầu của Thầy Tú.
+    setup.fixedMinutes = presetChap && presetChap.examMinutes > 0 ? presetChap.examMinutes : 0;
+    var isTimedExam = setup.fixedMinutes > 0;
+
     var scoped = (mode === 'wrong' || mode === 'marked' || isOutsideCourse);
     $('#fieldChapterPick').classList.toggle('hidden', scoped);
-    $('#fieldTime').classList.toggle('hidden', mode !== 'exam');
+    $('#fieldTime').classList.toggle('hidden', mode !== 'exam' || isTimedExam);
+    $('#fieldCount').classList.toggle('hidden', isTimedExam);
     $('#fieldInstant').classList.toggle('hidden', mode === 'exam');
     $('#setupInstant').checked = mode !== 'exam';
     $('#setupShuffleQ').checked = mode !== 'practice';
     $('#setupShuffleA').checked = mode === 'exam';
-    $('#setupTime').value = mode === 'exam' ? 45 : 0;
+    $('#setupTime').value = isTimedExam ? setup.fixedMinutes : (mode === 'exam' ? 45 : 0);
 
     if (!scoped) renderChapterPicker();
     renderSetupTexts();
@@ -979,7 +1053,9 @@
 
   function renderSetupTexts() {
     $('#setupTitle').textContent = t('mode.' + setup.mode);
-    $('#setupDesc').textContent = t('setup.desc.' + setup.mode);
+    $('#setupDesc').textContent = setup.fixedMinutes > 0
+      ? t('setup.desc.exam') + ' ' + t('setup.fixedTime', { n: setup.fixedMinutes })
+      : t('setup.desc.' + setup.mode);
   }
 
   function renderChapterPicker() {
@@ -1003,8 +1079,12 @@
     $('#setupCount').max = Math.max(1, max);
 
     var input = $('#setupCount');
-    var wanted = parseInt(input.value, 10);
-    if (!wanted || wanted > max) input.value = Math.min(max, setup.mode === 'exam' ? 40 : max);
+    if (setup.fixedMinutes > 0) {
+      input.value = max; // bài Quiz chính thức: luôn đủ toàn bộ câu, không cho chọn bớt
+    } else {
+      var wanted = parseInt(input.value, 10);
+      if (!wanted || wanted > max) input.value = Math.min(max, setup.mode === 'exam' ? 40 : max);
+    }
 
     var presets = [10, 20, 30, 40, 60].filter(function (n) { return n < max; });
     presets.push(max);
@@ -1039,18 +1119,21 @@
     var shuffleQ = $('#setupShuffleQ').checked;
     var shuffleA = $('#setupShuffleA').checked;
     var instant = !$('#fieldInstant').classList.contains('hidden') && $('#setupInstant').checked;
-    var minutes = $('#fieldTime').classList.contains('hidden') ? 0 : (parseInt($('#setupTime').value, 10) || 0);
+    var minutes = setup.fixedMinutes > 0 ? setup.fixedMinutes
+      : ($('#fieldTime').classList.contains('hidden') ? 0 : (parseInt($('#setupTime').value, 10) || 0));
+    var lockedChapterId = setup.fixedMinutes > 0 ? setup.chapters[0] : null;
 
     var picked = (shuffleQ ? shuffle(pool) : pool).slice(0, count);
-    buildSession(picked, 'mode.' + setup.mode, setup.mode, instant, minutes * 60, shuffleA);
+    buildSession(picked, 'mode.' + setup.mode, setup.mode, instant, minutes * 60, shuffleA, lockedChapterId);
   }
 
-  function buildSession(pool, labelKey, mode, instant, limit, shuffleA) {
+  function buildSession(pool, labelKey, mode, instant, limit, shuffleA, lockedChapterId) {
     session = {
       mode: mode,
       labelKey: labelKey,
       instant: instant,
       limit: limit,
+      lockedChapterId: lockedChapterId || null,
       startedAt: Date.now(),
       elapsed: 0,
       index: 0,
@@ -1309,6 +1392,7 @@
         seconds: Math.round(session.elapsed)
       });
       session.saved = true;
+      if (session.lockedChapterId) recordExamAttempt(session.lockedChapterId, r.correct, r.total);
     }
 
     renderResult();

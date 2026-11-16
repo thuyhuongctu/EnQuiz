@@ -125,6 +125,9 @@
         titleEn: String(meta.titleEn || '').trim(),
         group: String(meta.group || 'course').trim(),
         order: typeof meta.order === 'number' ? meta.order : chapters.length + 1,
+        // Số phút thi cố định cho bài kiểm tra thật (vd. Quiz 1/2 lớp quốc
+        // tế) — 0 nghĩa là chương thường, không khoá thời gian/chế độ thi.
+        examMinutes: typeof meta.examMinutes === 'number' ? meta.examMinutes : 0,
         questions: []
       };
       chapters.push(chapterIndex[id]);

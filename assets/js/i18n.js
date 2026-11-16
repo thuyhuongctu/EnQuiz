@@ -58,6 +58,13 @@
       'examLogin.denied': 'Email này không có trong danh sách lớp. Liên hệ Thầy Tú nếu bạn nghĩ đây là nhầm lẫn.',
       'examLogin.networkErr': 'Lỗi mạng, thử lại.',
 
+      'examAttempt.checking': 'Đang kiểm tra...',
+      'examAttempt.networkErr': 'Lỗi mạng, không kiểm tra được. Thử lại.',
+      'examAttempt.blockedTitle': 'Bạn đã làm bài này rồi',
+      'examAttempt.blocked': 'Mỗi sinh viên chỉ được làm bài này 1 lần. Liên hệ Thầy Tú nếu bạn nghĩ đây là nhầm lẫn.',
+      'examAttempt.blockedAt': 'Bạn đã nộp bài này lúc {time}. Mỗi sinh viên chỉ được làm 1 lần — liên hệ Thầy Tú nếu bạn nghĩ đây là nhầm lẫn.',
+      'examAttempt.pickOne': 'Hãy chọn Quiz 1 hoặc Quiz 2 riêng trong danh sách để vào thi.',
+
       'settings.classLabel': 'Lớp đang học',
       'settings.classHint': 'Đổi lớp bất cứ lúc nào — tiến độ học của bạn vẫn được giữ.',
 
@@ -162,6 +169,7 @@
       'setup.chipCount': '{n} câu',
       'setup.chipTime': '{n} phút',
       'setup.noLimit': 'Không giới hạn',
+      'setup.fixedTime': 'Bài thi chính thức — {n} phút, làm đủ toàn bộ câu, chỉ được nộp 1 lần.',
       'setup.desc.exam': 'Đề ngẫu nhiên, có bấm giờ. Đáp án chỉ hiện sau khi nộp bài.',
       'setup.desc.practice': 'Chọn phạm vi và làm từng câu, có giải thích ngay sau mỗi lựa chọn.',
       'setup.desc.wrong': 'Tập hợp những câu bạn từng trả lời sai. Trả lời đúng thì câu đó sẽ được gỡ khỏi danh sách.',
@@ -456,6 +464,13 @@
       'examLogin.denied': "This email isn't on the class list. Contact Mr. Tu if you think this is a mistake.",
       'examLogin.networkErr': 'Network error — try again.',
 
+      'examAttempt.checking': 'Checking...',
+      'examAttempt.networkErr': "Network error — couldn't check. Try again.",
+      'examAttempt.blockedTitle': "You've already taken this",
+      'examAttempt.blocked': "Each student gets one attempt at this quiz. Contact Mr. Tu if you think this is a mistake.",
+      'examAttempt.blockedAt': 'You submitted this on {time}. Each student gets one attempt — contact Mr. Tu if you think this is a mistake.',
+      'examAttempt.pickOne': 'Pick Quiz 1 or Quiz 2 individually from the list to start.',
+
       'settings.classLabel': 'Current class',
       'settings.classHint': 'Switch class anytime — your progress stays saved.',
 
@@ -560,6 +575,7 @@
       'setup.chipCount': '{n} questions',
       'setup.chipTime': '{n} min',
       'setup.noLimit': 'No limit',
+      'setup.fixedTime': 'Official quiz — {n} minutes, covers every question, one submission only.',
       'setup.desc.exam': 'A random paper with a countdown. Answers appear only after you submit.',
       'setup.desc.practice': 'Pick a scope and work through it, with an explanation after every choice.',
       'setup.desc.wrong': 'The questions you have answered incorrectly. Getting one right removes it from the list.',
