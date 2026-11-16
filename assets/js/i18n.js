@@ -28,6 +28,23 @@
       'hint.text': 'Bấm <b>VI</b> ở góc trên để đọc bằng tiếng Việt, và nút <b>trăng/mặt trời</b> để đổi nền sáng — tối.',
       'hint.close': 'Ẩn gợi ý',
 
+      'picker.eyebrow': 'Chọn lớp học',
+      'picker.title': 'Bạn đang ôn lớp nào?',
+      'picker.huong.name': 'Lớp của Cô Hương',
+      'picker.huong.desc': '300 câu trắc nghiệm · 5 chương · môn Khởi sự doanh nghiệp',
+      'picker.tu.name': 'Lớp của Thầy Tú',
+      'picker.tu.desc': 'KT330H · lớp quốc tế UM Kendari × Đại học Cần Thơ',
+      'picker.enter': 'Vào lớp →',
+
+      'hero.tu.title': 'Ôn thi nội dung',
+      'hero.tu.subject': 'KT330H — lớp quốc tế',
+      'hero.tu.author': 'Biên soạn: PGS.TS. Phan Anh Tú',
+
+      'special.cross.cta': 'Vào lớp của Thầy Tú →',
+
+      'settings.classLabel': 'Lớp đang học',
+      'settings.classHint': 'Đổi lớp bất cứ lúc nào — tiến độ học của bạn vẫn được giữ.',
+
       'nav.home': 'Trang chủ',
       'nav.exam': 'Thi thử',
       'nav.practice': 'Ôn theo chương',
@@ -381,6 +398,23 @@
 
       'hint.text': 'Tap <b>VI</b> in the top corner to read in Vietnamese, and the <b>moon / sun</b> button to switch between light and dark.',
       'hint.close': 'Hide this tip',
+
+      'picker.eyebrow': 'Choose your class',
+      'picker.title': 'Which class are you in?',
+      'picker.huong.name': "Ms. Huong's class",
+      'picker.huong.desc': '300 questions · 5 chapters · Entrepreneurship course',
+      'picker.tu.name': "Mr. Tu's class",
+      'picker.tu.desc': 'KT330H · UM Kendari × Can Tho University international section',
+      'picker.enter': 'Enter →',
+
+      'hero.tu.title': 'Practice for',
+      'hero.tu.subject': 'KT330H — international section',
+      'hero.tu.author': 'Written by Assoc. Prof. Dr. Phan Anh Tu',
+
+      'special.cross.cta': "Go to Mr. Tu's class →",
+
+      'settings.classLabel': 'Current class',
+      'settings.classHint': 'Switch class anytime — your progress stays saved.',
 
       'nav.home': 'Home',
       'nav.exam': 'Mock exam',

@@ -179,6 +179,30 @@
     </div>
   </section>
 
+  <!-- ============ CHỌN LỚP ============ -->
+  <section class="screen hidden" id="screenPicker">
+    <div class="picker">
+      <p class="eyebrow" data-i18n="picker.eyebrow">Chọn lớp học</p>
+      <h1 class="picker__title" data-i18n="picker.title">Bạn đang ôn lớp nào?</h1>
+      <div class="picker__grid">
+        <button class="picker-card" id="btnPickHuong" type="button">
+          <img class="picker-card__img" src="assets/img/huong-avatar.webp" width="192" height="192"
+               loading="lazy" decoding="async" alt="">
+          <span class="picker-card__name" data-i18n="picker.huong.name">Lớp của Cô Hương</span>
+          <span class="picker-card__desc" data-i18n="picker.huong.desc">300 câu trắc nghiệm · 5 chương · môn Khởi sự doanh nghiệp</span>
+          <span class="picker-card__cta" data-i18n="picker.enter">Vào lớp →</span>
+        </button>
+        <button class="picker-card" id="btnPickTu" type="button">
+          <img class="picker-card__img" src="assets/img/tu-avatar.webp" width="192" height="192"
+               loading="lazy" decoding="async" alt="">
+          <span class="picker-card__name" data-i18n="picker.tu.name">Lớp của Thầy Tú</span>
+          <span class="picker-card__desc" data-i18n="picker.tu.desc">KT330H · lớp quốc tế UM Kendari × Đại học Cần Thơ</span>
+          <span class="picker-card__cta" data-i18n="picker.enter">Vào lớp →</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ TRANG CHỦ ============ -->
   <section class="screen hidden" id="screenHome">
 
@@ -297,7 +321,7 @@
       <!-- Ảnh cô Hương mở đầu phần nội dung học phần, tràn hết bề ngang thẻ.
            Trước đây chỗ này là một tấm nhỏ đứng bên trái, nhưng tấm ấy trùng
            đúng ảnh ở đầu trang nên trang chủ có hai lần cùng một hình. -->
-      <img class="chapters-banner" src="assets/img/huong-quiz.webp" width="1280" height="720"
+      <img class="chapters-banner" id="chaptersBanner" src="assets/img/huong-quiz.webp" width="1280" height="720"
            loading="lazy" decoding="async" data-i18n-attr="alt:teacher.alt" alt="">
       <!-- Hương AI đứng cạnh danh sách chương, chỉ trên màn thật rộng.
            Màn hẹp thì ẩn hẳn để danh sách chiếm trọn bề ngang. -->
@@ -333,11 +357,11 @@
       <div class="advisor-showcase">
         <div class="advisor-showcase__col">
           <p class="advisor-intro" data-i18n-html="advisor.intro">Case study chiến lược do <strong>PGS.TS. Phan Anh Tú</strong> trực tiếp biên soạn dành riêng cho học phần KT330H nâng cao.</p>
-          <div class="chapter-list" id="specialList"></div>
           <div class="advisor-foot">
             <span class="advisor-foot__standard"><span class="advisor-foot__dot" aria-hidden="true"></span><span data-i18n="advisor.standard">Chuẩn chương trình KT330H chất lượng cao</span></span>
             <button class="advisor-foot__link" data-open="advisor" type="button" data-i18n="advisor.detailLink">Chi tiết Cố vấn Thầy Tú →</button>
           </div>
+          <button class="btn btn--primary" id="btnGotoThayTu" type="button" data-i18n="special.cross.cta">Vào lớp của Thầy Tú →</button>
         </div>
         <button class="advisor-card" data-open="advisor" type="button" data-i18n-attr="aria-label:advisor.button">
           <img class="advisor-card__img" src="assets/img/tu-portrait.webp" width="640" height="1146"
@@ -715,6 +739,14 @@
           <button class="chip" data-lang="vi" type="button">Tiếng Việt</button>
           <button class="chip" data-lang="en" type="button">English</button>
         </div>
+      </div>
+      <div class="field">
+        <label data-i18n="settings.classLabel">Lớp đang học</label>
+        <div class="chips" id="classChips">
+          <button class="chip" data-group="course" type="button" data-i18n="picker.huong.name">Lớp của Cô Hương</button>
+          <button class="chip" data-group="kt330h" type="button" data-i18n="picker.tu.name">Lớp của Thầy Tú</button>
+        </div>
+        <small class="muted" data-i18n="settings.classHint">Đổi lớp bất cứ lúc nào — tiến độ học của bạn vẫn được giữ.</small>
       </div>
       <div class="field">
         <label data-i18n="settings.theme">Giao diện</label>
