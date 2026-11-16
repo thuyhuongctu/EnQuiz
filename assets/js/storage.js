@@ -19,7 +19,8 @@
     attempts: 0,     // tổng số lần làm bài, không bị cắt bớt
     stats: {},       // uid -> { seen, correct }
     custom: [],      // các bộ đề do người dùng nhập, dạng gói của QuestionBank
-    docUnlockEmail: null  // email trường đã dùng để mở khoá tài liệu case study gốc
+    docUnlockEmail: null,  // email trường đã dùng để mở khoá tài liệu case study gốc
+    intlVerifiedEmail: null  // email trường đã xác thực để vào Lớp thi quốc tế
   };
 
   /* Ngày theo giờ địa phương; không dùng toISOString vì nó quy về giờ UTC,
