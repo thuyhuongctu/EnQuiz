@@ -372,6 +372,17 @@
       'tour.s7': 'Cuối cùng, một lưu ý quan trọng: toàn bộ câu hỏi và phần mềm thuộc bản quyền của cô Đỗ Thùy Hương. Bạn được dùng miễn phí để tự học, nhưng xin đừng sao chép hay phát tán lại. Chúc bạn ôn tập thật tốt và thi đạt điểm cao nhé!',
       'tour.s8': 'Mình là Hương AI, người bạn đồng hành của bạn trong suốt học phần này. Cô Đỗ Thùy Hương tạo ra mình để dẫn bạn đi qua ứng dụng và nhắc bạn ôn đúng chỗ còn yếu. Bất cứ lúc nào muốn nghe lại, bạn bấm nút Hương AI hướng dẫn ở góc dưới bên phải nhé.',
 
+      // Bản tour riêng cho trang Thầy Tú: giữ lại các bước nói về thao tác
+      // chung (lời chào, bốn chế độ luyện tập, công cụ ghép đề, thanh điều
+      // hướng, ba nút góc trên) vì không liên quan tới lớp nào; chỉ viết lại
+      // năm bước có nhắc tới nội dung cụ thể (s1, s2, s5, s7, s8). Chưa có
+      // bản thu âm riêng nên đọc bằng giọng máy cho tới khi có người thu.
+      'tour.tu.s1': 'Xin chào, mình là Hương AI. Đây là trang riêng của lớp Thầy Tú — học phần KT330H, lớp quốc tế phối hợp giữa UM Kendari và Đại học Cần Thơ. Bảng tổng quan cho biết tổng số câu hỏi, số chuyên mục, cùng số lượt bạn đã luyện và điểm cao nhất.',
+      'tour.tu.s2': 'Đây là mẹo ôn tập nhỏ mỗi ngày — dùng chung cho cả ứng dụng, không riêng lớp nào.',
+      'tour.tu.s5': 'Bốn chuyên mục của lớp Thầy Tú: hai case study — Tired City và Betterteem — cùng hai bài Quiz giữa kỳ, tổng cộng tám mươi tám câu. Mỗi case study có kèm tài liệu gốc và tóm tắt trực quan, mở được sau khi bạn xác thực email trường.',
+      'tour.tu.s7': 'Một lưu ý quan trọng: hai case study và hai bài Quiz trong mục này do PGS.TS. Phan Anh Tú biên soạn riêng cho lớp KT330H quốc tế. Bạn được dùng miễn phí để tự học, xin đừng sao chép hay phát tán lại.',
+      'tour.tu.s8': 'Mình vẫn là Hương AI, trợ lý chung của EnQuiz — nội dung lớp này do Thầy Phan Anh Tú biên soạn, mình chỉ giúp bạn đi đúng đường thôi. Muốn chuyển sang lớp của Cô Hương hay nghe lại tour này, bạn bấm nút Hương AI hướng dẫn ở góc dưới bên phải bất cứ lúc nào nhé.',
+
       'toast.noWrong': 'Chưa có câu sai nào được ghi nhận.',
       'toast.noMarked': 'Bạn chưa đánh dấu câu hỏi nào.',
       'toast.emptyBank': 'Ngân hàng câu hỏi đang trống.',
@@ -742,6 +753,12 @@
       'tour.s6': 'Three controls in the top right corner: switch between Vietnamese and English, toggle light or dark mode, and open settings. In settings you can export your progress or erase all data.',
       'tour.s7': 'Finally, one important note: all questions and the software are copyright of Ms. Do Thuy Huong. You are welcome to use them free of charge for your own study, but please do not copy or redistribute them. Good luck with your revision!',
       'tour.s8': 'I am Huong AI, your companion through this course. Ms. Do Thuy Huong made me to walk you through the app and point you to whatever still needs revising. Whenever you want to hear this again, tap the Huong AI guided tour button in the bottom-right corner.',
+
+      'tour.tu.s1': "Hello, I am Huong AI. This is Mr. Tu's own page — content for the KT330H international section, run jointly by UM Kendari and Can Tho University. The overview shows the total number of questions, how many sections there are, plus how many sessions you have practised and your best score.",
+      'tour.tu.s2': 'This is a small daily study tip — the same one shown across the whole app, not specific to either class.',
+      'tour.tu.s5': "Four sections for Mr. Tu's class: two case studies — Tired City and Betterteem — plus two midterm quizzes, eighty-eight questions in total. Each case study comes with the original document and a visual summary, unlocked once you verify your school email.",
+      'tour.tu.s7': 'One important note: the two case studies and two quizzes in this section were written by Assoc. Prof. Dr. Phan Anh Tu specifically for the KT330H international section. You are welcome to use them for your own study, but please do not copy or redistribute them.',
+      'tour.tu.s8': "I am still Huong AI, EnQuiz's shared assistant — this class's content was written by Mr. Phan Anh Tu, and I am just here to help you find your way around. Whenever you want to switch to Ms. Huong's class or hear this tour again, tap the Huong AI guided tour button in the bottom-right corner.",
 
       'toast.noWrong': 'No missed question has been recorded yet.',
       'toast.noMarked': 'You have not flagged any question yet.',

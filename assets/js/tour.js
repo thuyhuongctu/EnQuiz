@@ -1,10 +1,11 @@
 /* =========================================================
    tour.js — "Hương AI": tour hướng dẫn có giọng đọc
    ---------------------------------------------------------
-   Dùng Web Speech API sẵn có của trình duyệt nên không cần
-   tệp âm thanh: giọng đọc tự đổi theo ngôn ngữ đang chọn.
-   Máy nào không có giọng đọc thì phần lời vẫn hiện thành chữ,
-   nên tour luôn dùng được.
+   Phần lớn các bước dùng giọng thu sẵn (xem TRACKS); bước nào
+   chưa có bản thu (vd. các bước 'tour.tu.*' riêng cho trang
+   Thầy Tú) thì tự rơi về Web Speech API của trình duyệt. Máy
+   nào không có giọng đọc thì phần lời vẫn hiện thành chữ, nên
+   tour luôn dùng được.
    ========================================================= */
 (function (global) {
   'use strict';
@@ -14,7 +15,7 @@
 
   /* Mỗi bước gắn với một vùng trên trang; thiếu vùng thì bước đó được bỏ qua.
      `pose` chọn tư thế nhân vật đứng cạnh bảng thoại. */
-  var STEPS = [
+  var STEPS_HUONG = [
     // Thẻ giảng viên đã gộp vào khối đầu trang, nên ba bước mở đầu trỏ vào
     // ba phần khác nhau của khối ấy thay vì trỏ chung một thẻ.
     { key: 'tour.s0', target: '.hero__mascot', lang: 'fr', pose: 'welcome' },  // lời chào tiếng Pháp
@@ -34,6 +35,34 @@
     // bị ẩn suốt lúc tour chạy nên sẽ bị lọc mất.
     { key: 'tour.s8', target: '.hero__bubble', pose: 'cheer' }
   ];
+
+  /* Bản tour cho trang Thầy Tú: cùng khung sườn, nhưng năm bước có nhắc tới
+     nội dung cụ thể (tổng quan, lời nhắn, danh sách chuyên mục, bản quyền,
+     lời chào cuối) dùng khoá riêng 'tour.tu.*' — nói đúng về case study/quiz
+     của Thầy Tú thay vì ba trăm câu năm chương của Cô Hương. Các bước còn lại
+     (chào, bốn chế độ luyện tập, công cụ ghép đề, điều hướng, nút góc trên)
+     không liên quan tới lớp nào nên dùng chung. Năm khoá 'tour.tu.*' chưa có
+     bản thu âm riêng (xem TRACKS) nên tạm đọc bằng giọng máy. */
+  var STEPS_TU = [
+    { key: 'tour.s0', target: '.hero__mascot', lang: 'fr', pose: 'welcome' },
+    { key: 'tour.tu.s1', target: '.hero', pose: 'welcome' },
+    { key: 'tour.tu.s2', target: '.hero__note', pose: 'stand' },
+    { key: 'tour.s3', target: '.modes', pose: 'point' },
+    { key: 'tour.s4', target: '.modes [data-mode="import"]', pose: 'tablet' },
+    { key: 'tour.tu.s5', target: '#chapterList', pose: 'point' },
+    { key: 'tour.nav', target: '.sidenav', pose: 'point' },
+    { key: 'tour.navm', target: '.botnav', pose: 'point' },
+    { key: 'tour.s6', target: '.topbar__actions', pose: 'tablet' },
+    { key: 'tour.tu.s7', target: '.footer', pose: 'welcome' },
+    { key: 'tour.tu.s8', target: '.hero__bubble', pose: 'cheer' }
+  ];
+
+  /* Lớp đang xem quyết định bởi hash #/co-huong hay #/thay-tu (xem
+     groupHash() trong app.js) — đọc thẳng location.hash ở đây cho đơn giản,
+     khỏi phải lộ biến activeGroup riêng của app.js ra ngoài. */
+  function currentSteps() {
+    return location.hash === '#/thay-tu' ? STEPS_TU : STEPS_HUONG;
+  }
 
   /* Người dẫn tour mặc áo len, khác với ảnh áo dài dùng ở thẻ giảng viên và
      màn hình kết quả: tour là lúc trò chuyện hướng dẫn nên bộ dáng đời thường
@@ -236,7 +265,7 @@
   }
 
   function start() {
-    steps = STEPS.filter(function (s) {
+    steps = currentSteps().filter(function (s) {
       return isVisible(document.querySelector(s.target));
     });
     if (!steps.length) return;
