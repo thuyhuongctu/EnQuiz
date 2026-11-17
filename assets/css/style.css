@@ -608,6 +608,20 @@ code {
   color: var(--tertiary);
   background: color-mix(in srgb, var(--tertiary) 16%, transparent);
 }
+/* Số câu sai hiện cạnh nhãn "Câu sai" ở thanh dưới — ẩn khi bằng 0 để
+   khỏi có một cái chấm "0" vô nghĩa lúc chưa làm bài nào. */
+.botnav__badge {
+  display: none;
+  margin-left: .2rem;
+  padding: 0 .35em;
+  border-radius: 999px;
+  background: var(--danger);
+  color: var(--on-primary);
+  font-size: .62rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.botnav__badge:not(:empty) { display: inline-block; }
 
 /* ---------------- Layout ---------------- */
 .container {
