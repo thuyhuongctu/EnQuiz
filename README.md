@@ -143,8 +143,12 @@ into Vietnamese — the international class is taught in English.
   order.
 - **Answer review** — question by question, with a per-chapter breakdown.
 
-Quiz 1 and Quiz 2, on the international class's page, do not use this generic
-picker at all — see [The international midterm exams](#the-international-midterm-exams).
+Quiz 1 and Quiz 2 don't use this generic picker at all, and on the
+international class's page neither the **Mock exam** nor the **Practice by
+chapter** home-screen card is shown at all — opening either one there would
+only ever offer Quiz 1/Quiz 2 as the scope, which is exactly the loophole
+closed below. See
+[The international midterm exams](#the-international-midterm-exams).
 
 ### During a paper
 
@@ -154,7 +158,9 @@ picker at all — see [The international midterm exams](#the-international-midte
   and `←/→`, and a progress bar.
 - On submission, an **advice card** names the chapter costing the most marks
   and offers a one-tap button to practise exactly that chapter — hidden on a
-  real exam submission, where there is no "next attempt" to prepare for.
+  real exam submission, along with the retry-wrong-answers, new-paper and
+  review-answers buttons, since there is no "next attempt" to prepare for and
+  nothing to look back at.
 - **Exam integrity nudges** (mock exam and real exam alike): a tab-switch
   warning, clipboard disabled during the paper, and best-effort full-screen —
   a reminder, not a lock, and nothing leaves the device beyond what the real
@@ -224,11 +230,22 @@ and the app enforces that on both the client and the server:
   Function — which decides who counts as an instructor, not the client — returns
   every submission so far, joined against the roster for the student's name
   and ID. Anyone else's email is refused.
-
-None of this reuses the generic "Mock exam" machinery's assumptions: a real
-exam has no retry button, no "practise your weak chapter" nudge afterwards,
-and its result screen says **"Submitted"**, not a pass/fail score message
-meant for self-study.
+- **No preview, no replay.** The home screen's generic "Mock exam" and
+  "Practice by chapter" cards are hidden entirely on this page, since either
+  one could only ever offer Quiz 1/Quiz 2 as a scope — opened in instant-answer
+  practice mode, that would hand out the real answer key with no time limit
+  and no attempt check. The chapter list is the only way in, and the Quiz
+  1/Quiz 2 entries there carry a **"Take exam"** badge so it still reads as a
+  clear, singular call to action. After submission there is no retry button,
+  no "practise your weak chapter" nudge, and no "review your answers" panel —
+  the result screen says **"Submitted"**, not a pass/fail score message meant
+  for self-study.
+- **No leak through the generic missed/flagged lists.** Answers given during
+  a real exam are never written to the app's cross-page "Missed questions" or
+  "Flagged questions" lists (nor can a question be flagged while the exam is
+  in progress) — otherwise a wrongly-answered real-exam question would
+  resurface, with the answer revealed on the first click, from any other
+  page in the app after the exam is over.
 
 ---
 
