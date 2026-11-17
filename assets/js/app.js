@@ -191,6 +191,18 @@
     $$('#classChips [data-group]').forEach(function (b) {
       b.classList.toggle('is-active', b.getAttribute('data-group') === activeGroup);
     });
+
+    // Nút đổi lớp nhanh (Clay v2) — ẩn ở trang Lớp thi, vì trang đó là một
+    // phần của lớp Thầy Tú (email-gated) chứ không phải lớp thứ ba để
+    // chuyển qua lại; chỉ toggle giữa Cô Hương <-> Thầy Tú.
+    var pill = $('#btnSwitchClass');
+    if (pill) {
+      pill.classList.toggle('hidden', activeGroup === 'kt330h-intl');
+      var isCourse = activeGroup === 'course';
+      $('#classPillAvatar').src = isCourse ? 'assets/img/huong-avatar.webp' : 'assets/img/tu-avatar.webp';
+      $('#classPillName').textContent = t(isCourse ? 'picker.huong.name' : 'picker.tu.name');
+      pill.setAttribute('data-switch-to', isCourse ? 'kt330h' : 'course');
+    }
   }
 
   function renderActiveHome() {
@@ -2104,6 +2116,9 @@
     $('#btnPickHuong').addEventListener('click', function () { location.hash = '#/co-huong'; });
     $('#btnPickTu').addEventListener('click', function () { location.hash = '#/thay-tu'; });
     $('#btnGotoThayTu').addEventListener('click', function () { location.hash = '#/thay-tu'; });
+    $('#btnSwitchClass').addEventListener('click', function () {
+      location.hash = groupHash(this.getAttribute('data-switch-to'));
+    });
     $$('#classChips [data-group]').forEach(function (b) {
       b.addEventListener('click', function () {
         location.hash = groupHash(b.getAttribute('data-group'));

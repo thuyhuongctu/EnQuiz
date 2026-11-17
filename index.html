@@ -116,6 +116,14 @@
         <small data-i18n="app.tagline">Ôn thi Khởi sự doanh nghiệp</small>
       </span>
     </button>
+    <!-- Nút đổi lớp nhanh (Clay v2) — ẩn ở trang Lớp thi (renderClassPill()),
+         vì trang đó không phải một trong hai lớp để chuyển qua lại. Tên lớp
+         chỉ hiện ở màn đủ rộng, màn hẹp chỉ còn ảnh đại diện + mũi tên. -->
+    <button class="class-pill" id="btnSwitchClass" type="button" data-i18n-attr="title:classPill.switch;aria-label:classPill.switch">
+      <img class="class-pill__avatar" id="classPillAvatar" src="assets/img/huong-avatar.webp" alt="">
+      <span class="class-pill__name" id="classPillName" data-i18n="picker.huong.name">Lớp của Cô Hương</span>
+      <svg class="ico class-pill__chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+    </button>
     <!-- Ba con số theo dõi thường xuyên, luôn nhìn thấy dù đang ở màn nào.
          Màn hẹp giấu đi vì thanh trên cùng đã chật. -->
     <div class="hud">
