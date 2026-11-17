@@ -1623,9 +1623,21 @@ select,
 .chapter-item__no .ico { width: 20px; height: 20px; vertical-align: 0; }
 .chapter-item__no .ico use { stroke-width: 1.9; }
 .chapter-item__main { flex: 1; min-width: 0; }
-.chapter-item__title { display: block; font-weight: 600; font-size: .93rem; }
+.chapter-item__title { display: flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .93rem; }
 .chapter-item__meta { display: block; color: var(--muted); font-size: .78rem; }
 .chapter-item__go { color: var(--muted); font-size: 1.1rem; }
+.chapter-item--exam { border-color: var(--warn); }
+.chapter-item__examBadge {
+  flex: 0 0 auto;
+  padding: .15rem .55rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
 .case-doclink {
   display: inline-flex;
   align-items: center;
