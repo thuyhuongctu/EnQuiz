@@ -95,6 +95,13 @@
     return (I18n.lang === 'en' && q.chapterTitleEn) ? q.chapterTitleEn : q.chapterTitle;
   }
 
+  /** Nhãn hiển thị cho phiên đang làm: bài Quiz chính thức dùng đúng tên bài
+      (vd "Quiz 1 (giữa kỳ)...") thay vì nhãn chung "Thi thử" — xem
+      session.label, gán ở buildSession() khi có lockedChapterId. */
+  function sessionLabel() {
+    return (session && session.label) || t(session.labelKey);
+  }
+
   /* Case study Thầy Tú (nhóm 'kt330h') dùng ảnh Thầy Tú đồng hành thay vì
      Hương AI, vì đây là nội dung riêng của Thầy chứ không phải của Hương. */
   function isSpecialChapterId(id) {
@@ -1186,15 +1193,17 @@
     var minutes = setup.fixedMinutes > 0 ? setup.fixedMinutes
       : ($('#fieldTime').classList.contains('hidden') ? 0 : (parseInt($('#setupTime').value, 10) || 0));
     var lockedChapterId = setup.fixedMinutes > 0 ? setup.chapters[0] : null;
+    var lockedLabel = lockedChapterId ? chapterLabel(QuestionBank.chapter(lockedChapterId)) : null;
 
     var picked = (shuffleQ ? shuffle(pool) : pool).slice(0, count);
-    buildSession(picked, 'mode.' + setup.mode, setup.mode, instant, minutes * 60, shuffleA, lockedChapterId);
+    buildSession(picked, 'mode.' + setup.mode, setup.mode, instant, minutes * 60, shuffleA, lockedChapterId, lockedLabel);
   }
 
-  function buildSession(pool, labelKey, mode, instant, limit, shuffleA, lockedChapterId) {
+  function buildSession(pool, labelKey, mode, instant, limit, shuffleA, lockedChapterId, label) {
     session = {
       mode: mode,
       labelKey: labelKey,
+      label: label || null,
       instant: instant,
       limit: limit,
       lockedChapterId: lockedChapterId || null,
@@ -1448,8 +1457,11 @@
       var r = computeResult();
       Store.addHistory({
         at: Date.now(),
-        labelKey: session.labelKey,
-        label: t(session.labelKey),
+        // Bài Quiz chính thức dùng tên bài cố định (session.label), không
+        // phải nhãn chế độ chung — bỏ labelKey để renderHistory() không
+        // dịch đè lại thành "Thi thử"/"Mock exam" (xem renderHistory()).
+        labelKey: session.label ? null : session.labelKey,
+        label: sessionLabel(),
         score: r.score,
         correct: r.correct,
         total: r.total,
@@ -1490,11 +1502,14 @@
     var r = computeResult();
     var pass = r.score >= PASS_SCORE;
     var pct = Math.round(r.correct / Math.max(1, r.total) * 100);
+    var isOfficialExam = !!session.lockedChapterId;
 
     $('#resultScore').textContent = r.score.toFixed(1);
     $('#scoreRing').style.setProperty('--pct', pct + '%');
     $('#scoreRing').classList.toggle('pass', pass);
-    $('#resultTitle').textContent = pass ? t('result.pass') : t('result.fail');
+    // Bài Quiz chính thức: không dùng giọng "cố lên ôn tiếp" casual, chỉ báo
+    // đã nộp — sinh viên không làm lại được nên gợi ý ôn luyện là thừa/lạc quẻ.
+    $('#resultTitle').textContent = isOfficialExam ? t('result.submitted') : (pass ? t('result.pass') : t('result.fail'));
 
     // Ảnh giảng đường đổi theo điểm: dang tay chúc mừng khi giỏi, đang giảng khi
     // đạt, cầm giấy dò lại bài khi chưa đạt.
@@ -1511,7 +1526,7 @@
       }
     }
     $('#resultSummary').textContent = t('result.summary', {
-      label: t(session.labelKey), correct: r.correct, total: r.total, pct: pct
+      label: sessionLabel(), correct: r.correct, total: r.total, pct: pct
     });
 
     var integrityEl = $('#resultIntegrity');
@@ -1538,7 +1553,10 @@
       '</div>';
     }).join('');
 
-    renderInsight(r);
+    // Gợi ý "ôn chương yếu nhất" giả định còn làm lại được — bài Quiz chính
+    // thức chỉ 1 lần nên ẩn hẳn, tránh lạc quẻ so với tính chất bài thi.
+    if (isOfficialExam) { var insightBox = $('#resInsight'); if (insightBox) insightBox.classList.add('hidden'); }
+    else renderInsight(r);
 
     var reviewOpen = !$('#panelReview').classList.contains('hidden');
     $('#btnReview').textContent = reviewOpen ? t('result.hideReview') : t('result.review');
