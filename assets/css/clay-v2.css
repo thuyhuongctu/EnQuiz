@@ -54,14 +54,18 @@ html[data-theme="clay"] .explain { color: var(--explain-text); }
 
 /* 04 / 10 · question strip + flag state */
 html[data-theme="clay"] .q-strip { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; }
-html[data-theme="clay"] .q-strip button,
-html[data-theme="clay"] .qgrid button { position: relative; }
-html[data-theme="clay"] .q-strip button { flex: none; width: 26px; height: 26px; border-radius: 8px; border: 0; background: var(--bg-soft); color: var(--muted); font-size: 11px; }
+html[data-theme="clay"] .q-strip button { position: relative; flex: none; width: 26px; height: 26px; border-radius: 8px; border: 0; background: var(--bg-soft); color: var(--muted); font-size: 11px; }
 html[data-theme="clay"] .q-strip button.answered { background: #3A3A2E; color: var(--primary); }
 html[data-theme="clay"] .q-strip button.current { background: var(--primary); color: var(--on-primary); font-weight: 700; }
-html[data-theme="clay"] .q-strip button.marked::after,
-html[data-theme="clay"] .qgrid button.marked::after { content: ""; position: absolute; top: -3px; right: -3px; width: 9px; height: 9px; border-radius: 50%; background: var(--graded); box-shadow: 0 0 0 2px var(--bg); }
-html[data-theme="clay"] [aria-pressed="true"].btn-flag { color: var(--graded); font-weight: 600; }
+/* .qgrid (màn "Danh sách câu") đã có nền + viền riêng cho .marked ở
+   style.css, dùng chung mọi theme — bỏ chấm tròn ở đây để khỏi chồng
+   2 kiểu đánh dấu cùng lúc; chấm tròn chỉ còn dành cho .q-strip. */
+html[data-theme="clay"] .q-strip button.marked::after { content: ""; position: absolute; top: -3px; right: -3px; width: 9px; height: 9px; border-radius: 50%; background: var(--graded); box-shadow: 0 0 0 2px var(--bg); }
+/* Nút đánh dấu câu (#btnMark/.mark-btn) đã có màu riêng khi đang bật
+   (.mark-btn.is-on, dùng var(--warn) — xem style.css), nhất quán ở mọi
+   theme; không thêm màu "graded" đè lên đây nữa vì sẽ lệch tông so với
+   màu vàng ★ đã dùng sẵn, chỉ còn cần bật aria-pressed cho đúng ngữ
+   nghĩa (xem updateMarkButton() trong app.js). */
 
 /* 06 · continue card — chỉ đổi màu/khoảng cách, giữ nguyên
    grid-template-columns/areas đã khai ở style.css (ring|info / cta cta)

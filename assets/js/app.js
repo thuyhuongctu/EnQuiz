@@ -1487,6 +1487,7 @@
   function updateMarkButton(on) {
     var btn = $('#btnMark');
     btn.classList.toggle('is-on', on);
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     btn.textContent = on ? '★ ' + t('quiz.marked') : '☆ ' + t('quiz.mark');
   }
 
