@@ -15,6 +15,13 @@ registerBank({
         "Phương pháp phân tích thị trường chứng khoán.",
         "Quy trình vận hành máy móc công nghiệp nặng."
       ],
+      "qEn": "What is the core objective learners should master after studying business startups?",
+      "aEn": [
+        "How to manage personnel at large corporations.",
+        "Fundamental startup knowledge, especially for women and ethnic minorities.",
+        "Methods for analyzing the stock market.",
+        "Procedures for operating heavy industrial machinery."
+      ],
       "c": 1
     },
     {
@@ -24,6 +31,13 @@ registerBank({
         "Hiểu rõ các nghiệp vụ kế toán chuyên sâu.",
         "Biết cách hiện thực hóa một ý tưởng kinh doanh cụ thể.",
         "Có kỹ năng đàm phán hợp đồng lao động quốc tế."
+      ],
+      "qEn": "Developing critical thinking skills and taking the first steps toward building a business plan from an initial idea helps students to:",
+      "aEn": [
+        "Immediately operate large production lines.",
+        "Thoroughly understand advanced accounting practices.",
+        "Know how to turn a specific business idea into reality.",
+        "Negotiate international labor contracts."
       ],
       "c": 2
     },
@@ -35,6 +49,13 @@ registerBank({
         "Không vi phạm đạo đức kinh doanh và hướng đến phát triển bền vững.",
         "Chỉ quan tâm đến doanh thu mà không cần bảo vệ môi trường."
       ],
+      "qEn": "Which goal should startup activities pursue in order to demonstrate responsibility to the community?",
+      "aEn": [
+        "Focusing solely on maximizing profit in the shortest time possible.",
+        "Competing at all costs to eliminate rivals.",
+        "Upholding business ethics and pursuing sustainable development.",
+        "Caring only about revenue without protecting the environment."
+      ],
       "c": 2
     },
     {
@@ -44,6 +65,13 @@ registerBank({
         "Kế hoạch kinh doanh.",
         "Quy định về thuế thu nhập cá nhân.",
         "Bảng báo cáo kết quả kinh doanh năm trước."
+      ],
+      "qEn": "According to Chapter 1, which element is considered the \"roadmap\" for turning a startup idea into reality?",
+      "aEn": [
+        "A list of potential investors.",
+        "The business plan.",
+        "Personal income tax regulations.",
+        "Last year's business performance report."
       ],
       "c": 1
     },
@@ -55,6 +83,13 @@ registerBank({
         "Các công cụ số và phần mềm hỗ trợ trong hoạt động khởi sự.",
         "Các kỹ thuật in ấn thủ công."
       ],
+      "qEn": "In the context of digital transformation, which element should entrepreneurs focus on applying?",
+      "aEn": [
+        "Traditional manual bookkeeping methods.",
+        "Presentation skills without using any supporting equipment.",
+        "Digital tools and software that support startup activities.",
+        "Manual printing techniques."
+      ],
       "c": 2
     },
     {
@@ -64,6 +99,13 @@ registerBank({
         "Giúp định hướng kinh doanh và gọi vốn từ nhà đầu tư.",
         "Dùng để đăng ký các giải thưởng thể thao.",
         "Chỉ dùng để lưu trữ hồ sơ lưu niệm."
+      ],
+      "qEn": "What is the most important practical role of a business plan?",
+      "aEn": [
+        "Giving instructors a basis for grading.",
+        "Guiding the business direction and raising capital from investors.",
+        "Registering for sports awards.",
+        "Only for keeping as a memento."
       ],
       "c": 1
     },
@@ -75,6 +117,13 @@ registerBank({
         "Chỉ từ các bài báo cáo kinh tế của chính phủ.",
         "Từ các trò chơi trực tuyến giải trí."
       ],
+      "qEn": "For women and ethnic minorities, which of the following sources can best help generate startup ideas?",
+      "aEn": [
+        "Simply copying models from abroad.",
+        "Leveraging local strengths and unique local products.",
+        "Only government economic reports.",
+        "Online entertainment games."
+      ],
       "c": 1
     },
     {
@@ -84,6 +133,13 @@ registerBank({
         "Các doanh nghiệp có vốn đầu tư nước ngoài.",
         "Phụ nữ và người dân tộc thiểu số.",
         "Các tổ chức phi chính phủ."
+      ],
+      "qEn": "In the digital context, which group does the Entrepreneurship course focus on most?",
+      "aEn": [
+        "Multinational corporations.",
+        "Foreign-invested enterprises.",
+        "Women and ethnic minorities.",
+        "Non-governmental organizations."
       ],
       "c": 2
     },
@@ -95,6 +151,13 @@ registerBank({
         "Bao gồm tóm tắt dự án, sản phẩm, thị trường và tài chính.",
         "Chỉ viết về các quy định pháp luật."
       ],
+      "qEn": "According to the lesson, what basic content should a business plan include?",
+      "aEn": [
+        "Only the project owner's personal expenses.",
+        "Only the list of planned personnel.",
+        "A project summary, product, market, and financial sections.",
+        "Only legal regulations."
+      ],
       "c": 2
     },
     {
@@ -104,6 +167,13 @@ registerBank({
         "Thế mạnh về văn hóa bản địa và sản vật địa phương.",
         "Chờ đợi gói cứu trợ từ các tổ chức quốc tế.",
         "Bán toàn bộ tài sản cố định của gia đình."
+      ],
+      "qEn": "When local women entrepreneurs face capital difficulties, which resource should be prioritized first?",
+      "aEn": [
+        "Borrowing from high-interest loan sharks.",
+        "The strength of local culture and local products.",
+        "Waiting for relief packages from international organizations.",
+        "Selling off all the family's fixed assets."
       ],
       "c": 1
     },
@@ -115,6 +185,13 @@ registerBank({
         "Chỉ tập trung vào thị trường địa phương cố định.",
         "Không cần sử dụng các công cụ hỗ trợ số."
       ],
+      "qEn": "In the context of digital transformation, what characteristic distinguishes a startup project from traditional business?",
+      "aEn": [
+        "Using a large manual workforce.",
+        "The capacity for rapid growth and innovation.",
+        "Focusing only on a fixed local market.",
+        "Not needing to use any digital tools."
+      ],
       "c": 1
     },
     {
@@ -124,6 +201,13 @@ registerBank({
         "Giúp định hướng kinh doanh và giảm thiểu rủi ro khi nguồn lực hạn chế.",
         "Để thay thế hoàn toàn cho việc khảo sát thực tế.",
         "Không có vai trò gì đáng kể."
+      ],
+      "qEn": "What role does a business plan play for women entrepreneurs with limited capital?",
+      "aEn": [
+        "Only for submission to the tax authorities.",
+        "Guiding the business and reducing risk when resources are limited.",
+        "Completely replacing real-world market research.",
+        "It plays no significant role."
       ],
       "c": 1
     },
@@ -135,6 +219,13 @@ registerBank({
         "Sử dụng nhiều vốn nhất có thể.",
         "Không cần thay đổi quy trình sản xuất."
       ],
+      "qEn": "What is the core element of \"Innovation\" in entrepreneurship?",
+      "aEn": [
+        "Merely expanding the scale of an existing business.",
+        "Creating new value or a new approach to a real-world problem.",
+        "Using as much capital as possible.",
+        "Not needing to change the production process."
+      ],
       "c": 1
     },
     {
@@ -144,6 +235,13 @@ registerBank({
         "Để không phải sử dụng công nghệ số.",
         "Để giảm giá thành sản phẩm xuống mức thấp nhất.",
         "Để sao chép các mô hình từ thành phố lớn."
+      ],
+      "qEn": "Why do women and ethnic minorities need to leverage their \"own strengths\" when starting a business?",
+      "aEn": [
+        "To create unique products rich in local cultural identity.",
+        "So they don't have to use digital technology.",
+        "To lower product costs to the minimum.",
+        "To copy models from big cities."
       ],
       "c": 0
     },
@@ -155,6 +253,13 @@ registerBank({
         "Chỉ tập trung vào các mặt hàng thủ công mỹ nghệ.",
         "Không cần sử dụng các công cụ hỗ trợ công nghệ."
       ],
+      "qEn": "Which of the following characteristics is typical of \"innovative entrepreneurship\"?",
+      "aEn": [
+        "An extremely large initial capital scale.",
+        "Creating new value through new solutions or products.",
+        "Focusing only on handicraft items.",
+        "Not needing to use any technology tools."
+      ],
       "c": 1
     },
     {
@@ -164,6 +269,13 @@ registerBank({
         "Không cần phải thuê nhân viên chuyên môn.",
         "Chủ động xây dựng các phương án dự phòng và giảm thiểu rủi ro.",
         "Được mặc định thành công mà không cần nỗ lực."
+      ],
+      "qEn": "Identifying real-world challenges when implementing an idea helps an entrepreneur to:",
+      "aEn": [
+        "Avoid paying business taxes.",
+        "Avoid having to hire specialized staff.",
+        "Proactively build contingency plans and minimize risk.",
+        "Be guaranteed success without any effort."
       ],
       "c": 2
     },
@@ -175,6 +287,13 @@ registerBank({
         "Việc kế thừa một doanh nghiệp gia đình có sẵn.",
         "Chỉ các doanh nghiệp hoạt động trong lĩnh vực công nghệ thông tin."
       ],
+      "qEn": "What is the most accurate understanding of \"Startup\"?",
+      "aEn": [
+        "Any activity of opening a retail store.",
+        "The process of starting a business based on a new idea with growth potential.",
+        "Inheriting an existing family business.",
+        "Only businesses operating in the information technology field."
+      ],
       "c": 1
     },
     {
@@ -184,6 +303,13 @@ registerBank({
         "Đổi mới quy trình sản xuất và Marketing.",
         "Đổi mới mô hình kinh doanh.",
         "Tất cả các phương án trên."
+      ],
+      "qEn": "What forms does innovation in entrepreneurship include?",
+      "aEn": [
+        "Product and technology innovation.",
+        "Production process and marketing innovation.",
+        "Business model innovation.",
+        "All of the above."
       ],
       "c": 3
     },
@@ -195,6 +321,13 @@ registerBank({
         "Khả năng huy động vốn từ ngân hàng.",
         "Trình độ học vấn và bằng cấp."
       ],
+      "qEn": "What is the biggest difference between an entrepreneur and an ordinary business person?",
+      "aEn": [
+        "The number of staff they manage.",
+        "The willingness to take risks and the drive to create breakthrough new value.",
+        "The ability to raise capital from banks.",
+        "Their level of education and qualifications."
+      ],
       "c": 1
     },
     {
@@ -204,6 +337,13 @@ registerBank({
         "Chỉ từ sở thích cá nhân mà không quan tâm đến thị trường.",
         "Từ việc sao chép y hệt mô hình của đối thủ cạnh tranh.",
         "Từ những dự báo ngẫu nhiên không có căn cứ."
+      ],
+      "qEn": "Where should a business idea originate from to be highly effective?",
+      "aEn": [
+        "From observing and addressing unmet market needs.",
+        "Only from personal preference without regard to the market.",
+        "From copying a competitor's model exactly.",
+        "From random, baseless predictions."
       ],
       "c": 0
     },
@@ -215,6 +355,13 @@ registerBank({
         "Tận dụng và gia tăng giá trị tài nguyên địa phương.",
         "Tất cả các phương án trên."
       ],
+      "qEn": "Why is entrepreneurship important for local economic development?",
+      "aEn": [
+        "It helps reduce the unemployment rate.",
+        "It promotes the application of scientific and technological advances.",
+        "It makes use of and adds value to local resources.",
+        "All of the above."
+      ],
       "c": 3
     },
     {
@@ -224,6 +371,13 @@ registerBank({
         "Tư duy kinh doanh và khả năng phân tích cơ hội.",
         "Kỹ năng vận hành máy móc công nghiệp nặng.",
         "Kỹ năng sử dụng ngoại ngữ thành thạo."
+      ],
+      "qEn": "Which skill is most important for an individual to start a business?",
+      "aEn": [
+        "Software programming skills.",
+        "Business thinking and the ability to analyze opportunities.",
+        "Skill in operating heavy industrial machinery.",
+        "Fluency in a foreign language."
       ],
       "c": 1
     },
@@ -235,6 +389,13 @@ registerBank({
         "Rào cản về định kiến xã hội và thời gian cho gia đình.",
         "Tất cả các phương án trên."
       ],
+      "qEn": "What is the biggest challenge for women starting a business in rural areas?",
+      "aEn": [
+        "Lack of management and technology knowledge.",
+        "Difficulty accessing mainstream capital sources.",
+        "Barriers from social prejudice and time demands for family.",
+        "All of the above."
+      ],
       "c": 3
     },
     {
@@ -244,6 +405,13 @@ registerBank({
         "Khả năng mang lại lợi nhuận ngay lập tức trong tuần đầu.",
         "Tính khả thi, có khách hàng sẵn sàng chi trả và mang lại lợi ích thực tế.",
         "Không cần quan tâm đến chi phí sản xuất."
+      ],
+      "qEn": "Which criterion should a good business idea meet?",
+      "aEn": [
+        "Being completely novel and never seen before.",
+        "The ability to generate profit immediately within the first week.",
+        "Feasibility, with customers willing to pay and real practical benefits.",
+        "No need to consider production costs."
       ],
       "c": 2
     },
@@ -255,6 +423,13 @@ registerBank({
         "Năng lực sản xuất hàng hóa tại xưởng.",
         "Năng lực đàm phán hợp đồng thương mại."
       ],
+      "qEn": "During the idea-generation stage, using tools to search for market trends demonstrates:",
+      "aEn": [
+        "The team leader's personnel management capability.",
+        "The skill of applying digital tools to startup activities.",
+        "The capacity for producing goods at a workshop.",
+        "The ability to negotiate commercial contracts."
+      ],
       "c": 1
     },
     {
@@ -264,6 +439,13 @@ registerBank({
         "Nhằm đảm bảo đạo đức kinh doanh và sự phát triển bền vững của dự án.",
         "Theo sự ép buộc của cơ quan quản lý.",
         "Để bản kế hoạch kinh doanh trông đẹp hơn."
+      ],
+      "qEn": "When building a business idea, why is a commitment to honesty necessary?",
+      "aEn": [
+        "So investors will immediately fund the project.",
+        "To ensure business ethics and the sustainable development of the project.",
+        "Because regulatory agencies force it.",
+        "To make the business plan look nicer."
       ],
       "c": 1
     },
@@ -275,6 +457,13 @@ registerBank({
         "Kinh doanh dịch vụ tuyết nhân tạo.",
         "Khai thác mỏ quặng kim loại quý."
       ],
+      "qEn": "A specialty product of Vĩnh Long province that could become a startup idea is:",
+      "aEn": [
+        "Manufacturing electric car components.",
+        "Deep processing of products from Bình Tân sweet potatoes or red pottery.",
+        "Running an artificial snow service.",
+        "Mining precious metal ore."
+      ],
       "c": 1
     },
     {
@@ -284,6 +473,13 @@ registerBank({
         "Phát triển kinh doanh gắn liền với bảo vệ môi trường và sử dụng tài nguyên bền vững.",
         "Chỉ bán các loại rau củ quả.",
         "Không sử dụng bất kỳ thiết bị điện tử nào."
+      ],
+      "qEn": "\"Green entrepreneurship\" is a current trend — what goal does it focus on?",
+      "aEn": [
+        "Just using green as the brand color.",
+        "Developing business tied to environmental protection and sustainable resource use.",
+        "Only selling vegetables and fruit.",
+        "Not using any electronic devices at all."
       ],
       "c": 1
     },
@@ -295,6 +491,13 @@ registerBank({
         "Để có đủ số lượng thành viên theo quy định pháp luật.",
         "Giảm bớt số lượng công việc của một người duy nhất."
       ],
+      "qEn": "What benefit does effective teamwork (as taught in the lesson) provide?",
+      "aEn": [
+        "Combining members' different strengths to refine the idea.",
+        "Helping to share office rental costs.",
+        "Meeting the legally required number of members.",
+        "Reducing the workload for a single person."
+      ],
       "c": 0
     },
     {
@@ -304,6 +507,13 @@ registerBank({
         "Là động lực giúp nhà khởi nghiệp vượt qua giai đoạn khó khăn ban đầu.",
         "Chỉ là yếu tố phụ trợ không cần thiết.",
         "Đam mê quá mức sẽ dẫn đến thất bại."
+      ],
+      "qEn": "How is the role of passion and perseverance in entrepreneurship assessed?",
+      "aEn": [
+        "Less important than financial capital.",
+        "A driving force that helps entrepreneurs get through the initial difficult phase.",
+        "Just an unnecessary supporting factor.",
+        "Excessive passion will lead to failure."
       ],
       "c": 1
     },
@@ -315,6 +525,13 @@ registerBank({
         "Chỉ hoạt động bằng nguồn vốn từ thiện.",
         "Không phải đóng thuế cho Nhà nước."
       ],
+      "qEn": "How does Social Entrepreneurship differ from ordinary entrepreneurship?",
+      "aEn": [
+        "It does not care about profit at all.",
+        "It prioritizes solving social or community problems through a business model.",
+        "It operates only on charitable funding.",
+        "It is exempt from paying taxes to the State."
+      ],
       "c": 1
     },
     {
@@ -324,6 +541,13 @@ registerBank({
         "Phác thảo mô hình kinh doanh và xác định giá trị mang lại cho khách hàng.",
         "Vay vốn ngân hàng tối đa.",
         "Mua sắm trang thiết bị đắt tiền."
+      ],
+      "qEn": "What is the first step in turning an idea into a business plan?",
+      "aEn": [
+        "Hiring staff right away.",
+        "Sketching out the business model and defining the value delivered to customers.",
+        "Borrowing the maximum amount from a bank.",
+        "Purchasing expensive equipment."
       ],
       "c": 1
     },
@@ -335,6 +559,13 @@ registerBank({
         "Sáng tạo quan trọng hơn đổi mới.",
         "Đổi mới là việc sao chép lại sự sáng tạo của người khác."
       ],
+      "qEn": "What is the relationship between \"Creativity\" and \"Innovation\"?",
+      "aEn": [
+        "They are two completely identical concepts.",
+        "Creativity generates new ideas, while innovation puts those ideas into practice to create value.",
+        "Creativity is more important than innovation.",
+        "Innovation is copying someone else's creativity."
+      ],
       "c": 1
     },
     {
@@ -344,6 +575,13 @@ registerBank({
         "Để hiểu thị trường và tìm ra điểm khác biệt cho dự án mình.",
         "Để sao chép y nguyên cách làm của họ.",
         "Để báo cáo với cơ quan quản lý thị trường."
+      ],
+      "qEn": "Why is it necessary to research competitors right at the idea stage?",
+      "aEn": [
+        "To find ways to sabotage their operations.",
+        "To understand the market and find a point of difference for your own project.",
+        "To copy their methods exactly.",
+        "To report them to the market regulatory agency."
       ],
       "c": 1
     },
@@ -355,6 +593,13 @@ registerBank({
         "Có thể bỏ qua việc làm khảo sát thị trường.",
         "Chỉ tập trung vào việc bán hàng theo phương pháp truyền thống."
       ],
+      "qEn": "Analyzing the difference between entrepreneurship and ordinary business helps students to:",
+      "aEn": [
+        "Calculate employee salaries more effectively.",
+        "Clearly understand that the essence of entrepreneurship is innovation.",
+        "Skip conducting market research.",
+        "Focus only on selling through traditional methods."
+      ],
       "c": 1
     },
     {
@@ -364,6 +609,13 @@ registerBank({
         "Tôi bán cho ai?",
         "Tôi làm điều đó như thế nào và cần bao nhiêu tiền?",
         "Tất cả các phương án trên."
+      ],
+      "qEn": "What core questions should a brief business plan answer?",
+      "aEn": [
+        "What am I selling?",
+        "Who am I selling to?",
+        "How will I do it and how much money do I need?",
+        "All of the above."
       ],
       "c": 3
     },
@@ -375,6 +627,13 @@ registerBank({
         "Những người đang làm việc trong các tập đoàn lớn.",
         "Các cửa hàng bán lẻ cạnh tranh với bạn."
       ],
+      "qEn": "In entrepreneurship, the concept of \"Target market\" is understood as:",
+      "aEn": [
+        "All consumers in an entire country.",
+        "The specific group of customers the startup project wants to serve.",
+        "People working at large corporations.",
+        "Retail stores that compete with you."
+      ],
       "c": 1
     },
     {
@@ -384,6 +643,13 @@ registerBank({
         "Bảo vệ lợi thế cạnh tranh và ngăn chặn việc sao chép trái phép.",
         "Để được nhận tiền thưởng từ Nhà nước.",
         "Không thực sự cần thiết đối với doanh nghiệp nhỏ."
+      ],
+      "qEn": "What is the importance of protecting intellectual property for an idea?",
+      "aEn": [
+        "To show off to friends.",
+        "To protect competitive advantage and prevent unauthorized copying.",
+        "To receive a cash reward from the State.",
+        "It isn't really necessary for small businesses."
       ],
       "c": 1
     },
@@ -395,6 +661,13 @@ registerBank({
         "Rủi ro về đội ngũ (mất đoàn kết).",
         "Tất cả các phương án trên."
       ],
+      "qEn": "A common risk that newcomers to entrepreneurship need to anticipate is:",
+      "aEn": [
+        "Financial risk (lack of capital).",
+        "Market risk (no buyers).",
+        "Team risk (loss of unity).",
+        "All of the above."
+      ],
       "c": 3
     },
     {
@@ -404,6 +677,13 @@ registerBank({
         "Khả năng thích nghi và học hỏi không ngừng.",
         "Tư duy giải quyết vấn đề.",
         "Tất cả các phương án trên."
+      ],
+      "qEn": "What traits does an \"Entrepreneurial Mindset\" include?",
+      "aEn": [
+        "A proactive and creative spirit.",
+        "The ability to adapt and keep learning.",
+        "Problem-solving thinking.",
+        "All of the above."
       ],
       "c": 3
     },
@@ -415,6 +695,13 @@ registerBank({
         "Phần mềm lập trình chuyên sâu.",
         "Không cần dùng công cụ hỗ trợ."
       ],
+      "qEn": "Which tool best supports designing a diagram of a startup idea?",
+      "aEn": [
+        "Drawing by hand on scratch paper.",
+        "Apps that support mind-mapping or online design.",
+        "Advanced programming software.",
+        "No supporting tool is needed."
+      ],
       "c": 1
     },
     {
@@ -424,6 +711,13 @@ registerBank({
         "Do họ có nhiều vốn đầu tư hơn người ở thành thị.",
         "Do họ có trình độ công nghệ cao hơn.",
         "Do họ không phải cạnh tranh với bất kỳ ai."
+      ],
+      "qEn": "Why do ethnic minorities often have an advantage in community tourism startups?",
+      "aEn": [
+        "Because they possess unique cultural identity and local knowledge.",
+        "Because they have more investment capital than people in urban areas.",
+        "Because they have a higher level of technology.",
+        "Because they don't have to compete with anyone."
       ],
       "c": 0
     },
@@ -435,6 +729,13 @@ registerBank({
         "Để liệt kê toàn bộ lịch sử cá nhân của chủ dự án.",
         "Để giải trình với cơ quan thuế."
       ],
+      "qEn": "What is the purpose of the \"Executive summary\" in a business plan?",
+      "aEn": [
+        "To pad out the length of the plan.",
+        "To give a quick overview and persuade investors within a short time.",
+        "To list the project owner's entire personal history.",
+        "To explain things to the tax authorities."
+      ],
       "c": 1
     },
     {
@@ -444,6 +745,13 @@ registerBank({
         "Số lượng quảng cáo trên mạng xã hội.",
         "Khả năng tạo việc làm và đóng góp tích cực cho cộng đồng.",
         "Quy mô diện tích của văn phòng làm việc."
+      ],
+      "qEn": "The social value of a startup project is reflected in:",
+      "aEn": [
+        "The amount of tax paid each year.",
+        "The number of ads on social media.",
+        "Its ability to create jobs and make a positive contribution to the community.",
+        "The size of its office space."
       ],
       "c": 2
     },
@@ -455,6 +763,13 @@ registerBank({
         "Những lĩnh vực đang \"hot\" nhưng không có tính bền vững.",
         "Ý tưởng do người khác áp đặt."
       ],
+      "qEn": "When choosing a startup idea, you should prioritize:",
+      "aEn": [
+        "Fields you know absolutely nothing about.",
+        "Fields where passion, ability, and market demand intersect.",
+        "Fields that are currently \"hot\" but lack sustainability.",
+        "Ideas imposed on you by someone else."
+      ],
       "c": 1
     },
     {
@@ -464,6 +779,13 @@ registerBank({
         "Vốn vay và vốn tự có.",
         "Số lượng nhân viên và số lượng máy tính.",
         "Thời gian làm việc và thời gian nghỉ ngơi."
+      ],
+      "qEn": "A successful startup project needs a balance between:",
+      "aEn": [
+        "A creative idea and execution capability.",
+        "Borrowed capital and equity capital.",
+        "The number of employees and the number of computers.",
+        "Working time and rest time."
       ],
       "c": 0
     },
@@ -475,6 +797,13 @@ registerBank({
         "Một phần mềm quản lý dữ liệu khách hàng.",
         "Danh sách các đối thủ cạnh tranh trên thị trường."
       ],
+      "qEn": "What does the term \"Startup ecosystem\" mean?",
+      "aEn": [
+        "The types of plants grown on a company's premises.",
+        "The environment comprising resources, organizations, and policies that support startups.",
+        "A piece of customer data management software.",
+        "A list of competitors in the market."
+      ],
       "c": 1
     },
     {
@@ -484,6 +813,13 @@ registerBank({
         "Kỹ năng cân bằng giữa công việc và trách nhiệm gia đình.",
         "Kỹ năng quản lý nhân sự tại các tập đoàn lớn.",
         "Kỹ năng thiết kế các sản phẩm công nghiệp."
+      ],
+      "qEn": "Which skill should a woman entrepreneur focus on to ensure effective business operations?",
+      "aEn": [
+        "Skill in operating heavy machinery.",
+        "The skill of balancing work and family responsibilities.",
+        "Personnel management skills at large corporations.",
+        "Skills for designing industrial products."
       ],
       "c": 1
     },
@@ -495,6 +831,13 @@ registerBank({
         "Do không phải chịu rủi ro về thị trường.",
         "Do chỉ bán hàng cho người thân."
       ],
+      "qEn": "Why does innovative entrepreneurship often have the potential for \"rapid growth\"?",
+      "aEn": [
+        "Because it is fully subsidized by the State.",
+        "Because applying technology and new business models allows for large-scale expansion.",
+        "Because it bears no market risk at all.",
+        "Because it only sells to relatives."
+      ],
       "c": 1
     },
     {
@@ -504,6 +847,13 @@ registerBank({
         "Học hỏi nhanh chóng thông qua thử nghiệm sản phẩm dựa trên phản hồi khách hàng.",
         "Chỉ sử dụng ít nhân viên nhất có thể.",
         "Không cần lập kế hoạch kinh doanh."
+      ],
+      "qEn": "What does the concept of \"Lean Startup\" emphasize?",
+      "aEn": [
+        "Maximizing savings on office costs.",
+        "Learning quickly by testing the product based on customer feedback.",
+        "Using as few employees as possible.",
+        "Not needing to make a business plan at all."
       ],
       "c": 1
     },
@@ -515,6 +865,13 @@ registerBank({
         "Các mô hình kinh doanh trên nền tảng số.",
         "Tất cả các phương án trên."
       ],
+      "qEn": "In the era of Industry 4.0, entrepreneurs need to pay special attention to:",
+      "aEn": [
+        "Cybersecurity and data protection.",
+        "Changes in online customer behavior.",
+        "Business models built on digital platforms.",
+        "All of the above."
+      ],
       "c": 3
     },
     {
@@ -524,6 +881,13 @@ registerBank({
         "Du lịch sinh thái miệt vườn và văn hóa sông nước.",
         "Du lịch mạo hiểm leo núi cao.",
         "Du lịch nghiên cứu vũ trụ."
+      ],
+      "qEn": "Which local strength of Vĩnh Long province is often leveraged for tourism startups?",
+      "aEn": [
+        "Winter ski tourism.",
+        "Orchard-garden ecotourism and river culture tourism.",
+        "High-mountain adventure climbing tourism.",
+        "Space research tourism."
       ],
       "c": 1
     },
@@ -535,6 +899,13 @@ registerBank({
         "Sự thiếu tự tin vào ý tưởng của mình.",
         "Mong muốn được nhận trợ giúp từ bên ngoài."
       ],
+      "qEn": "Analyzing risk in a business plan reflects:",
+      "aEn": [
+        "The project owner's timidity and fear.",
+        "Professional caution and careful calculation.",
+        "A lack of confidence in one's own idea.",
+        "A wish to receive outside help."
+      ],
       "c": 1
     },
     {
@@ -544,6 +915,13 @@ registerBank({
         "Sau khi đã sản xuất xong hàng hóa số lượng lớn.",
         "Khi doanh nghiệp đã đi vào hoạt động được 1 năm.",
         "Chỉ khi có yêu cầu từ phía ngân hàng."
+      ],
+      "qEn": "When is the best time to start identifying the target customer?",
+      "aEn": [
+        "Right from when the business idea first starts forming.",
+        "After large quantities of goods have already been produced.",
+        "After the business has been operating for 1 year.",
+        "Only when requested by a bank."
       ],
       "c": 0
     },
@@ -555,6 +933,13 @@ registerBank({
         "Thất bại là dấu hiệu bạn không nên làm kinh doanh.",
         "Chỉ những người không bao giờ thất bại mới nên khởi nghiệp."
       ],
+      "qEn": "The right mindset about failure in entrepreneurship is:",
+      "aEn": [
+        "Feel free to fail as much as you like, since success will come later.",
+        "Learning from mistakes to improve the project further.",
+        "Failure is a sign you shouldn't be in business.",
+        "Only people who never fail should start a business."
+      ],
       "c": 1
     },
     {
@@ -564,6 +949,13 @@ registerBank({
         "Vốn vay, công nghệ và nhân sự quy mô lớn.",
         "Giá sản phẩm rẻ nhất và quảng cáo nhiều nhất.",
         "Ý tưởng độc lạ nhất và văn phòng làm việc đẹp nhất."
+      ],
+      "qEn": "A sustainable startup project should aim for a balance between:",
+      "aEn": [
+        "Economic profit, human benefit, and environmental protection.",
+        "Borrowed capital, technology, and a large-scale workforce.",
+        "The cheapest product price and the most advertising.",
+        "The most unique idea and the nicest office."
       ],
       "c": 0
     },
@@ -575,6 +967,13 @@ registerBank({
         "Nhận diện được các nguồn lực hỗ trợ thực tế cho đối tượng này.",
         "Có thể thay thế được vai trò của các chuyên gia công nghệ thông tin."
       ],
+      "qEn": "Learning about support sources specifically for ethnic minorities helps students to:",
+      "aEn": [
+        "Gain knowledge of global economic support policies.",
+        "Know how to register copyrights for foreign products.",
+        "Identify real support resources available to this group.",
+        "Replace the role of IT specialists."
+      ],
       "c": 2
     },
     {
@@ -584,6 +983,13 @@ registerBank({
         "Để thích ứng kịp thời với những biến động không ngừng của thị trường.",
         "Nhằm mục đích gây ấn tượng với nhà đầu tư.",
         "Do các lỗi sai về chính tả và định dạng ban đầu."
+      ],
+      "qEn": "Why does a business plan need to remain flexible to change?",
+      "aEn": [
+        "To make it easy to change team members.",
+        "To adapt promptly to the market's constant fluctuations.",
+        "To impress investors.",
+        "Because of initial spelling and formatting errors."
       ],
       "c": 1
     },
@@ -595,6 +1001,13 @@ registerBank({
         "Nhằm tìm kiếm cơ hội để chuyển đến thành phố lớn làm việc.",
         "Để làm việc mà không cần dựa trên bất kỳ kế hoạch nào."
       ],
+      "qEn": "How does \"Adaptability\" help entrepreneurs in rural areas?",
+      "aEn": [
+        "It helps them get through changes in policy, weather, or agricultural prices.",
+        "It helps them learn new languages faster.",
+        "It helps them find opportunities to move to a big city for work.",
+        "It lets them work without relying on any plan at all."
+      ],
       "c": 0
     },
     {
@@ -604,6 +1017,13 @@ registerBank({
         "Một ý tưởng sáng tạo khả thi đi kèm niềm đam mê và lộ trình rõ ràng.",
         "Một trụ sở làm việc tại các tòa nhà cao tầng sang trọng.",
         "Một đội ngũ nhân sự quy mô hàng trăm người ngay từ đầu."
+      ],
+      "qEn": "What is the most important starting element for any entrepreneurial journey?",
+      "aEn": [
+        "Having an extremely large amount of cash in the bank.",
+        "A feasible, creative idea paired with passion and a clear roadmap.",
+        "An office in a luxurious high-rise building.",
+        "A team of hundreds of staff right from the start."
       ],
       "c": 1
     }
