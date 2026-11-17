@@ -542,6 +542,13 @@
       return renderChapterItem(c, icon, stats);
     }).join('');
 
+    // Trang Lớp thi: thêm nhãn "Thi giữa kỳ (tính điểm)" phía trên Quiz 1/2,
+    // đối xứng với nhãn "Case study thảo luận (không tính điểm)" phía dưới —
+    // để sinh viên phân biệt rõ phần nào chấm điểm, phần nào không.
+    if (activeGroup === 'kt330h-intl' && chapters.length) {
+      html = '<p class="eyebrow chapter-section-label">' + esc(t('chapters.group.midterm')) + '</p>' + html;
+    }
+
     // Trang Lớp thi (hợp tác quốc tế) gom cả hai case study "thảo luận trong
     // lớp, không tính điểm" vào cùng trang cho sinh viên dễ tìm (gộp từ hai
     // trang, theo yêu cầu Thầy Tú), dù case study vẫn thuộc nhóm 'kt330h'
