@@ -1699,7 +1699,7 @@ select,
 .chapter-item__no .ico { width: 20px; height: 20px; vertical-align: 0; }
 .chapter-item__no .ico use { stroke-width: 1.9; }
 .chapter-item__main { flex: 1; min-width: 0; }
-.chapter-item__title { display: flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .93rem; }
+.chapter-item__title { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .5rem; font-weight: 600; font-size: .93rem; }
 .chapter-item__meta { display: block; color: var(--muted); font-size: .78rem; }
 .chapter-item__go { color: var(--muted); font-size: 1.1rem; }
 .chapter-item--exam { border-color: var(--warn); }
@@ -1714,6 +1714,26 @@ select,
   letter-spacing: .02em;
   white-space: nowrap;
 }
+/* Đã nộp bài thi thật rồi — đổi màu vàng "Vào thi" sang xanh để không
+   mời bấm vào lại (bấm vào vẫn bị chặn ở máy chủ, đây chỉ là báo trước). */
+.chapter-item__examBadge--done {
+  background: color-mix(in srgb, var(--success) 18%, transparent);
+  color: var(--success);
+}
+/* Khung bọc Quiz 1/2 ở trang Lớp thi — màu riêng cho bài tính điểm, tách
+   hẳn khỏi phần case study thảo luận không tính điểm bên dưới. Theme Clay
+   noir dùng màu "graded" riêng (xem clay-v2.css), ở đây dùng chung
+   var(--danger-soft)/(--danger) cho Light/Cosmic dark. */
+.exam-panel {
+  display: grid;
+  gap: .6rem;
+  padding: .85rem;
+  border-radius: var(--radius-lg);
+  background: var(--danger-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--danger) 35%, transparent);
+  margin-bottom: 1rem;
+}
+.exam-panel .chapter-item { background: var(--glass); }
 .case-doclink {
   display: inline-flex;
   align-items: center;

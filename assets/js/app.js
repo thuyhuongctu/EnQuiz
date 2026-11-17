@@ -475,6 +475,7 @@
     renderModesForGroup();
     renderContinueCard();
     renderChapterList();
+    refreshIntlAttemptStatus();
     renderLectures();
     renderSpecialSets();
     renderHistory();
@@ -601,9 +602,28 @@
     // "Thi thử" chung nào dẫn vào nữa (đã ẩn ở renderModesForGroup()/PR #74)
     // nên cần gắn nhãn "Vào thi" ngay trên mục chương để sinh viên thấy rõ
     // đây là điểm vào duy nhất, không phải một chương ôn tập thường.
-    var examBadge = c.examMinutes > 0
-      ? '<span class="chapter-item__examBadge">' + esc(t('chapters.examBadge')) + '</span>'
-      : '';
+    // Tra trước trạng thái "đã nộp chưa" (refreshIntlAttemptStatus()) để hiện
+    // ngay "✓ Đã nộp" thay vì "Vào thi" — không cần đợi bấm vào mới biết.
+    var attemptInfo = intlAttemptStatus[c.id];
+    var examBadge = '';
+    if (c.examMinutes > 0) {
+      if (attemptInfo && attemptInfo.attempted) {
+        // Ngày giờ ngắn gọn (không giây/múi giờ) để nhãn không quá dài,
+        // tràn ngang thẻ chương — cùng kiểu rút gọn renderHistory() đang
+        // dùng cho lịch sử làm bài.
+        var stamp = '';
+        if (attemptInfo.submittedAt) {
+          var d = new Date(attemptInfo.submittedAt);
+          var locale = I18n.lang === 'en' ? 'en-GB' : 'vi-VN';
+          stamp = d.toLocaleDateString(locale) + ' ' +
+            String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+        }
+        examBadge = '<span class="chapter-item__examBadge chapter-item__examBadge--done">' +
+          esc(t('chapters.examDone', { time: stamp })) + '</span>';
+      } else {
+        examBadge = '<span class="chapter-item__examBadge">' + esc(t('chapters.examBadge')) + '</span>';
+      }
+    }
     var item = '<button class="chapter-item' + (c.examMinutes > 0 ? ' chapter-item--exam' : '') + '" data-chapter="' + esc(c.id) + '" type="button">' +
       '<span class="chapter-item__no">' +
         '<svg class="ico" aria-hidden="true"><use href="#' + icon + '"/></svg>' +
@@ -648,10 +668,12 @@
     }).join('');
 
     // Trang Lớp thi: thêm nhãn "Thi giữa kỳ (tính điểm)" phía trên Quiz 1/2,
-    // đối xứng với nhãn "Case study thảo luận (không tính điểm)" phía dưới —
-    // để sinh viên phân biệt rõ phần nào chấm điểm, phần nào không.
+    // đối xứng với nhãn "Case study thảo luận (không tính điểm)" phía dưới,
+    // và bọc Quiz 1/2 trong khung .exam-panel (màu riêng cho bài tính điểm,
+    // xem clay-v2.css) để tách hẳn khỏi phần thảo luận không tính điểm.
     if (activeGroup === 'kt330h-intl' && chapters.length) {
-      html = '<p class="eyebrow chapter-section-label">' + esc(t('chapters.group.midterm')) + '</p>' + html;
+      html = '<p class="eyebrow chapter-section-label">' + esc(t('chapters.group.midterm')) + '</p>' +
+        '<section class="exam-panel">' + html + '</section>';
     }
 
     // Trang Lớp thi (hợp tác quốc tế) gom cả hai case study "thảo luận trong
@@ -758,11 +780,45 @@
   var ATTEMPT_ENDPOINT = 'https://zkjgtvmwgrejmwapirwe.supabase.co/functions/v1/exam-attempt';
   var pendingExamArgs = null;
 
+  /** Trạng thái "đã nộp bài chưa" của Quiz 1/2, tra trước (không đợi bấm
+      vào mới biết) để hiện ngay trên danh sách chương — xem
+      refreshIntlAttemptStatus() và renderChapterItem(). Khoá bằng chapterId,
+      giá trị {attempted, submittedAt} hoặc undefined nếu chưa tra xong. */
+  var intlAttemptStatus = {};
+
   /** Phút thi cố định của một chương (0 = chương thường, không khoá thời
       gian/chế độ) — khai báo ở data/chXX.js qua field "examMinutes". */
   function timedExamMinutes(chapterId) {
     var c = chapterId ? QuestionBank.chapter(chapterId) : null;
     return c && c.examMinutes > 0 ? c.examMinutes : 0;
+  }
+
+  /** Tra trước trạng thái "đã nộp Quiz 1/2 chưa" ngay khi vào trang Lớp thi
+      (đã xác minh email), để danh sách chương hiện đúng "Vào thi" hay
+      "✓ Đã nộp" mà không phải đợi bấm vào mới biết — xem renderChapterItem().
+      Gọi lại renderChapterList() sau khi có kết quả; không gọi lại toàn bộ
+      renderHome() để khỏi làm mất vị trí cuộn trang. */
+  function refreshIntlAttemptStatus() {
+    if (activeGroup !== 'kt330h-intl') return;
+    var email = Store.get('intlVerifiedEmail');
+    if (!email) return;
+
+    QuestionBank.chapters(activeGroup).forEach(function (c) {
+      if (c.examMinutes <= 0 || intlAttemptStatus[c.id] !== undefined) return;
+      intlAttemptStatus[c.id] = null; // đang tra, tránh gọi trùng
+      fetch(ATTEMPT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'check', email: email, chapterId: c.id })
+      }).then(function (r) { return r.json(); }).then(function (d) {
+        intlAttemptStatus[c.id] = (d && d.ok)
+          ? { attempted: !!d.attempted, submittedAt: d.submittedAt || null }
+          : null;
+        if (activeGroup === 'kt330h-intl') renderChapterList();
+      }).catch(function () {
+        intlAttemptStatus[c.id] = null;
+      });
+    });
   }
 
   /** Chặn trước khi mở màn thiết lập đề: đang ở trang Lớp thi (activeGroup
@@ -841,6 +897,9 @@
   function recordExamAttempt(chapterId, score, total) {
     var email = Store.get('intlVerifiedEmail');
     if (!email || timedExamMinutes(chapterId) <= 0) return;
+    // Cập nhật ngay trong bộ nhớ (không đợi máy chủ trả lời) để nếu sinh
+    // viên quay lại trang chủ, danh sách chương đã hiện "✓ Đã nộp" luôn.
+    intlAttemptStatus[chapterId] = { attempted: true, submittedAt: new Date().toISOString() };
     fetch(ATTEMPT_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -931,6 +990,7 @@
         Store.set('intlVerifiedEmail', email);
         var modal = $('#modalExamLogin');
         if (modal) modal.classList.add('hidden');
+        refreshIntlAttemptStatus();
         if (pendingExamArgs) continueToSetup(pendingExamArgs.mode, pendingExamArgs.presetChapter);
         pendingExamArgs = null;
       } else if (err) {
