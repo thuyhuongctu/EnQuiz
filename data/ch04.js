@@ -787,7 +787,7 @@ registerBank({
         "Being able to sell counterfeit goods without detection.",
         "Needing no human involvement at all in the sales process."
       ],
-      "c": 1
+      "c": 0
     },
     {
       "q": "Để trở thành chủ \"Hộ kinh doanh\", cá nhân phải đáp ứng điều kiện nào?",
