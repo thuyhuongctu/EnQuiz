@@ -726,6 +726,70 @@
     }).catch(function () { /* mất mạng lúc này: bỏ qua, xem ghi chú ở trên */ });
   }
 
+  /* ---------------- Xem điểm Quiz (quản trị lớp quốc tế) ----------------
+     Vào qua Cài đặt → "Xem điểm Quiz 1/2". Nhập email quản trị (2 email đã
+     khai trong roster), Edge Function tự kiểm tra có phải admin không rồi
+     mới trả bảng điểm — không có gì ở phía app quyết định ai là admin. */
+  function openAdminResults() {
+    var input = $('#adminResultsEmail'), err = $('#adminResultsErr'), table = $('#adminResultsTable');
+    if (input) input.value = Store.get('intlVerifiedEmail') || '';
+    if (err) err.textContent = '';
+    if (table) table.innerHTML = '';
+    var modal = $('#modalAdminResults');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function submitAdminResults() {
+    var input = $('#adminResultsEmail'), err = $('#adminResultsErr'), table = $('#adminResultsTable');
+    var btn = $('#btnAdminResultsSubmit');
+    var email = input ? input.value.trim().toLowerCase() : '';
+    if (!EMAIL_RE.test(email)) {
+      if (err) err.textContent = t('examLogin.invalid');
+      return;
+    }
+    if (err) err.textContent = '';
+    if (table) table.innerHTML = '';
+    if (btn) btn.disabled = true;
+    fetch(ATTEMPT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'list', email: email })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (btn) btn.disabled = false;
+      if (d && d.ok) renderAdminResultsTable(d.rows || []);
+      else if (err) err.textContent = t('adminResults.denied');
+    }).catch(function () {
+      if (btn) btn.disabled = false;
+      if (err) err.textContent = t('examAttempt.networkErr');
+    });
+  }
+
+  function renderAdminResultsTable(rows) {
+    var table = $('#adminResultsTable');
+    if (!table) return;
+    if (!rows.length) { table.innerHTML = '<p class="muted">' + esc(t('adminResults.empty')) + '</p>'; return; }
+
+    var body = rows.map(function (r) {
+      var pct = r.total ? Math.round(r.score / r.total * 100) : 0;
+      var quizLabel = r.chapter_id === 'ch08' ? 'Quiz 1' : (r.chapter_id === 'ch09' ? 'Quiz 2' : esc(r.chapter_id));
+      return '<tr>' +
+        '<td>' + esc(r.full_name || r.email) + '</td>' +
+        '<td>' + esc(r.student_no || '') + '</td>' +
+        '<td>' + quizLabel + '</td>' +
+        '<td>' + r.score + '/' + r.total + ' (' + pct + '%)</td>' +
+        '<td>' + esc(new Date(r.submitted_at).toLocaleString()) + '</td>' +
+      '</tr>';
+    }).join('');
+
+    table.innerHTML = '<table><thead><tr>' +
+      '<th>' + esc(t('adminResults.colName')) + '</th>' +
+      '<th>' + esc(t('adminResults.colStudentNo')) + '</th>' +
+      '<th>' + esc(t('adminResults.colQuiz')) + '</th>' +
+      '<th>' + esc(t('adminResults.colScore')) + '</th>' +
+      '<th>' + esc(t('adminResults.colSubmittedAt')) + '</th>' +
+    '</tr></thead><tbody>' + body + '</tbody></table>';
+  }
+
   function submitExamLogin() {
     var input = $('#examLoginEmail'), err = $('#examLoginErr'), btn = $('#btnExamLoginSubmit');
     var email = input ? input.value.trim().toLowerCase() : '';
@@ -1956,6 +2020,15 @@
     $('#btnExamLoginSubmit').addEventListener('click', submitExamLogin);
     $('#examLoginEmail').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); submitExamLogin(); }
+    });
+
+    $('#btnOpenAdminResults').addEventListener('click', function () {
+      $('#modalSettings').classList.add('hidden');
+      openAdminResults();
+    });
+    $('#btnAdminResultsSubmit').addEventListener('click', submitAdminResults);
+    $('#adminResultsEmail').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); submitAdminResults(); }
     });
 
     $('#btnRefreshApp').addEventListener('click', function () {

@@ -782,6 +782,32 @@
           <button class="btn btn--sm btn--danger" id="btnResetAll" type="button" data-i18n="settings.reset">Xoá toàn bộ dữ liệu</button>
         </div>
       </div>
+      <div class="field">
+        <label data-i18n="settings.adminResults">Quản trị lớp hợp tác quốc tế</label>
+        <div class="actions">
+          <button class="btn btn--sm" id="btnOpenAdminResults" type="button" data-i18n="settings.adminResultsBtn">📊 Xem điểm Quiz 1/2</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: XEM ĐIỂM QUIZ (QUẢN TRỊ) ============ -->
+<div class="modal hidden" id="modalAdminResults">
+  <div class="modal__box modal__box--wide">
+    <div class="modal__head">
+      <h3 data-i18n="adminResults.title">Xem điểm Quiz 1/2</h3>
+      <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
+    </div>
+    <div class="modal__body policy">
+      <p data-i18n="adminResults.desc">Chỉ email quản trị lớp hợp tác quốc tế mới xem được bảng điểm này.</p>
+      <div class="field">
+        <label for="adminResultsEmail" data-i18n="adminResults.label">Email quản trị</label>
+        <input type="email" id="adminResultsEmail" autocomplete="email">
+      </div>
+      <p class="err" id="adminResultsErr"></p>
+      <button class="btn btn--primary" id="btnAdminResultsSubmit" type="button" data-i18n="adminResults.submit">Xem điểm</button>
+      <div class="admin-results-table" id="adminResultsTable"></div>
     </div>
   </div>
 </div>
