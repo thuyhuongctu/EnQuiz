@@ -47,6 +47,7 @@
       'special.cross.cta': 'Vào lớp của Thầy Tú →',
       'special.cross.intl.cta': 'Vào lớp hợp tác quốc tế — UM Kendari →',
 
+      'chapters.group.midterm': 'Thi giữa kỳ (tính điểm)',
       'chapters.group.discussion': 'Case study thảo luận trong lớp (không tính điểm)',
 
       'examLogin.title': 'Đăng nhập lớp hợp tác quốc tế',
@@ -468,6 +469,7 @@
       'special.cross.cta': "Go to Mr. Tu's class →",
       'special.cross.intl.cta': 'Go to the international cooperation class — UM Kendari →',
 
+      'chapters.group.midterm': 'Midterm exam (graded)',
       'chapters.group.discussion': 'In-class discussion case studies (not graded)',
 
       'examLogin.title': 'International cooperation class sign-in',
