@@ -94,11 +94,22 @@
     var explain = raw.e || raw.explain || raw.explanation || raw.giaiThich || '';
     var key = normalizeText(text);
 
+    // Bản dịch tiếng Anh (tuỳ chọn): "qEn" + "aEn" (mảng cùng thứ tự với
+    // "a"). Không bắt buộc khớp đủ số lượng — câu nào thiếu bản dịch thì
+    // coi như chưa có, i18n.js/app.js tự rơi về bản tiếng Việt.
+    var textEn = raw.qEn ? String(raw.qEn).trim() : '';
+    var optionsEnRaw = raw.aEn;
+    var optionsEn = (Array.isArray(optionsEnRaw) && optionsEnRaw.length === options.length)
+      ? optionsEnRaw.map(function (o) { return String(o).trim(); })
+      : null;
+
     return {
       uid: 'q' + hash(key),
       key: key,
       text: String(text).trim(),
       options: options,
+      textEn: textEn,
+      optionsEn: optionsEn,
       correct: correct,
       explain: String(explain).trim(),
       chapterId: chapter.id,

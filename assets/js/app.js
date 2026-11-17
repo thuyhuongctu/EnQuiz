@@ -95,6 +95,15 @@
     return (I18n.lang === 'en' && q.chapterTitleEn) ? q.chapterTitleEn : q.chapterTitle;
   }
 
+  /** Nội dung câu hỏi theo ngôn ngữ đang chọn — câu nào chưa có bản dịch
+      (q.textEn/q.optionsEn rỗng, xem bank.js) thì tự rơi về tiếng Việt. */
+  function questionText(q) {
+    return (I18n.lang === 'en' && q.textEn) ? q.textEn : q.text;
+  }
+  function questionOptions(q) {
+    return (I18n.lang === 'en' && q.optionsEn) ? q.optionsEn : q.options;
+  }
+
   /** Nhãn hiển thị cho phiên đang làm: bài Quiz chính thức dùng đúng tên bài
       (vd "Quiz 1 (giữa kỳ)...") thay vì nhãn chung "Thi thử" — xem
       session.label, gán ở buildSession() khi có lockedChapterId. */
@@ -1349,7 +1358,7 @@
     $('#quizCounter').textContent = (session.index + 1) + '/' + session.items.length;
     $('#quizProgress').style.width = ((session.index + 1) / session.items.length * 100) + '%';
     $('#qChapter').textContent = questionChapter(q);
-    $('#qText').textContent = q.text;
+    $('#qText').textContent = questionText(q);
 
     var quizHuong = $('#quizHuong');
     if (quizHuong) {
@@ -1359,6 +1368,7 @@
     updateMarkButton(Store.isMarked(q.uid));
 
     var reveal = it.revealed || session.submitted;
+    var qOpts = questionOptions(q);
     $('#qOptions').innerHTML = it.order.map(function (origIdx, pos) {
       var cls = 'option';
       if (reveal) {
@@ -1369,7 +1379,7 @@
       }
       return '<button class="' + cls + '" data-pos="' + pos + '" type="button"' + (reveal ? ' disabled' : '') + '>' +
         '<span class="option__key">' + LETTERS[pos] + '</span>' +
-        '<span class="option__text">' + esc(q.options[origIdx]) + '</span>' +
+        '<span class="option__text">' + esc(qOpts[origIdx]) + '</span>' +
       '</button>';
     }).join('');
 
@@ -1613,12 +1623,13 @@
   function renderReview() {
     $('#reviewList').innerHTML = session.items.map(function (it, i) {
       var ok = it.picked === it.correctPos;
+      var qOpts = questionOptions(it.q);
       var opts = it.order.map(function (origIdx, pos) {
         var cls = 'review-opt';
         if (pos === it.correctPos) cls += ' correct';
         else if (pos === it.picked) cls += ' chosen-wrong';
         return '<div class="' + cls + '"><b>' + LETTERS[pos] + '.</b><span>' +
-          esc(it.q.options[origIdx]) + '</span></div>';
+          esc(qOpts[origIdx]) + '</span></div>';
       }).join('');
 
       var note = it.picked === null
@@ -1628,7 +1639,7 @@
 
       return '<div class="review-item ' + (ok ? 'ok' : 'no') + '">' +
         '<div class="review-item__q"><span class="review-item__no">' +
-          esc(t('result.q', { n: i + 1 })) + '</span>' + esc(it.q.text) + '</div>' +
+          esc(t('result.q', { n: i + 1 })) + '</span>' + esc(questionText(it.q)) + '</div>' +
         opts + note + ex +
       '</div>';
     }).join('');
