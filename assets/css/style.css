@@ -447,6 +447,9 @@ code {
   display: block;
   box-shadow: 0 0 14px var(--glow);
 }
+/* Biểu trưng chữ thay cho logo vector, chỉ bật trong theme Clay noir —
+   xem html[data-theme="clay"] .brand__eq / .brand__logo trong clay-v2.css. */
+.brand__eq { display: none; }
 .brand__text { display: flex; flex-direction: column; }
 .brand__text strong {
   font-size: 1.05rem;
@@ -619,7 +622,7 @@ code {
 }
 .eyebrow::before {
   content: "";
-  width: 18px;
+  width: 10px;
   height: 2px;
   border-radius: 2px;
   background: currentColor;
