@@ -2519,6 +2519,9 @@ input[type="number"]:focus, input[type="file"]:focus {
   color: var(--text-soft);
   font-weight: 600;
 }
+/* Số lần "rời màn hình" khác 0 tô màu để giảng viên thấy ngay dòng nào
+   đáng chú ý, không phải dò từng số trong cột. */
+.admin-results-table__violations { color: var(--danger); font-weight: 700; }
 
 /* ---------------- Chính sách bản quyền ---------------- */
 .policy { font-size: .9rem; color: var(--text-soft); }
