@@ -108,6 +108,13 @@
       (vd "Quiz 1 (giữa kỳ)...") thay vì nhãn chung "Thi thử" — xem
       session.label, gán ở buildSession() khi có lockedChapterId. */
   function sessionLabel() {
+    // Tính lại theo chapterId thay vì chỉ đọc session.label (chuỗi đông
+    // cứng lúc buildSession()) — đổi ngôn ngữ giữa chừng bài thi/màn kết
+    // quả thì tên bài vẫn phải dịch đúng theo ngôn ngữ đang xem.
+    if (session && session.lockedChapterId) {
+      var c = QuestionBank.chapter(session.lockedChapterId);
+      if (c) return chapterLabel(c);
+    }
     return (session && session.label) || t(session.labelKey);
   }
 
@@ -1141,6 +1148,14 @@
   }
 
   function historyLabel(h) {
+    // Bài Quiz chính thức lưu kèm chapterId để tính lại tên bài theo đúng
+    // ngôn ngữ đang chọn (chapterLabel() đọc I18n.lang trực tiếp) — nếu chỉ
+    // lưu sẵn một chuỗi "label" cố định thì đổi ngôn ngữ sau này không dịch
+    // lại được, lịch sử cũ vẫn hiện tiếng Việt dù đang xem bằng tiếng Anh.
+    if (h.chapterId) {
+      var c = QuestionBank.chapter(h.chapterId);
+      if (c) return chapterLabel(c);
+    }
     return h.labelKey ? t(h.labelKey) : (h.label || '');
   }
 
@@ -1203,8 +1218,10 @@
     var isTimedExam = setup.fixedMinutes > 0;
     // Tiêu đề màn thiết lập: bài thi thật ghi rõ "Thi thật" + đúng tên bài
     // (vd "Quiz 1 (giữa kỳ)..."), không dùng nhãn chung "Thi thử" — đây là
-    // thi thật tính điểm, không phải luyện tập, tránh nhầm lẫn 2 cái.
-    setup.lockedLabel = isTimedExam ? t('setup.realExam') + ' · ' + chapterLabel(presetChap) : null;
+    // thi thật tính điểm, không phải luyện tập, tránh nhầm lẫn 2 cái. Lưu
+    // chapterId thay vì chuỗi đã dịch sẵn, để renderSetupTexts() tính lại
+    // đúng ngôn ngữ nếu người dùng đổi ngôn ngữ ngay trên màn thiết lập.
+    setup.lockedChapterId = isTimedExam ? presetChap.id : null;
 
     var scoped = (mode === 'wrong' || mode === 'marked' || isOutsideCourse);
     $('#fieldChapterPick').classList.toggle('hidden', scoped);
@@ -1223,7 +1240,8 @@
   }
 
   function renderSetupTexts() {
-    $('#setupTitle').textContent = setup.lockedLabel || t('mode.' + setup.mode);
+    var lockedChap = setup.lockedChapterId ? QuestionBank.chapter(setup.lockedChapterId) : null;
+    $('#setupTitle').textContent = lockedChap ? (t('setup.realExam') + ' · ' + chapterLabel(lockedChap)) : t('mode.' + setup.mode);
     $('#setupDesc').textContent = setup.fixedMinutes > 0
       ? t('setup.desc.exam') + ' ' + t('setup.fixedTime', { n: setup.fixedMinutes })
       : t('setup.desc.' + setup.mode);
@@ -1571,8 +1589,11 @@
         // Bài Quiz chính thức dùng tên bài cố định (session.label), không
         // phải nhãn chế độ chung — bỏ labelKey để renderHistory() không
         // dịch đè lại thành "Thi thử"/"Mock exam" (xem renderHistory()).
+        // chapterId cho phép historyLabel() tính lại tên bài đúng theo ngôn
+        // ngữ đang xem, thay vì đông cứng ở ngôn ngữ lúc nộp bài.
         labelKey: session.label ? null : session.labelKey,
         label: sessionLabel(),
+        chapterId: session.lockedChapterId || null,
         score: r.score,
         correct: r.correct,
         total: r.total,
