@@ -20,6 +20,9 @@
     { key: 'tour.s0', target: '.hero__mascot', lang: 'fr', pose: 'welcome' },  // lời chào tiếng Pháp
     { key: 'tour.s1', target: '.hero', pose: 'welcome' },
     { key: 'tour.s2', target: '.hero__note', pose: 'stand' },
+    // Thẻ "Học tiếp" (Clay v2) — chỉ hiện ở trang Cô Hương, isVisible()
+    // trong start() tự lọc bỏ bước này ở Thầy Tú/Lớp thi.
+    { key: 'tour.continue', target: '#continueCard', pose: 'point' },
     { key: 'tour.s3', target: '.modes', pose: 'point' },
     { key: 'tour.s4', target: '.modes [data-mode="import"]', pose: 'tablet' },
     { key: 'tour.s5', target: '#chapterList', pose: 'point' },
@@ -99,6 +102,11 @@
      tour không đứt quãng. */
   var TRACKS = {
     'tour.s0': 's0.mp3', 'tour.s1': 's1.mp3', 'tour.s2': 's2.mp3',
+    // Bước mới cho thẻ "Học tiếp" (Clay v2) — khai sẵn tên tệp continue.mp3
+    // nhưng chưa có file thật ở assets/audio/vi|en/, nên tạm đọc bằng giọng
+    // máy cho tới khi có bản thu (chỉ cần chép file vào đúng chỗ, không cần
+    // sửa gì thêm ở đây).
+    'tour.continue': 'continue.mp3',
     'tour.s3': 's3.mp3', 'tour.s4': 's4.mp3', 'tour.s5': 's5.mp3',
     'tour.nav': 'nav.mp3', 'tour.navm': 'navm.mp3', 'tour.s6': 's6.mp3',
     'tour.s7': 's7.mp3', 'tour.s8': 's8.mp3', 'tour.done': 'done.mp3',
