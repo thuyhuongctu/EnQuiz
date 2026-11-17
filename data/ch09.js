@@ -10,7 +10,7 @@ registerBank({
   "titleEn": "Quiz 2 (midterm) · Chapters 4–7 · KT330H international section",
   "order": 9,
   "group": "kt330h-intl",
-  "examMinutes": 60,
+  "examMinutes": 30,
   "questions": [
   {
     "q": "Your best option in market research is generally primary rather than secondary research.",
