@@ -1592,14 +1592,17 @@
 
     var reviewOpen = !$('#panelReview').classList.contains('hidden');
     $('#btnReview').textContent = reviewOpen ? t('result.hideReview') : t('result.review');
-    if (reviewOpen) renderReview();
+    if (reviewOpen && !isOfficialExam) renderReview();
     $('#btnRetryWrong').disabled = r.wrong + r.skip === 0;
 
-    // Bài thi thật đã nộp xong, không làm lại được (khoá ở máy chủ) — ẩn
-    // "Luyện lại câu sai"/"Làm đề mới" vì cả hai đều ngụ ý còn làm lại được,
-    // chỉ để lại "Xem lại bài làm" (xem đúng/sai) và "Về trang chủ".
+    // Bài thi thật chỉ làm 1 lần: không cho xem lại đề + đáp án sau khi nộp
+    // (lộ nguyên đề thi thật ra ngoài), không cho "Luyện lại câu sai"/"Làm
+    // đề mới" (ngụ ý còn làm lại được, trong khi máy chủ đã khoá không cho
+    // nộp lần 2) — chỉ để lại "Về trang chủ".
+    $('#btnReview').classList.toggle('hidden', isOfficialExam);
     $('#btnRetryWrong').classList.toggle('hidden', isOfficialExam);
     $('#btnRedo').classList.toggle('hidden', isOfficialExam);
+    if (isOfficialExam) $('#panelReview').classList.add('hidden');
   }
 
   /* Bảng số liệu theo chương đã có sẵn, nhưng người học phải tự dò xem chương
