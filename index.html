@@ -31,6 +31,9 @@
 
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<!-- Lớp phủ riêng cho theme Clay noir (bản Clay v2) — chỉ áp dụng trong
+     html[data-theme="clay"], Light và Cosmic dark không đổi gì. -->
+<link rel="stylesheet" href="assets/css/clay-v2.css">
 </head>
 <body>
 
@@ -105,6 +108,9 @@
       <!-- Logo trong ứng dụng dùng bản vector: thanh trên cùng chỉ 34px, ảnh
            bệt 192px thu xuống bị nhoè, còn vector thì sắc ở mọi cỡ. -->
       <img class="brand__logo" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <!-- Biểu trưng chữ "EQ" riêng cho theme Clay noir (Clay v2) — ẩn ở
+           Light/Cosmic dark, xem assets/css/clay-v2.css. -->
+      <span class="brand__eq" aria-hidden="true"><b>E</b><b>Q</b></span>
       <span class="brand__text">
         <strong data-i18n="app.name">EnQuiz</strong>
         <small data-i18n="app.tagline">Ôn thi Khởi sự doanh nghiệp</small>

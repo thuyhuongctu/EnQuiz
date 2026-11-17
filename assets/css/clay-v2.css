@@ -1,0 +1,97 @@
+/* EnQuiz · Clay v2 overrides
+   Load after assets/css/style.css:  <link rel="stylesheet" href="assets/css/clay-v2.css">
+   Everything is scoped to html[data-theme="clay"], so Light and Cosmic dark are untouched.
+   Class names match the existing markup in index.html and style.css. New pieces
+   (.tabbar, .class-pill, .continue-card, .exam-panel, .q-strip) need the small HTML
+   snippets in export/README.md. */
+
+html[data-theme="clay"] {
+  --muted: #B9BBBF;              /* was #A6A8AC: about 9:1 on --bg */
+  --explain-text: #E2D9C4;       /* body text on --primary-soft */
+  --graded: #F0A090;             /* real exam / weakest chapter accent */
+  --graded-soft: #241A18;
+  --graded-stroke: #4A2C26;
+  --shadow-sm: inset 0 1px 0 rgba(255,255,255,.07), 0 6px 16px rgba(0,0,0,.4);  /* 2 layers max */
+}
+
+/* 05 · readable small text: 12px floor, no tracked caps */
+html[data-theme="clay"] .eyebrow,
+html[data-theme="clay"] .hud__k,
+html[data-theme="clay"] small { font-size: 12px; letter-spacing: 0; text-transform: none; }
+
+/* 11 · lighter surfaces */
+html[data-theme="clay"] .panel,
+html[data-theme="clay"] .mode-card,
+html[data-theme="clay"] .question-card,
+html[data-theme="clay"] .chapter-row { box-shadow: var(--shadow-sm); }
+html[data-theme="clay"] .chapter-list { content-visibility: auto; contain-intrinsic-size: auto 420px; }
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="clay"] * { transition: none !important; animation: none !important; }
+}
+
+/* 06 · shorter home on phones */
+@media (max-width: 720px) {
+  html[data-theme="clay"] .hero__mascot,
+  html[data-theme="clay"] .hero__role,
+  html[data-theme="clay"] .hero__note,
+  html[data-theme="clay"] .chapters-banner,
+  html[data-theme="clay"] .filmstrip { display: none; }
+  html[data-theme="clay"] .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  html[data-theme="clay"] .mode-card[data-mode="wrong"],
+  html[data-theme="clay"] .mode-card[data-mode="marked"],
+  html[data-theme="clay"] .mode-card[data-mode="import"] { display: none; } /* moved to .tabbar */
+  html[data-theme="clay"] main.container { padding-bottom: 96px; }
+}
+
+/* 03 · right/wrong not by colour alone */
+html[data-theme="clay"] .option { position: relative; min-height: 48px; }
+html[data-theme="clay"] .option.is-correct::after,
+html[data-theme="clay"] .option.is-wrong::after { margin-left: auto; font-weight: 700; font-size: 18px; }
+html[data-theme="clay"] .option.is-correct::after { content: "✓"; color: var(--success); }
+html[data-theme="clay"] .option.is-wrong::after { content: "✕"; color: var(--danger); }
+html[data-theme="clay"] .option.is-selected { border-color: var(--primary); background: rgba(242,202,80,.1); }
+html[data-theme="clay"] .explain { color: var(--explain-text); }
+
+/* 04 / 10 · question strip + flag state */
+html[data-theme="clay"] .q-strip { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; }
+html[data-theme="clay"] .q-strip button,
+html[data-theme="clay"] .qgrid button { position: relative; }
+html[data-theme="clay"] .q-strip button { flex: none; width: 26px; height: 26px; border-radius: 8px; border: 0; background: var(--bg-soft); color: var(--muted); font-size: 11px; }
+html[data-theme="clay"] .q-strip button.answered { background: #3A3A2E; color: var(--primary); }
+html[data-theme="clay"] .q-strip button.current { background: var(--primary); color: var(--on-primary); font-weight: 700; }
+html[data-theme="clay"] .q-strip button.marked::after,
+html[data-theme="clay"] .qgrid button.marked::after { content: ""; position: absolute; top: -3px; right: -3px; width: 9px; height: 9px; border-radius: 50%; background: var(--graded); box-shadow: 0 0 0 2px var(--bg); }
+html[data-theme="clay"] [aria-pressed="true"].btn-flag { color: var(--graded); font-weight: 600; }
+
+/* 06 · continue card */
+html[data-theme="clay"] .continue-card { padding: 16px; border-radius: var(--radius-lg); background: var(--primary-soft); box-shadow: inset 0 1px 0 rgba(242,202,80,.2); display: grid; gap: 12px; }
+html[data-theme="clay"] .continue-card__ring { width: 56px; height: 56px; border-radius: 50%; background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--bg-soft) 0); display: grid; place-items: center; }
+
+/* 07 · class switcher pill */
+html[data-theme="clay"] .class-pill { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px 0 4px; border-radius: 22px; background: var(--surface); color: var(--text); font: 600 13px var(--font); border: 0; }
+html[data-theme="clay"] .class-pill img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+
+/* 08 / 02 · graded exam panel and locked exam header */
+html[data-theme="clay"] .exam-panel { padding: 14px; border-radius: var(--radius-lg); background: var(--graded-soft); box-shadow: inset 0 0 0 1px var(--graded-stroke); display: grid; gap: 10px; }
+html[data-theme="clay"] .exam-panel__tag,
+html[data-theme="clay"] .real-exam-bar__label { color: var(--graded); font-weight: 700; font-size: 12px; }
+html[data-theme="clay"] .real-exam-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-radius: 18px; background: var(--graded-soft); box-shadow: inset 0 0 0 1px var(--graded-stroke); }
+html[data-theme="clay"] .btn--submit-exam { background: #E08A78; color: #2A100A; }
+
+/* 09 · weakest chapter in the result breakdown */
+html[data-theme="clay"] .is-weakest .bar__fill { background: var(--graded); }
+html[data-theme="clay"] .is-weakest .pct { color: var(--graded); font-weight: 700; }
+
+/* 06 · bottom tab bar (phones) */
+html[data-theme="clay"] .tabbar { display: none; }
+@media (max-width: 720px) {
+  html[data-theme="clay"] .tabbar { position: fixed; inset: auto 0 0 0; z-index: 30; display: grid; grid-template-columns: repeat(4, 1fr); padding: 8px 12px calc(10px + env(safe-area-inset-bottom)); background: #18191B; box-shadow: 0 -1px 0 #2A2C2E; }
+  html[data-theme="clay"] .tabbar button { min-height: 48px; border: 0; background: none; color: var(--muted); font: 12px var(--font); }
+  html[data-theme="clay"] .tabbar button.is-active { color: var(--primary); font-weight: 600; box-shadow: inset 0 3px 0 var(--primary); }
+}
+
+/* 12 · EQ logo tile (replaces brand__logo img in clay) */
+html[data-theme="clay"] .brand__logo { display: none; }
+html[data-theme="clay"] .brand__eq { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(180deg,#2A2C2E,#18191B); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 4px 10px rgba(0,0,0,.5); display: inline-flex; align-items: center; justify-content: center; font: 800 15px/1 var(--display); letter-spacing: -.04em; }
+html[data-theme="clay"] .brand__eq b:first-child { color: #F3ECDD; }
+html[data-theme="clay"] .brand__eq b:last-child { color: var(--primary); }
