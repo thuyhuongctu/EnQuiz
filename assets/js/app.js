@@ -528,12 +528,19 @@
       if (s && s.seen) { seen++; correct += s.correct > 0 ? 1 : 0; }
     });
     var pct = c.questions.length ? Math.round(correct / c.questions.length * 100) : 0;
-    var item = '<button class="chapter-item" data-chapter="' + esc(c.id) + '" type="button">' +
+    // Chương là bài thi thật (examMinutes > 0, vd. Quiz 1/2) không còn thẻ
+    // "Thi thử" chung nào dẫn vào nữa (đã ẩn ở renderModesForGroup()/PR #74)
+    // nên cần gắn nhãn "Vào thi" ngay trên mục chương để sinh viên thấy rõ
+    // đây là điểm vào duy nhất, không phải một chương ôn tập thường.
+    var examBadge = c.examMinutes > 0
+      ? '<span class="chapter-item__examBadge">' + esc(t('chapters.examBadge')) + '</span>'
+      : '';
+    var item = '<button class="chapter-item' + (c.examMinutes > 0 ? ' chapter-item--exam' : '') + '" data-chapter="' + esc(c.id) + '" type="button">' +
       '<span class="chapter-item__no">' +
         '<svg class="ico" aria-hidden="true"><use href="#' + icon + '"/></svg>' +
       '</span>' +
       '<span class="chapter-item__main">' +
-        '<span class="chapter-item__title">' + esc(chapterLabel(c)) + '</span>' +
+        '<span class="chapter-item__title">' + esc(chapterLabel(c)) + examBadge + '</span>' +
         '<span class="chapter-item__meta">' +
           esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
         '</span>' +

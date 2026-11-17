@@ -49,6 +49,7 @@
 
       'chapters.group.midterm': 'Thi giữa kỳ (tính điểm)',
       'chapters.group.discussion': 'Case study thảo luận trong lớp (không tính điểm)',
+      'chapters.examBadge': 'Vào thi',
 
       'examLogin.title': 'Đăng nhập lớp hợp tác quốc tế',
       'examLogin.desc': 'Mục này chỉ dành cho sinh viên lớp hợp tác quốc tế UM Kendari × Đại học Cần Thơ. Nhập đúng email trường bạn dùng để đăng ký lớp.',
@@ -472,6 +473,7 @@
 
       'chapters.group.midterm': 'Midterm exam (graded)',
       'chapters.group.discussion': 'In-class discussion case studies (not graded)',
+      'chapters.examBadge': 'Take exam',
 
       'examLogin.title': 'International cooperation class sign-in',
       'examLogin.desc': "This section is only for students of the UM Kendari × Can Tho University international cooperation class. Enter the school email you used to register for the class.",
