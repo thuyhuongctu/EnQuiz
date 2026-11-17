@@ -402,7 +402,8 @@ code {
 
 /* Thẻ kính mờ — nền của hầu hết khối nội dung */
 .glass, .panel, .mode-card, .question-card, .result-hero,
-.kpi, .chapter-item, .history-item, .review-item, .preview-item, .lecture-item {
+.kpi, .chapter-item, .history-item, .review-item, .preview-item, .lecture-item,
+.continue-card {
   background: var(--glass);
   -webkit-backdrop-filter: blur(var(--blur));
   backdrop-filter: blur(var(--blur));
@@ -1284,6 +1285,43 @@ html[data-theme="dark"] .hero__map { opacity: .55; mix-blend-mode: screen; }
 .mode-card__body { display: flex; flex-direction: column; min-width: 0; flex: 1 1 auto; }
 .mode-card__body strong { font-size: 1rem; letter-spacing: -.01em; }
 .mode-card__body small { color: var(--muted); font-size: .79rem; line-height: 1.4; }
+
+/* Thẻ "Học tiếp" — vòng tiến độ + tên chương + nút ôn nhanh 10 câu.
+   Lưới 2 cột (vòng tiến độ | chữ), nút nằm hàng dưới chiếm trọn chiều
+   ngang — khai rõ grid-template-columns/areas để "vòng" và "chữ" luôn
+   nằm cạnh nhau, không bị xếp chồng dọc theo mặc định của grid. */
+.continue-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "ring info" "cta cta";
+  align-items: center;
+  gap: .5rem .9rem;
+  padding: .9rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+.continue-card__ring {
+  grid-area: ring;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--bg-soft) 0);
+}
+.continue-card__ring b {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  font-size: .76rem;
+  font-weight: 700;
+}
+.continue-card__info { grid-area: info; min-width: 0; }
+.continue-card__info b { display: block; font-size: .92rem; font-weight: 600; }
+.continue-card__cta { grid-area: cta; }
 .mode-card__go {
   width: 18px; height: 18px;
   color: var(--muted);

@@ -95,6 +95,10 @@
       'home.stat.done': 'lượt luyện',
       'home.stat.best': 'điểm cao nhất',
 
+      'continue.eyebrow': 'Học tiếp',
+      'continue.title': '{chapter} — mới thành thạo {pct}%',
+      'continue.cta': 'Ôn 10 câu',
+
       'mode.exam': 'Thi thử',
       'mode.exam.desc': 'Đề ngẫu nhiên, bấm giờ, chấm điểm cuối bài',
       'mode.practice': 'Ôn tập theo chương',
@@ -518,6 +522,10 @@
       'home.stat.chapters': 'chapters',
       'home.stat.done': 'attempts',
       'home.stat.best': 'best score',
+
+      'continue.eyebrow': 'Pick up here',
+      'continue.title': '{chapter} — now at {pct}% mastery',
+      'continue.cta': 'Practise 10 questions',
 
       'mode.exam': 'Mock exam',
       'mode.exam.desc': 'Random paper, timed, scored when you submit',

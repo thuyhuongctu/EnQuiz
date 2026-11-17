@@ -451,6 +451,7 @@
 
     renderHeroForGroup();
     renderModesForGroup();
+    renderContinueCard();
     renderChapterList();
     renderLectures();
     renderSpecialSets();
@@ -505,6 +506,46 @@
     // nguyên đề + đáp án thi thật. Ẩn hẳn, không có cách dùng nào an toàn.
     var practiceCard = $('.modes [data-mode="practice"]');
     if (practiceCard) practiceCard.classList.toggle('hidden', isIntl);
+  }
+
+  /* Thẻ "Học tiếp" trên trang chủ — tự tìm chương đang yếu nhất (theo tiến
+     độ đã lưu toàn cục, không phải của riêng một lượt làm) và mời ôn nhanh
+     10 câu, bấm là vào thẳng màn làm bài, không qua màn thiết lập. Chỉ hiện
+     ở trang Cô Hương: Thầy Tú/Lớp thi không có "ôn theo chương" dài hạn
+     giống vậy (case study thảo luận, bài thi thật khoá cứng nội dung). */
+  function renderContinueCard() {
+    var card = $('#continueCard');
+    if (!card) return;
+    var chapters = activeGroup === 'course' ? QuestionBank.chapters(activeGroup) : [];
+    if (!chapters.length) { card.classList.add('hidden'); return; }
+
+    var stats = Store.get('stats');
+    var rows = chapters.map(function (c) {
+      var correct = 0;
+      c.questions.forEach(function (q) {
+        var s = stats[q.uid];
+        if (s && s.correct > 0) correct++;
+      });
+      return { id: c.id, c: c, pct: c.questions.length ? Math.round(correct / c.questions.length * 100) : 0 };
+    });
+    rows.sort(function (a, b) { return a.pct - b.pct; });
+    var weak = rows[0];
+
+    card.classList.remove('hidden');
+    $('#continueRing').style.setProperty('--p', weak.pct);
+    $('#continuePct').textContent = weak.pct + '%';
+    $('#continueTitle').textContent = t('continue.title', { chapter: chapterLabel(weak.c), pct: weak.pct });
+    $('#btnContinue').setAttribute('data-practice-chapter', weak.id);
+  }
+
+  /* CTA của thẻ "Học tiếp": vào thẳng 10 câu ôn tập của chương đó, bỏ qua
+     màn thiết lập — khác với bấm vào mục chương trong danh sách (vẫn mở
+     màn thiết lập như trước). */
+  function startQuickPractice(chapterId) {
+    var pool = poolFor('practice', [chapterId]);
+    if (!pool.length) { toast(t('toast.emptyBank')); return; }
+    var picked = shuffle(pool).slice(0, Math.min(10, pool.length));
+    buildSession(picked, 'mode.practice', 'practice', true, 0, false, null, null);
   }
 
   /* Mách nước đổi ngôn ngữ và nền sáng/tối. Hiện cho tới khi người dùng tự
@@ -2265,6 +2306,10 @@
     // ----- Thiết lập đề -----
     $('#setupChapters').addEventListener('change', refreshSetupMax);
     $('#btnAllChapters').addEventListener('click', function () { openSetupGated('practice'); });
+    $('#btnContinue').addEventListener('click', function () {
+      var chapterId = this.getAttribute('data-practice-chapter');
+      if (chapterId) startQuickPractice(chapterId);
+    });
     $('#btnStart').addEventListener('click', startQuiz);
 
     // ----- Làm bài -----

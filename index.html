@@ -249,6 +249,17 @@
       </div>
     </div>
 
+    <!-- Thẻ "Học tiếp" — tự chọn chương đang yếu nhất (theo tiến độ đã
+         lưu), chỉ hiện ở trang Cô Hương (xem renderContinueCard()). -->
+    <div class="continue-card hidden" id="continueCard">
+      <div class="continue-card__ring" id="continueRing" style="--p:0"><b id="continuePct">0%</b></div>
+      <div class="continue-card__info">
+        <p class="eyebrow" data-i18n="continue.eyebrow">Học tiếp</p>
+        <b id="continueTitle"></b>
+      </div>
+      <button class="btn btn--primary continue-card__cta" id="btnContinue" type="button" data-i18n="continue.cta">Ôn 10 câu</button>
+    </div>
+
     <div class="modes">
       <button class="mode-card mode-card--primary" data-mode="exam" type="button">
         <span class="mode-card__icon"><svg class="ico" aria-hidden="true"><use href="#i-exam"/></svg></span>
