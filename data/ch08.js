@@ -3,7 +3,7 @@
    này tách hẳn khỏi lớp KT330H trong nước (case study, group "kt330h") sang
    nhóm riêng "kt330h-intl", có trang riêng (#/lop-thi), vào làm bài phải xác
    thực email trường trong danh sách lớp (xem openExamLogin() trong app.js).
-   "examMinutes": 60 — làm bài đúng 60 phút theo yêu cầu của Thầy Tú, khoá
+   "examMinutes": 30 — làm bài đúng 30 phút theo yêu cầu của Thầy Tú, khoá
    chế độ thi (không chọn lại thời gian/số câu), và chỉ được làm 1 lần cho
    mỗi email (kiểm tra qua Supabase, xem ATTEMPT_ENDPOINT trong app.js).
    Quiz 1 chính thức giữa kỳ (chương 1–3, 29 câu, 10% điểm môn) — thay cho bộ
@@ -25,7 +25,7 @@ registerBank({
   "titleEn": "Quiz 1 (midterm) · Chapters 1–3 · KT330H international section",
   "order": 8,
   "group": "kt330h-intl",
-  "examMinutes": 60,
+  "examMinutes": 30,
   "questions": [
   {
     "q": "Benefits of becoming an entrepreneur include independence, satisfaction, financial reward, self-esteem, and contributions to society.",
