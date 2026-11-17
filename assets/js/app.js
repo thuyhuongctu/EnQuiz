@@ -247,7 +247,10 @@
     var best = Store.bestScore();
     $('#hudDone').textContent = Store.get('history').length;
     $('#hudBest').textContent = best === null ? '–' : best.toFixed(1);
-    $('#hudWrong').textContent = QuestionBank.byUids(Store.get('wrong')).length;
+    var wrongCount = QuestionBank.byUids(Store.get('wrong')).length;
+    $('#hudWrong').textContent = wrongCount;
+    var botnavBadge = $('#botnavWrongCount');
+    if (botnavBadge) botnavBadge.textContent = wrongCount > 0 ? String(wrongCount) : '';
   }
 
   /* Huy hiệu: bốn mốc rút từ dữ liệu đã lưu, không có mốc nào không thể đạt.
