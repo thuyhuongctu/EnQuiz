@@ -894,7 +894,7 @@
       không chặn sinh viên xem kết quả (họ đã làm xong bài), nhưng bản ghi
       "đã làm 1 lần" có thể thiếu nếu mất mạng đúng lúc này — chấp nhận được
       vì hàng rào chính vẫn là kiểm tra lúc MỞ bài (continueToSetup ở trên). */
-  function recordExamAttempt(chapterId, score, total) {
+  function recordExamAttempt(chapterId, score, total, integrityViolations) {
     var email = Store.get('intlVerifiedEmail');
     if (!email || timedExamMinutes(chapterId) <= 0) return;
     // Cập nhật ngay trong bộ nhớ (không đợi máy chủ trả lời) để nếu sinh
@@ -903,7 +903,10 @@
     fetch(ATTEMPT_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'record', email: email, chapterId: chapterId, score: score, total: total })
+      body: JSON.stringify({
+        action: 'record', email: email, chapterId: chapterId, score: score, total: total,
+        integrityViolations: integrityViolations || 0
+      })
     }).catch(function () { /* mất mạng lúc này: bỏ qua, xem ghi chú ở trên */ });
   }
 
@@ -953,12 +956,17 @@
     var body = rows.map(function (r) {
       var pct = r.total ? Math.round(r.score / r.total * 100) : 0;
       var quizLabel = r.chapter_id === 'ch08' ? 'Quiz 1' : (r.chapter_id === 'ch09' ? 'Quiz 2' : esc(r.chapter_id));
+      // "Rời màn hình" (integrity_violations): cột mới, có thể vắng mặt nếu
+      // Edge Function chưa nâng cấp (cột chưa có trong CSDL) — coi như 0 khi
+      // đó, không làm vỡ bảng của những lượt nộp từ trước khi có cột này.
+      var violations = typeof r.integrity_violations === 'number' ? r.integrity_violations : 0;
       return '<tr>' +
         '<td>' + esc(r.full_name || r.email) + '</td>' +
         '<td>' + esc(r.student_no || '') + '</td>' +
         '<td>' + quizLabel + '</td>' +
         '<td>' + r.score + '/' + r.total + ' (' + pct + '%)</td>' +
         '<td>' + esc(new Date(r.submitted_at).toLocaleString()) + '</td>' +
+        '<td' + (violations > 0 ? ' class="admin-results-table__violations"' : '') + '>' + violations + '</td>' +
       '</tr>';
     }).join('');
 
@@ -968,6 +976,7 @@
       '<th>' + esc(t('adminResults.colQuiz')) + '</th>' +
       '<th>' + esc(t('adminResults.colScore')) + '</th>' +
       '<th>' + esc(t('adminResults.colSubmittedAt')) + '</th>' +
+      '<th>' + esc(t('adminResults.colLeftScreen')) + '</th>' +
     '</tr></thead><tbody>' + body + '</tbody></table>';
   }
 
@@ -1687,7 +1696,7 @@
         seconds: Math.round(session.elapsed)
       });
       session.saved = true;
-      if (session.lockedChapterId) recordExamAttempt(session.lockedChapterId, r.correct, r.total);
+      if (session.lockedChapterId) recordExamAttempt(session.lockedChapterId, r.correct, r.total, session.integrityViolations);
     }
 
     renderResult();
