@@ -515,16 +515,22 @@
      để không mời bấm vào một chỗ không dẫn đi đâu. */
   function renderModesForGroup() {
     var isIntl = activeGroup === 'kt330h-intl';
-    var examCard = $('.modes [data-mode="exam"]');
-    if (examCard) examCard.classList.toggle('hidden', isIntl);
 
     // "Ôn tập theo chương" chung chung trên trang này chỉ có thể chọn đúng
     // Quiz 1/2 làm phạm vi (chương của nhóm 'kt330h-intl' chỉ có 2 bài đó —
     // 2 case study thuộc nhóm 'kt330h', không nằm trong danh sách này) và mở
     // bằng chế độ luyện tập lộ đáp án ngay — tức là một lối vào xem trước
     // nguyên đề + đáp án thi thật. Ẩn hẳn, không có cách dùng nào an toàn.
-    var practiceCard = $('.modes [data-mode="practice"]');
-    if (practiceCard) practiceCard.classList.toggle('hidden', isIntl);
+    // Ẩn ở cả ba chỗ dẫn vào cùng continueToSetup(): thẻ trang chủ (.modes),
+    // thanh dọc màn rộng (.sidenav) và thanh dưới điện thoại (.botnav) —
+    // bản thân continueToSetup() cũng đã chặn ở tầng hàm (xem ở đó), đây chỉ
+    // là không mời bấm vào chỗ chỉ để nhận lại một toast.
+    $$('.modes [data-mode="exam"], .sidenav [data-mode="exam"], .botnav [data-mode="exam"]').forEach(function (el) {
+      el.classList.toggle('hidden', isIntl);
+    });
+    $$('.modes [data-mode="practice"], .sidenav [data-mode="practice"], .botnav [data-mode="practice"]').forEach(function (el) {
+      el.classList.toggle('hidden', isIntl);
+    });
   }
 
   /* Thẻ "Học tiếp" trên trang chủ — tự tìm chương đang yếu nhất (theo tiến
@@ -781,10 +787,13 @@
       "đã làm chưa" trên máy chủ trước khi mở màn thiết lập — mỗi sinh viên
       chỉ được làm 1 lần, theo yêu cầu của Thầy Tú. */
   function continueToSetup(mode, presetChapter) {
-    // "Thi thử" chung (không chọn chương cụ thể) trên trang Lớp thi sẽ gộp
-    // Quiz 1 + Quiz 2 thành một đề tự chọn, không khoá giờ/số câu/1 lần —
-    // chặn lối này, bắt chọn đúng 1 trong 2 bài từ danh sách chương.
-    if (mode === 'exam' && !presetChapter && activeGroup === 'kt330h-intl') {
+    // "Thi thử"/"Ôn tập theo chương" chung (không chọn chương cụ thể) trên
+    // trang Lớp thi sẽ gộp Quiz 1 + Quiz 2 — 2 chương duy nhất của nhóm này —
+    // thành một đề tự chọn, không khoá giờ/số câu/1 lần, và ở chế độ ôn tập
+    // còn lộ đáp án đúng ngay lập tức. Thẻ trên trang chủ đã ẩn cả hai lối
+    // này (renderModesForGroup()), nhưng sidenav/botnav vẫn còn nút chung
+    // dẫn tới đây — chặn ngay tại hàm, không phụ thuộc vào việc ẩn UI nào.
+    if ((mode === 'exam' || mode === 'practice') && !presetChapter && activeGroup === 'kt330h-intl') {
       toast(t('examAttempt.pickOne'));
       return;
     }
