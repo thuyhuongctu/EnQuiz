@@ -80,9 +80,11 @@ html[data-theme="clay"] .real-exam-bar__label { color: var(--graded); font-weigh
 html[data-theme="clay"] .real-exam-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-radius: 18px; background: var(--graded-soft); box-shadow: inset 0 0 0 1px var(--graded-stroke); }
 html[data-theme="clay"] .btn--submit-exam { background: #E08A78; color: #2A100A; }
 
-/* 09 · weakest chapter in the result breakdown */
-html[data-theme="clay"] .is-weakest .bar__fill { background: var(--graded); }
-html[data-theme="clay"] .is-weakest .pct { color: var(--graded); font-weight: 700; }
+/* 09 · weakest chapter in the result breakdown — tên lớp thật trong
+   app.js là .bych-row/.bych-row__fill, không phải .bar/.bar__fill/.pct
+   như bản CSS gốc giả định, nên đổi lại selector cho khớp. */
+html[data-theme="clay"] .is-weakest .bych-row__fill { background: var(--graded); }
+html[data-theme="clay"] .is-weakest .bych-row__head b { color: var(--graded); font-weight: 700; }
 
 /* 06 · bottom tab bar (phones) */
 html[data-theme="clay"] .tabbar { display: none; }
