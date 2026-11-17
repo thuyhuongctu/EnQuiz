@@ -83,6 +83,7 @@
       'btn.lang': 'Chuyển sang English',
       'btn.settings': 'Cài đặt',
       'btn.home': 'Trang chủ',
+      'classPill.switch': 'Đổi lớp',
       'btn.install': 'Cài đặt ứng dụng',
 
       'loading': 'Đang nạp ngân hàng câu hỏi…',
@@ -512,6 +513,7 @@
       'btn.lang': 'Chuyển sang Tiếng Việt',
       'btn.settings': 'Settings',
       'btn.home': 'Home',
+      'classPill.switch': 'Switch class',
       'btn.install': 'Install app',
 
       'loading': 'Loading the question bank…',

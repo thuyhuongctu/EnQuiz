@@ -463,6 +463,27 @@ code {
   color: transparent;
 }
 .brand__text small { color: var(--muted); font-size: .76rem; line-height: 1.2; }
+
+/* Nút đổi lớp nhanh trên thanh trên cùng — ảnh đại diện + tên lớp + mũi
+   tên, bấm là chuyển sang lớp còn lại (xem renderClassPill() trong app.js). */
+.class-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 38px;
+  padding: .2rem .65rem .2rem .2rem;
+  border-radius: 999px;
+  background: var(--glass-2);
+  border: 1px solid var(--glass-stroke);
+  color: var(--text);
+  font: 600 .78rem var(--font);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.class-pill__avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; display: block; }
+.class-pill__chevron { width: 14px; height: 14px; color: var(--muted); transform: rotate(90deg); }
+@media (max-width: 520px) { .class-pill__name { display: none; } .class-pill { padding: .2rem; gap: 0; } }
+
 .topbar__actions { display: flex; gap: .35rem; align-items: center; }
 
 .icon-btn {
