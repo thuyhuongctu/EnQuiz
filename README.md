@@ -16,7 +16,7 @@ diagnosis of each paper, and an importer that matches a pasted question paper to
 a pasted answer key by question number. It runs entirely in the browser, installs
 to the home screen, and keeps working with no network connection.
 
-**▶️ Live app:** <https://thuyhuongctu.github.io/EnQuiz/>
+**▶️ Live app:** <https://enquiz.bizonland.com/>
 **📦 Archived on Zenodo:** [10.5281/zenodo.21850735](https://doi.org/10.5281/zenodo.21850735)
 
 ![Do Thuy Huong, PhD Candidate, founder of EnQuiz, teaching an entrepreneurship
@@ -192,7 +192,7 @@ python3 -m http.server 8000
 ```
 
 **Publication:** every push to `main` triggers `.github/workflows/pages.yml`,
-which publishes <https://thuyhuongctu.github.io/EnQuiz/>. No manual step.
+which publishes <https://enquiz.bizonland.com/>. No manual step.
 
 **Installation:** open the page in Chrome, Edge or Safari and choose *Install
 app* / *Add to Home Screen*. A ⬇️ button also appears in the header when the
@@ -237,7 +237,7 @@ across sites. It reports how many times the app was opened, on which day, and
 from which country — nothing that identifies a person, and nothing about what
 a learner answered. This is disclosed in the app's own *Privacy* panel, in
 both languages, and in the full bilingual policy published at
-[chinh-sach.html](https://thuyhuongctu.github.io/EnQuiz/chinh-sach.html),
+[chinh-sach.html](https://enquiz.bizonland.com/chinh-sach.html),
 which is also the policy linked from the Google Play listing.
 
 Apart from the case study unlock above, the counter is the only external
