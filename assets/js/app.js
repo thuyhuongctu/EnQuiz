@@ -494,8 +494,17 @@
      thật tách biệt, mỗi bài khoá cứng chương/giờ riêng. Ẩn hẳn thẻ đó ở đây
      để không mời bấm vào một chỗ không dẫn đi đâu. */
   function renderModesForGroup() {
+    var isIntl = activeGroup === 'kt330h-intl';
     var examCard = $('.modes [data-mode="exam"]');
-    if (examCard) examCard.classList.toggle('hidden', activeGroup === 'kt330h-intl');
+    if (examCard) examCard.classList.toggle('hidden', isIntl);
+
+    // "Ôn tập theo chương" chung chung trên trang này chỉ có thể chọn đúng
+    // Quiz 1/2 làm phạm vi (chương của nhóm 'kt330h-intl' chỉ có 2 bài đó —
+    // 2 case study thuộc nhóm 'kt330h', không nằm trong danh sách này) và mở
+    // bằng chế độ luyện tập lộ đáp án ngay — tức là một lối vào xem trước
+    // nguyên đề + đáp án thi thật. Ẩn hẳn, không có cách dùng nào an toàn.
+    var practiceCard = $('.modes [data-mode="practice"]');
+    if (practiceCard) practiceCard.classList.toggle('hidden', isIntl);
   }
 
   /* Mách nước đổi ngôn ngữ và nền sáng/tối. Hiện cho tới khi người dùng tự
@@ -1381,6 +1390,10 @@
     }
 
     updateMarkButton(Store.isMarked(q.uid));
+    // Đánh dấu câu hỏi cũng ghi uid vào danh sách "Câu đã đánh dấu" dùng
+    // chung cho mọi trang — ẩn nút này khi đang thi thật để không lộ câu
+    // hỏi thi thật ra ngoài phạm vi thi qua đường đó.
+    $('#btnMark').classList.toggle('hidden', !!session.lockedChapterId);
 
     var reveal = it.revealed || session.submitted;
     var qOpts = questionOptions(q);
@@ -1475,14 +1488,19 @@
       stopIntegrity();
     }
 
-    // ghi nhận những câu chưa được chấm trong lúc làm
-    session.items.forEach(function (it) {
-      if (!it.revealed) {
-        if (it.picked !== null) Store.recordAnswer(it.q.uid, it.picked === it.correctPos);
-        else Store.addWrong(it.q.uid);
-      }
-    });
-    Store.save();
+    // ghi nhận những câu chưa được chấm trong lúc làm — bỏ qua với bài thi
+    // thật (session.lockedChapterId): nếu không, câu sai/câu đã đánh dấu
+    // trong lúc thi sẽ lọt vào danh sách "Luyện câu sai"/"Câu đã đánh dấu"
+    // dùng chung cho mọi trang, lộ nguyên đề thi thật ra ngoài phạm vi thi.
+    if (!session.lockedChapterId) {
+      session.items.forEach(function (it) {
+        if (!it.revealed) {
+          if (it.picked !== null) Store.recordAnswer(it.q.uid, it.picked === it.correctPos);
+          else Store.addWrong(it.q.uid);
+        }
+      });
+      Store.save();
+    }
 
     // lưu lịch sử đúng một lần cho mỗi phiên
     if (!session.saved) {
@@ -2258,6 +2276,7 @@
       if (confirm(t('quiz.confirmQuit'))) goHome();
     });
     $('#btnMark').addEventListener('click', function () {
+      if (session.lockedChapterId) return;
       var q = session.items[session.index].q;
       var on = Store.toggleMark(q.uid);
       updateMarkButton(on);
