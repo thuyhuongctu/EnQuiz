@@ -2372,6 +2372,25 @@ input[type="number"]:focus, input[type="file"]:focus {
   color: var(--on-primary);
 }
 
+/* ---------------- Bảng điểm Quiz (quản trị lớp quốc tế) ---------------- */
+.admin-results-table { margin-top: .8rem; overflow-x: auto; }
+.admin-results-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .86rem;
+}
+.admin-results-table th, .admin-results-table td {
+  padding: .45rem .6rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+.admin-results-table th {
+  font-family: var(--display);
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
 /* ---------------- Chính sách bản quyền ---------------- */
 .policy { font-size: .9rem; color: var(--text-soft); }
 /* Đoạn quyền riêng tư có xuống dòng thật trong từ điển; giữ lại chỗ ngắt ấy
