@@ -1121,6 +1121,10 @@
     // toàn bộ câu — sinh viên không được tự chọn lại, đúng yêu cầu của Thầy Tú.
     setup.fixedMinutes = presetChap && presetChap.examMinutes > 0 ? presetChap.examMinutes : 0;
     var isTimedExam = setup.fixedMinutes > 0;
+    // Tiêu đề màn thiết lập: bài thi thật ghi rõ "Thi thật" + đúng tên bài
+    // (vd "Quiz 1 (giữa kỳ)..."), không dùng nhãn chung "Thi thử" — đây là
+    // thi thật tính điểm, không phải luyện tập, tránh nhầm lẫn 2 cái.
+    setup.lockedLabel = isTimedExam ? t('setup.realExam') + ' · ' + chapterLabel(presetChap) : null;
 
     var scoped = (mode === 'wrong' || mode === 'marked' || isOutsideCourse);
     $('#fieldChapterPick').classList.toggle('hidden', scoped);
@@ -1139,7 +1143,7 @@
   }
 
   function renderSetupTexts() {
-    $('#setupTitle').textContent = t('mode.' + setup.mode);
+    $('#setupTitle').textContent = setup.lockedLabel || t('mode.' + setup.mode);
     $('#setupDesc').textContent = setup.fixedMinutes > 0
       ? t('setup.desc.exam') + ' ' + t('setup.fixedTime', { n: setup.fixedMinutes })
       : t('setup.desc.' + setup.mode);
