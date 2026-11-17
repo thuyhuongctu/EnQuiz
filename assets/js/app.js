@@ -450,6 +450,7 @@
     renderHud();
 
     renderHeroForGroup();
+    renderModesForGroup();
     renderChapterList();
     renderLectures();
     renderSpecialSets();
@@ -485,6 +486,16 @@
     if (fr) fr.classList.toggle('hidden', !!prefix);
     if (img) img.setAttribute('src', prefix ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-welcome.webp');
     if (banner) banner.setAttribute('src', prefix ? 'assets/img/tu-quiz.webp' : 'assets/img/huong-quiz.webp');
+  }
+
+  /* Thẻ "Thi thử" ở đầu danh sách chế độ là ngõ cụt trên trang Lớp thi: bấm
+     vào chỉ hiện toast bắt chọn đúng Quiz 1/2 riêng (xem continueToSetup()),
+     vì trang này không có khái niệm "đề ngẫu nhiên nhiều chương" — 2 bài thi
+     thật tách biệt, mỗi bài khoá cứng chương/giờ riêng. Ẩn hẳn thẻ đó ở đây
+     để không mời bấm vào một chỗ không dẫn đi đâu. */
+  function renderModesForGroup() {
+    var examCard = $('.modes [data-mode="exam"]');
+    if (examCard) examCard.classList.toggle('hidden', activeGroup === 'kt330h-intl');
   }
 
   /* Mách nước đổi ngôn ngữ và nền sáng/tối. Hiện cho tới khi người dùng tự
@@ -1583,6 +1594,12 @@
     $('#btnReview').textContent = reviewOpen ? t('result.hideReview') : t('result.review');
     if (reviewOpen) renderReview();
     $('#btnRetryWrong').disabled = r.wrong + r.skip === 0;
+
+    // Bài thi thật đã nộp xong, không làm lại được (khoá ở máy chủ) — ẩn
+    // "Luyện lại câu sai"/"Làm đề mới" vì cả hai đều ngụ ý còn làm lại được,
+    // chỉ để lại "Xem lại bài làm" (xem đúng/sai) và "Về trang chủ".
+    $('#btnRetryWrong').classList.toggle('hidden', isOfficialExam);
+    $('#btnRedo').classList.toggle('hidden', isOfficialExam);
   }
 
   /* Bảng số liệu theo chương đã có sẵn, nhưng người học phải tự dò xem chương
