@@ -1311,12 +1311,27 @@
     show('screenSetup');
   }
 
+  var SETUP_EXAM_RULE_KEYS = ['setup.rules.time', 'setup.rules.once', 'setup.rules.logged', 'setup.rules.noCopy', 'setup.rules.noMissed'];
+
   function renderSetupTexts() {
     var lockedChap = setup.lockedChapterId ? QuestionBank.chapter(setup.lockedChapterId) : null;
     $('#setupTitle').textContent = lockedChap ? (t('setup.realExam') + ' · ' + chapterLabel(lockedChap)) : t('mode.' + setup.mode);
     $('#setupDesc').textContent = setup.fixedMinutes > 0
-      ? t('setup.desc.exam') + ' ' + t('setup.fixedTime', { n: setup.fixedMinutes })
+      ? t('setup.fixedTime', { n: setup.fixedMinutes })
       : t('setup.desc.' + setup.mode);
+
+    // Bài thi thật khoá cứng: liệt kê rõ 5 ràng buộc thay vì chỉ một câu mô
+    // tả, và đổi nút "Bắt đầu làm bài" chung thành "Bắt đầu · toàn màn hình"
+    // — tất cả 5 điều này đều là hành vi đã có sẵn (bấm giờ tự nộp, 1 lần,
+    // ghi nhận rời màn hình, khoá copy/paste, không vào danh sách Câu sai),
+    // đây chỉ là nói rõ ra trước khi bắt đầu.
+    var isLockedExam = setup.fixedMinutes > 0;
+    var rulesList = $('#setupRules');
+    rulesList.classList.toggle('hidden', !isLockedExam);
+    rulesList.innerHTML = isLockedExam
+      ? SETUP_EXAM_RULE_KEYS.map(function (k) { return '<li>' + esc(t(k)) + '</li>'; }).join('')
+      : '';
+    $('#btnStart').textContent = isLockedExam ? t('setup.beginExam') : t('setup.start');
   }
 
   function renderChapterPicker() {
