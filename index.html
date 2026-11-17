@@ -510,6 +510,9 @@
            loading="lazy" decoding="async" data-i18n-attr="alt:setup.alt" alt="">
       <h2 id="setupTitle" data-i18n="setup.title">Thiết lập đề thi</h2>
       <p class="muted" id="setupDesc"></p>
+      <!-- Chỉ hiện với bài thi thật khoá cứng (examMinutes > 0) — liệt kê rõ
+           các ràng buộc thay vì chỉ một câu mô tả, xem renderSetupTexts(). -->
+      <ul class="setup-rules hidden" id="setupRules"></ul>
 
       <div class="field" id="fieldCount">
         <label for="setupCount" data-i18n="setup.count">Số câu hỏi</label>
