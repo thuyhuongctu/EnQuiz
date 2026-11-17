@@ -2146,6 +2146,10 @@ input[type="number"]:focus, input[type="file"]:focus {
   border-radius: 999px;
   box-shadow: 0 0 10px var(--glow-2);
 }
+/* Chương yếu nhất trong bảng phân tích — nổi bật bằng màu "nguy hiểm"
+   dùng chung mọi theme, không riêng Clay (xem renderResult() trong app.js). */
+.is-weakest .bych-row__fill { background: var(--danger); box-shadow: none; }
+.is-weakest .bych-row__head b { color: var(--danger); font-weight: 700; }
 
 .review { display: flex; flex-direction: column; gap: .8rem; }
 .review-item {

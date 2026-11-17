@@ -1653,10 +1653,25 @@
     $('#resSkip').textContent = r.skip;
     $('#resTime').textContent = mmss(session.elapsed);
 
-    $('#resByChapter').innerHTML = Object.keys(r.byChapter).map(function (k) {
+    // Chương yếu nhất (cùng công thức/ngưỡng với renderInsight() bên dưới)
+    // được đánh dấu riêng (.is-weakest) để nổi bật ngay trong bảng, không
+    // phải dò qua từng dòng mới biết chương nào đang kém nhất.
+    var chapterKeys = Object.keys(r.byChapter);
+    var weakestKey = null;
+    var withEnough = chapterKeys.filter(function (k) { return r.byChapter[k].total >= 3; });
+    var pool = withEnough.length ? withEnough : chapterKeys;
+    if (pool.length) {
+      weakestKey = pool.reduce(function (worst, k) {
+        var ratio = r.byChapter[k].correct / r.byChapter[k].total;
+        var worstRatio = r.byChapter[worst].correct / r.byChapter[worst].total;
+        return ratio < worstRatio ? k : worst;
+      }, pool[0]);
+    }
+
+    $('#resByChapter').innerHTML = chapterKeys.map(function (k) {
       var c = r.byChapter[k];
       var p = Math.round(c.correct / c.total * 100);
-      return '<div class="bych-row">' +
+      return '<div class="bych-row' + (k === weakestKey ? ' is-weakest' : '') + '">' +
         '<div class="bych-row__head"><span>' + esc(questionChapter(c.q)) + '</span><b>' +
           c.correct + '/' + c.total + '</b></div>' +
         '<div class="bych-row__bar"><div class="bych-row__fill" style="width:' + p + '%"></div></div>' +
