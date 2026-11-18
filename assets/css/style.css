@@ -2522,6 +2522,16 @@ input[type="number"]:focus, input[type="file"]:focus {
 /* Số lần "rời màn hình" khác 0 tô màu để giảng viên thấy ngay dòng nào
    đáng chú ý, không phải dò từng số trong cột. */
 .admin-results-table__violations { color: var(--danger); font-weight: 700; }
+/* Tiêu đề từng bảng con (Quiz 1 · n sinh viên / Quiz 2 · n sinh viên) khi
+   bảng điểm được tách riêng theo bài thay vì gộp chung 1 bảng. */
+.admin-results-table__group {
+  margin: 1.1rem 0 .3rem;
+  font-family: var(--display);
+  font-size: .95rem;
+  color: var(--text);
+}
+.admin-results-table__group:first-child { margin-top: 0; }
+.admin-results-table__attempt { color: var(--text-soft); font-weight: 400; font-size: .85em; }
 
 /* ---------------- Chính sách bản quyền ---------------- */
 .policy { font-size: .9rem; color: var(--text-soft); }
