@@ -761,6 +761,16 @@
       <button class="icon-btn" data-close type="button" aria-label="✕">✕</button>
     </div>
     <div class="modal__body">
+      <!-- Đặt lên đầu, không để cuối danh sách phải cuộn sâu mới thấy —
+           đây là mục bạn Hương/Tú bấm vào thường xuyên nhất mỗi khi có
+           sinh viên nộp bài, khác với các mục cài đặt còn lại chỉ thỉnh
+           thoảng mới cần đổi. -->
+      <div class="field">
+        <label data-i18n="settings.adminResults">Quản trị lớp hợp tác quốc tế</label>
+        <div class="actions">
+          <button class="btn btn--sm btn--primary" id="btnOpenAdminResults" type="button" data-i18n="settings.adminResultsBtn">📊 Xem điểm Quiz 1/2</button>
+        </div>
+      </div>
       <div class="field">
         <label data-i18n="settings.language">Ngôn ngữ</label>
         <div class="chips" id="langChips">
@@ -808,12 +818,6 @@
         <div class="actions actions--wrap">
           <button class="btn btn--sm" id="btnExportProgress" type="button" data-i18n="settings.export">Xuất tiến độ</button>
           <button class="btn btn--sm btn--danger" id="btnResetAll" type="button" data-i18n="settings.reset">Xoá toàn bộ dữ liệu</button>
-        </div>
-      </div>
-      <div class="field">
-        <label data-i18n="settings.adminResults">Quản trị lớp hợp tác quốc tế</label>
-        <div class="actions">
-          <button class="btn btn--sm" id="btnOpenAdminResults" type="button" data-i18n="settings.adminResultsBtn">📊 Xem điểm Quiz 1/2</button>
         </div>
       </div>
     </div>
