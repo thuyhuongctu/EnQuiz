@@ -975,35 +975,56 @@
     if (!table) return;
     if (!rows.length) { table.innerHTML = '<p class="muted">' + esc(t('adminResults.empty')) + '</p>'; return; }
 
-    var body = rows.map(function (r) {
-      var pct = r.total ? Math.round(r.score / r.total * 100) : 0;
-      var quizLabel = r.chapter_id === 'ch08' ? 'Quiz 1' : (r.chapter_id === 'ch09' ? 'Quiz 2' : esc(r.chapter_id));
-      // "Lần N": chỉ hiện khi máy chủ đã nâng cấp (đã có cột attempt_no) và
-      // thật sự là lần thứ 2 trở lên — thi tối đa 2 lần nên bản ghi lần 1
-      // không cần gắn thêm gì cho đỡ rối mắt.
-      if (typeof r.attempt_no === 'number' && r.attempt_no > 1) quizLabel += ' (' + esc(t('adminResults.attemptNo', { n: r.attempt_no })) + ')';
-      // "Rời màn hình" (integrity_violations): cột mới, có thể vắng mặt nếu
-      // Edge Function chưa nâng cấp (cột chưa có trong CSDL) — coi như 0 khi
-      // đó, không làm vỡ bảng của những lượt nộp từ trước khi có cột này.
-      var violations = typeof r.integrity_violations === 'number' ? r.integrity_violations : 0;
-      return '<tr>' +
-        '<td>' + esc(r.full_name || r.email) + '</td>' +
-        '<td>' + esc(r.student_no || '') + '</td>' +
-        '<td>' + quizLabel + '</td>' +
-        '<td>' + r.score + '/' + r.total + ' (' + pct + '%)</td>' +
-        '<td>' + esc(new Date(r.submitted_at).toLocaleString()) + '</td>' +
-        '<td' + (violations > 0 ? ' class="admin-results-table__violations"' : '') + '>' + violations + '</td>' +
-      '</tr>';
-    }).join('');
+    // Tách riêng từng bài (Quiz 1/Quiz 2) thành 1 bảng, điểm cao xếp trước
+    // — thay vì 1 bảng chung lẫn cả 2 bài theo thời gian nộp như trước, để
+    // dễ so sánh điểm trong cùng 1 bài (theo yêu cầu "Cài trên app").
+    var groups = {}, order = [];
+    rows.forEach(function (r) {
+      if (!groups[r.chapter_id]) { groups[r.chapter_id] = []; order.push(r.chapter_id); }
+      groups[r.chapter_id].push(r);
+    });
+    var QUIZ_RANK = { ch08: 0, ch09: 1 };
+    order.sort(function (a, b) {
+      var ra = QUIZ_RANK[a] !== undefined ? QUIZ_RANK[a] : 2;
+      var rb = QUIZ_RANK[b] !== undefined ? QUIZ_RANK[b] : 2;
+      return ra !== rb ? ra - rb : a.localeCompare(b);
+    });
 
-    table.innerHTML = '<table><thead><tr>' +
-      '<th>' + esc(t('adminResults.colName')) + '</th>' +
-      '<th>' + esc(t('adminResults.colStudentNo')) + '</th>' +
-      '<th>' + esc(t('adminResults.colQuiz')) + '</th>' +
-      '<th>' + esc(t('adminResults.colScore')) + '</th>' +
-      '<th>' + esc(t('adminResults.colSubmittedAt')) + '</th>' +
-      '<th>' + esc(t('adminResults.colLeftScreen')) + '</th>' +
-    '</tr></thead><tbody>' + body + '</tbody></table>';
+    table.innerHTML = order.map(function (chapterId) {
+      var quizLabel = chapterId === 'ch08' ? 'Quiz 1' : (chapterId === 'ch09' ? 'Quiz 2' : esc(chapterId));
+      var group = groups[chapterId].slice().sort(function (a, b) { return b.score - a.score; });
+
+      var body = group.map(function (r) {
+        var pct = r.total ? Math.round(r.score / r.total * 100) : 0;
+        var nameCell = esc(r.full_name || r.email);
+        // "Lần N": chỉ hiện khi máy chủ đã nâng cấp (đã có cột attempt_no) và
+        // thật sự là lần thứ 2 trở lên — thi tối đa 2 lần nên bản ghi lần 1
+        // không cần gắn thêm gì cho đỡ rối mắt.
+        if (typeof r.attempt_no === 'number' && r.attempt_no > 1) {
+          nameCell += ' <span class="admin-results-table__attempt">(' + esc(t('adminResults.attemptNo', { n: r.attempt_no })) + ')</span>';
+        }
+        // "Rời màn hình" (integrity_violations): cột mới, có thể vắng mặt nếu
+        // Edge Function chưa nâng cấp (cột chưa có trong CSDL) — coi như 0 khi
+        // đó, không làm vỡ bảng của những lượt nộp từ trước khi có cột này.
+        var violations = typeof r.integrity_violations === 'number' ? r.integrity_violations : 0;
+        return '<tr>' +
+          '<td>' + nameCell + '</td>' +
+          '<td>' + esc(r.student_no || '') + '</td>' +
+          '<td>' + r.score + '/' + r.total + ' (' + pct + '%)</td>' +
+          '<td>' + esc(new Date(r.submitted_at).toLocaleString()) + '</td>' +
+          '<td' + (violations > 0 ? ' class="admin-results-table__violations"' : '') + '>' + violations + '</td>' +
+        '</tr>';
+      }).join('');
+
+      return '<h4 class="admin-results-table__group">' + esc(t('adminResults.groupCount', { quiz: quizLabel, n: group.length })) + '</h4>' +
+        '<table><thead><tr>' +
+          '<th>' + esc(t('adminResults.colName')) + '</th>' +
+          '<th>' + esc(t('adminResults.colStudentNo')) + '</th>' +
+          '<th>' + esc(t('adminResults.colScore')) + '</th>' +
+          '<th>' + esc(t('adminResults.colSubmittedAt')) + '</th>' +
+          '<th>' + esc(t('adminResults.colLeftScreen')) + '</th>' +
+        '</tr></thead><tbody>' + body + '</tbody></table>';
+    }).join('');
   }
 
   function submitExamLogin() {
