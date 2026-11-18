@@ -117,6 +117,7 @@
       'chapters.all': 'Ôn tất cả',
       'chapters.empty': 'Chưa có câu hỏi nào. Hãy dùng công cụ “Ghép đề & đáp án” để nhập bộ đề của bạn.',
       'chapters.meta': '{n} câu · đã làm {seen} · thuộc {pct}%',
+      'chapters.metaExam': '{n} câu · {min} phút',
 
       'lecture.eyebrow': 'Bài giảng',
       'lecture.heading': 'Bài giảng theo chương',
@@ -555,6 +556,7 @@
       'chapters.all': 'Practice all',
       'chapters.empty': 'No questions yet. Use the “Merge questions & answer key” tool to import your own set.',
       'chapters.meta': '{n} questions · {seen} attempted · {pct}% mastered',
+      'chapters.metaExam': '{n} questions · {min} minutes',
 
       'lecture.eyebrow': 'Lectures',
       'lecture.heading': 'Lectures by chapter',
