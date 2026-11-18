@@ -936,11 +936,17 @@
      Vào qua Cài đặt → "Xem điểm Quiz 1/2". Nhập email quản trị (2 email đã
      khai trong roster), Edge Function tự kiểm tra có phải admin không rồi
      mới trả bảng điểm — không có gì ở phía app quyết định ai là admin. */
+  /** Dữ liệu bảng điểm lần tra cứu gần nhất — giữ lại để nút "Tải xuống"
+      xuất file ngay, không phải gọi lại máy chủ lần nữa. */
+  var adminResultsRows = [];
+
   function openAdminResults() {
     var input = $('#adminResultsEmail'), err = $('#adminResultsErr'), table = $('#adminResultsTable');
     if (input) input.value = Store.get('intlVerifiedEmail') || '';
     if (err) err.textContent = '';
     if (table) table.innerHTML = '';
+    adminResultsRows = [];
+    $('#btnAdminResultsDownload').classList.add('hidden');
     var modal = $('#modalAdminResults');
     if (modal) modal.classList.remove('hidden');
   }
@@ -955,6 +961,8 @@
     }
     if (err) err.textContent = '';
     if (table) table.innerHTML = '';
+    adminResultsRows = [];
+    $('#btnAdminResultsDownload').classList.add('hidden');
     if (btn) btn.disabled = true;
     fetch(ATTEMPT_ENDPOINT, {
       method: 'POST',
@@ -962,22 +970,26 @@
       body: JSON.stringify({ action: 'list', email: email })
     }).then(function (r) { return r.json(); }).then(function (d) {
       if (btn) btn.disabled = false;
-      if (d && d.ok) renderAdminResultsTable(d.rows || []);
-      else if (err) err.textContent = t('adminResults.denied');
+      if (d && d.ok) {
+        adminResultsRows = d.rows || [];
+        renderAdminResultsTable(adminResultsRows);
+        $('#btnAdminResultsDownload').classList.toggle('hidden', !adminResultsRows.length);
+      } else if (err) err.textContent = t('adminResults.denied');
     }).catch(function () {
       if (btn) btn.disabled = false;
       if (err) err.textContent = t('examAttempt.networkErr');
     });
   }
 
-  function renderAdminResultsTable(rows) {
-    var table = $('#adminResultsTable');
-    if (!table) return;
-    if (!rows.length) { table.innerHTML = '<p class="muted">' + esc(t('adminResults.empty')) + '</p>'; return; }
+  function quizLabelFor(chapterId) {
+    return chapterId === 'ch08' ? 'Quiz 1' : (chapterId === 'ch09' ? 'Quiz 2' : chapterId);
+  }
 
-    // Tách riêng từng bài (Quiz 1/Quiz 2) thành 1 bảng, điểm cao xếp trước
-    // — thay vì 1 bảng chung lẫn cả 2 bài theo thời gian nộp như trước, để
-    // dễ so sánh điểm trong cùng 1 bài (theo yêu cầu "Cài trên app").
+  /** Tách rows theo từng bài (Quiz 1/Quiz 2), mỗi nhóm sắp điểm cao→thấp,
+      Quiz 1 luôn đứng trước Quiz 2 (mã khác nếu có thì xếp sau theo abc) —
+      dùng chung cho cả bảng hiển thị lẫn file CSV tải xuống, để 2 nơi luôn
+      liệt kê đúng y hệt nhau. */
+  function groupAdminRows(rows) {
     var groups = {}, order = [];
     rows.forEach(function (r) {
       if (!groups[r.chapter_id]) { groups[r.chapter_id] = []; order.push(r.chapter_id); }
@@ -989,10 +1001,19 @@
       var rb = QUIZ_RANK[b] !== undefined ? QUIZ_RANK[b] : 2;
       return ra !== rb ? ra - rb : a.localeCompare(b);
     });
+    return order.map(function (chapterId) {
+      return { chapterId: chapterId, rows: groups[chapterId].slice().sort(function (a, b) { return b.score - a.score; }) };
+    });
+  }
 
-    table.innerHTML = order.map(function (chapterId) {
-      var quizLabel = chapterId === 'ch08' ? 'Quiz 1' : (chapterId === 'ch09' ? 'Quiz 2' : esc(chapterId));
-      var group = groups[chapterId].slice().sort(function (a, b) { return b.score - a.score; });
+  function renderAdminResultsTable(rows) {
+    var table = $('#adminResultsTable');
+    if (!table) return;
+    if (!rows.length) { table.innerHTML = '<p class="muted">' + esc(t('adminResults.empty')) + '</p>'; return; }
+
+    table.innerHTML = groupAdminRows(rows).map(function (g) {
+      var chapterId = g.chapterId, group = g.rows;
+      var quizLabel = esc(quizLabelFor(chapterId));
 
       var body = group.map(function (r) {
         var pct = r.total ? Math.round(r.score / r.total * 100) : 0;
@@ -1025,6 +1046,36 @@
           '<th>' + esc(t('adminResults.colLeftScreen')) + '</th>' +
         '</tr></thead><tbody>' + body + '</tbody></table>';
     }).join('');
+  }
+
+  function csvCell(v) {
+    var s = String(v == null ? '' : v);
+    // Bọc trong dấu nháy kép nếu có dấu phẩy/nháy kép/xuống dòng, theo đúng
+    // chuẩn CSV — nháy kép bên trong nhân đôi lên.
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+
+  /** Xuất đúng dữ liệu đang hiển thị (adminResultsRows) ra file .csv — cùng
+      thứ tự Quiz 1 trước/Quiz 2 sau, điểm cao→thấp như trên màn hình, để mở
+      bằng Excel/Google Sheets mà không cần quay lại nhờ tạo file thủ công. */
+  function downloadAdminResultsCsv() {
+    if (!adminResultsRows.length) return;
+    var header = ['Bài', 'Họ tên', 'MSSV', 'Điểm', 'Tổng câu', '% đúng', 'Thời điểm nộp', 'Rời màn hình'];
+    var lines = [header.map(csvCell).join(',')];
+    groupAdminRows(adminResultsRows).forEach(function (g) {
+      var quizLabel = quizLabelFor(g.chapterId);
+      g.rows.forEach(function (r) {
+        var pct = r.total ? Math.round(r.score / r.total * 100) : 0;
+        var violations = typeof r.integrity_violations === 'number' ? r.integrity_violations : 0;
+        lines.push([
+          quizLabel, r.full_name || r.email, r.student_no || '', r.score, r.total,
+          pct + '%', new Date(r.submitted_at).toLocaleString(), violations
+        ].map(csvCell).join(','));
+      });
+    });
+    // BOM đầu file để Excel nhận đúng chữ có dấu (UTF-8 không BOM thì Excel
+    // hay hiện lỗi font trên Windows).
+    download('ket-qua-quiz-kt330h.csv', '﻿' + lines.join('\r\n'), 'text/csv;charset=utf-8');
   }
 
   function submitExamLogin() {
@@ -2147,8 +2198,8 @@
     });
   }
 
-  function download(filename, text) {
-    var blob = new Blob([text], { type: 'application/json;charset=utf-8' });
+  function download(filename, text, mime) {
+    var blob = new Blob([text], { type: mime || 'application/json;charset=utf-8' });
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = filename;
@@ -2349,6 +2400,7 @@
       openAdminResults();
     });
     $('#btnAdminResultsSubmit').addEventListener('click', submitAdminResults);
+    $('#btnAdminResultsDownload').addEventListener('click', downloadAdminResultsCsv);
     $('#adminResultsEmail').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); submitAdminResults(); }
     });
