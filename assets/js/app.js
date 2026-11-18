@@ -631,7 +631,12 @@
       '<span class="chapter-item__main">' +
         '<span class="chapter-item__title">' + esc(chapterLabel(c)) + examBadge + '</span>' +
         '<span class="chapter-item__meta">' +
-          esc(t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
+          // Bài thi thật: bỏ "đã làm/thuộc bài" — cách nói đó hợp với ôn tập
+          // dài hạn, không hợp với một bài thi làm đúng 1 lần. Chỉ còn số
+          // câu và số phút, khớp đúng cách ghi trong bản thiết kế gốc.
+          esc(c.examMinutes > 0
+            ? t('chapters.metaExam', { n: c.questions.length, min: c.examMinutes })
+            : t('chapters.meta', { n: c.questions.length, seen: seen, pct: pct })) +
         '</span>' +
       '</span>' +
       '<svg class="ico chapter-item__go" aria-hidden="true"><use href="#i-chevron"/></svg>' +
