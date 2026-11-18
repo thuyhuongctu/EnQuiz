@@ -607,7 +607,7 @@
     var attemptInfo = intlAttemptStatus[c.id];
     var examBadge = '';
     if (c.examMinutes > 0) {
-      if (attemptInfo && attemptInfo.attempted) {
+      if (attemptInfo && attemptInfo.attempts > 0) {
         // Ngày giờ ngắn gọn (không giây/múi giờ) để nhãn không quá dài,
         // tràn ngang thẻ chương — cùng kiểu rút gọn renderHistory() đang
         // dùng cho lịch sử làm bài.
@@ -618,8 +618,10 @@
           stamp = d.toLocaleDateString(locale) + ' ' +
             String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
         }
+        // Luôn hiện "(n/tối đa)" — tối đa 2 lần, nên khi n=1 vẫn bấm được
+        // để thi lại, khi n=2 (hết lượt) bấm vào sẽ bị chặn ở continueToSetup().
         examBadge = '<span class="chapter-item__examBadge chapter-item__examBadge--done">' +
-          esc(t('chapters.examDone', { time: stamp })) + '</span>';
+          esc(t('chapters.examDone', { n: attemptInfo.attempts, max: attemptInfo.maxAttempts, time: stamp })) + '</span>';
       } else {
         examBadge = '<span class="chapter-item__examBadge">' + esc(t('chapters.examBadge')) + '</span>';
       }
@@ -798,6 +800,17 @@
     return c && c.examMinutes > 0 ? c.examMinutes : 0;
   }
 
+  /** Đọc kết quả action:'check' từ Edge Function, tương thích ngược với bản
+      máy chủ CŨ (chỉ trả "attempted", chưa có "attempts"/"canAttempt") —
+      phòng trường hợp bản app này được phát hành trước khi máy chủ kịp nâng
+      cấp lên tối đa 2 lần thi, để khỏi khoá nhầm TẤT CẢ sinh viên (kể cả
+      người chưa thi lần nào) trong lúc chờ nâng cấp máy chủ. */
+  function parseAttemptCheck(d) {
+    var canAttempt = typeof d.canAttempt === 'boolean' ? d.canAttempt : !d.attempted;
+    var attempts = typeof d.attempts === 'number' ? d.attempts : (d.attempted ? 1 : 0);
+    return { attempts: attempts, maxAttempts: d.maxAttempts || 2, canAttempt: canAttempt, submittedAt: d.submittedAt || null };
+  }
+
   /** Tra trước trạng thái "đã nộp Quiz 1/2 chưa" ngay khi vào trang Lớp thi
       (đã xác minh email), để danh sách chương hiện đúng "Vào thi" hay
       "✓ Đã nộp" mà không phải đợi bấm vào mới biết — xem renderChapterItem().
@@ -816,9 +829,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'check', email: email, chapterId: c.id })
       }).then(function (r) { return r.json(); }).then(function (d) {
-        intlAttemptStatus[c.id] = (d && d.ok)
-          ? { attempted: !!d.attempted, submittedAt: d.submittedAt || null }
-          : null;
+        intlAttemptStatus[c.id] = (d && d.ok) ? parseAttemptCheck(d) : null;
         if (activeGroup === 'kt330h-intl') renderChapterList();
       }).catch(function () {
         intlAttemptStatus[c.id] = null;
@@ -849,7 +860,7 @@
   /** Sau khi qua được hàng rào email (hoặc không cần, với nhóm khác): hai
       bài Quiz chính thức (examMinutes > 0) còn phải qua 1 vòng kiểm tra
       "đã làm chưa" trên máy chủ trước khi mở màn thiết lập — mỗi sinh viên
-      chỉ được làm 1 lần, theo yêu cầu của Thầy Tú. */
+      được làm tối đa 2 lần, theo yêu cầu của Thầy Tú. */
   function continueToSetup(mode, presetChapter) {
     // "Thi thử"/"Ôn tập theo chương" chung (không chọn chương cụ thể) trên
     // trang Lớp thi sẽ gộp Quiz 1 + Quiz 2 — 2 chương duy nhất của nhóm này —
@@ -872,10 +883,10 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'check', email: email, chapterId: presetChapter })
     }).then(function (r) { return r.json(); }).then(function (d) {
-      if (d && d.ok && d.attempted) {
-        showAttemptBlocked(d.submittedAt);
-      } else if (d && d.ok) {
-        openSetup('exam', presetChapter);
+      if (d && d.ok) {
+        var info = parseAttemptCheck(d);
+        if (!info.canAttempt) showAttemptBlocked(info.submittedAt);
+        else openSetup('exam', presetChapter);
       } else {
         toast(t('examAttempt.networkErr'));
       }
@@ -897,14 +908,20 @@
   /** Ghi nhận đã làm xong một bài Quiz chính thức lên máy chủ — gọi đúng 1
       lần, ngay sau khi chấm điểm (xem submitQuiz()). Lỗi mạng ở bước này
       không chặn sinh viên xem kết quả (họ đã làm xong bài), nhưng bản ghi
-      "đã làm 1 lần" có thể thiếu nếu mất mạng đúng lúc này — chấp nhận được
+      "đã làm thêm 1 lần" có thể thiếu nếu mất mạng đúng lúc này — chấp nhận được
       vì hàng rào chính vẫn là kiểm tra lúc MỞ bài (continueToSetup ở trên). */
   function recordExamAttempt(chapterId, score, total, integrityViolations) {
     var email = Store.get('intlVerifiedEmail');
     if (!email || timedExamMinutes(chapterId) <= 0) return;
     // Cập nhật ngay trong bộ nhớ (không đợi máy chủ trả lời) để nếu sinh
-    // viên quay lại trang chủ, danh sách chương đã hiện "✓ Đã nộp" luôn.
-    intlAttemptStatus[chapterId] = { attempted: true, submittedAt: new Date().toISOString() };
+    // viên quay lại trang chủ, danh sách chương đã hiện đúng "n/tối đa" luôn.
+    var prev = intlAttemptStatus[chapterId];
+    var maxAttempts = (prev && prev.maxAttempts) || 2;
+    var nextAttempts = ((prev && prev.attempts) || 0) + 1;
+    intlAttemptStatus[chapterId] = {
+      attempts: nextAttempts, maxAttempts: maxAttempts,
+      canAttempt: nextAttempts < maxAttempts, submittedAt: new Date().toISOString()
+    };
     fetch(ATTEMPT_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -961,6 +978,10 @@
     var body = rows.map(function (r) {
       var pct = r.total ? Math.round(r.score / r.total * 100) : 0;
       var quizLabel = r.chapter_id === 'ch08' ? 'Quiz 1' : (r.chapter_id === 'ch09' ? 'Quiz 2' : esc(r.chapter_id));
+      // "Lần N": chỉ hiện khi máy chủ đã nâng cấp (đã có cột attempt_no) và
+      // thật sự là lần thứ 2 trở lên — thi tối đa 2 lần nên bản ghi lần 1
+      // không cần gắn thêm gì cho đỡ rối mắt.
+      if (typeof r.attempt_no === 'number' && r.attempt_no > 1) quizLabel += ' (' + esc(t('adminResults.attemptNo', { n: r.attempt_no })) + ')';
       // "Rời màn hình" (integrity_violations): cột mới, có thể vắng mặt nếu
       // Edge Function chưa nâng cấp (cột chưa có trong CSDL) — coi như 0 khi
       // đó, không làm vỡ bảng của những lượt nộp từ trước khi có cột này.
@@ -1801,8 +1822,8 @@
       '</div>';
     }).join('');
 
-    // Gợi ý "ôn chương yếu nhất" giả định còn làm lại được — bài Quiz chính
-    // thức chỉ 1 lần nên ẩn hẳn, tránh lạc quẻ so với tính chất bài thi.
+    // Gợi ý "ôn chương yếu nhất" ngụ ý luyện tập thoải mái, không hợp với
+    // tính chất bài thi thật (dù còn lượt thi lại hay không) nên ẩn hẳn.
     if (isOfficialExam) { var insightBox = $('#resInsight'); if (insightBox) insightBox.classList.add('hidden'); }
     else renderInsight(r);
 
@@ -1811,10 +1832,11 @@
     if (reviewOpen && !isOfficialExam) renderReview();
     $('#btnRetryWrong').disabled = r.wrong + r.skip === 0;
 
-    // Bài thi thật chỉ làm 1 lần: không cho xem lại đề + đáp án sau khi nộp
-    // (lộ nguyên đề thi thật ra ngoài), không cho "Luyện lại câu sai"/"Làm
-    // đề mới" (ngụ ý còn làm lại được, trong khi máy chủ đã khoá không cho
-    // nộp lần 2) — chỉ để lại "Về trang chủ".
+    // Bài thi thật: không cho xem lại đề + đáp án sau khi nộp (lộ nguyên đề
+    // thi thật ra ngoài — nhất là khi còn lượt thi lại, lộ đáp án lúc này
+    // càng tai hại hơn), không cho "Luyện lại câu sai"/"Làm đề mới" (không
+    // phải cách thi lại hợp lệ — thi lại phải đi qua đúng hàng rào kiểm tra
+    // số lần ở continueToSetup()) — chỉ để lại "Về trang chủ".
     $('#btnReview').classList.toggle('hidden', isOfficialExam);
     $('#btnRetryWrong').classList.toggle('hidden', isOfficialExam);
     $('#btnRedo').classList.toggle('hidden', isOfficialExam);
