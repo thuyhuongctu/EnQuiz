@@ -1,0 +1,23 @@
+{
+  "ten": "EnQuiz",
+  "sw": {
+    "tep": "sw.js",
+    "bien_phien_ban": "CACHE_VERSION",
+    "mau": "enquiz-v\\d+",
+    "mang": "SHELL"
+  },
+  "manifest": ["manifest.webmanifest", "manifest.en.webmanifest"],
+  "bo_qua_thu_muc": ["docs", "on-tap-video", "tools"],
+  "nguon_ngoai_duoc_phep": ["gc.zgo.at"],
+  "may_chu_goi_duoc_phep": ["*.supabase.co", "thuyhuongctu.goatcounter.com"],
+  "song_ngu": {
+    "tep": "assets/js/i18n.js",
+    "ngon_ngu": ["vi", "en"]
+  },
+  "du_lieu": {
+    "danh_muc": "data/manifest.js",
+    "mang": "DATA_FILES",
+    "thu_muc": "data",
+    "mau": "ch\\d+\\.js"
+  }
+}
