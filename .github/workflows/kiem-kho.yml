@@ -1,0 +1,41 @@
+# Kiểm toàn vẹn kho trên mỗi pull request, trước khi bản mới ra tới người học.
+#
+# Ở kho này gộp vào `main` là phát hành. Script canh những chỗ hỏng mà trang
+# vẫn hiện bình thường nên không ai thấy: sw.js nạp trước tệp không tồn tại,
+# liên kết nội bộ gãy, tài nguyên tự nạp từ máy chủ ngoài, mã gọi tới máy chủ
+# chưa khai. Script không cần thư viện ngoài và không ghi tệp nào.
+
+name: Kiểm kho
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kiem-kho-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kiem-kho:
+    name: kiem_kho.py
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v4
+        with:
+          # Job này chạy mã của pull request và không bước nào cần git đã
+          # xác thực, nên không để token nằm lại trong .git/config.
+          persist-credentials: false
+
+      - name: Cài Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Chạy phép kiểm
+        run: python3 tools/kiem_kho.py
