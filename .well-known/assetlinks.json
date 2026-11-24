@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.thuyhuongctu.enquiz",
+      "sha256_cert_fingerprints": [
+        "D0:A2:B8:D6:1F:67:96:1A:58:AD:6B:65:7C:4B:BC:0A:BC:1D:7F:DB:08:92:DA:F4:C4:96:14:2D:A8:11:FB:99"
+      ]
+    }
+  }
+]
