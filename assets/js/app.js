@@ -728,8 +728,13 @@
   /* ---------------- Mở khoá tài liệu case study (email trường) ----------------
      Theo yêu cầu Cô/Chị: link Drive chỉ mở được sau khi SV nhập email trường
      một lần trên máy — ghi nhận qua Edge Function (Supabase) để Thầy/Cô biết
-     ai đã xem, KHÔNG cần xác minh email thật (không phải hệ thống bảo mật). */
-  var UNLOCK_ENDPOINT = 'https://kdpjlbqvdlntsfhrmchm.supabase.co/functions/v1/case-doc-unlock';
+     ai đã xem, KHÔNG cần xác minh email thật (không phải hệ thống bảo mật).
+     Endpoint trỏ về project "kdpjlbqvdlntsfhrmchm" cũ đã ngừng tồn tại (không
+     còn phân giải được DNS), khiến mọi sinh viên bấm mở khoá đều gặp
+     "Network error" — chuyển sang project đang hoạt động (cùng project với
+     exam-attempt/exam-login), cần tạo lại bảng case_doc_unlocks + Edge
+     Function ở đó (xem commit này). */
+  var UNLOCK_ENDPOINT = 'https://zkjgtvmwgrejmwapirwe.supabase.co/functions/v1/case-doc-unlock';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var pendingUnlockUrl = null;
   var pendingUnlockCase = '';
